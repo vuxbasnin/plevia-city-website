@@ -1,0 +1,42 @@
+
+"use server"; // Or remove if used only by client-side, but fetch implies it can be server action compatible if needed
+
+import { CLOUDINARY } from "@/lib/cloudinary";
+
+interface CloudinaryUploadResult {
+  secure_url: string;
+  // Add other fields you might need from the Cloudinary response
+}
+
+export async function uploadFileToCloudinary(file: File, folder: string): Promise<string> {
+  if (!CLOUDINARY.CLOUD_NAME || CLOUDINARY.CLOUD_NAME === "YOUR_CLOUD_NAME_HERE_FROM_DOT_ENV" || !CLOUDINARY.UPLOAD_PRESET || CLOUDINARY.UPLOAD_PRESET === "YOUR_UPLOAD_PRESET_HERE_FROM_DOT_ENV") {
+    console.error("Cloudinary configuration is missing or using placeholder values. Please check .env.local and src/lib/cloudinary.ts");
+    throw new Error("Cloudinary configuration is missing or invalid.");
+  }
+
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", CLOUDINARY.UPLOAD_PRESET);
+  formData.append("folder", folder);
+
+  const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUDINARY.CLOUD_NAME}/image/upload`;
+
+  try {
+    const response = await fetch(UPLOAD_URL, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Cloudinary upload failed:", errorData);
+      throw new Error(errorData.error?.message || "Upload to Cloudinary failed.");
+    }
+
+    const result: CloudinaryUploadResult = await response.json();
+    return result.secure_url;
+  } catch (error) {
+    console.error("Error during Cloudinary upload process:", error);
+    throw error; // Re-throw to be caught by the caller
+  }
+}
