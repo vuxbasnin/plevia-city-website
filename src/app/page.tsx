@@ -1,14 +1,14 @@
 
 "use client";
 
-import Navbar from '@/components/layout/Navbar';
+import Navbar from '@/components/layout/Navbar/Navbar';
 import HeroSection from '@/components/sections/HeroSection';
 import SeatingOptionsSection from '@/components/sections/SeatingOptionsSection';
 import AmenitiesSection from '@/components/sections/AmenitiesSection';
 import MemberBenefitsSection from '@/components/sections/MemberBenefitsSection';
 import CommunityCultureSection from '@/components/sections/CommunityCultureSection';
 import FinalCallToActionSection from '@/components/sections/FinalCallToActionSection';
-import Footer from '@/components/layout/Footer';
+import Footer from '@/components/layout/Footer/Footer';
 import BackToTopButton from '@/components/shared/BackToTopButton';
 import FloatingActionButtons from '@/components/shared/FloatingActionButtons';
 

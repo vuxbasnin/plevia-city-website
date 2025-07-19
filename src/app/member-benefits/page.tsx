@@ -3,9 +3,9 @@
 
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import Navbar from '@/components/layout/Navbar';
+import Navbar from '@/components/layout/Navbar/Navbar';
 import Footer from '@/components/layout/Footer';
-import { MessageSquare, Award, Sparkles } from 'lucide-react'; 
+import { MessageSquare, Award, Sparkles } from 'lucide-react';
 import NextImage from 'next/image';
 import { getMemberBenefitsSectionData, getMemberBenefitsPageSettingsData } from '@/lib/firestoreService';
 import { type BenefitItem, defaultMemberBenefitsSectionData, type MemberBenefitsPageSettingsData, defaultMemberBenefitsPageSettingsData } from '@/types/landingPageAdmin';
@@ -114,9 +114,9 @@ export default function MemberBenefitsPage() {
             </div>
           </section>
           {/* Benefits Accordion Skeleton */}
-           <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+          <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
-               <Accordion type="single" collapsible className="w-full">
+              <Accordion type="single" collapsible className="w-full">
                 {[...Array(3)].map((_, index) => (
                   <motion.div
                     key={index}
@@ -133,10 +133,10 @@ export default function MemberBenefitsPage() {
                         </div>
                       </AccordionTrigger>
                       <AccordionContent className="px-4 pb-4 pt-0">
-                          <div className="grid md:grid-cols-2 gap-6 pt-4 border-t items-start">
-                            <Skeleton className="h-24 w-full" /> {/* Detailed description skeleton */}
-                            <Skeleton className="h-40 w-full rounded-md" /> {/* Image skeleton */}
-                          </div>
+                        <div className="grid md:grid-cols-2 gap-6 pt-4 border-t items-start">
+                          <Skeleton className="h-24 w-full" /> {/* Detailed description skeleton */}
+                          <Skeleton className="h-40 w-full rounded-md" /> {/* Image skeleton */}
+                        </div>
                       </AccordionContent>
                     </AccordionItem>
                   </motion.div>
@@ -286,6 +286,6 @@ export default function MemberBenefitsPage() {
   );
 }
 
-    
 
-    
+
+

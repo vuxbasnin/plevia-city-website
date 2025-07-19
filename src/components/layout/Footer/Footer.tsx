@@ -10,7 +10,7 @@ import { getSiteSettingsData } from '@/lib/firestoreService';
 import type { SiteSettingsData } from '@/types/landingPageAdmin';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
-import DynamicLucideIcon from '../shared/DynamicLucideIcon';
+import DynamicLucideIcon from '../../shared/DynamicLucideIcon';
 
 const footerNavs = [
   {
