@@ -332,8 +332,8 @@ export async function getNewsArticles(): Promise<NewsArticle[]> {
       articles.push({
         id: doc.id,
         ...data,
-        createdAt: data.createdAt,
-        updatedAt: data.updatedAt,
+        createdAt: data.createdAt?.toMillis ? data.createdAt.toMillis() : null,
+        updatedAt: data.updatedAt?.toMillis ? data.updatedAt.toMillis() : null,
       } as NewsArticle);
     });
     
@@ -376,13 +376,14 @@ export async function createNewsArticle(articleData: Omit<NewsArticle, 'id' | 'c
   }
 
   try {
+    // Loại bỏ createdAt, updatedAt nếu có trong articleData
+    const { createdAt, updatedAt, ...rest } = articleData as any;
     const articlesRef = collection(db, NEWS_ARTICLES_COLLECTION);
     const newArticle = {
-      ...articleData,
+      ...rest,
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
     };
-    
     const docRef = await addDoc(articlesRef, newArticle);
     return docRef.id;
   } catch (error) {
@@ -392,17 +393,13 @@ export async function createNewsArticle(articleData: Omit<NewsArticle, 'id' | 'c
 }
 
 export async function updateNewsArticle(id: string, articleData: Partial<NewsArticle>): Promise<void> {
-  if (!db) {
-    throw new Error("Firestore not initialized");
-  }
-
+  if (!db) throw new Error("Firestore not initialized");
   try {
     const articleRef = doc(db, NEWS_ARTICLES_COLLECTION, id);
     const updateData = {
       ...articleData,
       updatedAt: serverTimestamp(),
     };
-    
     await updateDoc(articleRef, updateData);
   } catch (error) {
     console.error("Error updating news article:", error);

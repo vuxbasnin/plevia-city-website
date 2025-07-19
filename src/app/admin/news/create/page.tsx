@@ -23,6 +23,7 @@ import ImageTool from "@editorjs/image";
 import Quote from "@editorjs/quote";
 import Code from "@editorjs/code";
 import { useEffect, useRef } from "react";
+import { uploadFileToCloudinary } from "@/lib/cloudinaryUploader";
 
 export default function CreateNewsPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,89 +46,50 @@ export default function CreateNewsPage() {
   const watchedTags = watch("tags");
   const watchedIsPublished = watch("isPublished");
 
-  // Initialize Editor.js
-  const initEditor = async () => {
-    if (typeof window === "undefined") return;
+  const editorRef = useRef<EditorJS | null>(null);
 
-    const editor = new EditorJS({
-      holder: "editorjs",
-      placeholder: "Bắt đầu viết bài viết của bạn...",
-      tools: {
-        header: {
-          class: Header,
-          config: {
-            placeholder: "Nhập tiêu đề...",
-            levels: [1, 2, 3, 4, 5, 6],
-            defaultLevel: 2,
-          },
-        },
-        list: {
-          class: List,
-          inlineToolbar: true,
-        },
-        image: {
-          class: ImageTool,
-          config: {
-            uploader: {
-              uploadByFile: async (file: File) => {
-                try {
-                  // Here you would implement image upload to Cloudinary
-                  // For now, we'll use a placeholder
-                  const formData = new FormData();
-                  formData.append("file", file);
-                  
-                  // Simulate upload - replace with actual Cloudinary upload
-                  const response = await fetch("/api/upload-image", {
-                    method: "POST",
-                    body: formData,
-                  });
-                  
-                  if (!response.ok) {
-                    throw new Error("Upload failed");
+  useEffect(() => {
+    if (!editorRef.current) {
+      editorRef.current = new EditorJS({
+        holder: "editorjs",
+        placeholder: "Bắt đầu viết bài viết của bạn...",
+        tools: {
+          header: Header,
+          list: List,
+          image: {
+            class: ImageTool,
+            config: {
+              uploader: {
+                uploadByFile: async (file: File) => {
+                  try {
+                    const url = await uploadFileToCloudinary(file, "news_images");
+                    return { success: 1, file: { url } };
+                  } catch (error) {
+                    return { success: 0, error: "Upload failed" };
                   }
-                  
-                  const result = await response.json();
-                  return {
-                    success: 1,
-                    file: {
-                      url: result.url,
-                    },
-                  };
-                } catch (error) {
-                  console.error("Image upload error:", error);
-                  return {
-                    success: 0,
-                    error: "Upload failed",
-                  };
-                }
+                },
               },
             },
           },
+          quote: Quote,
+          code: Code,
         },
-        quote: {
-          class: Quote,
-          inlineToolbar: true,
+        data: defaultNewsArticleData.content,
+        onChange: async () => {
+          if (editorRef.current) {
+            const outputData = await editorRef.current.save();
+            setValue("content", outputData);
+          }
         },
-        code: {
-          class: Code,
-        },
-      },
-      data: defaultNewsArticleData.content,
-      onChange: async () => {
-        if (editor) {
-          const outputData = await editor.save();
-          setValue("content", outputData);
-        }
-      },
-    });
-
-    setEditorInstance(editor);
-  };
-
-  // Initialize editor on mount
-  useState(() => {
-    initEditor();
-  });
+      });
+    }
+    return () => {
+      if (editorRef.current && typeof editorRef.current.destroy === "function") {
+        editorRef.current.destroy();
+        editorRef.current = null;
+      }
+    };
+  }, []);
 
   const addTag = () => {
     if (newTag.trim() && !watchedTags.includes(newTag.trim())) {
@@ -145,9 +107,18 @@ export default function CreateNewsPage() {
       setIsSubmitting(true);
       
       // Get editor content
-      if (editorInstance) {
-        const editorData = await editorInstance.save();
-        data.content = editorData;
+      if (editorRef.current) {
+        const editorData = await editorRef.current.save();
+        const safeEditorData = {
+          time: editorData.time ?? Date.now(),
+          version: editorData.version ?? "2.28.2",
+          blocks: (editorData.blocks || []).map(block => ({
+            id: block.id,
+            type: block.type,
+            data: block.data ? block.data : {},
+          })),
+        };
+        data.content = safeEditorData as any;
       }
 
       // Create the article
