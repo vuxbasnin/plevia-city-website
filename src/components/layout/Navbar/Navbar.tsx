@@ -19,30 +19,25 @@ import './Navbar.css';
 // Navigation links based on the image
 const navLinks = [
   { 
-    href: '/#story', 
-    label: 'Câu chuyện kiến tạo',
+    href: '/#project', 
+    label: 'Về dự án',
     hasDropdown: false 
   },
   { 
-    href: '/#nature', 
-    label: 'Bức tranh thiên nhiên',
+    href: '/#location', 
+    label: 'Vị trí, tiện ích',
     hasDropdown: false 
   },
   { 
-    href: '/#experience', 
-    label: 'Đa tầng trải nghiệm',
+    href: '/#stylelife', 
+    label: 'Phong cách sống',
     hasDropdown: false 
   },
   { 
-    href: '/#valley-home', 
-    label: 'Nhà trong thung lũng',
-    hasDropdown: true 
-  },
-  { 
-    href: '/#lifestyle', 
-    label: 'Phong cách sống Valley Home',
+    href: '/#news', 
+    label: 'Tin tức',
     hasDropdown: false 
-  },
+  }
 ];
 
 export default function Navbar() {
@@ -200,16 +195,7 @@ export default function Navbar() {
                   >
                     <div className="navbar-link-content">
                       <span className="navbar-link-main">
-                        {index === navLinks.length - 1 
-                          ? link.label.split(' ').slice(0, 3).join(' ')
-                          : link.label.split(' ')[0]
-                        }
-                      </span>
-                      <span className="navbar-link-sub">
-                        {index === navLinks.length - 1 
-                          ? link.label.split(' ').slice(3).join(' ')
-                          : link.label.split(' ').slice(1).join(' ')
-                        }
+                        {link.label}
                       </span>
                       {link.hasDropdown && (
                         <ChevronDown className="navbar-link-dropdown" />

@@ -2,7 +2,7 @@
 "use client";
 
 import Navbar from '@/components/layout/Navbar/Navbar';
-import HeroSection from '@/components/sections/HeroSection';
+import ImageHeader from '@/components/sections/ImageHeader';
 import SeatingOptionsSection from '@/components/sections/SeatingOptionsSection';
 import AmenitiesSection from '@/components/sections/AmenitiesSection';
 import MemberBenefitsSection from '@/components/sections/MemberBenefitsSection';
@@ -19,7 +19,7 @@ export default function HomePage() {
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">
-          <HeroSection />
+          <ImageHeader />
           <SeatingOptionsSection />
           <AmenitiesSection />
           <MemberBenefitsSection />
