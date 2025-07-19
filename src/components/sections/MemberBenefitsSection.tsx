@@ -40,6 +40,7 @@ export default function MemberBenefitsSection() {
   const [benefits, setBenefits] = useState<BenefitItem[]>(defaultMemberBenefitsSectionData.items as BenefitItem[]);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Hàm tải dữ liệu quyền lợi thành viên từ Firestore và cập nhật state.
   useEffect(() => {
     async function loadData() {
       setIsLoading(true);
@@ -130,6 +131,7 @@ export default function MemberBenefitsSection() {
   );
 }
 
+// Component skeleton loading cho quyền lợi thành viên.
 function CardSkeleton() {
   return (
     <div className="bg-card p-6 rounded-xl border text-center">

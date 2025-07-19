@@ -32,6 +32,7 @@ export default function ManageHeroAdmin() {
     defaultValues: defaultHeroSectionData,
   });
 
+  // Hàm tải dữ liệu banner từ Firestore và cập nhật state.
   useEffect(() => {
     async function loadHeroData() {
       setIsLoading(true);
@@ -59,6 +60,7 @@ export default function ManageHeroAdmin() {
     loadHeroData();
   }, [form, toast]);
 
+  // Hàm xử lý khi chọn file ảnh mới cho banner.
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
@@ -75,6 +77,7 @@ export default function ManageHeroAdmin() {
     }
   };
 
+  // Hàm xóa file ảnh đang chọn (nếu có).
   const clearPendingImage = () => {
     setPendingImageFile(null);
     if (heroImageInputRef.current) {
@@ -84,6 +87,7 @@ export default function ManageHeroAdmin() {
     setCurrentPreviewUrl(form.getValues("imageUrl") || defaultHeroSectionData.imageUrl);
   };
 
+  // Hàm xử lý khi nhập/chỉnh sửa URL ảnh thủ công.
   const handleManualImageUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newUrl = event.target.value;
     form.setValue("imageUrl", newUrl);
@@ -100,6 +104,7 @@ export default function ManageHeroAdmin() {
     }
   };
 
+  // Hàm submit form, lưu dữ liệu banner và upload ảnh nếu có.
   const onSubmit: SubmitHandler<HeroSectionData> = async (formData) => {
     setIsSaving(true);
     let dataToSave = { ...formData };

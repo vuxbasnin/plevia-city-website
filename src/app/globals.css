@@ -18,7 +18,7 @@ body {
     --popover: 0 0% 100%; /* White */
     --popover-foreground: 220 15% 25%; /* Dark, slightly cool gray on popovers */
 
-    --primary: 217 91% 60%; /* Professional Blue (e.g., IBM Blue / Stripe Blue like) */
+    --primary: 158 100% 21%; /* Đã đổi sang màu #006D44 */
     --primary-foreground: 0 0% 98%; /* Light gray/white for text on primary */
 
     --secondary: 220 15% 90%; /* Light gray for subtle backgrounds */

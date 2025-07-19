@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import PrivateRoute from "@/components/auth/PrivateRoute";
 import { useAuth } from "@/hooks/useAuth";
-import { LogOut, LayoutDashboard, Settings, MailCheck, CalendarClock, FileText, Home, Settings2, Newspaper, Package, ImageIcon, Sofa, Sparkles, Users, Send, Palette, Layers, UserCog } from "lucide-react";
+import { LogOut, LayoutDashboard, Settings, MailCheck, CalendarClock, FileText, Home, Settings2, Newspaper, Package, ImageIcon, Sofa, Sparkles, Users, Send, Palette, Layers, UserCog, FileText as FileTextIcon, Plus, Edit } from "lucide-react";
 import { SidebarProvider, Sidebar, SidebarHeader, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarInset, SidebarTrigger, SidebarFooter, SidebarGroup, SidebarGroupLabel, SidebarGroupContent } from "@/components/ui/sidebar";
 
 interface NavItemConfig {
@@ -31,6 +31,16 @@ const navItemsConfiguration: NavItemConfig[] = [
       { id: "account-settings", label: "Tài Khoản Admin", icon: UserCog, href: "/admin/settings/account", isLeaf: true },
       { id: "trial-signups", label: "Đăng Ký Dùng Thử", icon: MailCheck, href: "/admin/data/trial-signups", isLeaf: true },
       { id: "tour-bookings", label: "Lịch Tham Quan", icon: CalendarClock, href: "/admin/data/tour-bookings", isLeaf: true },
+    ],
+  },
+  {
+    id: "group-news-management",
+    label: "Quản Lý Tin Tức",
+    icon: FileTextIcon,
+    isLeaf: false,
+    children: [
+      { id: "news-list", label: "Danh Sách Tin Tức", icon: FileText, href: "/admin/news", isLeaf: true },
+      { id: "news-create", label: "Tạo Tin Tức Mới", icon: Plus, href: "/admin/news/create", isLeaf: true },
     ],
   },
   {
@@ -149,7 +159,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             <Link href="/admin/overview" passHref>
               <span className="flex items-center space-x-2 text-xl font-headline font-bold text-primary hover:opacity-80 transition-opacity">
                 <Palette className="w-7 h-7" />
-                <span className="group-data-[collapsible=icon]:hidden">Admin Panel</span>
+                <span className="group-data-[collapsible=icon]:hidden">Admin Panel 123</span>
               </span>
             </Link>
             <SidebarTrigger className="md:hidden group-data-[collapsible=icon]:hidden" />
@@ -175,7 +185,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                <Link href="/admin/overview" passHref>
                 <span className="flex items-center space-x-2 text-lg font-headline font-bold text-primary hover:opacity-80 transition-opacity">
                     <Palette className="w-6 h-6" />
-                    <span>Admin Panel</span>
+                    <span>Admin Panel AB</span>
                 </span>
               </Link>
               <SidebarTrigger />

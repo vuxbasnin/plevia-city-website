@@ -13,6 +13,8 @@ import {
   orderBy,
   updateDoc,
   addDoc,
+  deleteDoc,
+  where,
 } from "firebase/firestore";
 import { db } from "./firebase"; // db can be null if Firebase fails to initialize
 import type {
@@ -29,6 +31,7 @@ import type {
   TourBookingData,
   TourBookingStatus,
   MemberBenefitsPageSettingsData,
+  NewsArticle,
 } from "@/types/landingPageAdmin";
 import { getDefaultData } from "@/types/landingPageAdmin";
 import type { ContactFormData } from "@/components/shared/ContactFormDialog";
@@ -37,6 +40,7 @@ import type { TourBookingFormData as ClientTourBookingFormData } from "@/types/l
 const PAGE_CONTENT_COLLECTION = "page_content";
 const TRIAL_SIGNUPS_COLLECTION = "trial_signups";
 const TOUR_BOOKINGS_COLLECTION = "tour_bookings";
+const NEWS_ARTICLES_COLLECTION = "news_articles";
 
 // Generic function to get section data
 export async function getSectionData<T>(sectionKey: SectionKey): Promise<T> {
@@ -308,5 +312,146 @@ export async function updateTourBookingStatus(
   } catch (error) {
     console.error(`Error updating status for tour booking ${id}:`, error);
     return false;
+  }
+}
+
+// News Articles Management
+export async function getNewsArticles(): Promise<NewsArticle[]> {
+  if (!db) {
+    throw new Error("Firestore not initialized");
+  }
+
+  try {
+    const articlesRef = collection(db, NEWS_ARTICLES_COLLECTION);
+    const q = query(articlesRef, orderBy("createdAt", "desc"));
+    const querySnapshot = await getDocs(q);
+    
+    const articles: NewsArticle[] = [];
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      articles.push({
+        id: doc.id,
+        ...data,
+        createdAt: data.createdAt,
+        updatedAt: data.updatedAt,
+      } as NewsArticle);
+    });
+    
+    return articles;
+  } catch (error) {
+    console.error("Error fetching news articles:", error);
+    throw error;
+  }
+}
+
+export async function getNewsArticleById(id: string): Promise<NewsArticle | null> {
+  if (!db) {
+    throw new Error("Firestore not initialized");
+  }
+
+  try {
+    const articleRef = doc(db, NEWS_ARTICLES_COLLECTION, id);
+    const articleSnap = await getDoc(articleRef);
+    
+    if (articleSnap.exists()) {
+      const data = articleSnap.data();
+      return {
+        id: articleSnap.id,
+        ...data,
+        createdAt: data.createdAt,
+        updatedAt: data.updatedAt,
+      } as NewsArticle;
+    }
+    
+    return null;
+  } catch (error) {
+    console.error("Error fetching news article:", error);
+    throw error;
+  }
+}
+
+export async function createNewsArticle(articleData: Omit<NewsArticle, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
+  if (!db) {
+    throw new Error("Firestore not initialized");
+  }
+
+  try {
+    const articlesRef = collection(db, NEWS_ARTICLES_COLLECTION);
+    const newArticle = {
+      ...articleData,
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp(),
+    };
+    
+    const docRef = await addDoc(articlesRef, newArticle);
+    return docRef.id;
+  } catch (error) {
+    console.error("Error creating news article:", error);
+    throw error;
+  }
+}
+
+export async function updateNewsArticle(id: string, articleData: Partial<NewsArticle>): Promise<void> {
+  if (!db) {
+    throw new Error("Firestore not initialized");
+  }
+
+  try {
+    const articleRef = doc(db, NEWS_ARTICLES_COLLECTION, id);
+    const updateData = {
+      ...articleData,
+      updatedAt: serverTimestamp(),
+    };
+    
+    await updateDoc(articleRef, updateData);
+  } catch (error) {
+    console.error("Error updating news article:", error);
+    throw error;
+  }
+}
+
+export async function deleteNewsArticle(id: string): Promise<void> {
+  if (!db) {
+    throw new Error("Firestore not initialized");
+  }
+
+  try {
+    const articleRef = doc(db, NEWS_ARTICLES_COLLECTION, id);
+    await deleteDoc(articleRef);
+  } catch (error) {
+    console.error("Error deleting news article:", error);
+    throw error;
+  }
+}
+
+export async function getPublishedNewsArticles(): Promise<NewsArticle[]> {
+  if (!db) {
+    throw new Error("Firestore not initialized");
+  }
+
+  try {
+    const articlesRef = collection(db, NEWS_ARTICLES_COLLECTION);
+    const q = query(
+      articlesRef, 
+      where("isPublished", "==", true),
+      orderBy("createdAt", "desc")
+    );
+    const querySnapshot = await getDocs(q);
+    
+    const articles: NewsArticle[] = [];
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      articles.push({
+        id: doc.id,
+        ...data,
+        createdAt: data.createdAt,
+        updatedAt: data.updatedAt,
+      } as NewsArticle);
+    });
+    
+    return articles;
+  } catch (error) {
+    console.error("Error fetching published news articles:", error);
+    throw error;
   }
 }

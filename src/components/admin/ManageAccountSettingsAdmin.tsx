@@ -62,7 +62,7 @@ export default function ManageAccountSettingsAdmin() {
     },
   });
 
-  // Update default display name when user data is available/changed
+  // Hàm cập nhật giá trị mặc định cho tên hiển thị khi user thay đổi.
   useState(() => {
     if (user?.displayName) {
       displayNameForm.setValue("displayName", user.displayName);
@@ -71,6 +71,7 @@ export default function ManageAccountSettingsAdmin() {
   }, [user?.displayName, displayNameForm.setValue]);
 
 
+  // Hàm submit form đổi tên hiển thị.
   const onDisplayNameSubmit: SubmitHandler<UpdateDisplayNameFormData> = async (data) => {
     if (!user || !auth.currentUser) {
       toast({ title: "Lỗi", description: "Không tìm thấy người dùng.", variant: "destructive" });
@@ -90,6 +91,7 @@ export default function ManageAccountSettingsAdmin() {
     setIsSavingDisplayName(false);
   };
 
+  // Hàm submit form đổi mật khẩu.
   const onPasswordSubmit: SubmitHandler<UpdatePasswordFormData> = async (data) => {
     if (!user || !user.email || !auth.currentUser) {
       toast({ title: "Lỗi", description: "Không tìm thấy người dùng hoặc email.", variant: "destructive" });

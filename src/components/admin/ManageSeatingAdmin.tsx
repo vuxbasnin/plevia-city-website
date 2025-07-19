@@ -45,6 +45,7 @@ export default function ManageSeatingAdmin() {
   const currentDialogFormImageUrl = watch("imageUrl");
 
 
+  // Hàm tải dữ liệu các vị trí ngồi từ Firestore và cập nhật state.
   useEffect(() => {
     async function loadSeatingData() {
       setIsLoading(true);
@@ -61,6 +62,7 @@ export default function ManageSeatingAdmin() {
     loadSeatingData();
   }, [toast]);
 
+  // Hàm lưu toàn bộ danh sách vị trí ngồi, upload ảnh lên Cloudinary nếu có.
   const handleSaveAll = async () => {
     if (!CLOUDINARY.CLOUD_NAME || CLOUDINARY.CLOUD_NAME === "YOUR_CLOUD_NAME_HERE_FROM_DOT_ENV" || !CLOUDINARY.UPLOAD_PRESET || CLOUDINARY.UPLOAD_PRESET === "YOUR_UPLOAD_PRESET_HERE_FROM_DOT_ENV") {
       toast({ title: "Cấu hình Cloudinary bị thiếu", description: "Vui lòng kiểm tra file .env.local và src/lib/cloudinary.ts.", variant: "destructive" });
@@ -102,6 +104,7 @@ export default function ManageSeatingAdmin() {
     setIsSaving(false);
   };
 
+  // Hàm mở dialog thêm vị trí ngồi mới.
   const handleAddNewOption = () => {
     setEditingOption(null);
     formReset({ id: "", title: "", description: "", imageUrl: "" });
@@ -111,6 +114,7 @@ export default function ManageSeatingAdmin() {
     setIsDialogOpen(true);
   };
 
+  // Hàm mở dialog chỉnh sửa một vị trí ngồi.
   const handleEditOption = (option: ManagedSeatingOptionItem) => {
     setEditingOption(option);
     formReset({
@@ -125,11 +129,13 @@ export default function ManageSeatingAdmin() {
     setIsDialogOpen(true);
   };
 
+  // Hàm xóa một vị trí ngồi khỏi danh sách (chưa lưu).
   const handleDeleteOption = (id: string) => {
     setSeatingOptions(prev => prev.filter(opt => opt.id !== id));
     toast({ title: "Đã xóa (chưa lưu)", description: "Nhấn 'Lưu Tất Cả Thay Đổi' để xác nhận.", variant: "default" });
   };
 
+  // Hàm xử lý khi chọn file ảnh mới trong dialog.
   const handleDialogFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
@@ -144,6 +150,7 @@ export default function ManageSeatingAdmin() {
     }
   };
 
+  // Hàm xóa file ảnh đang chọn trong dialog.
   const clearDialogPendingFile = () => {
     setDialogPendingFile(null);
     setDialogLocalPreview(formGetValues("imageUrl")); // Revert to manual URL if any
@@ -152,6 +159,7 @@ export default function ManageSeatingAdmin() {
     }
   };
   
+  // Hàm xử lý khi nhập/chỉnh sửa URL ảnh thủ công trong dialog.
   const handleDialogManualImageUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newUrl = event.target.value;
     setValue("imageUrl", newUrl);
@@ -169,6 +177,7 @@ export default function ManageSeatingAdmin() {
   };
 
 
+  // Hàm submit form dialog, thêm hoặc cập nhật vị trí ngồi.
   const onOptionSubmit: SubmitHandler<SeatingOptionItemType> = (formDataFromDialog) => {
     let newOption: ManagedSeatingOptionItem = {
       ...formDataFromDialog,

@@ -13,6 +13,7 @@ export default function HeroSection() {
   const [isLoading, setIsLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
 
+  // Hàm tải dữ liệu section Hero từ Firestore và cập nhật state.
   useEffect(() => {
     async function loadData() {
       setIsLoading(true);

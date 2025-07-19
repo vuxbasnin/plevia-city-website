@@ -24,6 +24,7 @@ export default function ManageFinalCtaAdmin() {
     defaultValues: defaultFinalCtaSectionData,
   });
 
+  // Hàm tải dữ liệu CTA cuối trang từ Firestore và cập nhật state.
   useEffect(() => {
     async function loadData() {
       setIsLoading(true);
@@ -44,6 +45,7 @@ export default function ManageFinalCtaAdmin() {
     loadData();
   }, [form, toast]);
 
+  // Hàm submit form, lưu dữ liệu CTA cuối trang.
   const onSubmit: SubmitHandler<FinalCtaSectionData> = async (data) => {
     setIsSaving(true);
     const success = await updateFinalCtaSectionData(data);

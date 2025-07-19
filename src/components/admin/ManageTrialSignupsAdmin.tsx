@@ -36,7 +36,7 @@ import { Loader2, MailCheck, Filter, ArrowUpDown, MessageSquareText, ExternalLin
 import { format, parseISO, isValid as isValidDate } from 'date-fns';
 import { Timestamp } from "firebase/firestore";
 
-// Helper to convert Firestore Timestamp or serialized object/string to a formatted date string
+// Hàm chuyển đổi nhiều kiểu dữ liệu thời gian về chuỗi ngày giờ hiển thị.
 const formatDateForDisplay = (timestampInput: Timestamp | Date | { seconds: number, nanoseconds: number } | string | undefined): string => {
   if (!timestampInput) return "N/A";
 
@@ -89,6 +89,7 @@ export default function ManageTrialSignupsAdmin() {
 
   const [currentPage, setCurrentPage] = useState(1);
 
+  // Hàm lấy danh sách đăng ký dùng thử từ Firestore và cập nhật state.
   const fetchSignups = async () => {
     setIsLoading(true);
     try {
@@ -157,6 +158,7 @@ export default function ManageTrialSignupsAdmin() {
     setCurrentPage(1); 
   }, [signups, filterStatus, searchTerm, sortConfig]);
 
+  // Hàm xử lý thay đổi trạng thái đăng ký dùng thử và cập nhật Firestore.
   const handleStatusChange = async (id: string, newStatus: TrialSignupStatus) => {
     setIsUpdating(prev => ({ ...prev, [id]: true }));
     const success = await updateTrialSignupStatus(id, newStatus);
@@ -176,6 +178,7 @@ export default function ManageTrialSignupsAdmin() {
     setIsUpdating(prev => ({ ...prev, [id]: false }));
   };
 
+  // Hàm xử lý logic sắp xếp cho các cột trong bảng.
   const requestSort = (key: keyof TrialSignupData) => {
     let direction: "asc" | "desc" = "asc";
     if (sortConfig.key === key && sortConfig.direction === "asc") {
@@ -184,6 +187,7 @@ export default function ManageTrialSignupsAdmin() {
     setSortConfig({ key, direction });
   };
 
+  // Hàm trả về icon chỉ báo sắp xếp cho một cột.
   const getSortIndicator = (key: keyof TrialSignupData) => {
     if (sortConfig.key === key) {
       return sortConfig.direction === "asc" ? <ArrowUpDown className="ml-2 h-3 w-3 inline opacity-50 group-hover:opacity-100" /> : <ArrowUpDown className="ml-2 h-3 w-3 inline opacity-50 group-hover:opacity-100" />;
@@ -191,6 +195,7 @@ export default function ManageTrialSignupsAdmin() {
     return <ArrowUpDown className="ml-2 h-3 w-3 inline opacity-0 group-hover:opacity-50" />;
   };
 
+  // Hàm mở dialog xem nội dung tin nhắn của đăng ký dùng thử.
   const openMessageDialog = (message: string) => {
     setSelectedMessage(message);
     setIsMessageDialogOpen(true);

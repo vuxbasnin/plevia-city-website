@@ -36,6 +36,7 @@ export default function ManageAmenitiesAdmin() {
     },
   });
 
+  // Hàm tải dữ liệu dịch vụ & tiện ích từ Firestore và cập nhật state.
   useEffect(() => {
     async function loadAmenitiesData() {
       setIsLoading(true);
@@ -56,6 +57,7 @@ export default function ManageAmenitiesAdmin() {
     loadAmenitiesData();
   }, [toast]);
 
+  // Hàm lưu toàn bộ danh sách dịch vụ & tiện ích.
   const handleSaveAll = async () => {
     setIsSaving(true);
     const success = await updateAmenitiesSectionData({ items: amenitiesList });
@@ -75,6 +77,7 @@ export default function ManageAmenitiesAdmin() {
     setIsSaving(false);
   };
 
+  // Hàm mở dialog thêm dịch vụ mới.
   const handleAddNewAmenity = () => {
     setEditingAmenity(null);
     form.reset({
@@ -86,12 +89,14 @@ export default function ManageAmenitiesAdmin() {
     setIsDialogOpen(true);
   };
 
+  // Hàm mở dialog chỉnh sửa một dịch vụ.
   const handleEditAmenity = (amenity: AmenityItem) => {
     setEditingAmenity(amenity);
     form.reset(amenity);
     setIsDialogOpen(true);
   };
 
+  // Hàm xóa một dịch vụ khỏi danh sách (chưa lưu).
   const handleDeleteAmenity = (id: string) => {
     setAmenitiesList(prev => prev.filter(item => item.id !== id));
     toast({
@@ -101,6 +106,7 @@ export default function ManageAmenitiesAdmin() {
     });
   };
 
+  // Hàm submit form dialog, thêm hoặc cập nhật dịch vụ.
   const onAmenitySubmit: SubmitHandler<AmenityItem> = (data) => {
     if (editingAmenity) {
       setAmenitiesList(prev => prev.map(item => item.id === editingAmenity.id ? { ...data, id: editingAmenity.id } : item));
