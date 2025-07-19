@@ -452,3 +452,36 @@ export async function getPublishedNewsArticles(): Promise<NewsArticle[]> {
     throw error;
   }
 }
+
+export async function addGalleryImage({ url, caption, tags, uploadedBy }: { url: string, caption?: string, tags?: string[], uploadedBy?: string }) {
+  if (!db) throw new Error("Firestore not initialized");
+  const docRef = await addDoc(collection(db, "gallery_images"), {
+    url,
+    caption: caption || "",
+    tags: tags || [],
+    uploadedAt: serverTimestamp(),
+    uploadedBy: uploadedBy || "",
+  });
+  return docRef.id;
+}
+
+export async function getGalleryImages() {
+  if (!db) throw new Error("Firestore not initialized");
+  const snapshot = await getDocs(collection(db, "gallery_images"));
+  return snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data(),
+    uploadedAt: doc.data().uploadedAt?.toMillis ? doc.data().uploadedAt.toMillis() : null,
+  }));
+}
+
+export async function deleteGalleryImage(id: string) {
+  if (!db) throw new Error("Firestore not initialized");
+  await deleteDoc(doc(db, "gallery_images", id));
+}
+
+export async function updateGalleryImageCaption(id: string, newCaption: string) {
+  if (!db) throw new Error("Firestore not initialized");
+  const imgRef = doc(db, "gallery_images", id);
+  await updateDoc(imgRef, { caption: newCaption });
+}
