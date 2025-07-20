@@ -1,6 +1,7 @@
 "use client";
 
 import PageLayout from '@/components/layout/PageLayout';
+import ImageHeader from '@/components/sections/ImageHeader';
 import ListNews from '@/components/sections/ListNews/ListNews';
 import NewsSectionExample from '@/components/sections/News/NewsSectionExample';
 import TabExample from '@/components/ui/Tab/TabExample';
@@ -152,6 +153,7 @@ const testNewsData = [
 export default function NewsPage() {
   return (
     <PageLayout>
+      <ImageHeader/>
       <ListNews newsItems={testNewsData} />
     </PageLayout>
   );
