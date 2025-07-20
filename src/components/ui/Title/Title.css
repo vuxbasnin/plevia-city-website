@@ -1,0 +1,76 @@
+.title {
+  margin-bottom: 3rem;
+}
+
+.title h2 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-family: serif;
+  font-weight: 600;
+  color: #166534;
+  line-height: 1.25;
+}
+
+/* Alignment variants */
+.title-left {
+  text-align: left;
+}
+
+.title-center {
+  text-align: center;
+}
+
+.title-right {
+  text-align: right;
+}
+
+/* Size variants */
+.title-large h2 {
+  font-size: 2.5rem;
+  line-height: 3rem;
+}
+
+.title-small h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+/* Responsive design */
+@media (min-width: 768px) {
+  .title h2 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  
+  .title-large h2 {
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
+  
+  .title-small h2 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 767px) {
+  .title {
+    margin-bottom: 2rem;
+  }
+  
+  .title h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  .title-large h2 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+  
+  .title-small h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+} 
