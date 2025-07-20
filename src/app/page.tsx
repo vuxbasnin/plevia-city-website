@@ -12,6 +12,8 @@ import Footer from '@/components/layout/Footer/Footer';
 import BackToTopButton from '@/components/shared/BackToTopButton';
 import FloatingActionButtons from '@/components/shared/FloatingActionButtons';
 import AutoScrollSmall from '@/components/ui/AutoScroll/AutoScrollSmall';
+import Overview from '@/components/sections/Overview/Overview';
+import TabExample from '@/components/ui/Tab/TabExample';
 
 export default function HomePage() {
   return (
@@ -21,6 +23,7 @@ export default function HomePage() {
         <Navbar />
         <main className="flex-grow">
           <ImageHeader />
+          //todo: hardcode data, fix later
           <AutoScrollSmall 
             mainTitle="GIỚI THIỆU DỰ ÁN"
             projects={[
@@ -62,6 +65,8 @@ export default function HomePage() {
               }
             ]}
           />
+          <Overview />
+          <TabExample />
           <SeatingOptionsSection />
           <AmenitiesSection />
           <MemberBenefitsSection />

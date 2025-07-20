@@ -1,0 +1,228 @@
+/* Container chính */
+.image-left-des-right-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #ffffff;
+}
+
+/* Section tiêu đề */
+.title-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.main-title {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-family: serif;
+  font-weight: 600;
+  color: #166534;
+  line-height: 1.25;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .main-title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+/* Section nội dung chính */
+.content-section {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+/* Section ảnh bên trái */
+.image-section {
+  flex: 0 0 45%;
+  position: relative;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Decorative elements - lá cây */
+.decorative-elements {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.leaf-outline {
+  position: absolute;
+  width: 60px;
+  height: 80px;
+  border: 2px solid #e0e0e0;
+  border-radius: 50% 0 50% 0;
+  opacity: 0.3;
+}
+
+.leaf-1 {
+  left: 10px;
+  bottom: 20px;
+  transform: rotate(-15deg);
+}
+
+.leaf-2 {
+  left: 30px;
+  bottom: 60px;
+  transform: rotate(25deg);
+  width: 40px;
+  height: 60px;
+}
+
+.leaf-3 {
+  left: 15px;
+  bottom: 120px;
+  transform: rotate(-5deg);
+  width: 50px;
+  height: 70px;
+}
+
+/* Section mô tả bên phải */
+.description-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px;
+}
+
+.description-content {
+  flex: 1;
+}
+
+.description-paragraph {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #4a4a4a;
+  margin-bottom: 20px;
+  text-align: left;
+  font-weight: 400;
+}
+
+.description-paragraph:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Section logo */
+.logo-section {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.logo-bold {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a5f3c;
+  line-height: 1;
+}
+
+.logo-light {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #4a8c5a;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.logo-tagline {
+  font-size: 0.9rem;
+  color: #888888;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content-section {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .image-section {
+    flex: none;
+    width: 100%;
+  }
+  
+  .image-wrapper {
+    height: 300px;
+  }
+  
+  .main-title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  .description-section {
+    min-height: auto;
+  }
+  
+  .logo-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  
+  .logo-bold {
+    font-size: 1.5rem;
+  }
+  
+  .logo-light {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-left-des-right-container {
+    padding: 20px 15px;
+  }
+  
+  .main-title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  .description-paragraph {
+    font-size: 0.95rem;
+  }
+  
+  .image-wrapper {
+    height: 250px;
+  }
+}
+
