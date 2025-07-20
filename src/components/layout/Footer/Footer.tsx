@@ -4,33 +4,14 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import NextImage from 'next/image';
-import { Briefcase, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Youtube, RotateCcw, MapPin as MapPinIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { getSiteSettingsData } from '@/lib/firestoreService';
 import type { SiteSettingsData } from '@/types/landingPageAdmin';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
-import DynamicLucideIcon from '../../shared/DynamicLucideIcon';
-
-const footerNavs = [
-  {
-    label: "Công Ty",
-    items: [
-      { href: "#", name: "Về Chúng Tôi" },
-      { href: "#", name: "Tuyển Dụng" },
-      { href: "#", name: "Blog" },
-    ],
-  },
-  {
-    label: "Hỗ Trợ",
-    items: [
-      { href: "#", name: "FAQ" },
-      { href: "#", name: "Liên Hệ" },
-      { href: "#", name: "Điều Khoản Dịch Vụ" },
-      { href: "#", name: "Chính Sách Bảo Mật" },
-    ],
-  },
-];
+import { Button } from '@/components/ui/button';
+import './Footer.css';
 
 export default function Footer() {
   const [siteSettings, setSiteSettings] = useState<SiteSettingsData | null>(null);
@@ -52,115 +33,74 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-card border-t border-border pt-16 pb-8">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-12 mb-12">
-          {/* Brand Info */}
-          <div className="flex flex-col items-start">
-            <Link href="/" passHref >
-              <span className="flex items-center space-x-2 text-2xl font-headline font-bold text-primary mb-4 hover:opacity-80 transition-opacity">
-                {isLoadingSettings ? (
-                  <Skeleton className={cn("rounded", siteSettings?.logoUrl ? "w-8 h-8" : "w-7 h-7")} />
-                ) : siteSettings?.logoUrl ? (
-                  <NextImage
-                    src={siteSettings?.logoUrl}
-                    alt={`${siteSettings?.companyName || 'Site'} Logo`}
-                    width={32}
-                    height={32}
-                    className="object-contain"
-                  />
-                ) : (
-                  <Briefcase className="w-7 h-7" />
-                )}
-                <span>{isLoadingSettings ? <Skeleton className="h-7 w-28" /> : siteSettings?.companyName}</span>
-              </span>
-            </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              {siteSettings?.companyName} cung cấp không gian làm việc chung hiện đại, linh hoạt và đầy đủ tiện nghi, truyền cảm hứng cho sự sáng tạo và kết nối cộng đồng.
-            </p>
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-grid">
+          {/* Column 1: ĐƠN VỊ PHÁT TRIỂN */}
+          <div className="footer-column">
+            <h5 className="footer-title">Đơn vị phát triển</h5>
+            <div className="bim-logo">
+              <span className="bim-logo-main">BIM</span>
+              <span className="bim-logo-sub">Land</span>
+            </div>
+            <ul className="footer-links">
+              <li>
+                <Link href="#" className="footer-link">
+                  Về chúng tôi
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="footer-link">
+                  Tin tức
+                </Link>
+              </li>
+            </ul>
           </div>
 
-          {/* Navigation Links */}
-          {footerNavs.map((nav, idx) => (
-            <div key={idx} className="text-left">
-              <h5 className="font-headline text-lg font-semibold text-foreground mb-5">{nav.label}</h5>
-              <ul className="space-y-3">
-                {nav.items.map((item, itemIdx) => (
-                  <li key={itemIdx}>
-                    <Link href={item.href} passHref >
-                      <span className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm hover:underline">
-                        {item.name}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Column 2: Ghé thăm thung lũng */}
+          <div className="footer-column">
+            <h5 className="footer-title-bold">Ghé thăm thung lũng</h5>
+            <p className="footer-address">
+              Địa chỉ: Thanh Xuan Valley, Phường Xuân Hòa, Tỉnh Phú Thọ
+            </p>
+            <button className="footer-button">
+              Đặt lịch hẹn
+            </button>
+          </div>
 
-          {/* Contact & Socials */}
-          <div className="text-left">
-            <h5 className="font-headline text-lg font-semibold text-foreground mb-5">Liên Hệ Với Chúng Tôi</h5>
-            {isLoadingSettings ? (
-              <ul className="space-y-3 text-sm text-muted-foreground">
-                <li><Skeleton className="h-5 w-full" /></li>
-                <li><Skeleton className="h-5 w-3/4" /></li>
-                <li><Skeleton className="h-5 w-4/5" /></li>
-                <li><Skeleton className="h-5 w-1/2" /></li>
-              </ul>
-            ) : (
-              <ul className="space-y-3 text-sm text-muted-foreground">
-                {siteSettings?.contactAddress && (
-                  <li className="flex items-start">
-                    <MapPin className="w-5 h-5 mr-3 mt-0.5 text-primary shrink-0" />
-                    <span>{siteSettings?.contactAddress}</span>
-                  </li>
-                )}
-                {siteSettings?.contactEmail && (
-                  <li className="flex items-center">
-                    <Mail className="w-5 h-5 mr-3 text-primary shrink-0" />
-                    <a href={`mailto:${siteSettings?.contactEmail}`} className="hover:text-primary hover:underline">{siteSettings?.contactEmail}</a>
-                  </li>
-                )}
-                {siteSettings?.contactPhone && (
-                  <li className="flex items-center">
-                    <Phone className="w-5 h-5 mr-3 text-primary shrink-0" />
-                    <a href={`tel:${siteSettings?.contactPhone.replace(/\s/g, '')}`} className="hover:text-primary hover:underline">{siteSettings?.contactPhone}</a>
-                  </li>
-                )}
-              </ul>
-            )}
-            {(isLoadingSettings || (siteSettings?.socialLinks && siteSettings?.socialLinks.length > 0)) && (
-              <div className="flex justify-start space-x-4 mt-6">
-                {isLoadingSettings ? (
-                  [...Array(3)].map((_, i) => <Skeleton key={i} className="w-9 h-9 rounded-full bg-secondary/50" />)
-                ) : (
-                  siteSettings?.socialLinks?.map((social) => (
-                    social.url && (
-                      <motion.a
-                        key={social.id}
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.15, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="text-muted-foreground hover:text-primary transition-colors duration-300 p-2 bg-secondary/50 hover:bg-primary/10 rounded-full"
-                        aria-label={social.platformName}
-                        title={social.platformName}
-                      >
-                        <DynamicLucideIcon name={social.iconName} className="w-5 h-5" />
-                      </motion.a>
-                    )
-                  ))
-                )}
+          {/* Column 3: Tham quan Sales Gallery */}
+          <div className="footer-column">
+            <h5 className="footer-title-bold">Tham quan Sales Gallery</h5>
+            <div className="footer-text">
+              <p>1/ Tại dự án: Khu Valley Center</p>
+              <p>2/ Tại Hà Nội: Tầng 1, BIM Gallery, Tòa nhà Aqua Central - 44 Yên Phụ, Ba Đình, Hà Nội</p>
+            </div>
+          </div>
+
+          {/* Column 4: Liên hệ */}
+          <div className="footer-column">
+            <h5 className="footer-title-bold">Liên hệ</h5>
+            <div className="footer-contact-info">
+              <p>cskh-bimland@bimgroup.com</p>
+              <div className="footer-hotline">
+                <span>Hotline: </span>
+                <span className="footer-hotline-number">19004791</span>
               </div>
-            )}
+            </div>
+            <div className="footer-social-icons">
+              <div className="social-icon">
+                <Facebook />
+              </div>
+              <div className="social-icon">
+                <Youtube />
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="border-t border-border pt-8 text-center">
-          <div className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} {isLoadingSettings ? <Skeleton className="h-4 w-20 inline-block" /> : siteSettings?.companyName}. Đã đăng ký Bản quyền.
+        <div className="footer-bottom">
+          <div className="footer-copyright">
+            &copy; {new Date().getFullYear()} BIM Land. Đã đăng ký Bản quyền.
           </div>
         </div>
       </div>
