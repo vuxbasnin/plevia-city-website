@@ -5,32 +5,14 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import NextImage from 'next/image';
 import { Mail, Phone, MapPin, Facebook, Youtube, RotateCcw, MapPin as MapPinIcon } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { getSiteSettingsData } from '@/lib/firestoreService';
-import type { SiteSettingsData } from '@/types/landingPageAdmin';
+import { useSiteSettings } from '@/context/SiteSettingsContext';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import './Footer.css';
 
 export default function Footer() {
-  const [siteSettings, setSiteSettings] = useState<SiteSettingsData | null>(null);
-  const [isLoadingSettings, setIsLoadingSettings] = useState(true);
-
-  useEffect(() => {
-    async function loadSiteSettings() {
-      setIsLoadingSettings(true);
-      try {
-        const settings = await getSiteSettingsData();
-        setSiteSettings(settings || null);
-      } catch (error) {
-        console.error("Error loading site settings for Footer:", error);
-        setSiteSettings(null);
-      }
-      setIsLoadingSettings(false);
-    }
-    loadSiteSettings();
-  }, []);
+  const { siteSettings, isLoading: isLoadingSettings } = useSiteSettings();
 
   return (
     <footer className="footer">

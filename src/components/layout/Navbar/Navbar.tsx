@@ -8,33 +8,32 @@ import { Menu, X, Briefcase, MessageCircle, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import NextImage from 'next/image';
-import { getSiteSettingsData } from '@/lib/firestoreService';
-import type { SiteSettingsData } from '@/types/landingPageAdmin';
-import { defaultSiteSettingsData } from '@/types/landingPageAdmin';
+import { useSiteSettings } from '@/context/SiteSettingsContext';
 import { Skeleton } from '@/components/ui/skeleton';
 import ContactFormDialog from '@/components/shared/ContactFormDialog';
+import NavigationLink from '@/components/shared/NavigationLink';
 import { usePathname } from 'next/navigation';
 import './Navbar.css';
 
 // Navigation links based on the image
 const navLinks = [
   { 
-    href: '/#project', 
+    href: '/project', 
     label: 'Về dự án',
     hasDropdown: false 
   },
   { 
-    href: '/#location', 
+    href: '/location', 
     label: 'Vị trí, tiện ích',
     hasDropdown: false 
   },
   { 
-    href: '/#stylelife', 
+    href: '/stylelife', 
     label: 'Phong cách sống',
     hasDropdown: false 
   },
   { 
-    href: '/#news', 
+    href: '/news', 
     label: 'Tin tức',
     hasDropdown: false 
   }
@@ -43,8 +42,7 @@ const navLinks = [
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [siteSettings, setSiteSettings] = useState<SiteSettingsData>(defaultSiteSettingsData);
-  const [isLoadingSettings, setIsLoadingSettings] = useState(true);
+  const { siteSettings, isLoading: isLoadingSettings } = useSiteSettings();
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
   const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
@@ -85,21 +83,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]); // Removed isScrolled from dependencies
 
-  // Separate useEffect for loading settings
-  useEffect(() => {
-    async function loadSiteSettings() {
-      setIsLoadingSettings(true);
-      try {
-        const settings = await getSiteSettingsData();
-        setSiteSettings(settings || defaultSiteSettingsData);
-      } catch (error) {
-        console.error("Error loading site settings for Navbar:", error);
-        setSiteSettings(defaultSiteSettingsData);
-      }
-      setIsLoadingSettings(false);
-    }
-    loadSiteSettings();
-  }, []);
+
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -110,7 +94,7 @@ export default function Navbar() {
   };
 
   const isHomepage = pathname === '/';
-  const isTransparentState = isHomepage && !isScrolled && !isMobileMenuOpen;
+  const isTransparentState = !isScrolled && !isMobileMenuOpen;
 
   // Memoized values to prevent unnecessary recalculations
   const backgroundOpacity = React.useMemo(() => {
@@ -178,32 +162,14 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="navbar-desktop-menu">
-            {navLinks.map((link, index) => (
-              <motion.div
+            {navLinks.map((link) => (
+              <NavigationLink
                 key={link.href}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                whileHover={{ y: -2 }}
-                className="navbar-link-wrapper"
-              >
-                <Link href={link.href} passHref>
-                  <motion.span 
-                    className={`navbar-link ${isTransparentState ? 'navbar-link-transparent' : 'navbar-link-solid'}`}
-                    transition={{ duration: 0.3 }}
-                    onClick={handleLinkClick}
-                  >
-                    <div className="navbar-link-content">
-                      <span className="navbar-link-main">
-                        {link.label}
-                      </span>
-                      {link.hasDropdown && (
-                        <ChevronDown className="navbar-link-dropdown" />
-                      )}
-                    </div>
-                  </motion.span>
-                </Link>
-              </motion.div>
+                href={link.href}
+                label={link.label}
+                isTransparent={isTransparentState}
+                onClick={handleLinkClick}
+              />
             ))}
           </div>
 

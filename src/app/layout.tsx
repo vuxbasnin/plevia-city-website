@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from '@/context/AuthContext';
+import { SiteSettingsProvider } from '@/context/SiteSettingsContext';
 import ClientOnly from '@/components/shared/ClientOnly';
 import { getSiteSettingsData } from '@/lib/firestoreService'; 
 import { defaultSiteSettingsData, type SiteSettingsData } from '@/types/landingPageAdmin'; 
@@ -55,8 +56,10 @@ export default function RootLayout({
       <body className="antialiased">
         <ClientOnly>
           <AuthProvider>
-            {children}
-            <Toaster />
+            <SiteSettingsProvider>
+              {children}
+              <Toaster />
+            </SiteSettingsProvider>
           </AuthProvider>
         </ClientOnly>
       </body>
