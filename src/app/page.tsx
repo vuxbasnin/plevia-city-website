@@ -15,6 +15,7 @@ import AutoScrollSmall from '@/components/ui/AutoScroll/AutoScrollSmall';
 import Overview from '@/components/sections/Overview/OverviewSection';
 import TabExample from '@/components/ui/Tab/TabExample';
 import NewsSectionExample from '@/components/sections/News/NewsSectionExample';
+import FormInfo from '@/components/sections/FormInfo/FormInfo';
 
 export default function HomePage() {
   return (
@@ -69,6 +70,7 @@ export default function HomePage() {
           <Overview />
           <TabExample />
           <NewsSectionExample />
+          <FormInfo />
         </main>
         <Footer />
         <FloatingActionButtons />
