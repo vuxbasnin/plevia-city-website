@@ -3,6 +3,7 @@
 
 import { CLOUDINARY } from "@/lib/cloudinary";
 
+
 interface CloudinaryUploadResult {
   secure_url: string;
   // Add other fields you might need from the Cloudinary response
@@ -39,4 +40,13 @@ export async function uploadFileToCloudinary(file: File, folder: string): Promis
     console.error("Error during Cloudinary upload process:", error);
     throw error; // Re-throw to be caught by the caller
   }
+}
+
+export async function deleteImageFromCloudinary(url: string): Promise<void> {
+  // Lấy public_id từ url
+  // Thực tế cần backend ký xác thực, ở đây chỉ mockup
+  // Ví dụ: https://res.cloudinary.com/<cloud_name>/image/upload/v1718000000/gallery_images/abc123.jpg
+  // public_id: gallery_images/abc123
+  // Bạn nên triển khai API route riêng để xóa thực sự trên Cloudinary!
+  return Promise.resolve();
 }

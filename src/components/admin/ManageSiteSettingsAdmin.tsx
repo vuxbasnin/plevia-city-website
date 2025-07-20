@@ -61,6 +61,7 @@ export default function ManageSiteSettingsAdmin() {
   const watchedLogoUrl = mainForm.watch("logoUrl");
   const watchedFaviconUrl = mainForm.watch("faviconUrl");
 
+  // Hàm cập nhật preview logo khi thay đổi file hoặc URL.
   useEffect(() => {
     if (!pendingLogoFile && watchedLogoUrl && siteSettingsFormSchema.shape.logoUrl.safeParse(watchedLogoUrl).success) {
       setPreviewLogoUrl(watchedLogoUrl);
@@ -69,6 +70,7 @@ export default function ManageSiteSettingsAdmin() {
     }
   }, [watchedLogoUrl, pendingLogoFile]);
 
+  // Hàm cập nhật preview favicon khi thay đổi file hoặc URL.
   useEffect(() => {
     if (!pendingFaviconFile && watchedFaviconUrl && siteSettingsFormSchema.shape.faviconUrl.safeParse(watchedFaviconUrl).success) {
       setPreviewFaviconUrl(watchedFaviconUrl);
@@ -78,6 +80,7 @@ export default function ManageSiteSettingsAdmin() {
   }, [watchedFaviconUrl, pendingFaviconFile]);
 
 
+  // Hàm tải dữ liệu cài đặt website từ Firestore và cập nhật state.
   useEffect(() => {
     async function loadData() {
       setIsLoading(true);
@@ -101,6 +104,7 @@ export default function ManageSiteSettingsAdmin() {
     loadData();
   }, [mainFormReset, toast]);
 
+  // Hàm xử lý khi chọn file logo mới.
   const handleLogoFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
@@ -114,6 +118,7 @@ export default function ManageSiteSettingsAdmin() {
     }
   };
 
+  // Hàm xóa file logo đang chọn (nếu có).
   const clearPendingLogoFile = () => {
     setPendingLogoFile(null);
     if (logoInputRef.current) {
@@ -122,6 +127,7 @@ export default function ManageSiteSettingsAdmin() {
     setPreviewLogoUrl(mainFormGetValues("logoUrl") || defaultSiteSettingsData.logoUrl);
   };
 
+  // Hàm xử lý khi nhập/chỉnh sửa URL logo thủ công.
   const handleManualLogoUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newUrl = event.target.value;
     mainFormSetValue("logoUrl", newUrl);
@@ -136,6 +142,7 @@ export default function ManageSiteSettingsAdmin() {
     }
   };
 
+  // Hàm xử lý khi chọn file favicon mới.
   const handleFaviconFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
@@ -149,6 +156,7 @@ export default function ManageSiteSettingsAdmin() {
     }
   };
 
+  // Hàm xóa file favicon đang chọn (nếu có).
   const clearPendingFaviconFile = () => {
     setPendingFaviconFile(null);
     if (faviconInputRef.current) {
@@ -157,6 +165,7 @@ export default function ManageSiteSettingsAdmin() {
     setPreviewFaviconUrl(mainFormGetValues("faviconUrl") || defaultSiteSettingsData.faviconUrl);
   };
 
+  // Hàm xử lý khi nhập/chỉnh sửa URL favicon thủ công.
   const handleManualFaviconUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newUrl = event.target.value;
     mainFormSetValue("faviconUrl", newUrl);
@@ -171,6 +180,7 @@ export default function ManageSiteSettingsAdmin() {
     }
   };
 
+  // Hàm mở dialog thêm liên kết mạng xã hội mới.
   const handleAddNewSocialLink = () => {
     setEditingSocialLink(null);
     setEditingSocialLinkIndex(null);
@@ -178,6 +188,7 @@ export default function ManageSiteSettingsAdmin() {
     setIsSocialLinkDialogOpen(true);
   };
 
+  // Hàm mở dialog chỉnh sửa liên kết mạng xã hội.
   const handleEditSocialLink = (link: SocialLinkItem, index: number) => {
     setEditingSocialLink(link);
     setEditingSocialLinkIndex(index);
@@ -185,6 +196,7 @@ export default function ManageSiteSettingsAdmin() {
     setIsSocialLinkDialogOpen(true);
   };
 
+  // Hàm submit form dialog liên kết mạng xã hội, thêm hoặc cập nhật liên kết.
   const onSocialLinkSubmit: SubmitHandler<SocialLinkItem> = (data) => {
     if (editingSocialLink && editingSocialLinkIndex !== null) {
       updateSocialLink(editingSocialLinkIndex, { ...data, id: editingSocialLink.id });
@@ -195,6 +207,7 @@ export default function ManageSiteSettingsAdmin() {
   };
 
 
+  // Hàm submit form, lưu dữ liệu cài đặt website và upload logo/favicon nếu có.
   const onSubmit: SubmitHandler<SiteSettingsData> = async (formData) => {
     setIsSaving(true);
     let dataToSave = { ...formData };

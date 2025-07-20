@@ -35,10 +35,12 @@ const testimonials = [
 export default function TestimonialSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Hàm chuyển sang testimonial tiếp theo.
   const nextTestimonial = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
   };
 
+  // Hàm chuyển về testimonial trước đó.
   const prevTestimonial = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
   };
@@ -62,6 +64,7 @@ export default function TestimonialSection() {
   const [direction, setDirection] = useState(0);
 
 
+  // Hàm chuyển testimonial theo hướng (trái/phải).
   const paginate = (newDirection: number) => {
     setDirection(newDirection);
     if (newDirection > 0) {

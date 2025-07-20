@@ -114,6 +114,7 @@ export default function ManageCultureAdmin() {
   }, [reset, toast]);
   
 
+  // Hàm xử lý khi chọn file video mới cho phần Văn hóa Cộng đồng
   const handleVideoFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
@@ -136,6 +137,7 @@ export default function ManageCultureAdmin() {
     }
   };
 
+  // Hàm xóa file video đang chọn (nếu có)
   const clearPendingVideoFile = () => {
     setPendingVideoFile(null);
     if (cultureVideoInputRef.current) {
@@ -144,6 +146,7 @@ export default function ManageCultureAdmin() {
     setVideoPreviewUrl(mainFormGetValues("videoUrl") || null);
   };
   
+  // Hàm xử lý khi nhập/chỉnh sửa URL video thủ công
   const handleManualVideoUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newUrl = event.target.value;
     mainFormSetValue("videoUrl", newUrl); 
@@ -162,6 +165,7 @@ export default function ManageCultureAdmin() {
   };
 
 
+  // Handles the main form submission for saving all Community Culture data, including uploading video and gallery images to Cloudinary, then saving to Firestore.
   const onMainSubmit: SubmitHandler<CommunityCultureSectionData> = async (data) => {
     if (!CLOUDINARY.CLOUD_NAME || CLOUDINARY.CLOUD_NAME === "YOUR_CLOUD_NAME_HERE_FROM_DOT_ENV" || !CLOUDINARY.UPLOAD_PRESET || CLOUDINARY.UPLOAD_PRESET === "YOUR_UPLOAD_PRESET_HERE_FROM_DOT_ENV") {
       toast({ title: "Cấu hình Cloudinary bị thiếu", description: "Vui lòng kiểm tra file .env và src/lib/cloudinary.ts.", variant: "destructive" });
@@ -227,6 +231,7 @@ export default function ManageCultureAdmin() {
     setIsSaving(false);
   };
 
+  // Hàm mở dialog thêm ảnh mới vào thư viện ảnh
   const handleAddNewImage = () => {
     setEditingImageIndex(null);
     imageForm.reset({ id: '', imageUrl: '', description: '' });
@@ -236,6 +241,7 @@ export default function ManageCultureAdmin() {
     setIsImageDialogOpen(true);
   };
 
+  // Hàm mở dialog chỉnh sửa ảnh trong thư viện theo index
   const handleEditImage = (index: number) => {
     const imageToEdit = galleryFields[index] as ManagedCultureImageItem;
     setEditingImageIndex(index);
@@ -250,6 +256,7 @@ export default function ManageCultureAdmin() {
     setIsImageDialogOpen(true);
   };
 
+  // Hàm xử lý khi chọn file ảnh mới trong dialog ảnh
   const handleImageDialogFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
@@ -263,6 +270,7 @@ export default function ManageCultureAdmin() {
     }
   };
 
+  // Hàm xóa file ảnh đang chọn trong dialog ảnh
   const clearDialogImagePendingFile = () => {
     setDialogImagePendingFile(null);
     if (dialogGalleryImageInputRef.current) {
@@ -271,6 +279,7 @@ export default function ManageCultureAdmin() {
     setDialogImageLocalPreview(imageForm.getValues("imageUrl") || null);
   };
   
+  // Hàm xử lý khi nhập/chỉnh sửa URL ảnh thủ công trong dialog ảnh
   const handleManualImageUrlChangeDialog = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newUrl = event.target.value;
     imageForm.setValue("imageUrl", newUrl);
@@ -286,6 +295,7 @@ export default function ManageCultureAdmin() {
   };
 
 
+  // Hàm submit form dialog ảnh, thêm hoặc cập nhật ảnh trong gallery
   const onImageSubmit: SubmitHandler<CultureImageItemType> = (formDataFromDialog) => {
     let managedItem: ManagedCultureImageItem = {
       id: editingImageIndex !== null ? galleryFields[editingImageIndex].id : Date.now().toString(),
@@ -318,20 +328,24 @@ export default function ManageCultureAdmin() {
     if (dialogGalleryImageInputRef.current) dialogGalleryImageInputRef.current.value = "";
   };
 
+  // Returns the preview image source for the image dialog, prioritizing local preview, then URL, then placeholder.
   const previewSrcForImageDialog = dialogImageLocalPreview || currentDialogImageFormUrl || "https://placehold.co/400x300.png?text=Chưa+có+ảnh";
 
+  // Hàm mở dialog thêm đặc điểm mới cho phần Văn hóa Cộng đồng
   const handleAddNewFeature = () => {
     setEditingFeatureIndex(null);
     featureForm.reset({ id: '', icon: 'Users', title: '', description: '' });
     setIsFeatureDialogOpen(true);
   };
 
+  // Hàm mở dialog chỉnh sửa đặc điểm theo index
   const handleEditFeature = (index: number) => {
     setEditingFeatureIndex(index);
     featureForm.reset(featureFields[index]);
     setIsFeatureDialogOpen(true);
   };
 
+  // Hàm submit form dialog đặc điểm, thêm hoặc cập nhật đặc điểm
   const onFeatureSubmit: SubmitHandler<CultureFeatureItem> = (data) => {
     if (editingFeatureIndex !== null) {
       updateFeature(editingFeatureIndex, { ...data, id: featureFields[editingFeatureIndex].id });

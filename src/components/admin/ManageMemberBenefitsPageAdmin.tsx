@@ -24,6 +24,7 @@ export default function ManageMemberBenefitsPageAdmin() {
     defaultValues: defaultMemberBenefitsPageSettingsData,
   });
 
+  // Hàm tải dữ liệu cài đặt trang Quyền Lợi từ Firestore và cập nhật state.
   useEffect(() => {
     async function loadData() {
       setIsLoading(true);
@@ -44,6 +45,7 @@ export default function ManageMemberBenefitsPageAdmin() {
     loadData();
   }, [form, toast]);
 
+  // Hàm submit form, lưu dữ liệu cài đặt trang Quyền Lợi.
   const onSubmit: SubmitHandler<MemberBenefitsPageSettingsData> = async (data) => {
     setIsSaving(true);
     const success = await updateMemberBenefitsPageSettingsData(data);

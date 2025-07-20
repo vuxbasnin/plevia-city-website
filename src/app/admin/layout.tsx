@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import PrivateRoute from "@/components/auth/PrivateRoute";
 import { useAuth } from "@/hooks/useAuth";
-import { LogOut, LayoutDashboard, Settings, MailCheck, CalendarClock, FileText, Home, Settings2, Newspaper, Package, ImageIcon, Sofa, Sparkles, Users, Send, Palette, Layers, UserCog } from "lucide-react";
+import { LogOut, LayoutDashboard, Settings, MailCheck, CalendarClock, FileText, Home, Settings2, Newspaper, Package, ImageIcon, Sofa, Sparkles, Users, Send, Palette, Layers, UserCog, FileText as FileTextIcon, Plus, Edit } from "lucide-react";
 import { SidebarProvider, Sidebar, SidebarHeader, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarInset, SidebarTrigger, SidebarFooter, SidebarGroup, SidebarGroupLabel, SidebarGroupContent } from "@/components/ui/sidebar";
 
 interface NavItemConfig {
@@ -30,18 +30,39 @@ const navItemsConfiguration: NavItemConfig[] = [
       { id: "site-settings", label: "Cài Đặt Website", icon: Settings, href: "/admin/settings/site", isLeaf: true },
       { id: "account-settings", label: "Tài Khoản Admin", icon: UserCog, href: "/admin/settings/account", isLeaf: true },
       { id: "trial-signups", label: "Đăng Ký Dùng Thử", icon: MailCheck, href: "/admin/data/trial-signups", isLeaf: true },
-      { id: "tour-bookings", label: "Lịch Tham Quan", icon: CalendarClock, href: "/admin/data/tour-bookings", isLeaf: true },
+      // { id: "tour-bookings", label: "Lịch Tham Quan", icon: CalendarClock, href: "/admin/data/tour-bookings", isLeaf: true }, // Ẩn mục này
     ],
   },
   {
-    id: "group-shared-content",
-    label: "Nội Dung Chung",
-    icon: Layers,
+    id: "group-news-management",
+    label: "Quản Lý Tin Tức",
+    icon: FileTextIcon,
     isLeaf: false,
     children: [
-        { id: "shared-benefits", label: "Danh Sách Quyền Lợi", icon: Package, href: "/admin/content/common/benefits", isLeaf: true },
-    ]
+      { id: "news-list", label: "Danh Sách Tin Tức", icon: FileText, href: "/admin/news", isLeaf: true },
+      { id: "news-create", label: "Tạo Tin Tức Mới", icon: Plus, href: "/admin/news/create", isLeaf: true },
+    ],
   },
+  {
+    id: "group-gallery-management",
+    label: "Quản Lý Thư Viện Ảnh",
+    icon: ImageIcon,
+    isLeaf: false,
+    children: [
+      { id: "gallery-list", label: "Danh Sách Ảnh", icon: ImageIcon, href: "/admin/gallery", isLeaf: true },
+      // Nếu muốn tách trang upload riêng:
+      // { id: "gallery-upload", label: "Upload Ảnh Mới", icon: Plus, href: "/admin/gallery/upload", isLeaf: true },
+    ],
+  },
+  // {
+  //   id: "group-shared-content",
+  //   label: "Nội Dung Chung",
+  //   icon: Layers,
+  //   isLeaf: false,
+  //   children: [
+  //       { id: "shared-benefits", label: "Danh Sách Quyền Lợi", icon: Package, href: "/admin/content/common/benefits", isLeaf: true },
+  //   ]
+  // },
   {
     id: "group-homepage-content",
     label: "Quản Lý Trang Chủ",
@@ -49,21 +70,21 @@ const navItemsConfiguration: NavItemConfig[] = [
     isLeaf: false,
     children: [
       { id: "homepage-hero", label: "Banner Giới Thiệu", icon: ImageIcon, href: "/admin/content/homepage/hero", isLeaf: true },
-      { id: "homepage-seating", label: "Vị Trí Ngồi", icon: Sofa, href: "/admin/content/homepage/seating", isLeaf: true },
-      { id: "homepage-amenities", label: "Dịch Vụ & Tiện Ích", icon: Sparkles, href: "/admin/content/homepage/amenities", isLeaf: true },
-      { id: "homepage-culture", label: "Văn Hóa Cộng Đồng", icon: Users, href: "/admin/content/homepage/culture", isLeaf: true },
+      // { id: "homepage-seating", label: "Vị Trí Ngồi", icon: Sofa, href: "/admin/content/homepage/seating", isLeaf: true }, // Ẩn mục này
+      // { id: "homepage-amenities", label: "Dịch Vụ & Tiện Ích", icon: Sparkles, href: "/admin/content/homepage/amenities", isLeaf: true }, // Ẩn mục này
+      // { id: "homepage-culture", label: "Văn Hóa Cộng Đồng", icon: Users, href: "/admin/content/homepage/culture", isLeaf: true }, // Ẩn mục này
       { id: "homepage-finalCta", label: "CTA Cuối Trang", icon: Send, href: "/admin/content/homepage/final-cta", isLeaf: true },
     ],
   },
-  {
-    id: "group-member-benefits-page-settings",
-    label: "Cài Đặt Trang Quyền Lợi",
-    icon: Newspaper,
-    isLeaf: false,
-    children: [
-      { id: "member-benefits-page-static-content", label: "Nội Dung Tĩnh", icon: FileText, href: "/admin/content/member-benefits-page/static", isLeaf: true },
-    ],
-  },
+  // {
+  //   id: "group-member-benefits-page-settings",
+  //   label: "Cài Đặt Trang Quyền Lợi",
+  //   icon: Newspaper,
+  //   isLeaf: false,
+  //   children: [
+  //     { id: "member-benefits-page-static-content", label: "Nội Dung Tĩnh", icon: FileText, href: "/admin/content/member-benefits-page/static", isLeaf: true },
+  //   ],
+  // },
 ];
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
@@ -149,7 +170,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             <Link href="/admin/overview" passHref>
               <span className="flex items-center space-x-2 text-xl font-headline font-bold text-primary hover:opacity-80 transition-opacity">
                 <Palette className="w-7 h-7" />
-                <span className="group-data-[collapsible=icon]:hidden">Admin Panel</span>
+                <span className="group-data-[collapsible=icon]:hidden">Admin Panel 123</span>
               </span>
             </Link>
             <SidebarTrigger className="md:hidden group-data-[collapsible=icon]:hidden" />
@@ -175,7 +196,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                <Link href="/admin/overview" passHref>
                 <span className="flex items-center space-x-2 text-lg font-headline font-bold text-primary hover:opacity-80 transition-opacity">
                     <Palette className="w-6 h-6" />
-                    <span>Admin Panel</span>
+                    <span>Admin Panel AB</span>
                 </span>
               </Link>
               <SidebarTrigger />

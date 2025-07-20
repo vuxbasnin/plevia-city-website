@@ -386,6 +386,117 @@ export interface TourBookingData {
   status: TourBookingStatus;
 }
 
+// News/Article Management Types
+export interface NewsArticle {
+  id: string;
+  title: string;
+  content: EditorJSOutput;
+  author: string;
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
+  coverImageUrl?: string;
+  summary: string;
+  tags: string[];
+  isPublished: boolean;
+  slug?: string;
+}
+
+// Editor.js Output Structure
+export interface EditorJSOutput {
+  time: number;
+  blocks: EditorJSBlock[];
+  version: string;
+}
+
+export interface EditorJSBlock {
+  id?: string;
+  type: string;
+  data: any;
+}
+
+// Common Editor.js Block Types
+export interface EditorJSHeaderBlock {
+  text: string;
+  level: 1 | 2 | 3 | 4 | 5 | 6;
+}
+
+export interface EditorJSParagraphBlock {
+  text: string;
+}
+
+export interface EditorJSImageBlock {
+  file: {
+    url: string;
+    name?: string;
+    size?: number;
+  };
+  caption?: string;
+  withBorder?: boolean;
+  stretched?: boolean;
+  withBackground?: boolean;
+}
+
+export interface EditorJSListBlock {
+  style: 'ordered' | 'unordered';
+  items: string[];
+}
+
+export interface EditorJSQuoteBlock {
+  text: string;
+  caption?: string;
+  alignment?: 'left' | 'center';
+}
+
+export interface EditorJSCodeBlock {
+  code: string;
+  language?: string;
+}
+
+// News Form Schema
+export const newsArticleFormSchema = z.object({
+  title: z.string().min(1, "Tiêu đề không được để trống"),
+  content: z.object({
+    time: z.number(),
+    blocks: z.array(z.object({
+      id: z.string().optional(),
+      type: z.string(),
+      data: z.any()
+    })),
+    version: z.string()
+  }),
+  author: z.string().min(1, "Tác giả không được để trống"),
+  summary: z.string().min(1, "Tóm tắt không được để trống"),
+  tags: z.array(z.string()),
+  isPublished: z.boolean(),
+  coverImageUrl: z.string().optional(),
+  slug: z.string().optional()
+});
+
+export type NewsArticleFormData = z.infer<typeof newsArticleFormSchema>;
+
+// Default News Article Data
+export const defaultNewsArticleData: NewsArticleFormData = {
+  title: "",
+  content: {
+    time: Date.now(),
+    blocks: [
+      {
+        type: "paragraph",
+        data: {
+          text: "Bắt đầu viết bài viết của bạn ở đây..."
+        }
+      }
+    ],
+    version: "2.28.2"
+  },
+  author: "",
+  summary: "",
+  tags: [],
+  isPublished: false,
+  coverImageUrl: "",
+  slug: ""
+};
+
 // Default structures
 export const defaultSiteSettingsData: SiteSettingsData = {
   siteTitle: "WorkspaceCo - Không Gian Làm Việc Chung Hiện Đại",

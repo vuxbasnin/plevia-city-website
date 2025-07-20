@@ -36,7 +36,7 @@ import { Loader2, CalendarClock, Filter, ArrowUpDown, MessageSquareText, Externa
 import { format, parseISO, isValid as isValidDate } from 'date-fns';
 import { Timestamp } from "firebase/firestore";
 
-// Helper to convert Firestore Timestamp or serialized object/string to a formatted date string
+// Helper function to format various date/time input types for display in the UI.
 const formatDateForDisplay = (timestampInput: Timestamp | Date | { seconds: number, nanoseconds: number } | string | undefined, dateFormat: string = "dd/MM/yyyy HH:mm"): string => {
   if (!timestampInput) return "N/A";
   let date: Date;
@@ -87,6 +87,7 @@ export default function ManageTourBookingsAdmin() {
 
   const [currentPage, setCurrentPage] = useState(1);
 
+  // Fetches all tour bookings from Firestore and updates state.
   const fetchBookings = async () => {
     setIsLoading(true);
     try {
@@ -160,6 +161,7 @@ export default function ManageTourBookingsAdmin() {
     setCurrentPage(1); 
   }, [bookings, filterStatus, searchTerm, sortConfig]);
 
+  // Handles status change for a booking and updates Firestore.
   const handleStatusChange = async (id: string, newStatus: TourBookingStatus) => {
     setIsUpdating(prev => ({ ...prev, [id]: true }));
     const success = await updateTourBookingStatus(id, newStatus);
@@ -179,6 +181,7 @@ export default function ManageTourBookingsAdmin() {
     setIsUpdating(prev => ({ ...prev, [id]: false }));
   };
 
+  // Handles sorting logic for table columns.
   const requestSort = (key: keyof TourBookingData) => {
     let direction: "asc" | "desc" = "asc";
     if (sortConfig.key === key && sortConfig.direction === "asc") {
@@ -187,6 +190,7 @@ export default function ManageTourBookingsAdmin() {
     setSortConfig({ key, direction });
   };
 
+  // Returns the sort indicator icon for a given column.
   const getSortIndicator = (key: keyof TourBookingData) => {
     if (sortConfig.key === key) {
       return sortConfig.direction === "asc" ? <ArrowUpDown className="ml-2 h-3 w-3 inline opacity-50 group-hover:opacity-100" /> : <ArrowUpDown className="ml-2 h-3 w-3 inline opacity-50 group-hover:opacity-100" />;
@@ -194,6 +198,7 @@ export default function ManageTourBookingsAdmin() {
     return <ArrowUpDown className="ml-2 h-3 w-3 inline opacity-0 group-hover:opacity-50" />;
   };
 
+  // Opens the dialog to view notes for a booking.
   const openNotesDialog = (notes: string) => {
     setSelectedNotes(notes);
     setIsNotesDialogOpen(true);
@@ -226,7 +231,7 @@ export default function ManageTourBookingsAdmin() {
     <Card className="shadow-lg rounded-xl">
       <CardHeader className="py-3">
         <CardTitle className="text-2xl font-headline text-primary flex items-center">
-          <CalendarClock className="w-7 h-7 mr-2" /> Quản Lý Lịch Tham Quan
+          <CalendarClock className="w-7 h-7 mr-2" /> Quản Lý Lịch Tham Quan abcd
         </CardTitle>
         <CardDescription>Xem, lọc và cập nhật trạng thái các yêu cầu đặt lịch tham quan từ người dùng.</CardDescription>
       </CardHeader>

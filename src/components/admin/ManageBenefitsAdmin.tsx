@@ -52,6 +52,7 @@ export default function ManageBenefitsAdmin() {
   const { watch, setValue, reset: formReset, handleSubmit: formHandleSubmit, formState: { errors: formErrors, isSubmitting: formIsSubmitting }, getValues: formGetValues } = form;
   const currentDialogFormImageUrl = watch("imageUrl");
 
+  // Hàm tải dữ liệu quyền lợi thành viên từ Firestore và cập nhật state.
   useEffect(() => {
     async function loadBenefitsData() {
       setIsLoading(true);
@@ -72,6 +73,7 @@ export default function ManageBenefitsAdmin() {
     loadBenefitsData();
   }, [toast]);
 
+  // Hàm lưu toàn bộ danh sách quyền lợi, upload ảnh lên Cloudinary nếu có.
   const handleSaveAll = async () => {
     if (!CLOUDINARY.CLOUD_NAME || CLOUDINARY.CLOUD_NAME === "YOUR_CLOUD_NAME_HERE_FROM_DOT_ENV" || !CLOUDINARY.UPLOAD_PRESET || CLOUDINARY.UPLOAD_PRESET === "YOUR_UPLOAD_PRESET_HERE_FROM_DOT_ENV") {
       toast({ title: "Cấu hình Cloudinary bị thiếu", description: "Vui lòng kiểm tra file .env và src/lib/cloudinary.ts.", variant: "destructive" });
@@ -121,6 +123,7 @@ export default function ManageBenefitsAdmin() {
     setIsSaving(false);
   };
 
+  // Hàm mở dialog thêm quyền lợi mới.
   const handleAddNewBenefit = () => {
     setEditingBenefit(null);
     formReset({ id: "", icon: "Award", title: "", shortDescription: "", detailedDescription: "", imageUrl: "" });
@@ -130,6 +133,7 @@ export default function ManageBenefitsAdmin() {
     setIsDialogOpen(true);
   };
 
+  // Hàm mở dialog chỉnh sửa một quyền lợi.
   const handleEditBenefit = (benefit: ManagedBenefitItem) => {
     setEditingBenefit(benefit);
     formReset({
@@ -146,6 +150,7 @@ export default function ManageBenefitsAdmin() {
     setIsDialogOpen(true);
   };
 
+  // Hàm xóa một quyền lợi khỏi danh sách (chưa lưu).
   const handleDeleteBenefit = (id: string) => {
     setBenefitsList(prev => prev.filter(item => item.id !== id));
     toast({
@@ -155,6 +160,7 @@ export default function ManageBenefitsAdmin() {
     });
   };
 
+  // Hàm xử lý khi chọn file ảnh mới trong dialog.
   const handleDialogFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
@@ -168,6 +174,7 @@ export default function ManageBenefitsAdmin() {
     }
   };
 
+  // Hàm xóa file ảnh đang chọn trong dialog.
   const clearDialogPendingFile = () => {
     setDialogPendingFile(null);
     setDialogLocalPreview(formGetValues("imageUrl"));
@@ -176,6 +183,7 @@ export default function ManageBenefitsAdmin() {
     }
   };
 
+  // Hàm xử lý khi nhập/chỉnh sửa URL ảnh thủ công trong dialog.
   const handleDialogManualImageUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newUrl = event.target.value;
     setValue("imageUrl", newUrl);
@@ -192,6 +200,7 @@ export default function ManageBenefitsAdmin() {
     }
   };
 
+  // Hàm submit form dialog, thêm hoặc cập nhật quyền lợi.
   const onBenefitSubmit: SubmitHandler<BenefitItemType> = (formDataFromDialog) => {
     let newBenefit: ManagedBenefitItem = {
       ...formDataFromDialog,
