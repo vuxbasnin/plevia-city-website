@@ -1,0 +1,246 @@
+.list-news {
+  padding: 80px 0;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background element */
+.list-news::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,30 Q40,10 60,30 T100,30" stroke="%23f3f4f6" stroke-width="1" fill="none"/><path d="M10,60 Q30,40 50,60 T90,60" stroke="%23f3f4f6" stroke-width="1" fill="none"/><path d="M30,80 Q50,60 70,80 T110,80" stroke="%23f3f4f6" stroke-width="1" fill="none"/></svg>') no-repeat;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.list-news__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.list-news__title {
+  font-family: 'Playfair Display', 'Times New Roman', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 60px;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.list-news__title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #1a5f3a, #22c55e);
+  border-radius: 2px;
+}
+
+.list-news__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.list-news__item {
+  width: 100%;
+}
+
+/* Pagination styles */
+.list-news__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.list-news__pagination-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  color: #374151;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.list-news__pagination-button:hover:not(:disabled) {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  color: #1f2937;
+  transform: translateY(-1px);
+}
+
+.list-news__pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.list-news__pagination-button:disabled:hover {
+  transform: none;
+}
+
+.list-news__pagination-numbers {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.list-news__pagination-number {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  color: #374151;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.list-news__pagination-number:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  color: #1f2937;
+}
+
+.list-news__pagination-number.active {
+  background: #1a5f3a;
+  border-color: #1a5f3a;
+  color: #ffffff;
+}
+
+.list-news__pagination-number.active:hover {
+  background: #166534;
+  border-color: #166534;
+}
+
+.list-news__pagination-ellipsis {
+  color: #6b7280;
+  font-weight: 500;
+  padding: 0 8px;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .list-news {
+    padding: 60px 0;
+  }
+  
+  .list-news__container {
+    padding: 0 20px;
+  }
+  
+  .list-news__title {
+    font-size: 2.25rem;
+    margin-bottom: 50px;
+  }
+  
+  .list-news__grid {
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .list-news {
+    padding: 50px 0;
+  }
+  
+  .list-news__container {
+    padding: 0 16px;
+  }
+  
+  .list-news__title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+  
+  .list-news__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .list-news__pagination {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .list-news__pagination-button {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+  
+  .list-news__pagination-number {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .list-news {
+    padding: 40px 0;
+  }
+  
+  .list-news__title {
+    font-size: 1.75rem;
+    margin-bottom: 30px;
+  }
+  
+  .list-news__grid {
+    gap: 25px;
+    margin-bottom: 30px;
+  }
+  
+  .list-news__pagination {
+    gap: 8px;
+  }
+  
+  .list-news__pagination-button {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+  
+  .list-news__pagination-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+  
+  .list-news__pagination-numbers {
+    gap: 6px;
+  }
+}
