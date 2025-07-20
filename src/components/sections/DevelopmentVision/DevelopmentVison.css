@@ -1,0 +1,173 @@
+.development-vision {
+  padding: 4rem 0;
+  background-color: #ffffff;
+}
+
+.development-vision-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Title Styles */
+.development-vision-title {
+  text-align: center;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-family: serif;
+  font-weight: 600;
+  color: #166534;
+  line-height: 1.25;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .development-vision-title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+/* Images Section */
+.development-vision-images {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.image-item {
+  flex: 1;
+  max-width: 350px;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.vision-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-wrapper:hover .vision-image {
+  transform: scale(1.05);
+}
+
+/* Image Caption */
+.image-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.image-caption span {
+  display: block;
+  line-height: 1.4;
+}
+
+/* Description Section */
+.development-vision-description {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.development-vision-description p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #374151;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.development-vision-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .development-vision-container {
+    padding: 0 1.5rem;
+  }
+  
+  .development-vision-title {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .development-vision-images {
+    gap: 1.5rem;
+  }
+  
+  .image-item {
+    max-width: 300px;
+  }
+  
+  .image-wrapper {
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .development-vision {
+    padding: 3rem 0;
+  }
+  
+  .development-vision-title {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+  
+  .development-vision-images {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  .image-item {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .image-wrapper {
+    height: 200px;
+  }
+  
+  .development-vision-description p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .development-vision-container {
+    padding: 0 1rem;
+  }
+  
+  .development-vision-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .image-wrapper {
+    height: 180px;
+  }
+  
+  .image-caption {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}
