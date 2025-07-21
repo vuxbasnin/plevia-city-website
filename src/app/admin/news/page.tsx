@@ -197,6 +197,12 @@ export default function NewsListPage() {
                             <Edit className="w-4 h-4" />
                           </Button>
                         </Link>
+                        {/* Nút Xem trước */}
+                        <Link href={`/admin/news/preview/${article.id}`} target="_blank">
+                          <Button variant="outline" size="sm">
+                            <Eye className="w-4 h-4" />
+                          </Button>
+                        </Link>
                         <Button
                           variant="outline"
                           size="sm"

@@ -82,7 +82,7 @@ export const siteSettingsFormSchema = z.object({
     .string()
     .min(1, "Tên công ty không được để trống.")
     .max(50, "Tên công ty không quá 50 ký tự.")
-    .default("WorkspaceCo"),
+    .default("Plevia City"),
   socialLinks: z.array(socialLinkItemSchema).optional().default([]),
 });
 export type SiteSettingsData = z.infer<typeof siteSettingsFormSchema>;
@@ -505,9 +505,9 @@ export const defaultSiteSettingsData: SiteSettingsData = {
   logoUrl: "",
   faviconUrl: "",
   contactPhone: "(+84) 28 1234 5678",
-  contactEmail: "info@workspaceco.com",
+  contactEmail: "info@pleviacity.com",
   contactAddress: "123 Đường ABC, Phường XYZ, Quận 1, TP. Hồ Chí Minh",
-  companyName: "WorkspaceCo",
+  companyName: "Plevia City",
   socialLinks: [],
 };
 

@@ -306,7 +306,7 @@ export default function ManageSiteSettingsAdmin() {
             <h3 className="text-lg font-semibold text-foreground border-b pb-2 mb-4">Thông Tin Trang & Thương Hiệu</h3>
             <div className="space-y-2">
                 <Label htmlFor="companyName" className="font-semibold">Tên Công Ty/Website</Label>
-                <Input id="companyName" {...mainFormRegister("companyName")} placeholder="WorkspaceCo" />
+                <Input id="companyName" {...mainFormRegister("companyName")} placeholder="Plevia City" />
                 {mainFormErrors.companyName && <p className="text-sm text-destructive">{mainFormErrors.companyName.message}</p>}
             </div>
 

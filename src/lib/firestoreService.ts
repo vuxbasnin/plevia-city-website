@@ -355,11 +355,14 @@ export async function getNewsArticleById(id: string): Promise<NewsArticle | null
     
     if (articleSnap.exists()) {
       const data = articleSnap.data();
+      // Convert Timestamp về milliseconds nếu cần
+      const createdAt = data.createdAt && typeof data.createdAt.toMillis === 'function' ? data.createdAt.toMillis() : data.createdAt;
+      const updatedAt = data.updatedAt && typeof data.updatedAt.toMillis === 'function' ? data.updatedAt.toMillis() : data.updatedAt;
       return {
         id: articleSnap.id,
         ...data,
-        createdAt: data.createdAt,
-        updatedAt: data.updatedAt,
+        createdAt,
+        updatedAt,
       } as NewsArticle;
     }
     

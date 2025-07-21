@@ -206,7 +206,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             {children}
           </main>
           <footer className="bg-card border-t border-border py-4 text-center text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} WorkspaceCo Admin Panel.
+            &copy; {new Date().getFullYear()} Plevia City Admin Panel.
           </footer>
         </SidebarInset>
       </SidebarProvider>

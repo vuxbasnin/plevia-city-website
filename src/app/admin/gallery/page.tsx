@@ -9,29 +9,40 @@ import { useAuth } from "@/hooks/useAuth";
 
 // Màn hình upload ảnh mới
 function GalleryImageUploadScreen({ onBack, onUploaded }: { onBack: () => void, onUploaded: () => void }) {
-  const [file, setFile] = useState<File | null>(null);
+  // Đổi từ 1 file sang nhiều file
+  const [files, setFiles] = useState<FileList | null>(null);
   const [caption, setCaption] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const { toast } = useToast();
   const { user } = useAuth();
 
-  // Hàm xử lý upload ảnh
+  // Hàm xử lý upload nhiều ảnh
   const handleUpload = async () => {
-    if (!file) return;
+    if (!files || files.length === 0) return;
     setIsUploading(true);
-    try {
-      const url = await uploadFileToCloudinary(file, "gallery_images");
-      // Lấy username: ưu tiên displayName, fallback sang email
-      const uploadedBy = user?.displayName || user?.email || "unknown";
-      await addGalleryImage({ url, caption, uploadedBy });
-      toast({ title: "Thành công", description: "Đã upload ảnh!" });
-      setFile(null);
-      setCaption("");
-      onUploaded(); // Gọi callback để reload gallery
-      onBack(); // Quay lại màn hình gallery
-    } catch (e) {
-      toast({ title: "Lỗi", description: "Không upload được ảnh!", variant: "destructive" });
+    let successCount = 0;
+    let failCount = 0;
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      try {
+        const url = await uploadFileToCloudinary(file, "gallery_images");
+        const uploadedBy = user?.displayName || user?.email || "unknown";
+        await addGalleryImage({ url, caption, uploadedBy });
+        successCount++;
+      } catch (e) {
+        failCount++;
+      }
     }
+    if (successCount > 0) {
+      toast({ title: "Thành công", description: `Đã upload ${successCount} ảnh!` });
+    }
+    if (failCount > 0) {
+      toast({ title: "Lỗi", description: `Có ${failCount} ảnh upload thất bại!`, variant: "destructive" });
+    }
+    setFiles(null);
+    setCaption("");
+    onUploaded();
+    onBack();
     setIsUploading(false);
   };
 
@@ -39,13 +50,20 @@ function GalleryImageUploadScreen({ onBack, onUploaded }: { onBack: () => void, 
     <div className="space-y-6">
       <h1 className="text-2xl font-bold">Upload Ảnh Mới</h1>
       <div className="flex gap-2 items-end">
-        <Input type="file" accept="image/*" onChange={e => setFile(e.target.files?.[0] || null)} />
+        {/* Cho phép chọn nhiều file */}
+        <Input type="file" accept="image/*" multiple onChange={e => setFiles(e.target.files)} />
         <Input placeholder="Chú thích ảnh (tùy chọn)" value={caption} onChange={e => setCaption(e.target.value)} />
-        <Button onClick={handleUpload} disabled={!file || isUploading}>
+        <Button onClick={handleUpload} disabled={!files || files.length === 0 || isUploading}>
           {isUploading ? "Đang upload..." : "Upload ảnh"}
         </Button>
         <Button variant="outline" onClick={onBack}>Quay lại</Button>
       </div>
+      {/* Hiển thị danh sách file đã chọn */}
+      {files && files.length > 0 && (
+        <div className="mt-2 text-sm text-muted-foreground">
+          Đã chọn {files.length} ảnh: {Array.from(files).map(f => f.name).join(", ")}
+        </div>
+      )}
     </div>
   );
 }
