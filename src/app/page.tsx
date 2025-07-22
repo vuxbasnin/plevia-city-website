@@ -12,6 +12,13 @@ import ParaLeftDesRight, { paraLeftDesRightExample } from '@/components/sections
 import TableLeftImageRight, { tableLeftImageRightExample, tableLeftImageRightPriceExample } from '@/components/sections/TableLeftImageRight/TableLeftImageRight';
 import ParaImageVertical from '@/components/sections/ParaImageVertical/ParaImageVertical';
 import ImageHeaderStatic from '@/components/sections/ImageHeaderStatic';
+import TabProject from '@/components/sections/TabProject/TabProject';
+import ImageLeftDesRight from '@/components/ui/ImageLeft_DesRight/ImageLeft_DesRight';
+import ParaManyImage from '@/components/sections/ParaManyImage/ParaManyImage';
+import { title } from 'process';
+import TabProjectBgBlue from '@/components/sections/TabProjectBgBlue/TabProjectBgBlue';
+import News4Item from '@/components/sections/News4Item/News4Item';
+import FormReport from '@/components/sections/FormReport/FormReport';
 
 export default function HomePage() {
   return (
@@ -41,7 +48,6 @@ export default function HomePage() {
         ]}
         imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/06/PHOI-CANH-BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN.jpg"
       />
-      {/* Section: THIẾT KẾ ĐẲNG CẤP – KHÔNG GIAN SỐNG XANH - KIẾN TRÚC */}
       <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/VI-TRI-GLADIA-QUAN-2.webp" />
       <TableLeftImageRight {...tableLeftImageRightExample} />
       <ParaImageVertical
@@ -147,11 +153,70 @@ export default function HomePage() {
         backgroundColor='gray'
       />
       <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/VI-TRI-GLADIA-QUAN-2.webp" />
+      <TabProject/>
       <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/NHA-PHO-LIEN-KE-VUON-GLADIA-KHANG-DIEN-1.jpg" />
       <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/BIET-THU-TU-LAP-GLADIA-KHANG-DIEN-QUAN-2.jpg" />
       <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN-HCM-QUAN-2.jpg" />
       <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/BIET-THU-DON-LAP-GLADIA-KHANG-DIEN-01.jpg" />
       <TableLeftImageRight {...tableLeftImageRightPriceExample} />
+      <ParaLeftDesRight
+        title="CHÍNH SÁCH BÁN HÀNG GLADIA KHANG ĐIỀN – NĂM 2025"
+        description={
+          ``
+        }
+        sections={[
+          {
+            level: 1,
+            subtitle: "PHƯƠNG THỨC THANH TOÁN",
+            subdescription: `Chính sách thanh toán chuẩn:  20% ký HĐMB, 2025 thanh toán chỉ 30%, Năm 2026 thanh chỉ 65% nhận nhà. \n\n Chính sách thanh toán nhanh: Khách hàng TT 95%, nhận nhà chiết khấu tối thiểu 10%. \n\n Chính sách hỗ trợ lãi suất: Tỷ lệ vay 75%, hỗ trợ lãi suất 0%, Ân hạn gốc 18 tháng, thời gian vay tối đa 35 năm`
+          },
+          {
+            level: 2,
+            subtitle: "ĐẶT CHỖ SỚM – QUÀ TẶNG NHIỀU",
+            subdescription: `Booking trước 31/07/2025 tặng 200 triệu.\n\n Booking từ 01/08/2025 đến thời điểm đóng tặng 100 triệu.\n\nMiễn Phí Quản Lý 24 tháng.\n\nTặng gói Samsung Smart Things – Smart Home`
+          },
+          {
+            level: 1,
+            subtitle: "TIỆN ÍCH NỔI BẬT",
+            subdescription: `Hồ bơi tràn bờ, phòng gym, khu vui chơi trẻ em, khu BBQ ngoài trời, sân thể thao đa năng, vườn thiền, đường dạo bộ ven sông...`
+          }
+        ]}
+        imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/CHINH-SACH-THANH-TOAN-DU-AN-GLADIA-KHANG-DIEN-QUAN-2.jpg"
+        backgroundColor='white'
+      />
+      <ParaManyImage
+        title='TIẾN ĐỘ XÂY DỰNG DỰ ÁN GLADIA KHANG ĐIỀN – THÁNG 05/2025'
+        paragraph={`Cập nhật tiến độ xây dựng mới nhất dự án Gladia. Nhà thầu An Phong và Weathcons đang tích cực xây dựng, khối lượng công việc đạt hơn 95%. Trong đó:
+
+Hạ tầng dự án đã hoàn thiện.
+Chủ đầu tư đang trồng và chăm sóc cây xanh của dự án.
+Đã hoàn thiện nhà Mẫu và nhà điều hành
+Biệt thự Đơn Lập, Song Lập Tứ Lập, Nhà phố liên kế đang hoàn thiện
+Tiện ích, nhà điều hành, công viên hàng hoàn thiện
+Chủ đầu tư Khang Điền – Keppel Land  dự kiến hoàn thiện tiện ích, nhà mẫu và sản phẩm vào Quý 3/2025.`}
+        images={[
+          "https://khangdienhcm.com/wp-content/uploads/2025/06/TIEN-DO-DU-AN-GLADIA-KHANG-DIEN-KEPPEL-LAND-THANG-06-1024x683.jpeg",
+          "https://khangdienhcm.com/wp-content/uploads/2025/06/TIEN-DO-GLADIA-THANG-06-1024x683.jpeg",
+          "https://khangdienhcm.com/wp-content/uploads/2025/06/TIEN-DO-DU-AN-GLADIA-KHANG-DIEN-THANG-06-1024x682.jpeg",
+          "https://khangdienhcm.com/wp-content/uploads/2025/06/tien-do-du-an-gladia-02-1024x576.webp",
+          "https://khangdienhcm.com/wp-content/uploads/2025/06/tien-do-du-an-gladia-04-1024x576.webp",
+          "https://khangdienhcm.com/wp-content/uploads/2025/05/TIEN-DO-XAY-DUNG-GLADIA-KHANG-DIEN-THANG-06-2025-KDHCM-1024x576.jpg",
+          "https://khangdienhcm.com/wp-content/uploads/2025/04/gladia-KDH-7-1024x576.jpg",
+          "https://khangdienhcm.com/wp-content/uploads/2025/06/tien-do-du-an-gladia-05-1024x576.webp",
+          "https://khangdienhcm.com/wp-content/uploads/2025/06/tien-do-du-an-gladia-03-1024x576.webp"
+        ]}
+      />
+      <TabProjectBgBlue />
+      <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/VI-SAO-NEN-MUA-GLADIA-KHANG-DIEN.jpg" />
+      <News4Item
+        items={[
+          { image: "https://khangdienhcm.com/wp-content/uploads/2025/07/Cong-vien-Ven-song-Riverfront-Plaza-600x400.webp", date: "17/07/2025", author: "admin", title: "Khám phá tiện ích ngoại khu dự án Gladia by the Water Khang Điền" },
+          { image: "https://khangdienhcm.com/wp-content/uploads/2024/12/khang-dien-11-600x400.webp", date: "17/07/2025", author: "admin", title: "Chủ đầu tư Khang Điền: Thương hiệu dẫn đầu trong BĐS TP.HCM" },
+          { image: "https://khangdienhcm.com/wp-content/uploads/2025/06/MAT-BANG-DU-AN-GLADIA-KHANG-DIEN-QUAN-2-600x400.jpg", date: "16/07/2025", author: "admin", title: "Thị trường BĐS TP.HCM 2025: Tiềm năng và thách thức" },
+          { image: "https://khangdienhcm.com/wp-content/uploads/2025/07/Nha-lien-ke-co-san-vuon-600x400.webp", date: "16/07/2025", author: "admin", title: "Khu đô thị vệ tinh Gladia: Điểm sáng BĐS TP.HCM 2025" },
+        ]}
+      />
+      <FormReport/>
     </PageLayout>
   );
 }

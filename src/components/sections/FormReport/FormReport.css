@@ -1,0 +1,92 @@
+.formreport-container {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 0;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.formreport-form {
+  flex: 1 1 0;
+  max-width: 48%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formreport-input,
+.formreport-textarea {
+  background: #f3f3f3;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  color: #222;
+  outline: none;
+  resize: none;
+}
+
+.formreport-input::placeholder,
+.formreport-textarea::placeholder {
+  color: #bbb;
+}
+
+.formreport-btn {
+  margin: 0 auto;
+  margin-top: 8px;
+  background: #169fe6;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 36px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.formreport-btn:hover {
+  background: #117dc0;
+}
+
+.formreport-info {
+  flex: 1 1 0;
+  max-width: 52%;
+  color: #444;
+  font-size: 1rem;
+  padding-left: 24px;
+}
+
+.formreport-info-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.formreport-info-desc {
+  margin-bottom: 16px;
+}
+
+.formreport-info-detail {
+  line-height: 1.7;
+}
+
+.formreport-link {
+  color: #169fe6;
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .formreport-container {
+    flex-direction: column;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .formreport-form, .formreport-info {
+    max-width: 100%;
+    padding-left: 0;
+  }
+}
