@@ -144,7 +144,7 @@ export default function Navbar() {
             width={120}
             height={40}
             className="navbar-logo-img"
-            style={{ objectFit: 'contain', display: 'block' }}
+            style={{ objectFit: 'contain', display: 'block', marginLeft: 0, marginRight: 0 }}
           />
 
           {/* Desktop Navigation */}

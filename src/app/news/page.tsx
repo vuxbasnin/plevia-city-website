@@ -5,6 +5,7 @@ import ImageHeader from '@/components/sections/ImageHeader';
 import ListNews from '@/components/sections/ListNews/ListNews';
 import NewsSectionExample from '@/components/sections/News/NewsSectionExample';
 import TabExample from '@/components/ui/Tab/TabExample';
+import ScrollReveal from '@/components/shared/ScrollReveal';
 
 // Data test với 20 item tin tức
 const testNewsData = [
@@ -153,8 +154,12 @@ const testNewsData = [
 export default function NewsPage() {
   return (
     <PageLayout>
-      <ImageHeader/>
-      <ListNews newsItems={testNewsData} />
+      <ScrollReveal>
+        <ImageHeader/>
+      </ScrollReveal>
+      <ScrollReveal>
+        <ListNews newsItems={testNewsData} />
+      </ScrollReveal>
     </PageLayout>
   );
 } 

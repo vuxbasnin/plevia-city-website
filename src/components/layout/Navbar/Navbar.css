@@ -28,10 +28,11 @@
 
 /* Navbar Layout */
 .navbar-container {
-  width: 100%;
+  width: 88vw;
   max-width: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
+  position: relative;
 }
 
 @media (min-width: 640px) {
@@ -49,10 +50,11 @@
 .navbar-content {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 4rem;
   width: 100%;
   padding: 0;
+  position: relative;
 }
 
 .navbar-logo-section {
@@ -69,14 +71,20 @@
 .navbar-desktop-menu {
   display: flex;
   align-items: center;
-  margin-left: 0;
-  padding-left: 0;
   gap: 32px;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  transform: translateX(0);
 }
 
 @media (max-width: 1023px) {
-  .navbar-desktop-menu, .navbar-spacer, .navbar-logo-section {
-    flex: unset;
+  .navbar-desktop-menu {
+    position: static;
+    left: unset;
+    top: unset;
+    transform: none;
   }
 }
 
@@ -181,7 +189,8 @@
 }
 
 .navbar-logo-img {
-  margin-right: 200px;
+  margin-right: 0;
+  margin-left: 0;
   height: 40px;
   width: auto;
   display: block;
