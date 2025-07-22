@@ -221,7 +221,7 @@
 .navbar-link {
   color: white;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 1.125rem;
   cursor: pointer;
   display: block;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -240,25 +240,25 @@
 
 .navbar-link-main {
   line-height: 1.25;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 500;
 }
 
 .navbar-link-sub {
   line-height: 1.25;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 500;
   opacity: 0.9;
 }
 
 /* Special styling for last item (item 5) */
-.navbar-link-wrapper:last-child .navbar-link-main {
+/* .navbar-link-wrapper:last-child .navbar-link-main {
   font-size: 0.875rem;
 }
 
 .navbar-link-wrapper:last-child .navbar-link-sub {
   font-size: 0.875rem;
-}
+} */
 
 .navbar-link-dropdown {
   width: 0.75rem;
