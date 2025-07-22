@@ -207,14 +207,7 @@ Chủ đầu tư Khang Điền – Keppel Land  dự kiến hoàn thiện tiện
       />
       <TabProjectBgBlue />
       <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/VI-SAO-NEN-MUA-GLADIA-KHANG-DIEN.jpg" fullImage={false} />
-      <News4Item
-        items={[
-          { image: "https://khangdienhcm.com/wp-content/uploads/2025/07/Cong-vien-Ven-song-Riverfront-Plaza-600x400.webp", date: "17/07/2025", author: "admin", title: "Khám phá tiện ích ngoại khu dự án Gladia by the Water Khang Điền" },
-          { image: "https://khangdienhcm.com/wp-content/uploads/2024/12/khang-dien-11-600x400.webp", date: "17/07/2025", author: "admin", title: "Chủ đầu tư Khang Điền: Thương hiệu dẫn đầu trong BĐS TP.HCM" },
-          { image: "https://khangdienhcm.com/wp-content/uploads/2025/06/MAT-BANG-DU-AN-GLADIA-KHANG-DIEN-QUAN-2-600x400.jpg", date: "16/07/2025", author: "admin", title: "Thị trường BĐS TP.HCM 2025: Tiềm năng và thách thức" },
-          { image: "https://khangdienhcm.com/wp-content/uploads/2025/07/Nha-lien-ke-co-san-vuon-600x400.webp", date: "16/07/2025", author: "admin", title: "Khu đô thị vệ tinh Gladia: Điểm sáng BĐS TP.HCM 2025" },
-        ]}
-      />
+      <NewsSectionExample />
       <FormReport />
     </PageLayout>
   );

@@ -1,13 +1,12 @@
 .formreport-container {
+  width: 85vw;
+  max-width: none;
+  margin: 0 auto;
   display: flex;
   gap: 32px;
   align-items: flex-start;
   justify-content: center;
-  width: 100%;
-  margin: 0 auto;
   padding: 24px 0;
-  margin-left: 24px;
-  margin-right: 24px;
 }
 
 .formreport-form {

@@ -1,8 +1,11 @@
 /* News Section Container */
 .news-section {
   position: relative;
+  width: 85vw;
+  max-width: none;
+  margin: 0 auto;
   background: rgb(54, 113, 86);
-  min-height: 80vh;
+  min-height: 70vh;
   overflow: hidden;
   padding: 3rem 0;
 }
@@ -59,10 +62,11 @@
 
 /* Main Container */
 .news-container {
+  width: 85vw !important;
+  max-width: none !important;
+  margin: 0 auto !important;
   position: relative;
   z-index: 1;
-  max-width: 80rem;
-  margin: 0 auto;
   padding: 0 1rem;
 }
 
