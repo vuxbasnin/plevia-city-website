@@ -9,7 +9,7 @@ import TabExample from '@/components/ui/Tab/TabExample';
 import NewsSectionExample from '@/components/sections/News/NewsSectionExample';
 import FormInfo from '@/components/sections/FormInfo/FormInfo';
 import ParaLeftDesRight, { paraLeftDesRightExample } from '@/components/sections/ParaLeftDesRight/ParaLeftDesRight';
-import TableLeftImageRight, { tableLeftImageRightExample } from '@/components/sections/TableLeftImageRight/TableLeftImageRight';
+import TableLeftImageRight, { tableLeftImageRightExample, tableLeftImageRightPriceExample } from '@/components/sections/TableLeftImageRight/TableLeftImageRight';
 import ParaImageVertical from '@/components/sections/ParaImageVertical/ParaImageVertical';
 import ImageHeaderStatic from '@/components/sections/ImageHeaderStatic';
 
@@ -151,6 +151,7 @@ export default function HomePage() {
       <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/BIET-THU-TU-LAP-GLADIA-KHANG-DIEN-QUAN-2.jpg" />
       <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN-HCM-QUAN-2.jpg" />
       <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/BIET-THU-DON-LAP-GLADIA-KHANG-DIEN-01.jpg" />
+      <TableLeftImageRight {...tableLeftImageRightPriceExample} />
     </PageLayout>
   );
 }
