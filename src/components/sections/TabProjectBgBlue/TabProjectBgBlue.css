@@ -1,4 +1,7 @@
 .tab-bgblue-container {
+  width: 85vw;
+  max-width: none;
+  margin: 0 auto;
   display: flex;
   background: #0a3556;
   color: #fff;

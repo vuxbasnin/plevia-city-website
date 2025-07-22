@@ -29,27 +29,29 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
         (backgroundColor === 'gray' ? ' para-left-des-right__container--gray' : '')
       }
     >
-      <div className="para-left-des-right__text">
-        <h2 className="para-left-des-right__title">{title}</h2>
-        <p className="para-left-des-right__description">{description}</p>
-        {sections.map((section, idx) => (
-          <div key={idx} style={{ marginBottom: 20 }}>
-            {section.level === 1 ? (
-              <>
-                <h3 className="para-left-des-right__subtitle">{section.subtitle}</h3>
-                <p className="para-left-des-right__subdescription">{section.subdescription}</p>
-              </>
-            ) : (
-              <>
-                <h4 className="para-left-des-right__subtitle para-left-des-right__subtitle--level2" style={{ fontWeight: 'bold' }}>{section.subtitle}</h4>
-                <p className="para-left-des-right__subdescription">{section.subdescription}</p>
-              </>
-            )}
-          </div>
-        ))}
-      </div>
-      <div className="para-left-des-right__image-wrapper">
-        <img src={imageUrl} alt="section" className="para-left-des-right__image" />
+      <div className="para-left-des-right__inner">
+        <div className="para-left-des-right__text">
+          <h2 className="para-left-des-right__title">{title}</h2>
+          <p className="para-left-des-right__description">{description}</p>
+          {sections.map((section, idx) => (
+            <div key={idx} style={{ marginBottom: 20 }}>
+              {section.level === 1 ? (
+                <>
+                  <h3 className="para-left-des-right__subtitle">{section.subtitle}</h3>
+                  <p className="para-left-des-right__subdescription">{section.subdescription}</p>
+                </>
+              ) : (
+                <>
+                  <h4 className="para-left-des-right__subtitle para-left-des-right__subtitle--level2" style={{ fontWeight: 'bold' }}>{section.subtitle}</h4>
+                  <p className="para-left-des-right__subdescription">{section.subdescription}</p>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="para-left-des-right__image-wrapper">
+          <img src={imageUrl} alt="section" className="para-left-des-right__image" />
+        </div>
       </div>
     </div>
   );

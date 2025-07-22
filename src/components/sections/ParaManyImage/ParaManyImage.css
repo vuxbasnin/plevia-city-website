@@ -1,8 +1,8 @@
 .para-many-image-container {
-  width: 100%;
+  width: 85vw;
   max-width: none;
   margin: 0 auto;
-  padding: 32px 16px;
+  padding: 32px 0px;
 }
 
 .para-many-image-title {

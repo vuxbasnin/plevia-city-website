@@ -1,4 +1,7 @@
 .tab-project-container {
+  width: 85vw;
+  max-width: none;
+  margin: 0 auto;
   background: #f5f5f5;
   border-radius: 6px;
   padding: 16px;
@@ -51,6 +54,7 @@
 
 .tab-content {
   width: 50%;
+  box-sizing: border-box;
   padding: 24px 20px 16px 20px;
   font-size: 16px;
   color: #333;

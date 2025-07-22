@@ -13,38 +13,40 @@ const TableLeftImageRight: React.FC<TableLeftImageRightProps> = ({ tableData, im
 
   return (
     <div className="table-left-image-right__container">
-      <div className="table-left-image-right__table-image-group">
-        <div className="table-left-image-right__table-side">
-          {title && (
-            <div className="table-left-image-right__title">{title}</div>
-          )}
-          <div className="table-left-image-right__table-wrapper">
-            <table className={`table-left-image-right__table table-left-image-right__col-${columnKeys.length}`}>
-              <thead>
-                <tr>
-                  {columnKeys.map((key) => (
-                    <th key={key} className={`table-left-image-right__header table-left-image-right__${key}`}>
-                      {key}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {tableData.map((row, idx) => (
-                  <tr key={idx}>
+      <div className="table-left-image-right__inner">
+        <div className="table-left-image-right__table-image-group">
+          <div className="table-left-image-right__table-side">
+            {title && (
+              <div className="table-left-image-right__title">{title}</div>
+            )}
+            <div className="table-left-image-right__table-wrapper">
+              <table className={`table-left-image-right__table table-left-image-right__col-${columnKeys.length}`}>
+                <thead>
+                  <tr>
                     {columnKeys.map((key) => (
-                      <td key={key} className={`table-left-image-right__value table-left-image-right__${key}`}>
-                        {row[key]}
-                      </td>
+                      <th key={key} className={`table-left-image-right__header table-left-image-right__${key}`}>
+                        {key}
+                      </th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {tableData.map((row, idx) => (
+                    <tr key={idx}>
+                      {columnKeys.map((key) => (
+                        <td key={key} className={`table-left-image-right__value table-left-image-right__${key}`}>
+                          {row[key]}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
-        <div className="table-left-image-right__image-wrapper">
-          <img src={imageUrl} alt="section" className="table-left-image-right__image" />
+          <div className="table-left-image-right__image-wrapper">
+            <img src={imageUrl} alt="section" className="table-left-image-right__image" />
+          </div>
         </div>
       </div>
     </div>

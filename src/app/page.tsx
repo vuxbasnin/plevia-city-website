@@ -48,7 +48,6 @@ export default function HomePage() {
         ]}
         imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/06/PHOI-CANH-BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN.jpg"
       />
-      <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/VI-TRI-GLADIA-QUAN-2.webp" />
       <TableLeftImageRight {...tableLeftImageRightExample} />
       <ParaImageVertical
         title="VỊ TRÍ ĐẮC ĐỊA – KẾT NỐI HOÀN HẢO"
@@ -152,12 +151,12 @@ export default function HomePage() {
         imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/06/PHOI-CANH-BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN.jpg"
         backgroundColor='gray'
       />
-      <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/VI-TRI-GLADIA-QUAN-2.webp" />
-      <TabProject/>
-      <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/NHA-PHO-LIEN-KE-VUON-GLADIA-KHANG-DIEN-1.jpg" />
-      <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/BIET-THU-TU-LAP-GLADIA-KHANG-DIEN-QUAN-2.jpg" />
-      <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN-HCM-QUAN-2.jpg" />
-      <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/BIET-THU-DON-LAP-GLADIA-KHANG-DIEN-01.jpg" />
+      <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/MAT-BANG-DU-AN-GLADIA-KHANG-DIEN-QUAN-2-1.webp" fullImage={true} />
+      <TabProject />
+      <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/NHA-PHO-LIEN-KE-VUON-GLADIA-KHANG-DIEN-1.jpg" fullImage={false} />
+      <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/BIET-THU-TU-LAP-GLADIA-KHANG-DIEN-QUAN-2.jpg" fullImage={false} />
+      <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN-HCM-QUAN-2.jpg" fullImage={false} />
+      <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/BIET-THU-DON-LAP-GLADIA-KHANG-DIEN-01.jpg" fullImage={false} />
       <TableLeftImageRight {...tableLeftImageRightPriceExample} />
       <ParaLeftDesRight
         title="CHÍNH SÁCH BÁN HÀNG GLADIA KHANG ĐIỀN – NĂM 2025"
@@ -207,7 +206,7 @@ Chủ đầu tư Khang Điền – Keppel Land  dự kiến hoàn thiện tiện
         ]}
       />
       <TabProjectBgBlue />
-      <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/VI-SAO-NEN-MUA-GLADIA-KHANG-DIEN.jpg" />
+      <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/VI-SAO-NEN-MUA-GLADIA-KHANG-DIEN.jpg" fullImage={false} />
       <News4Item
         items={[
           { image: "https://khangdienhcm.com/wp-content/uploads/2025/07/Cong-vien-Ven-song-Riverfront-Plaza-600x400.webp", date: "17/07/2025", author: "admin", title: "Khám phá tiện ích ngoại khu dự án Gladia by the Water Khang Điền" },
@@ -216,7 +215,7 @@ Chủ đầu tư Khang Điền – Keppel Land  dự kiến hoàn thiện tiện
           { image: "https://khangdienhcm.com/wp-content/uploads/2025/07/Nha-lien-ke-co-san-vuon-600x400.webp", date: "16/07/2025", author: "admin", title: "Khu đô thị vệ tinh Gladia: Điểm sáng BĐS TP.HCM 2025" },
         ]}
       />
-      <FormReport/>
+      <FormReport />
     </PageLayout>
   );
 }

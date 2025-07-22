@@ -1,12 +1,16 @@
 .table-left-image-right__container {
+  width: 100%;
+  background: #fff;
+}
+
+.table-left-image-right__inner {
+  width: 88%;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
-  width: 100%;
   min-height: 360px;
-  background: #fff;
   box-sizing: border-box;
   align-items: center;
-  height: auto;
 }
 
 .table-left-image-right__table-wrapper,
@@ -36,7 +40,7 @@
   display: flex;
   align-items: stretch;
   justify-content: center;
-  padding: 24px 40px 24px 0;
+  margin: 24px;
   height: 100%;
   box-sizing: border-box;
 }
@@ -75,6 +79,7 @@
 .table-left-image-right__value {
   color: #222;
   white-space: pre-line;
+  text-align: justify;
 }
 
 .table-left-image-right__image {
@@ -98,10 +103,10 @@
 }
 
 .table-left-image-right__table-image-group {
-  display: flex;
-  flex-direction: row;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 .table-left-image-right__table-side {

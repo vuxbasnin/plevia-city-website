@@ -137,38 +137,26 @@ export default function Navbar() {
     >
       <div className="navbar-container">
         <div className="navbar-content">
-          {/* Logo Section */}
-          <Link href="/" passHref>
-            <motion.span 
-              className={`navbar-logo ${isTransparentState ? 'navbar-logo-transparent' : 'navbar-logo-solid'}`}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              {isLoadingSettings ? (
-                <Skeleton className="navbar-logo-skeleton" />
-              ) : siteSettings.logoUrl ? (
-                <NextImage
-                  src={siteSettings.logoUrl}
-                  alt={`${siteSettings.companyName || 'Site'} Logo`}
-                  width={40} 
-                  height={40} 
-                  className="navbar-logo-image" 
-                  priority
-                />
-              ) : (
-                <Briefcase className="navbar-logo-fallback" />
-              )}
-            </motion.span>
-          </Link>
+          {/* Logo Section - Ảnh đơn giản với url mới */}
+          <NextImage
+            src="https://khangdienhcm.com/wp-content/uploads/2023/06/logo-tap-doan-khang-dien.png"
+            alt="Logo Khang Điền"
+            width={120}
+            height={40}
+            className="navbar-logo-img"
+            style={{ objectFit: 'contain', display: 'block' }}
+          />
 
           {/* Desktop Navigation */}
           <div className="navbar-desktop-menu">
-            {navLinks.map((link) => (
+            {navLinks.map((link, idx) => (
               <NavigationLink
                 key={link.href}
                 href={link.href}
                 label={link.label}
                 isTransparent={isTransparentState}
                 onClick={handleLinkClick}
+                className={idx === 0 ? 'navbar-nav-first' : ''}
               />
             ))}
           </div>

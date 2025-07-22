@@ -2,13 +2,15 @@
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 0 !important;
   right: 0;
   z-index: 50;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border-bottom: 1px solid transparent;
   backdrop-filter: blur(8px);
   will-change: background-color, border-color, box-shadow;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }
 
 .navbar-transparent {
@@ -29,7 +31,7 @@
   width: 100%;
   max-width: none;
   margin: 0;
-  padding: 0 1rem;
+  padding: 0;
 }
 
 @media (min-width: 640px) {
@@ -47,23 +49,41 @@
 .navbar-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: 4rem;
   width: 100%;
   padding: 0;
 }
 
-@media (min-width: 640px) {
-  .navbar-content {
-    height: 5rem;
+.navbar-logo-section {
+  flex: 0 0 16.6667%; /* 1/6 */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.navbar-spacer {
+  flex: 0 0 16.6667%; /* 1/6 */
+}
+
+.navbar-desktop-menu {
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+  padding-left: 0;
+  gap: 32px;
+}
+
+@media (max-width: 1023px) {
+  .navbar-desktop-menu, .navbar-spacer, .navbar-logo-section {
+    flex: unset;
   }
 }
 
-/* Logo - Square size matching header height */
 .navbar-logo {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 4rem;
   height: 4rem;
   font-size: 1.5rem;
@@ -74,20 +94,20 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform, filter;
   flex-shrink: 0;
-  margin-left: -1rem;
+  margin-left: 0;
 }
 
 @media (min-width: 640px) {
   .navbar-logo {
     width: 5rem;
     height: 5rem;
-    margin-left: -1.5rem;
+    margin-left: 0;
   }
 }
 
 @media (min-width: 1024px) {
   .navbar-logo {
-    margin-left: -2rem;
+    margin-left: 0;
   }
 }
 
@@ -136,12 +156,14 @@
   object-fit: contain;
   height: 2.5rem;
   width: 2.5rem;
+  margin-left: 24px;
 }
 
 @media (min-width: 640px) {
   .navbar-logo-image {
     height: 3rem;
     width: 3rem;
+    margin-left: 24px;
   }
 }
 
@@ -158,23 +180,19 @@
   }
 }
 
+.navbar-logo-img {
+  margin-right: 200px;
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.navbar-nav-first {
+  margin-left: 0;
+}
 
 
 /* Desktop Navigation */
-.navbar-desktop-menu {
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  flex: 1;
-  margin: 0 100px;
-}
-
-@media (min-width: 1024px) {
-  .navbar-desktop-menu {
-    display: flex;
-  }
-}
-
 .navbar-link-wrapper {
   position: relative;
   display: flex;

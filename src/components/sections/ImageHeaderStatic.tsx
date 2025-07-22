@@ -2,7 +2,12 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 
-export default function ImageHeaderStatic({ imageUrl }: { imageUrl?: string }) {
+interface ImageHeaderStaticProps {
+  imageUrl?: string;
+  fullImage?: boolean;
+}
+
+export default function ImageHeaderStatic({ imageUrl, fullImage = true }: ImageHeaderStaticProps) {
   const [imageError, setImageError] = useState(false);
   const [imageLoading, setImageLoading] = useState(true);
 
@@ -13,9 +18,9 @@ export default function ImageHeaderStatic({ imageUrl }: { imageUrl?: string }) {
     <section
       id="hero-static"
       className="relative flex flex-col items-center justify-center overflow-hidden bg-white"
-      style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 16, paddingBottom: 16 }}
+      style={fullImage ? { marginTop: 8, marginBottom: 8 } : { width: '85vw', margin: '0 auto', marginTop: 8, marginBottom: 8 }}
     >
-      <div className="relative w-full flex justify-center items-center" style={{ background: '#fff' }}>
+      <div className="relative w-full flex justify-center items-center">
         {imageLoading && (
           <div className="absolute inset-0">
             <Skeleton className="w-full h-full absolute inset-0 z-0" />
@@ -24,7 +29,7 @@ export default function ImageHeaderStatic({ imageUrl }: { imageUrl?: string }) {
             </div>
           </div>
         )}
-        <div style={{ position: 'relative', width: '100%' }}>
+        <div style={{ position: 'relative', width: fullImage ? '100vw' : '85vw' }}>
           <Image
             src={currentImageUrl}
             alt="Hero Image"
@@ -37,7 +42,10 @@ export default function ImageHeaderStatic({ imageUrl }: { imageUrl?: string }) {
               setImageError(true);
               setImageLoading(false);
             }}
-            style={{ visibility: imageLoading ? 'hidden' : 'visible', maxWidth: '100%', width: 'calc(100vw - 48px)', marginLeft: 'auto', marginRight: 'auto' }}
+            style={fullImage
+              ? { visibility: imageLoading ? 'hidden' : 'visible', maxWidth: '100vw', width: '100vw', marginLeft: 'auto', marginRight: 'auto' }
+              : { visibility: imageLoading ? 'hidden' : 'visible', maxWidth: '85vw', width: '85vw', marginLeft: 'auto', marginRight: 'auto' }
+            }
           />
           {/* Overlay đen mờ chỉ phủ lên ảnh */}
           <div className="absolute inset-0 rounded-[8px] z-10 pointer-events-none" style={{ background: 'rgba(0,0,0,0.3)' }} />
