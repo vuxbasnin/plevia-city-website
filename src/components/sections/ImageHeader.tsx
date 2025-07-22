@@ -8,7 +8,7 @@ import type { HeroSectionData } from '@/types/landingPageAdmin';
 import { defaultHeroSectionData } from '@/types/landingPageAdmin';
 import { Skeleton } from '@/components/ui/skeleton';
 
-export default function ImageHeader() {
+export default function ImageHeader({ imageUrl }: { imageUrl?: string }) {
   const [heroData, setHeroData] = useState<HeroSectionData>(defaultHeroSectionData);
   const [isLoading, setIsLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
@@ -69,8 +69,8 @@ export default function ImageHeader() {
   //   ? `https://placehold.co/1200x800.png?text=${encodeURIComponent(heroData.headline || 'Hero+Image+Error')}`
   //   : heroData.imageUrl || defaultHeroSectionData.imageUrl;
 
-
-  const currentImageUrl = "https://thanhxuanvalley.com/Upload/catalog/2025/4/b953705c-e985-41ae-b420-51760da6706f.jpg";
+  const fallbackImageUrl = "https://thanhxuanvalley.com/Upload/catalog/2025/4/b953705c-e985-41ae-b420-51760da6706f.jpg";
+  const currentImageUrl = imageUrl || fallbackImageUrl;
 
   if (isLoading) {
     return (
