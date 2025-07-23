@@ -319,7 +319,7 @@ export default function CreateNewsPage() {
                     ) : (
                       <>
                         <Save className="w-4 h-4 mr-2" />
-                        Tạo tin tức TuanHM
+                        Tạo tin tức
                       </>
                     )}
                   </Button>

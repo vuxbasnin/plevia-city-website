@@ -170,7 +170,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             <Link href="/admin/overview" passHref>
               <span className="flex items-center space-x-2 text-xl font-headline font-bold text-primary hover:opacity-80 transition-opacity">
                 <Palette className="w-7 h-7" />
-                <span className="group-data-[collapsible=icon]:hidden">Admin Panel 123</span>
+                <span className="group-data-[collapsible=icon]:hidden">CMS Admin</span>
               </span>
             </Link>
             <SidebarTrigger className="md:hidden group-data-[collapsible=icon]:hidden" />

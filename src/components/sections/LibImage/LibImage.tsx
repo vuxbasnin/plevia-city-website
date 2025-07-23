@@ -1,162 +1,182 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Title from '@/components/ui/Title/Title';
 import './LibImage.css';
+import { getGalleryImages } from '@/lib/firestoreService';
 
 interface ImageItem {
-  id: number;
-  src: string;
-  alt: string;
-  title?: string;
+  id: string;
+  url: string;
+  caption?: string;
 }
 
 const LibImage: React.FC = () => {
-  // Dữ liệu ảnh mẫu - bạn có thể thay đổi theo nhu cầu
-  const images: ImageItem[] = [
-    { id: 1, src: '/images/lib1.jpg', alt: 'Thư viện 1', title: 'Không gian học tập' },
-    { id: 2, src: '/images/lib2.jpg', alt: 'Thư viện 2', title: 'Khu vực đọc sách' },
-    { id: 3, src: '/images/lib3.jpg', alt: 'Thư viện 3', title: 'Phòng họp nhóm' },
-    { id: 4, src: '/images/lib4.jpg', alt: 'Thư viện 4', title: 'Khu vực thư giãn' },
-    { id: 5, src: '/images/lib5.jpg', alt: 'Thư viện 5', title: 'Không gian sáng tạo' },
-    { id: 6, src: '/images/lib6.jpg', alt: 'Thư viện 6', title: 'Khu vực làm việc' },
-    { id: 7, src: '/images/lib7.jpg', alt: 'Thư viện 7', title: 'Phòng hội thảo' },
-    { id: 8, src: '/images/lib8.jpg', alt: 'Thư viện 8', title: 'Khu vực networking' },
-    { id: 9, src: '/images/lib9.jpg', alt: 'Thư viện 9', title: 'Không gian mở' },
-    { id: 10, src: '/images/lib10.jpg', alt: 'Thư viện 10', title: 'Khu vực cafe' },
-    { id: 11, src: '/images/lib11.jpg', alt: 'Thư viện 11', title: 'Phòng đào tạo' },
-    { id: 12, src: '/images/lib12.jpg', alt: 'Thư viện 12', title: 'Khu vực triển lãm' },
-  ];
-
+  const [images, setImages] = useState<ImageItem[]>([]);
+  const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
-  
-  // Chia đôi list ảnh
-  const halfLength = Math.ceil(images.length / 2);
-  const topRow = images.slice(0, halfLength); // List hiển thị bên trên
-  const bottomRow = images.slice(halfLength); // List hiển thị bên dưới
-  
-  // Số lượng items hiển thị mỗi hàng (3 items)
-  const itemsPerRow = 3;
-  const maxIndex = Math.max(topRow.length - itemsPerRow, bottomRow.length - itemsPerRow);
+  const [direction, setDirection] = useState(0); // -1: left, 1: right
+  const [animating, setAnimating] = useState(false);
 
-  const nextPage = () => {
-    if (currentIndex >= maxIndex) return;
-    setCurrentIndex((prev) => prev + 1);
+  // For touch/drag
+  const startX = useRef<number | null>(null);
+  const isDragging = useRef(false);
+  const dragThreshold = 60; // px
+
+  useEffect(() => {
+    async function fetchImages() {
+      setLoading(true);
+      try {
+        const imgs = await getGalleryImages();
+        setImages(
+          imgs
+            .filter((img: any) => !!img.url)
+            .map((img: any) => ({
+              id: img.id,
+              url: img.url,
+              caption: img.caption || '',
+            }))
+        );
+      } catch (e) {
+        setImages([]);
+      }
+      setLoading(false);
+    }
+    fetchImages();
+  }, []);
+
+  const goTo = (newIndex: number, dir: number) => {
+    if (animating || newIndex < 0 || newIndex >= images.length) return;
+    setDirection(dir);
+    setAnimating(true);
+    setTimeout(() => {
+      setCurrentIndex(newIndex);
+      setAnimating(false);
+    }, 350); // animation duration
   };
 
-  const prevPage = () => {
-    if (currentIndex <= 0) return;
-    setCurrentIndex((prev) => prev - 1);
+  const nextImage = () => goTo(currentIndex + 1, 1);
+  const prevImage = () => goTo(currentIndex - 1, -1);
+
+  // Animation classes
+  const getSlideClass = () => {
+    if (!animating) return 'libimage-slide-active';
+    if (direction === 1) return 'libimage-slide-to-left';
+    if (direction === -1) return 'libimage-slide-to-right';
+    return 'libimage-slide-active';
   };
 
-  // Lấy items hiển thị cho mỗi hàng
-  const getTopRowItems = () => {
-    return topRow.slice(currentIndex, currentIndex + itemsPerRow);
+  // Touch events (mobile)
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (animating) return;
+    startX.current = e.touches[0].clientX;
+  };
+  const handleTouchMove = (e: React.TouchEvent) => {
+    // Không xử lý move ở đây để tránh lag, chỉ xử lý khi end
+  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (animating || startX.current === null) return;
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX.current;
+    if (diff < -dragThreshold && currentIndex < images.length - 1) {
+      nextImage();
+    } else if (diff > dragThreshold && currentIndex > 0) {
+      prevImage();
+    }
+    startX.current = null;
   };
 
-  const getBottomRowItems = () => {
-    return bottomRow.slice(currentIndex, currentIndex + itemsPerRow);
+  // Mouse drag events (desktop)
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (animating) return;
+    isDragging.current = true;
+    startX.current = e.clientX;
   };
-
-  const topItems = getTopRowItems();
-  const bottomItems = getBottomRowItems();
-
-  // Kiểm tra có thể scroll không
-  const canScrollNext = currentIndex < maxIndex;
-  const canScrollPrev = currentIndex > 0;
+  const handleMouseMove = (e: React.MouseEvent) => {
+    // Không xử lý move ở đây để tránh lag, chỉ xử lý khi mouse up
+  };
+  const handleMouseUp = (e: React.MouseEvent) => {
+    if (!isDragging.current || animating || startX.current === null) return;
+    const endX = e.clientX;
+    const diff = endX - startX.current;
+    if (diff < -dragThreshold && currentIndex < images.length - 1) {
+      nextImage();
+    } else if (diff > dragThreshold && currentIndex > 0) {
+      prevImage();
+    }
+    isDragging.current = false;
+    startX.current = null;
+  };
+  const handleMouseLeave = (e: React.MouseEvent) => {
+    isDragging.current = false;
+    startX.current = null;
+  };
 
   return (
-    <section className="lib-image">
-      {/* Main Title */}
+    <section className="lib-image libimage-slider-root">
       <div className="lib-image-header">
         <Title variant="large" align="center">
           THƯ VIỆN HÌNH ẢNH
         </Title>
       </div>
-
-      <div className="lib-image-content">
-        {/* Navigation Buttons */}
+      <div className="libimage-slider-container">
         <button 
-          className="nav-button nav-button-prev" 
-          onClick={prevPage}
-          disabled={!canScrollPrev}
-          aria-label="Trang trước"
+          className="libimage-slider-btn libimage-slider-btn-left" 
+          onClick={prevImage} 
+          disabled={currentIndex === 0 || animating}
+          aria-label="Ảnh trước"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={36} />
         </button>
-
-        {/* Image Grid */}
-        <div className="image-grid-container">
-          <div className="image-grid-wrapper">
-            <div 
-              className="image-grid-slider"
-              style={{ transform: `translateX(-${currentIndex * 33.333333}%)` }}
-            >
-              {/* Tạo 3 bản sao để scroll mượt */}
-              {Array.from({ length: 3 }, (_, copyIndex) => (
-                <div key={copyIndex} className="image-grid">
-                  {/* Top Row */}
-                  {topItems.map((image, index) => (
-                    <div key={`top-${image.id}-${copyIndex}-${index}`} className="image-item">
-                      <div className="image-wrapper">
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          width={400}
-                          height={300}
-                          className="grid-image"
-                        />
-                        {image.title && (
-                          <div className="image-overlay">
-                            <h4 className="image-title">{image.title}</h4>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                  {/* Bottom Row */}
-                  {bottomItems.map((image, index) => (
-                    <div key={`bottom-${image.id}-${copyIndex}-${index}`} className="image-item">
-                      <div className="image-wrapper">
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          width={400}
-                          height={300}
-                          className="grid-image"
-                        />
-                        {image.title && (
-                          <div className="image-overlay">
-                            <h4 className="image-title">{image.title}</h4>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Navigation Buttons */}
-        <button 
-          className="nav-button nav-button-next" 
-          onClick={nextPage}
-          disabled={!canScrollNext}
-          aria-label="Trang tiếp"
+        <div
+          className="libimage-slider-image-wrapper"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
+          style={{ cursor: 'grab', userSelect: 'none' }}
         >
-          <ChevronRight size={24} />
+          {images.length > 0 && (
+            <div className={`libimage-slider-image-inner ${getSlideClass()}`} key={images[currentIndex]?.id}>
+              <Image
+                src={images[currentIndex].url}
+                alt={images[currentIndex].caption || 'Ảnh thư viện'}
+                width={1920}
+                height={800}
+                className="libimage-slider-image"
+                style={{ width: '100vw', maxWidth: '100vw', height: '100%', objectFit: 'cover' }}
+                priority
+                draggable={false}
+              />
+              {images[currentIndex].caption && (
+                <div className="libimage-slider-caption">
+                  {images[currentIndex].caption}
+                </div>
+              )}
+            </div>
+          )}
+          {loading && (
+            <div className="libimage-slider-loading">Đang tải ảnh...</div>
+          )}
+        </div>
+        <button 
+          className="libimage-slider-btn libimage-slider-btn-right" 
+          onClick={nextImage} 
+          disabled={currentIndex === images.length - 1 || animating}
+          aria-label="Ảnh tiếp theo"
+        >
+          <ChevronRight size={36} />
         </button>
       </div>
-
-      {/* View More Button */}
-      <div className="view-more-container">
-        <button className="view-more-button">
-          Xem thêm →
-        </button>
+      <div className="libimage-slider-indicator">
+        {images.map((img, idx) => (
+          <span key={img.id} className={idx === currentIndex ? 'active' : ''} />
+        ))}
       </div>
     </section>
   );

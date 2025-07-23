@@ -21,6 +21,7 @@ import News4Item from '@/components/sections/News4Item/News4Item';
 import FormReport from '@/components/sections/FormReport/FormReport';
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/shared/ScrollReveal';
+import LibImage from "@/components/sections/LibImage/LibImage";
 
 export default function HomePage() {
   return (
@@ -237,6 +238,9 @@ Chủ đầu tư Khang Điền – Keppel Land  dự kiến hoàn thiện tiện
       <ScrollReveal>
         <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/VI-SAO-NEN-MUA-GLADIA-KHANG-DIEN.jpg" fullImage={false} />
       </ScrollReveal>
+    <ScrollReveal>
+        <LibImage />
+    </ScrollReveal>
       <ScrollReveal>
         <NewsSectionExample />
       </ScrollReveal>
