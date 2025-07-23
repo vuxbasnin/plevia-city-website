@@ -4,7 +4,7 @@
 }
 
 .para-left-des-right__inner {
-  width: 84%;
+  width: 83vw;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -22,22 +22,22 @@
   padding: 40px 32px 40px 40px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 100%; /* Đảm bảo chiều cao bằng với ảnh */
+  justify-content: flex-start;
+  height: 100%;
 }
 
 .para-left-des-right__image-wrapper {
   width: 50%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 24px 40px 24px 0;
-  height: 100%; /* Đảm bảo chiều cao bằng với text */
+  padding: 40px 40px 24px 0;
+  height: 100%;
 }
 
 .para-left-des-right__image {
   width: 100%;
-  height: 100%; /* Ảnh luôn fill chiều cao của wrapper */
+  height: 100%;
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   object-fit: cover;
@@ -45,10 +45,11 @@
 }
 
 .para-left-des-right__title {
-  color: #1db954;
+  color: hsl(var(--primary));
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 16px;
+  text-align: left;
 }
 
 .para-left-des-right__description {
@@ -72,6 +73,14 @@
   text-align: justify;
 }
 
+.para-left-des-right__title--mobile {
+  display: none;
+}
+
+.para-left-des-right__text .para-left-des-right__title {
+  display: block;
+}
+
 @media (max-width: 900px) {
   .para-left-des-right__container {
     flex-direction: column;
@@ -84,5 +93,49 @@
   }
   .para-left-des-right__image {
     height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .para-left-des-right__inner {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    min-height: unset;
+  }
+
+  .para-left-des-right__title--mobile {
+    display: block;
+    text-align: center;
+    font-size: 1.25rem;
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+  .para-left-des-right__text .para-left-des-right__title {
+    display: none;
+  }
+
+  .para-left-des-right__image-wrapper {
+    order: 1;
+    width: 100%;
+    padding: 0 16px 0 16px;
+    margin-bottom: 16px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .para-left-des-right__image {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .para-left-des-right__text {
+    order: 2;
+    width: 100%;
+    padding: 0 16px 24px 16px;
+    align-items: stretch;
   }
 }
