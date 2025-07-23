@@ -7,6 +7,7 @@ import { getHeroSectionData } from '@/lib/firestoreService';
 import type { HeroSectionData } from '@/types/landingPageAdmin';
 import { defaultHeroSectionData } from '@/types/landingPageAdmin';
 import { Skeleton } from '@/components/ui/skeleton';
+import './ImageHeader.css';
 
 export default function ImageHeader({ imageUrl }: { imageUrl?: string }) {
   const [heroData, setHeroData] = useState<HeroSectionData>(defaultHeroSectionData);
