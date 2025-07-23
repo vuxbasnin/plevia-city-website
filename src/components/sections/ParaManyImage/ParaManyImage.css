@@ -43,6 +43,12 @@
   background: #f5f5f5;
 }
 
+.para-many-image-bullets {
+  list-style: disc;
+  padding-left: 32px;
+  margin: 16px 0;
+}
+
 @media (max-width: 900px) {
   .para-many-image-grid {
     grid-template-columns: repeat(2, 1fr);
