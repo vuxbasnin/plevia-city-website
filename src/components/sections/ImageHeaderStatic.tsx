@@ -18,7 +18,7 @@ export default function ImageHeaderStatic({ imageUrl, fullImage = true }: ImageH
     <section
       id="hero-static"
       className="relative flex flex-col items-center justify-center overflow-hidden bg-white"
-      style={fullImage ? { marginTop: 8, marginBottom: 8 } : { width: '85vw', margin: '0 auto', marginTop: 8, marginBottom: 8 }}
+      style={fullImage ? { marginTop: 8, marginBottom: 8 } : { width: '78vw', margin: '0 auto', marginTop: 8, marginBottom: 8 }}
     >
       <div className="relative w-full flex justify-center items-center">
         {imageLoading && (
@@ -29,7 +29,7 @@ export default function ImageHeaderStatic({ imageUrl, fullImage = true }: ImageH
             </div>
           </div>
         )}
-        <div style={{ position: 'relative', width: fullImage ? '100vw' : '85vw' }}>
+        <div style={{ position: 'relative', width: fullImage ? '100vw' : '78vw' }}>
           <Image
             src={currentImageUrl}
             alt="Hero Image"
@@ -44,7 +44,7 @@ export default function ImageHeaderStatic({ imageUrl, fullImage = true }: ImageH
             }}
             style={fullImage
               ? { visibility: imageLoading ? 'hidden' : 'visible', maxWidth: '100vw', width: '100vw', marginLeft: 'auto', marginRight: 'auto' }
-              : { visibility: imageLoading ? 'hidden' : 'visible', maxWidth: '85vw', width: '85vw', marginLeft: 'auto', marginRight: 'auto' }
+              : { visibility: imageLoading ? 'hidden' : 'visible', maxWidth: '78vw', width: '78vw', marginLeft: 'auto', marginRight: 'auto' }
             }
           />
           {/* Overlay đen mờ chỉ phủ lên ảnh */}

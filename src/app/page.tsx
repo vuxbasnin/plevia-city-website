@@ -41,7 +41,7 @@ export default function HomePage() {
             {
               level: 2,
               subtitle: "QUY HOẠCH",
-              subdescription: `Mật độ xây dựng chỉ 23,3%, 3 mặt giáp sông.\n5 công viên chủ đề bao gồm: Công viên trào mừng, Công viên Ven Sông, Công viên Sức khỏe và Công viên Cộng đồng.\nHệ giá trị 5 iFactors độc bản: iNature – Thiên nhiên, iEntertainment – Giải trí, iWel-being – Sức khỏe, iConvenience – Tiện nghi, iSustainability – Bền vững\nTiện ích: Hồ Cảnh Quan, Sân Golf mini, khu BBQ và đường chạy bộ 2km.\nThiết kế mảng xanh đa tầng.\nGladia Khang Điền không chỉ mang đến không gian sống xanh, trong lành mà còn là biểu tượng của sự đẳng cấp và tinh hoa, nơi mỗi ngày đều là một trải nghiệm tuyệt vời giữa thiên nhiên và sự sang trọng.`
+              subdescription: `Mật độ xây dựng chỉ 23,3%, 3 mặt giáp sông.\n5 công viên chủ đề bao gồm: Công viên chào mừng, Công viên Ven Sông, Công viên Sức khỏe và Công viên Cộng đồng.\nHệ giá trị 5 iFactors độc bản: iNature – Thiên nhiên, iEntertainment – Giải trí, iWel-being – Sức khỏe, iConvenience – Tiện nghi, iSustainability – Bền vững\nTiện ích: Hồ Cảnh Quan, Sân Golf mini, khu BBQ và đường chạy bộ 2km.\nThiết kế mảng xanh đa tầng.\nGladia Khang Điền không chỉ mang đến không gian sống xanh, trong lành mà còn là biểu tượng của sự đẳng cấp và tinh hoa, nơi mỗi ngày đều là một trải nghiệm tuyệt vời giữa thiên nhiên và sự sang trọng.`
             },
             {
               level: 1,

@@ -137,12 +137,12 @@ export default function Navbar() {
     >
       <div className="navbar-container">
         <div className="navbar-content">
-          {/* Logo Section - Ảnh đơn giản với url mới */}
-          <NextImage
-            src="https://khangdienhcm.com/wp-content/uploads/2023/06/logo-tap-doan-khang-dien.png"
-            alt="Logo Khang Điền"
-            width={120}
-            height={40}
+          {/* Logo Section - SVG mới */}
+          <img
+            src="/Logo_Standard_Final-3.svg"
+            alt="Logo"
+            width={300}
+            height={300}
             className="navbar-logo-img"
             style={{ objectFit: 'contain', display: 'block', marginLeft: 0, marginRight: 0 }}
           />

@@ -32,13 +32,15 @@
 }
 
 .piv-description {
-  width: 85vw;
+  /*width: 85vw;*/
+  width: 78vw;
   margin: 0 auto 24px auto;
   text-align: justify;
 }
 
 .piv-sub-description {
-  width: 85vw;
+  /*width: 85vw;*/
+  width: 78vw;
   margin: 0 auto 24px auto;
   font-size: 1rem;
   color: #444;
@@ -54,7 +56,8 @@
 }
 
 .piv-bullets {
-  width: 85vw;
+  /*width: 85vw;*/
+  width: 78vw;
   margin: 0 auto 16px auto;
   padding-left: 24px;
 }
@@ -83,13 +86,15 @@
 }
 
 .piv-children {
-  width: 85vw;
+  /*width: 85vw;*/
+  width: 84vw;
   margin: 0 auto;
   padding-bottom: 32px;
 }
 
 .piv-content > *:not(.piv-title):not(.piv-image-wrapper) {
-  width: 85vw;
+  /*width: 85vw;*/
+  width: 78vw;
   margin-left: auto;
   margin-right: auto;
 }
