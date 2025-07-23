@@ -57,7 +57,7 @@ export default function HomePage() {
       </ScrollReveal>
       <ScrollReveal>
         <ParaLeftDesRight
-          title="PLEVIA CITY - NƠI THỂ HIỆN ĐẲNG CẤP"
+          title=""
           description={``}
           sections={[
             {
