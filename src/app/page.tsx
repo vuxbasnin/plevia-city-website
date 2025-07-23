@@ -55,7 +55,50 @@ export default function HomePage() {
         />
       </ScrollReveal>
       <ScrollReveal>
-        <TableLeftImageRight {...tableLeftImageRightExample} />
+        <ParaLeftDesRight
+          title="PLEVIA CITY - NƠI THỂ HIỆN ĐẲNG CẤP"
+          description={``}
+          sections={[
+            {
+              level: 1,
+              subtitle: "",
+              subdescription: `Tên dự án: Plevia City`
+            },
+            {
+              level: 1,
+              subtitle: "",
+              subdescription: `Vị trí: 63–65 Lý Nam Đế, p. Hội Phú, t.Gia Lai`
+            },
+            {
+              level: 1,
+              subtitle: "",
+              subdescription: `Chủ đầu tư: Công ty Cổ phần Tập đoàn Đầu tư Bắc Hải`
+            },
+            {
+              level: 1,
+              subtitle: "",
+              subdescription: `Diện tích: 7,04 ha`
+            },
+            {
+              level: 1,
+              subtitle: "",
+              subdescription: `Quy mô: 368 căn nhà phố & shophouse
+`
+            },
+            {
+              level: 1,
+              subtitle: "",
+              subdescription: `Diện tích sản phẩm: 110 m² đến 120 m²`
+            },
+            {
+              level: 1,
+              subtitle: "",
+              subdescription: `Thiết kế: Công ty Kiến Trúc Việt`
+            }
+          ]}
+          imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/06/PHOI-CANH-BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN.jpg"
+          reverse={true}
+        />
       </ScrollReveal>
       <ScrollReveal>
         <ParaImageVertical
