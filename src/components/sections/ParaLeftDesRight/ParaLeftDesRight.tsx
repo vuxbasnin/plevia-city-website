@@ -1,5 +1,6 @@
 import React from "react";
 import "./ParaLeftDesRight.css";
+import { reverse } from "dns";
 
 export interface ParaLeftDesRightSection {
   level: 1 | 2;
@@ -13,6 +14,7 @@ interface ParaLeftDesRightProps {
   sections: ParaLeftDesRightSection[];
   imageUrl: string;
   backgroundColor?: 'white' | 'gray'; // mặc định là white
+  reverse?: boolean; // nếu true, sẽ đảo ngược vị trí của text và ảnh
 }
 
 const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
@@ -21,6 +23,7 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
   sections,
   imageUrl,
   backgroundColor = 'white',
+  reverse
 }) => {
   return (
     <div
@@ -33,36 +36,72 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
       {title && (
         <h2 className="para-left-des-right__title para-left-des-right__title--mobile">{title}</h2>
       )}
-      <div className="para-left-des-right__inner">
-        <div className="para-left-des-right__text">
-          {title && (
-            <h2 className="para-left-des-right__title">{title}</h2>
-          )}
-          {description && (
-            <p className="para-left-des-right__description">{description}</p>
-          )}
-          {sections && sections.length > 0 && sections.map((section, idx) => (
-            <div key={idx} style={{ marginBottom: 20 }}>
-              {section.level === 1 ? (
-                <>
-                  {section.subtitle && <h3 className="para-left-des-right__subtitle">{section.subtitle}</h3>}
-                  {section.subdescription && <p className="para-left-des-right__subdescription">{section.subdescription}</p>}
-                </>
-              ) : (
-                <>
-                  {section.subtitle && <h4 className="para-left-des-right__subtitle para-left-des-right__subtitle--level2" style={{ fontWeight: 'bold' }}>{section.subtitle}</h4>}
-                  {section.subdescription && <p className="para-left-des-right__subdescription">{section.subdescription}</p>}
-                </>
+      {reverse ? (
+        <>
+          <div className="para-left-des-right__inner reverse">
+            <div className="para-left-des-right__image-wrapper__reverse">
+              {imageUrl && (
+                <img src={imageUrl} alt="section" className="para-left-des-right__image" />
               )}
             </div>
-          ))}
-        </div>
-        <div className="para-left-des-right__image-wrapper">
-          {imageUrl && (
-            <img src={imageUrl} alt="section" className="para-left-des-right__image" />
-          )}
-        </div>
-      </div>
+            <div className="para-left-des-right__text__reverse">
+              {description && (
+                <p className="para-left-des-right__description">{description}</p>
+              )}
+              {sections && sections.length > 0 && sections.map((section, idx) => (
+                <div key={idx} style={{ marginBottom: 20 }}>
+                  {section.level === 1 ? (
+                    <>
+                      {section.subtitle && <h3 className="para-left-des-right__subtitle">{section.subtitle}</h3>}
+                      {section.subdescription && <p className="para-left-des-right__subdescription">{section.subdescription}</p>}
+                    </>
+                  ) : (
+                    <>
+                      {section.subtitle && <h4 className="para-left-des-right__subtitle para-left-des-right__subtitle--level2" style={{ fontWeight: 'bold' }}>{section.subtitle}</h4>}
+                      {section.subdescription && <p className="para-left-des-right__subdescription">{section.subdescription}</p>}
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="para-left-des-right__inner">
+            <div className="para-left-des-right__text">
+              {title && (
+                <h2 className="para-left-des-right__title">{title}</h2>
+              )}
+              {description && (
+                <p className="para-left-des-right__description">{description}</p>
+              )}
+              {sections && sections.length > 0 && sections.map((section, idx) => (
+                <div key={idx} style={{ marginBottom: 20 }}>
+                  {section.level === 1 ? (
+                    <>
+                      {section.subtitle && <h3 className="para-left-des-right__subtitle">{section.subtitle}</h3>}
+                      {section.subdescription && <p className="para-left-des-right__subdescription">{section.subdescription}</p>}
+                    </>
+                  ) : (
+                    <>
+                      {section.subtitle && <h4 className="para-left-des-right__subtitle para-left-des-right__subtitle--level2" style={{ fontWeight: 'bold' }}>{section.subtitle}</h4>}
+                      {section.subdescription && <p className="para-left-des-right__subdescription">{section.subdescription}</p>}
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className="para-left-des-right__image-wrapper">
+              {imageUrl && (
+                <img src={imageUrl} alt="section" className="para-left-des-right__image" />
+              )}
+            </div>
+          </div>
+        </>
+      )
+      }
+
     </div>
   );
 };
