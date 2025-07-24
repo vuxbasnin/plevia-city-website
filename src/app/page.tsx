@@ -57,7 +57,7 @@ export default function HomePage() {
       </ScrollReveal>
       <ScrollReveal>
         <ParaLeftDesRight
-          title=""
+          title="THÔNG TIN TỔNG QUAN"
           description={``}
           sections={[
             {

@@ -51,6 +51,9 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
               )}
             </div>
             <div className="para-left-des-right__text__reverse">
+              {title && (
+                <h2 className="para-left-des-right__title">{title}</h2>
+              )}
               {description && (
                 <p className="para-left-des-right__description">{description}</p>
               )}
