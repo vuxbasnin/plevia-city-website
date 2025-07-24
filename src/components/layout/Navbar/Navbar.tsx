@@ -139,7 +139,7 @@ export default function Navbar() {
         <div className="navbar-content">
           {/* Logo Section - SVG mới */}
           <img
-            src="/Logo_Standard_Final-3.svg"
+            src="/Logo_Standard_Final-14.svg"
             alt="Logo"
             width={300}
             height={300}

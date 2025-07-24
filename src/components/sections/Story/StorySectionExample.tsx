@@ -15,7 +15,7 @@ const StorySectionExample: React.FC = () => {
       logo: {
         mainText: "Ông Roger Gaspar",
         subText: "Kiến trúc sư trưởng",
-        tagline: "Dự án Thanh Xuan Valley"
+        tagline: "Dự án Plevia City"
       }
     },
     {
@@ -24,11 +24,11 @@ const StorySectionExample: React.FC = () => {
       imageSrc: "/images/design-vision.jpg",
       imageAlt: "Tầm nhìn thiết kế dự án",
       description: [
-        "Dự án Thanh Xuan Valley được thiết kế với tầm nhìn tạo nên một cộng đồng sống hiện đại, nơi con người và thiên nhiên hòa hợp trong một không gian sống đẳng cấp.",
+        "Dự án Plevia City được thiết kế với tầm nhìn tạo nên một cộng đồng sống hiện đại, nơi con người và thiên nhiên hòa hợp trong một không gian sống đẳng cấp.",
         "Mỗi chi tiết thiết kế đều được chăm chút tỉ mỉ, từ việc bố trí không gian đến việc lựa chọn vật liệu, tất cả đều hướng đến mục tiêu tạo nên giá trị bền vững cho cư dân."
       ],
       logo: {
-        mainText: "Thanh Xuan Valley",
+        mainText: "Plevia City",
         subText: "Tầm nhìn thiết kế",
         tagline: "Nơi cuộc sống thăng hoa"
       }

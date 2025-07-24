@@ -27,7 +27,7 @@
 }
 
 .list-news__title {
-  font-family: 'Playfair Display', 'Times New Roman', serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 2.5rem;
   font-weight: 600;
   color: #1f2937;
@@ -35,6 +35,7 @@
   margin-bottom: 60px;
   letter-spacing: -0.02em;
   position: relative;
+  text-transform: uppercase;
 }
 
 .list-news__title::after {

@@ -12,9 +12,9 @@ const testNewsData = [
   {
     id: '1',
     imageUrl: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop',
-    imageAlt: 'Thanh Xuan Valley - Xe convertible trên đường rừng thông',
-    title: 'Thanh Xuan Valley, điều kỳ diệu độc bản từ thời gian',
-    description: 'Thời gian là vật liệu kiến trúc quý giá nhất, và Thanh Xuan Valley được tạo nên từ vật liệu hiếm có này. 50 năm kể từ khi những cây thông non được trồng, nơi đây đã trở thành một kiệt tác của thiên nhiên và con người.'
+    imageAlt: 'Plevia City - Xe convertible trên đường rừng thông',
+    title: 'Plevia City, điều kỳ diệu độc bản từ thời gian',
+    description: 'Thời gian là vật liệu kiến trúc quý giá nhất, và Plevia City được tạo nên từ vật liệu hiếm có này. 50 năm kể từ khi những cây thông non được trồng, nơi đây đã trở thành một kiệt tác của thiên nhiên và con người.'
   },
   {
     id: '2',

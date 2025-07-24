@@ -43,7 +43,7 @@ const FormInfo: React.FC = () => {
         <div>
           <h2 className="form-info-heading">CÙNG KẾT NỐI</h2>
           <p className="form-info-subtext">
-            Chào đón bạn đến với Thanh Xuan Valley.<br />
+            Chào đón bạn đến với Plevia City<br />
             Vui lòng để lại thông tin tại đây
           </p>
         </div>

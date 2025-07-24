@@ -13,10 +13,10 @@ const ImageWithDoubleCaption: React.FC<ImageWithDoubleCaptionProps> = ({ imageUr
         src={imageUrl}
         style={{ width: "100vw", maxWidth: "100vw", display: "block", margin: 0, borderRadius: 0 }}
       />
-      <div style={{ textAlign: "center", marginTop: 16 }}>
-        <div style={{ fontWeight: 700, fontSize: "1.5rem", fontFamily: "Roboto, sans-serif" }}>{caption1}</div>
-        <div style={{ fontWeight: 700, fontSize: "1.15rem", fontFamily: "Roboto, sans-serif", marginTop: 4 }}>{caption2}</div>
-      </div>
+      {/*<div style={{ textAlign: "center", marginTop: 16 }}>*/}
+      {/*  <div style={{ fontWeight: 700, fontSize: "1.5rem", fontFamily: "Roboto, sans-serif" }}>{caption1}</div>*/}
+      {/*  <div style={{ fontWeight: 700, fontSize: "1.15rem", fontFamily: "Roboto, sans-serif", marginTop: 4 }}>{caption2}</div>*/}
+      {/*</div>*/}
     </div>
   );
 };

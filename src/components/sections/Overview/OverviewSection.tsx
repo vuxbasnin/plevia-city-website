@@ -11,7 +11,7 @@ export default function Overview() {
   const investorData = {
     title: "THÔNG TIN TỔNG QUAN",
     imageSrc: "/images/bim-land-investor.jpg", // Thay đổi đường dẫn ảnh thực tế
-    imageAlt: "BIM Land - Chủ đầu tư bất động sản hàng đầu Việt Nam",
+    imageAlt: "BẮC HẢI - Chủ đầu tư bất động sản hàng đầu Việt Nam",
     description: [
       "Là một trong những nhà phát triển bất động sản hàng đầu Việt Nam, với hơn 30 năm kinh nghiệm kiến tạo những dự án tầm cỡ quốc tế, BIM Land không chỉ tạo ra những sản phẩm bất động sản đơn thuần mà luôn hướng đến việc phát triển những điểm đến đẳng cấp, bền vững, mang lại giá trị lâu dài cho khách hàng và cộng đồng.",
       "Với quỹ đất hơn 9 triệu m2 tại Quảng Ninh, Phú Quốc, Vĩnh Phúc, Hà Nội, Ninh Thuận, Lào và vẫn đang tiếp tục mở rộng đến các thành phố và điểm đến du lịch tiềm năng, BIM Land từng bước quy hoạch và phát triển nhiều vùng đất hoang sơ trở thành những khu đô thị du lịch, khu phức hợp du lịch đạt tiêu chuẩn quốc tế."
@@ -26,7 +26,7 @@ export default function Overview() {
   const investorData2 = {
     title: "GIỚI THIỆU CHỦ ĐẦU TƯ",
     imageSrc: "/images/bim-land-investor.jpg", // Thay đổi đường dẫn ảnh thực tế
-    imageAlt: "BIM Land - Chủ đầu tư bất động sản hàng đầu Việt Nam",
+    imageAlt: "BẮC HẢI - Chủ đầu tư bất động sản hàng đầu Việt Nam",
     description: [
       "Là một trong những nhà phát triển bất động sản hàng đầu Việt Nam, với hơn 30 năm kinh nghiệm kiến tạo những dự án tầm cỡ quốc tế, BIM Land không chỉ tạo ra những sản phẩm bất động sản đơn thuần mà luôn hướng đến việc phát triển những điểm đến đẳng cấp, bền vững, mang lại giá trị lâu dài cho khách hàng và cộng đồng.",
       "Với quỹ đất hơn 9 triệu m2 tại Quảng Ninh, Phú Quốc, Vĩnh Phúc, Hà Nội, Ninh Thuận, Lào và vẫn đang tiếp tục mở rộng đến các thành phố và điểm đến du lịch tiềm năng, BIM Land từng bước quy hoạch và phát triển nhiều vùng đất hoang sơ trở thành những khu đô thị du lịch, khu phức hợp du lịch đạt tiêu chuẩn quốc tế."
@@ -38,45 +38,45 @@ export default function Overview() {
     }
   };
 
-  // Dữ liệu cho AutoScrollSmall component - các dự án của BIM Land
+  // Dữ liệu cho AutoScrollSmall component - các dự án của BẮC HẢI
   const projectsData = {
     mainTitle: "ĐỘI NGŨ VẬN HÀNH",
     projects: [
       {
         id: "1",
-        title: "BIM Land Phú Quốc",
+        title: "BẮC HẢI Phú Quốc",
         imageUrl: "/images/projects/phu-quoc.jpg",
-        alt: "Dự án BIM Land Phú Quốc"
+        alt: "Dự án BẮC HẢI Phú Quốc"
       },
       {
         id: "2", 
-        title: "BIM Land Quảng Ninh",
+        title: "BẮC HẢI Quảng Ninh",
         imageUrl: "/images/projects/quang-ninh.jpg",
-        alt: "Dự án BIM Land Quảng Ninh"
+        alt: "Dự án BẮC HẢI Quảng Ninh"
       },
       {
         id: "3",
-        title: "BIM Land Vĩnh Phúc",
+        title: "BẮC HẢI Vĩnh Phúc",
         imageUrl: "/images/projects/vinh-phuc.jpg",
-        alt: "Dự án BIM Land Vĩnh Phúc"
+        alt: "Dự án BẮC HẢI Vĩnh Phúc"
       },
       {
         id: "4",
-        title: "BIM Land Hà Nội",
+        title: "BẮC HẢI Hà Nội",
         imageUrl: "/images/projects/ha-noi.jpg",
-        alt: "Dự án BIM Land Hà Nội"
+        alt: "Dự án BẮC HẢI Hà Nội"
       },
       {
         id: "5",
-        title: "BIM Land Ninh Thuận",
+        title: "BẮC HẢI Ninh Thuận",
         imageUrl: "/images/projects/ninh-thuan.jpg",
-        alt: "Dự án BIM Land Ninh Thuận"
+        alt: "Dự án BẮC HẢI Ninh Thuận"
       },
       {
         id: "6",
-        title: "BIM Land Lào",
+        title: "BẮC HẢI Lào",
         imageUrl: "/images/projects/laos.jpg",
-        alt: "Dự án BIM Land Lào"
+        alt: "Dự án BẮC HẢI Lào"
       }
     ]
   };
@@ -107,7 +107,7 @@ export default function Overview() {
             <div className="video-container">
               <iframe
                 src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-                title="Thanh Xuan Valley - Tầm Nhìn Phát Triển"
+                title="Plevia City - Tầm Nhìn Phát Triển"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

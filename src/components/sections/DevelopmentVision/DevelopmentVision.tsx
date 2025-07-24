@@ -7,7 +7,7 @@ const DevelopmentVision: React.FC = () => {
       <div className="development-vision-container">
         {/* Title */}
         <h2 className="development-vision-title">
-          TẦM NHÌN PHÁT TRIỂN THANHXUAN VALLEY
+          TẦM NHÌN PHÁT TRIỂN PLEVIA CITY
         </h2>
 
         {/* Images Section */}
@@ -55,7 +55,7 @@ const DevelopmentVision: React.FC = () => {
         {/* Description Section */}
         <div className="development-vision-description">
           <p>
-            Thanh Xuan Valley là một không gian sống yên bình, tự nhiên và sang trọng, 
+            Plevia City là một không gian sống yên bình, tự nhiên và sang trọng, 
             được thiết kế để mang lại trải nghiệm sống hoàn hảo cho cư dân. 
             Với tầm nhìn phát triển bền vững, chúng tôi cam kết tạo ra một môi trường 
             sống hài hòa giữa con người và thiên nhiên.

@@ -251,7 +251,7 @@ export default function HomePage() {
         </ScrollReveal>
       <ScrollReveal>
         <ParaManyImage
-          title="TIẾN ĐỘ XÂY DỰNG DỰ ÁN GLADIA KHANG ĐIỀN – THÁNG 05/2025"
+          title="TIẾN ĐỘ XÂY DỰNG DỰ ÁN"
           paragraph="Cập nhật tiến độ xây dựng mới nhất dự án Gladia. Nhà thầu An Phong và Weathcons đang tích cực xây dựng, khối lượng công việc đạt hơn 95%. Trong đó:"
           bullets={[
             "Hạ tầng dự án đã hoàn thiện.",

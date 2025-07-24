@@ -11,7 +11,7 @@ const TabExample2: React.FC = () => {
       content: {
         heading: 'VỊ TRÍ KẾT NỐI THUẬN TIỆN',
         paragraphs: [
-          'Thanh Xuan Valley nằm kế bên hồ Đại Lải, tọa lạc tại cửa ngõ phía Bắc Hà Nội, chỉ cách ranh giới Hà Nội 5km.',
+          'Plevia City nằm kế bên hồ Đại Lải, tọa lạc tại cửa ngõ phía Bắc Hà Nội, chỉ cách ranh giới Hà Nội 5km.',
           'Hạ tầng giao thông kết nối hoàn thiện với cầu Nhật Tân, cầu Thăng Long; Cao tốc, đại lộ nằm trong con đường xuyên Á; Tuyến đường Vành đai 4 Vùng Thủ đô; Tuyến đường Vành đai 5 Vùng Thủ đô,....'
         ],
         bulletPoints: [
@@ -29,7 +29,7 @@ const TabExample2: React.FC = () => {
       content: {
         heading: 'ĐỊA HÌNH & THIÊN NHIÊN ĐỘC TÔN',
         paragraphs: [
-          'Thanh Xuan Valley được thiết kế hài hòa với địa hình tự nhiên, tận dụng tối đa cảnh quan thiên nhiên xung quanh.',
+          'Plevia City được thiết kế hài hòa với địa hình tự nhiên, tận dụng tối đa cảnh quan thiên nhiên xung quanh.',
           'Dự án được bao bọc bởi hệ thống rừng cây xanh mát, hồ nước trong lành và không khí trong lành của vùng núi.'
         ],
         bulletPoints: [

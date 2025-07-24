@@ -22,8 +22,7 @@ export default function Footer() {
           <div className="footer-column">
             <h5 className="footer-title">Đơn vị phát triển</h5>
             <div className="bim-logo">
-              <span className="bim-logo-main">BIM</span>
-              <span className="bim-logo-sub">Land</span>
+              <span className="bim-logo-main">BẮC HẢI</span>
             </div>
             <ul className="footer-links">
               <li>
@@ -41,9 +40,9 @@ export default function Footer() {
 
           {/* Column 2: Ghé thăm thung lũng */}
           <div className="footer-column">
-            <h5 className="footer-title-bold">Ghé thăm thung lũng</h5>
+            <h5 className="footer-title-bold">Ghé thăm </h5>
             <p className="footer-address">
-              Địa chỉ: Thanh Xuan Valley, Phường Xuân Hòa, Tỉnh Phú Thọ
+              Địa chỉ: 63-65 Lý Nam Đế, phường Hội Phú, tỉnh Gia Lai
             </p>
             <button className="footer-button">
               Đặt lịch hẹn
@@ -52,10 +51,10 @@ export default function Footer() {
 
           {/* Column 3: Tham quan Sales Gallery */}
           <div className="footer-column">
-            <h5 className="footer-title-bold">Tham quan Sales Gallery</h5>
+            <h5 className="footer-title-bold">Tham quan Dự án</h5>
             <div className="footer-text">
-              <p>1/ Tại dự án: Khu Valley Center</p>
-              <p>2/ Tại Hà Nội: Tầng 1, BIM Gallery, Tòa nhà Aqua Central - 44 Yên Phụ, Ba Đình, Hà Nội</p>
+              <p>1/ Tại dự án: Khu đô thị Plevia City</p>
+              <p>2/ Tại Hà Nội: Tầng 04, tòa nhà Thương mại và dịch vụ B-CC, Dự án khu nhà ở Ngân Hà Vạn Phúc, Phố Tố Hữu, Phường Hà Đông, Thành phố Hà Nội, Việt Nam</p>
             </div>
           </div>
 
@@ -63,10 +62,10 @@ export default function Footer() {
           <div className="footer-column">
             <h5 className="footer-title-bold">Liên hệ</h5>
             <div className="footer-contact-info">
-              <p>cskh-bimland@bimgroup.com</p>
+              <p>hotro@tapdoanbachai.vn</p>
               <div className="footer-hotline">
                 <span>Hotline: </span>
-                <span className="footer-hotline-number">19004791</span>
+                <span className="footer-hotline-number">0923.15.3939</span>
               </div>
             </div>
             <div className="footer-social-icons">
@@ -82,7 +81,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <div className="footer-copyright">
-            &copy; {new Date().getFullYear()} BIM Land. Đã đăng ký Bản quyền.
+            &copy; {new Date().getFullYear()} BẮC HẢI. Đã đăng ký Bản quyền.
           </div>
         </div>
       </div>

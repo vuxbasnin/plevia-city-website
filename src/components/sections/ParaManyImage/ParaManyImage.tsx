@@ -13,7 +13,6 @@ const ParaManyImage: React.FC<ParaManyImageProps> = ({ title, paragraph, bullets
   return (
     <div className="para-many-image-container">
       <h2 className="para-many-image-title">{title}</h2>
-      <div className="para-many-image-line" />
       <p className="para-many-image-paragraph">{paragraph}</p>
       {bullets && bullets.length > 0 && (
         <ul className="para-many-image-bullets">

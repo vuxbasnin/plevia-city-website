@@ -11,6 +11,10 @@
   padding: 0 2rem;
 }
 
+.lib-image-header .title {
+  text-transform: uppercase;
+}
+
 .lib-image-content {
   position: relative;
   display: flex;

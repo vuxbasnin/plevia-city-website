@@ -25,9 +25,9 @@ export default function StyleLifePage() {
           projects={[
             {
               id: "1",
-              title: "Thanh Xuan Valley",
+              title: "Plevia City",
               imageUrl: "/images/thanh-xuan-valley.jpg",
-              alt: "Thanh Xuan Valley - Dự án bất động sản với hồ nước và nhà ở"
+              alt: "Plevia City - Dự án bất động sản với hồ nước và nhà ở"
             },
             {
               id: "2",

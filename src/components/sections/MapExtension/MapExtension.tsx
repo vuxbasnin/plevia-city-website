@@ -25,12 +25,12 @@ export default function MapExtension() {
         <div className="map-extension-sidebar">
           <div className="sidebar-content">
             <h3 className="sidebar-title">
-              Country Club by InterContinental Thanh Xuan Valley Resort
+              Country Club by InterContinental Plevia City Resort
             </h3>
             <div className="sidebar-image-container">
               <Image
                 src="/images/country-club.jpg"
-                alt="Country Club by InterContinental Thanh Xuan Valley Resort"
+                alt="Country Club by InterContinental Plevia City Resort"
                 width={400}
                 height={300}
                 className="sidebar-image"
@@ -38,7 +38,7 @@ export default function MapExtension() {
             </div>
             <p className="sidebar-description">
               Clubhouse quy mô nhất Việt Nam với diện tích 1,7ha, hơn 60 tiện ích dịch vụ đẳng cấp, 
-              được quản lý vận hành bởi đội ngũ InterContinental Thanh Xuan Valley Resort
+              được quản lý vận hành bởi đội ngũ InterContinental Plevia City Resort
             </p>
             <button className="explore-button">
               Khám phá ngay →
@@ -49,7 +49,7 @@ export default function MapExtension() {
         <div className="map-container">
           <Image
             src="/images/valley-map.jpg"
-            alt="Bản đồ Thanh Xuan Valley Resort"
+            alt="Bản đồ Plevia City Resort"
             width={1200}
             height={800}
             className="main-map-image"
@@ -62,8 +62,8 @@ export default function MapExtension() {
             <div className="map-label residences" data-label="VALLEY PARK RESIDENCES">
               <span className="label-text">VALLEY PARK RESIDENCES</span>
             </div>
-            <div className="map-label resort" data-label="InterContinental Thanh Xuan Valley Resort">
-              <span className="label-text">InterContinental Thanh Xuan Valley Resort</span>
+            <div className="map-label resort" data-label="InterContinental Plevia City Resort">
+              <span className="label-text">InterContinental Plevia City Resort</span>
             </div>
             <div className="map-label valley-park" data-label="Valley Park">
               <span className="label-text">Valley Park</span>
@@ -71,8 +71,8 @@ export default function MapExtension() {
             <div className="map-label treewalk" data-label="Treewalk">
               <span className="label-text">Treewalk</span>
             </div>
-            <div className="map-label country-club" data-label="Country Club by InterContinental Thanh Xuan Valley Resort">
-              <span className="label-text">Country Club by InterContinental Thanh Xuan Valley Resort</span>
+            <div className="map-label country-club" data-label="Country Club by InterContinental Plevia City Resort">
+              <span className="label-text">Country Club by InterContinental Plevia City Resort</span>
             </div>
             <div className="map-label sports-club" data-label="Sports Club">
               <span className="label-text">Sports Club</span>

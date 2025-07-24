@@ -87,7 +87,7 @@ const TabExample: React.FC = () => {
   return (
     <div style={{ padding: '20px' }}>
       <TabNew
-        title="KEY POINTS"
+        title="Thiết kế đẳng cấp – Không gian sống khác biệt"
         tabs={tabData}
       />
     </div>
