@@ -102,6 +102,15 @@ export default function HomePage() {
         />
       </ScrollReveal>
       <ScrollReveal>
+        <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/MAT-BANG-DU-AN-GLADIA-KHANG-DIEN-QUAN-2-1.webp" fullImage={true} />
+      </ScrollReveal>
+      <ScrollReveal>
+        <TabProject />
+      </ScrollReveal>
+      <ScrollReveal>
+        <TabExample />
+      </ScrollReveal>
+      <ScrollReveal>
         <ParaImageVertical
           title="VỊ TRÍ ĐẮC ĐỊA – KẾT NỐI HOÀN HẢO"
           description={`Dự án Gladia Khang Điền tọa lạc tại mặt tiền đường Võ Chí Công, P. Bình Trưng (Quận 2), TP.HCM. Nơi đây được đánh giá là khu vực phát triển nhanh nhất tại TP.HCM. Nhiều dự án hạ tầng quan trọng kết nối về trung tâm Quận 1 và tuyến cao tốc Long Thành – Dầu Giây,… giúp khu Đông trở thành một khu đô thị mới đáng sống. Từ Gladia, cư dân di chuyển:`}
@@ -179,13 +188,8 @@ export default function HomePage() {
           ]}
           imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/06/PHOI-CANH-BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN.jpg"
           backgroundColor='gray'
+          reverse={true}
         />
-      </ScrollReveal>
-      <ScrollReveal>
-        <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/MAT-BANG-DU-AN-GLADIA-KHANG-DIEN-QUAN-2-1.webp" fullImage={true} />
-      </ScrollReveal>
-      <ScrollReveal>
-        <TabProject />
       </ScrollReveal>
       <ScrollReveal>
         <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/NHA-PHO-LIEN-KE-VUON-GLADIA-KHANG-DIEN-1.jpg" fullImage={false} />

@@ -71,6 +71,34 @@ const Tab: React.FC<TabProps> = ({ title, tabs, className = '' }) => {
         ))}
       </div>
 
+      {/* Arrow Left */}
+      {activeTab > 0 && (
+        <button
+          className="tab-arrow left"
+          onClick={() => setActiveTab(activeTab - 1)}
+          aria-label="Previous"
+          type="button"
+        >
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M15 18l-6-6 6-6" stroke="#374151" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      )}
+
+      {/* Arrow Right */}
+      {activeTab < tabs.length - 1 && (
+        <button
+          className="tab-arrow right"
+          onClick={() => setActiveTab(activeTab + 1)}
+          aria-label="Next"
+          type="button"
+        >
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M9 6l6 6-6 6" stroke="#374151" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      )}
+
       {/* Content Area */}
       <div className="tab-content-area">
         <div 
@@ -87,9 +115,11 @@ const Tab: React.FC<TabProps> = ({ title, tabs, className = '' }) => {
                   <h3 className="tab-content-heading">{tab.content.heading}</h3>
                   
                   {tab.content.paragraphs.map((paragraph, pIndex) => (
-                    <p key={pIndex} className="tab-content-paragraph">
-                      {paragraph}
-                    </p>
+                    <p
+                      key={pIndex}
+                      className="tab-content-paragraph"
+                      dangerouslySetInnerHTML={{ __html: paragraph }}
+                    />
                   ))}
 
                   {tab.content.bulletPoints.length > 0 && (
