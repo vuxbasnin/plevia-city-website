@@ -1,22 +1,19 @@
 "use client";
 import { useState, useEffect } from "react";
-import { getGalleryImages, addGalleryImage, deleteGalleryImage, updateGalleryImageCaption } from "@/lib/firestoreService";
+import { addLifestyleImage, getLifestyleImages, deleteLifestyleImage, updateLifestyleImageCaption } from "@/lib/firestoreService";
 import { uploadFileToCloudinary } from "@/lib/cloudinaryUploader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/useAuth";
 
-// Màn hình upload ảnh mới
-function GalleryImageUploadScreen({ onBack, onUploaded }: { onBack: () => void, onUploaded: () => void }) {
-  // Đổi từ 1 file sang nhiều file
+function LifestyleImageUploadScreen({ onBack, onUploaded }: { onBack: () => void, onUploaded: () => void }) {
   const [files, setFiles] = useState<FileList | null>(null);
   const [caption, setCaption] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const { toast } = useToast();
   const { user } = useAuth();
 
-  // Hàm xử lý upload nhiều ảnh
   const handleUpload = async () => {
     if (!files || files.length === 0) return;
     setIsUploading(true);
@@ -27,14 +24,14 @@ function GalleryImageUploadScreen({ onBack, onUploaded }: { onBack: () => void, 
       try {
         const url = await uploadFileToCloudinary(file, "gallery_images");
         const uploadedBy = user?.displayName || user?.email || "unknown";
-        await addGalleryImage({ url, caption, uploadedBy });
+        await addLifestyleImage({ url, caption, uploadedBy });
         successCount++;
       } catch (e) {
         failCount++;
       }
     }
     if (successCount > 0) {
-      toast({ title: "Thành công", description: `Đã upload ${successCount} ảnh!` });
+      toast({ title: "Thành công", description: `Đã upload ${successCount} ảnh lifestyle!` });
     }
     if (failCount > 0) {
       toast({ title: "Lỗi", description: `Có ${failCount} ảnh upload thất bại!`, variant: "destructive" });
@@ -48,29 +45,27 @@ function GalleryImageUploadScreen({ onBack, onUploaded }: { onBack: () => void, 
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Upload Mẫu nhà mới</h1>
+      <h1 className="text-2xl font-bold">Upload Ảnh Lifestyle mới</h1>
       <div className="flex gap-2 items-end">
-        {/* Cho phép chọn nhiều file */}
         <Input type="file" accept="image/*" multiple onChange={e => setFiles(e.target.files)} />
         <Input placeholder="Chú thích ảnh (tùy chọn)" value={caption} onChange={e => setCaption(e.target.value)} />
         <Button onClick={handleUpload} disabled={!files || files.length === 0 || isUploading}>
-          {isUploading ? "Đang upload..." : "Upload mẫu nhà"}
+          {isUploading ? "Đang upload..." : "Upload ảnh"}
         </Button>
         <Button variant="outline" onClick={onBack}>Quay lại</Button>
       </div>
-      {/* Hiển thị danh sách file đã chọn */}
       {files && files.length > 0 && (
         <div className="mt-2 text-sm text-muted-foreground">
-          Đã chọn {files.length} mẫu nhà: {Array.from(files).map(f => f.name).join(", ")}
+          Đã chọn {files.length} ảnh: {Array.from(files).map(f => f.name).join(", ")}
         </div>
       )}
     </div>
   );
 }
 
-export default function GalleryAdminPage() {
+export default function LifestyleImagesAdminPage() {
   const [images, setImages] = useState<any[]>([]);
-  const [showUpload, setShowUpload] = useState(false); // State chuyển màn hình
+  const [showUpload, setShowUpload] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -78,34 +73,28 @@ export default function GalleryAdminPage() {
   }, []);
 
   const fetchImages = async () => {
-    const imgs = await getGalleryImages();
+    const imgs = await getLifestyleImages();
     setImages(imgs);
   };
 
-  // Hàm xử lý xóa ảnh khỏi thư viện
-  // Chỉ xóa document ảnh trên Firestore, KHÔNG xóa file ảnh trên Cloudinary
-  // => Ảnh sẽ không còn xuất hiện trên website/app, nhưng file vẫn còn trên Cloudinary (có thể dọn dẹp sau nếu cần)
   const handleDelete = async (id: string, url: string) => {
-    await deleteGalleryImage(id); // Xóa document ảnh khỏi Firestore
-    fetchImages(); // Refresh lại danh sách ảnh sau khi xóa
-  };
-
-  const handleEditCaption = async (id: string, newCaption: string) => {
-    // Sửa caption trong Firestore
-    await updateGalleryImageCaption(id, newCaption);
+    await deleteLifestyleImage(id);
     fetchImages();
   };
 
-  // Nếu đang ở màn hình upload ảnh thì render màn hình upload
+  const handleEditCaption = async (id: string, newCaption: string) => {
+    await updateLifestyleImageCaption(id, newCaption);
+    fetchImages();
+  };
+
   if (showUpload) {
-    return <GalleryImageUploadScreen onBack={() => setShowUpload(false)} onUploaded={fetchImages} />;
+    return <LifestyleImageUploadScreen onBack={() => setShowUpload(false)} onUploaded={fetchImages} />;
   }
 
-  // Màn hình gallery chính
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Quản lý Mẫu nhà</h1>
-      <Button onClick={() => setShowUpload(true)} className="mb-2">+ Upload mẫu nhà mới</Button>
+      <h1 className="text-2xl font-bold">Quản lý Ảnh Lifestyle</h1>
+      <Button onClick={() => setShowUpload(true)} className="mb-2">+ Upload ảnh lifestyle mới</Button>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {images.map(img => (
           <div key={img.id} className="border rounded p-2 flex flex-col items-center">

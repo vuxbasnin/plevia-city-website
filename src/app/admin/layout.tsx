@@ -45,13 +45,22 @@ const navItemsConfiguration: NavItemConfig[] = [
   },
   {
     id: "group-gallery-management",
-    label: "Quản Lý Thư Viện Ảnh",
+    label: "Quản Lý Mẫu Nhà",
     icon: ImageIcon,
     isLeaf: false,
     children: [
-      { id: "gallery-list", label: "Danh Sách Ảnh", icon: ImageIcon, href: "/admin/gallery", isLeaf: true },
+      { id: "gallery-list", label: "Danh Sách Mẫu Nhà", icon: ImageIcon, href: "/admin/gallery", isLeaf: true },
       // Nếu muốn tách trang upload riêng:
       // { id: "gallery-upload", label: "Upload Ảnh Mới", icon: Plus, href: "/admin/gallery/upload", isLeaf: true },
+    ],
+  },
+  {
+    id: "group-lifestyle-images-management",
+    label: "Quản Lý Ảnh Lifestyle",
+    icon: ImageIcon,
+    isLeaf: false,
+    children: [
+      { id: "lifestyle-images-list", label: "Danh Sách Ảnh Lifestyle", icon: ImageIcon, href: "/admin/lifestyle-images", isLeaf: true },
     ],
   },
   // {
