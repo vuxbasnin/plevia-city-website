@@ -18,9 +18,10 @@ interface TabData {
 interface TabNewProps {
     title: string;
     tabs: TabData[];
+    reverse?: boolean; // thêm biến reverse
 }
 
-const TabNew: React.FC<TabNewProps> = ({ title, tabs }) => {
+const TabNew: React.FC<TabNewProps> = ({ title, tabs, reverse = false }) => {
     const [activeIndex, setActiveIndex] = useState(0);
 
 
@@ -49,28 +50,57 @@ const TabNew: React.FC<TabNewProps> = ({ title, tabs }) => {
                 >
                     {tabs.map((tab, idx) => (
                         <div className="tabnew-slide" key={tab.id}>
-                            <div className="tabnew-content-text">
-                                <h3 className="tabnew-content-heading">{tab.content.heading}</h3>
-                                {tab.content.paragraphs.map((p, i) => (
-                                    <p key={i} dangerouslySetInnerHTML={{ __html: p }} />
-                                ))}
-                                {tab.content.bulletPoints.length > 0 && (
-                                    <ul>
-                                        {tab.content.bulletPoints.map((bp, i) => (
-                                            <li key={i}>{bp}</li>
+                            {reverse ? (
+                                <>
+                                    <div className="tabnew-content-image">
+                                        <img src={tab.image} alt={tab.title} />
+                                    </div>
+                                    <div className="tabnew-content-text">
+                                        <h3 className="tabnew-content-heading">{tab.content.heading}</h3>
+                                        {tab.content.paragraphs.map((p, i) => (
+                                            <p key={i} dangerouslySetInnerHTML={{ __html: p }} />
                                         ))}
-                                    </ul>
-                                )}
-                                {/* Thêm button Khám phá ngay nếu activeIndex là 0, 1, 2 */}
-                                {activeIndex >= 0 && activeIndex <= 2 && idx === activeIndex && (
-                                    <button className="tabnew-explore-btn">
-                                        Khám phá ngay <span className="arrow-icon">→</span>
-                                    </button>
-                                )}
-                            </div>
-                            <div className="tabnew-content-image">
-                                <img src={tab.image} alt={tab.title} />
-                            </div>
+                                        {tab.content.bulletPoints.length > 0 && (
+                                            <ul>
+                                                {tab.content.bulletPoints.map((bp, i) => (
+                                                    <li key={i}>{bp}</li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                        {/* Thêm button Khám phá ngay nếu activeIndex là 0, 1, 2 */}
+                                        {activeIndex >= 0 && activeIndex <= 2 && idx === activeIndex && (
+                                            <button className="tabnew-explore-btn">
+                                                Khám phá ngay <span className="arrow-icon">→</span>
+                                            </button>
+                                        )}
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div className="tabnew-content-text">
+                                        <h3 className="tabnew-content-heading">{tab.content.heading}</h3>
+                                        {tab.content.paragraphs.map((p, i) => (
+                                            <p key={i} dangerouslySetInnerHTML={{ __html: p }} />
+                                        ))}
+                                        {tab.content.bulletPoints.length > 0 && (
+                                            <ul>
+                                                {tab.content.bulletPoints.map((bp, i) => (
+                                                    <li key={i}>{bp}</li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                        {/* Thêm button Khám phá ngay nếu activeIndex là 0, 1, 2 */}
+                                        {activeIndex >= 0 && activeIndex <= 2 && idx === activeIndex && (
+                                            <button className="tabnew-explore-btn">
+                                                Khám phá ngay <span className="arrow-icon">→</span>
+                                            </button>
+                                        )}
+                                    </div>
+                                    <div className="tabnew-content-image">
+                                        <img src={tab.image} alt={tab.title} />
+                                    </div>
+                                </>
+                            )}
                         </div>
                     ))}
                 </div>

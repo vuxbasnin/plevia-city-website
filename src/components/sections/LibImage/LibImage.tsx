@@ -118,7 +118,7 @@ const LibImage: React.FC = () => {
     <section className="lib-image libimage-slider-root">
       <div className="lib-image-header">
         <Title variant="large" align="center">
-          THƯ VIỆN HÌNH ẢNH
+          CÁC MẪU NHÀ
         </Title>
       </div>
       <div className="libimage-slider-container">
