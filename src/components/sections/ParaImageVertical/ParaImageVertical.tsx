@@ -3,7 +3,8 @@ import "./ParaImageVertical.css";
 
 interface ParaImageVerticalProps {
   title: string;
-  description: string;
+  description1: string;
+  description2: string;
   bullets?: string[];
   subDescription?: string;
   imageUrl: string;
@@ -13,7 +14,8 @@ interface ParaImageVerticalProps {
 
 const ParaImageVertical: React.FC<ParaImageVerticalProps> = ({
   title,
-  description,
+  description1,
+  description2,
   bullets,
   subDescription,
   imageUrl,
@@ -24,7 +26,8 @@ const ParaImageVertical: React.FC<ParaImageVerticalProps> = ({
     <div className="para-image-vertical-container">
       <div className="piv-content">
         <h2 className="piv-title">{title}</h2>
-        <p className="piv-description">{description}</p>
+        <p className="piv-description">{description1}</p>
+        <p className="piv-description">{description2}</p>
         {bullets && bullets.length > 0 && (
           <ul className="piv-bullets">
             {bullets.map((item, idx) => (
@@ -32,7 +35,7 @@ const ParaImageVertical: React.FC<ParaImageVerticalProps> = ({
             ))}
           </ul>
         )}
-        {subDescription && <p className="piv-sub-description">{subDescription}</p>}
+        {/*{subDescription && <p className="piv-sub-description">{subDescription}</p>}*/}
       </div>
       <div className="piv-image-wrapper">
         <img src={imageUrl} alt={imageAlt} className="piv-image" />

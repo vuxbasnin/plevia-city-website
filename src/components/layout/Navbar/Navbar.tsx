@@ -17,11 +17,11 @@ import './Navbar.css';
 
 // Navigation links based on the image
 const navLinks = [
-  { 
-    href: '/project', 
-    label: 'Về dự án',
-    hasDropdown: false 
-  },
+  // {
+  //   href: '/project',
+  //   label: 'Về dự án',
+  //   hasDropdown: false
+  // },
   { 
     href: '/location', 
     label: 'Vị trí, tiện ích',

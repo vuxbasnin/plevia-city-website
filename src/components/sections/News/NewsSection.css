@@ -1,7 +1,7 @@
 /* News Section Container */
 .news-section {
   position: relative;
-  width: 78vw;
+  width: 85vw;
   max-width: none;
   margin: 0 auto;
   background: rgb(54, 113, 86);
@@ -62,7 +62,7 @@
 
 /* Main Container */
 .news-container {
-  width: 78vw !important;
+  width: 85vw !important;
   max-width: none !important;
   margin: 0 auto !important;
   position: relative;
