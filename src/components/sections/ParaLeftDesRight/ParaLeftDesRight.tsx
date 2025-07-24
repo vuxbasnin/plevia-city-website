@@ -29,7 +29,13 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
     <div
       className={
         "para-left-des-right__container" +
-        (backgroundColor === 'gray' ? ' para-left-des-right__container--gray' : '')
+        (backgroundColor === 'gray' ? ' para-left-des-right__container--gray' : '') +
+        (reverse ? ' para-left-des-right__container--reverse' : '')
+      }
+      style={
+        reverse
+          ? { background: 'hsl(var(--primary))' }
+          : {}
       }
     >
       {/* Title cho mobile, hiển thị trên ảnh */}
@@ -52,13 +58,31 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
                 <div key={idx} style={{ marginBottom: 20 }}>
                   {section.level === 1 ? (
                     <>
-                      {section.subtitle && <h3 className="para-left-des-right__subtitle">{section.subtitle}</h3>}
-                      {section.subdescription && <p className="para-left-des-right__subdescription">{section.subdescription}</p>}
+                      {section.subtitle && (
+                        <h3 className="para-left-des-right__subtitle">
+                          {section.subtitle}
+                        </h3>
+                      )}
+                      {section.subdescription && (
+                        <p className="para-left-des-right__subdescription" style={{ display: 'flex', alignItems: 'center', margin: 0 }}>
+                          <span className="para-left-des-right__dot" />
+                          {section.subdescription}
+                        </p>
+                      )}
                     </>
                   ) : (
                     <>
-                      {section.subtitle && <h4 className="para-left-des-right__subtitle para-left-des-right__subtitle--level2" style={{ fontWeight: 'bold' }}>{section.subtitle}</h4>}
-                      {section.subdescription && <p className="para-left-des-right__subdescription">{section.subdescription}</p>}
+                      {section.subtitle && (
+                        <h4 className="para-left-des-right__subtitle para-left-des-right__subtitle--level2" style={{ fontWeight: 'bold' }}>
+                          {section.subtitle}
+                        </h4>
+                      )}
+                      {section.subdescription && (
+                        <p className="para-left-des-right__subdescription" style={{ display: 'flex', alignItems: 'center', margin: 0 }}>
+                          <span className="para-left-des-right__dot" />
+                          {section.subdescription}
+                        </p>
+                      )}
                     </>
                   )}
                 </div>
@@ -80,13 +104,31 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
                 <div key={idx} style={{ marginBottom: 20 }}>
                   {section.level === 1 ? (
                     <>
-                      {section.subtitle && <h3 className="para-left-des-right__subtitle">{section.subtitle}</h3>}
-                      {section.subdescription && <p className="para-left-des-right__subdescription">{section.subdescription}</p>}
+                      {section.subtitle && (
+                        <h3 className="para-left-des-right__subtitle">
+                          {section.subtitle}
+                        </h3>
+                      )}
+                      {section.subdescription && (
+                        <p className="para-left-des-right__subdescription" style={{ display: 'flex', alignItems: 'center', margin: 0 }}>
+                          {reverse && <span className="para-left-des-right__dot" />}
+                          {section.subdescription}
+                        </p>
+                      )}
                     </>
                   ) : (
                     <>
-                      {section.subtitle && <h4 className="para-left-des-right__subtitle para-left-des-right__subtitle--level2" style={{ fontWeight: 'bold' }}>{section.subtitle}</h4>}
-                      {section.subdescription && <p className="para-left-des-right__subdescription">{section.subdescription}</p>}
+                      {section.subtitle && (
+                        <h4 className="para-left-des-right__subtitle para-left-des-right__subtitle--level2" style={{ fontWeight: 'bold' }}>
+                          {section.subtitle}
+                        </h4>
+                      )}
+                      {section.subdescription && (
+                        <p className="para-left-des-right__subdescription" style={{ display: 'flex', alignItems: 'center', margin: 0 }}>
+                          {reverse && <span className="para-left-des-right__dot" />}
+                          {section.subdescription}
+                        </p>
+                      )}
                     </>
                   )}
                 </div>

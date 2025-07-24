@@ -243,6 +243,9 @@ export default function HomePage() {
       {/*    backgroundColor='white'*/}
       {/*  />*/}
       {/*</ScrollReveal>*/}
+      <ScrollReveal>
+        <TabExample />
+      </ScrollReveal>
         <ScrollReveal>
             <LibImage />
         </ScrollReveal>

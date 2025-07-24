@@ -101,6 +101,26 @@
   display: block;
 }
 
+.para-left-des-right__dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+.para-left-des-right__container--reverse {
+  color: hsl(var(--primary-foreground)) !important;
+}
+.para-left-des-right__container--reverse .para-left-des-right__title,
+.para-left-des-right__container--reverse .para-left-des-right__description,
+.para-left-des-right__container--reverse .para-left-des-right__subtitle,
+.para-left-des-right__container--reverse .para-left-des-right__subdescription {
+  color: hsl(var(--primary-foreground)) !important;
+}
+
 @media (max-width: 900px) {
   .para-left-des-right__container {
     flex-direction: column;
