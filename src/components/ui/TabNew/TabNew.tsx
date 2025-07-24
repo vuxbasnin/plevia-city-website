@@ -61,6 +61,12 @@ const TabNew: React.FC<TabNewProps> = ({ title, tabs }) => {
                                         ))}
                                     </ul>
                                 )}
+                                {/* Thêm button Khám phá ngay nếu activeIndex là 0, 1, 2 */}
+                                {activeIndex >= 0 && activeIndex <= 2 && idx === activeIndex && (
+                                    <button className="tabnew-explore-btn">
+                                        Khám phá ngay <span className="arrow-icon">→</span>
+                                    </button>
+                                )}
                             </div>
                             <div className="tabnew-content-image">
                                 <img src={tab.image} alt={tab.title} />

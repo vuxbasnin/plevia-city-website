@@ -7,6 +7,7 @@
   align-items: flex-start;
   justify-content: center;
   padding: 24px 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 .formreport-form {
@@ -27,6 +28,7 @@
   color: #222;
   outline: none;
   resize: none;
+  font-family: 'Roboto', sans-serif;
 }
 
 .formreport-input::placeholder,
@@ -46,6 +48,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
+  font-family: 'Roboto', sans-serif;
 }
 .formreport-btn:hover {
   background: #117dc0;
@@ -57,6 +60,7 @@
   color: #444;
   font-size: 1rem;
   padding-left: 24px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .formreport-info-title {

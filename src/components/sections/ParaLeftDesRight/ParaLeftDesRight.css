@@ -1,6 +1,7 @@
 .para-left-des-right__container {
   width: 100%;
   background: #fff;
+  font-family: 'Roboto', sans-serif;
 }
 
 .para-left-des-right__inner {
@@ -109,6 +110,13 @@
   background: #fff;
   margin-right: 12px;
   vertical-align: middle;
+}
+
+.para-left-des-right__title,
+.para-left-des-right__description,
+.para-left-des-right__subtitle,
+.para-left-des-right__subdescription {
+  font-family: 'Roboto', sans-serif;
 }
 
 .para-left-des-right__container--reverse {

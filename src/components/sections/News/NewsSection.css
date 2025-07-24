@@ -62,7 +62,7 @@
 
 /* Main Container */
 .news-container {
-  width: 85vw !important;
+  width: 81vw !important;
   max-width: none !important;
   margin: 0 auto !important;
   position: relative;
@@ -79,7 +79,7 @@
 .news-title h2 {
   font-size: 1.875rem;
   line-height: 2.25rem;
-  font-family: serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 600;
   color: white;
   text-transform: uppercase;

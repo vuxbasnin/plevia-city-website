@@ -5,7 +5,7 @@
   margin: 0 auto;
   padding: 60px 20px;
   background: white;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Title Section */
@@ -17,7 +17,7 @@
 .tab-main-title {
   font-size: 1.875rem;
   line-height: 1.25;
-  font-family: serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 600;
   color: #166534;
   margin-bottom: 20px;
