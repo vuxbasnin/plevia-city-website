@@ -54,10 +54,11 @@
   width: 50%;
   box-sizing: border-box;
   padding: 24px 20px 16px 20px;
-  font-size: 16px;
+  font-size: 1rem; /* Description */
   color: #333;
   line-height: 1.7;
   background: #fff;
+  font-family: 'Roboto', sans-serif;
 }
 
 .tab-content-left {
@@ -80,10 +81,19 @@
 .tab-content b {
   font-weight: 700;
   color: #222;
+  font-size: 1.1rem; /* Title */
+  font-family: 'Roboto', sans-serif;
 }
 
 .tab-desc {
   margin-top: 12px;
-  font-size: 16px;
+  font-size: 1.1rem; /* Subdescription */
   color: #222;
+  font-family: 'Roboto', sans-serif;
+}
+
+@media (max-width: 640px) {
+  .tab-content b {
+    font-size: 1.25rem; /* Title mobile */
+  }
 }

@@ -21,7 +21,7 @@ const sampleNewsItems = [
     id: '3',
     title: 'THANH XUAN VALLEY HỢP TÁC VỚI PRIME MEDICAL CARE HOÀN THIỆN HỆ SINH THÁI SỐNG KHỎE',
     description: 'BIM Land chính thức ký kết hợp tác với Trung tâm chăm sóc sức khỏe cao cấp Prime Medical Care (PMC), tích hợp mô hình y tế chủ động vào dự án Thanh Xuan Valley, góp phần hoàn thiện hệ sinh thái sống xanh – sống khỏe - sống bền vững.',
-    imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=600&fit=crop',
+    imageUrl: 'https://khangdienhcm.com/wp-content/uploads/2025/05/TIEN-DO-XAY-DUNG-GLADIA-KHANG-DIEN-THANG-06-2025-KDHCM-1024x576.jpg',
     alt: 'Healthcare partnership signing'
   },
   {
