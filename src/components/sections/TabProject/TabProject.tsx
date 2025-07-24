@@ -21,10 +21,12 @@ const TabProject = () => {
         <div className="tab-content tab-content-right">
           <b>THÔNG TIN SẢN PHẨM:</b>
           <ul>
-            <li><b>Biệt thự đơn lập Gladia:</b> 12-14 x 18-20m. Diện tích đất từ 240 – 280m2. Xây dựng 1 trệt 2 lầu.</li>
-            <li><b>Biệt thự song lập Gladia:</b> 9×17, 9 x19m. Diện tích đất: 171m2. Xây dựng 1 trệt 3 lầu.</li>
-            <li><b>Biệt thự tứ lập Gladia:</b> 14x18m. Diện tích đất : 252m2. Xây dựng 1 trệt 3 lầu.</li>
-            <li><b>Nhà phố liền kề:</b> 6x17m, 6x19m. Diện tích đất: 102 – 114m2. Xây dựng 1 trệt 3 lầu</li>
+            <li>Mẫu nhà góc 6m 2 mặt tiền trục chính tuyến đường 19.5m</li>
+            <li>Mẫu nhà 5m liền kề trục đường 11.5m</li>
+            <li>Mẫu nhà góc 2 mặt tiền trục đường nhỏ 11.5m</li>
+            <li>Mẫu nhà góc trục đường 14m</li>
+            <li>Mẫu nhà 5m liền kề trục đường 14m</li>
+            <li>Mẫu nhà 5m liền kề bán hầm Block G</li>
           </ul>
         </div>
       </div>
