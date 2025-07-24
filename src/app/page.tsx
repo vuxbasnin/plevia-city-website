@@ -241,6 +241,9 @@ export default function HomePage() {
           backgroundColor='white'
         />
       </ScrollReveal>
+        <ScrollReveal>
+            <LibImage />
+        </ScrollReveal>
       <ScrollReveal>
         <ParaManyImage
           title="TIẾN ĐỘ XÂY DỰNG DỰ ÁN GLADIA KHANG ĐIỀN – THÁNG 05/2025"
@@ -260,21 +263,16 @@ export default function HomePage() {
             "https://khangdienhcm.com/wp-content/uploads/2025/06/tien-do-du-an-gladia-02-1024x576.webp",
             "https://khangdienhcm.com/wp-content/uploads/2025/06/tien-do-du-an-gladia-04-1024x576.webp",
             "https://khangdienhcm.com/wp-content/uploads/2025/05/TIEN-DO-XAY-DUNG-GLADIA-KHANG-DIEN-THANG-06-2025-KDHCM-1024x576.jpg",
-            "https://khangdienhcm.com/wp-content/uploads/2025/04/gladia-KDH-7-1024x576.jpg",
-            "https://khangdienhcm.com/wp-content/uploads/2025/06/tien-do-du-an-gladia-05-1024x576.webp",
-            "https://khangdienhcm.com/wp-content/uploads/2025/06/tien-do-du-an-gladia-03-1024x576.webp"
           ]}
         />
       </ScrollReveal>
-      <ScrollReveal>
-        <TabProjectBgBlue />
-      </ScrollReveal>
-      <ScrollReveal>
-        <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/VI-SAO-NEN-MUA-GLADIA-KHANG-DIEN.jpg" fullImage={false} />
-      </ScrollReveal>
-    <ScrollReveal>
-        <LibImage />
-    </ScrollReveal>
+      {/*<ScrollReveal>*/}
+      {/*  <TabProjectBgBlue />*/}
+      {/*</ScrollReveal>*/}
+      {/*<ScrollReveal>*/}
+      {/*  <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/VI-SAO-NEN-MUA-GLADIA-KHANG-DIEN.jpg" fullImage={false} />*/}
+      {/*</ScrollReveal>*/}
+
       <ScrollReveal>
         <NewsSectionExample />
       </ScrollReveal>
