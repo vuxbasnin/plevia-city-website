@@ -17,6 +17,7 @@ interface ParaLeftDesRightProps {
   backgroundColor?: 'white' | 'gray'; // mặc định là white
   reverse?: boolean; // nếu true, sẽ đảo ngược vị trí của text và ảnh
   isShowLibImage?: boolean; // nếu true, sẽ hiển thị LibImage thay vì ảnh
+  dotEnabled?: boolean; // nếu true, sẽ hiển thị dot trước subdescription
 }
 
 const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
@@ -26,7 +27,8 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
   imageUrl,
   backgroundColor = 'white',
   reverse,
-  isShowLibImage = false, // mặc định là false
+  isShowLibImage = false,
+  dotEnabled = false
 }) => {
   return (
     <div
@@ -80,8 +82,8 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
                       )}
                       {section.subdescription && (
                         <p className="para-left-des-right__subdescription" style={{ display: 'flex', alignItems: 'center', margin: 0 }}>
-                          <span className="para-left-des-right__dot" />
-                          {section.subdescription}
+                          {dotEnabled && <span className="para-left-des-right__dot" />}
+                          <span dangerouslySetInnerHTML={{ __html: section.subdescription }} />
                         </p>
                       )}
                     </>
@@ -94,8 +96,8 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
                       )}
                       {section.subdescription && (
                         <p className="para-left-des-right__subdescription" style={{ display: 'flex', alignItems: 'center', margin: 0 }}>
-                          <span className="para-left-des-right__dot" />
-                          {section.subdescription}
+                          {dotEnabled && <span className="para-left-des-right__dot" />}
+                          <span dangerouslySetInnerHTML={{ __html: section.subdescription }} />
                         </p>
                       )}
                     </>
@@ -126,8 +128,8 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
                       )}
                       {section.subdescription && (
                         <p className="para-left-des-right__subdescription" style={{ display: 'flex', alignItems: 'center', margin: 0 }}>
-                          {reverse && <span className="para-left-des-right__dot" />}
-                          {section.subdescription}
+                          {dotEnabled && reverse && <span className="para-left-des-right__dot" />}
+                          <span dangerouslySetInnerHTML={{ __html: section.subdescription }} />
                         </p>
                       )}
                     </>
@@ -140,8 +142,8 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
                       )}
                       {section.subdescription && (
                         <p className="para-left-des-right__subdescription" style={{ display: 'flex', alignItems: 'center', margin: 0 }}>
-                          {reverse && <span className="para-left-des-right__dot" />}
-                          {section.subdescription}
+                          {dotEnabled && reverse && <span className="para-left-des-right__dot" />}
+                          <span dangerouslySetInnerHTML={{ __html: section.subdescription }} />
                         </p>
                       )}
                     </>
