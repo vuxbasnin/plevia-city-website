@@ -67,7 +67,7 @@ const StorySectionExample: React.FC = () => {
 
   return (
     <StorySection
-      mainTitle="CÂU CHUYỆN DỰ ÁN"
+      mainTitle="STORYLINE TRUYỀN THÔNG – PLEVIA CITY"
       stories={stories}
       scrollInterval={5000}
     />
