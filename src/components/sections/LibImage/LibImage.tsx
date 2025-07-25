@@ -13,7 +13,11 @@ interface ImageItem {
   caption?: string;
 }
 
-const LibImage: React.FC = () => {
+interface LibImageProps {
+  isHideTitle?: boolean;
+}
+
+const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false }) => {
   const [images, setImages] = useState<ImageItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,6 +34,7 @@ const LibImage: React.FC = () => {
       setLoading(true);
       try {
         const imgs = await getGalleryImages();
+        console.log('Fetched images:', imgs);
         setImages(
           imgs
             .filter((img: any) => !!img.url)
@@ -116,11 +121,13 @@ const LibImage: React.FC = () => {
 
   return (
     <section className="lib-image libimage-slider-root">
-      <div className="lib-image-header">
-        <Title variant="large" align="center">
-          CÁC MẪU NHÀ
-        </Title>
-      </div>
+      {!isHideTitle && (
+        <div className="lib-image-header">
+          <Title variant="large" align="center">
+            CÁC MẪU NHÀ
+          </Title>
+        </div>
+      )}
       <div className="libimage-slider-container">
         <button 
           className="libimage-slider-btn libimage-slider-btn-left" 

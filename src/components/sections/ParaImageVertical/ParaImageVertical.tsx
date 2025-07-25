@@ -1,5 +1,6 @@
 import React from "react";
 import "./ParaImageVertical.css";
+import LibImage from "../LibImage/LibImage";
 
 interface ParaImageVerticalProps {
   title: string;
@@ -10,6 +11,7 @@ interface ParaImageVerticalProps {
   imageUrl: string;
   imageAlt?: string;
   children?: React.ReactNode;
+  isLibImage?: boolean;
 }
 
 const ParaImageVertical: React.FC<ParaImageVerticalProps> = ({
@@ -20,7 +22,8 @@ const ParaImageVertical: React.FC<ParaImageVerticalProps> = ({
   subDescription,
   imageUrl,
   imageAlt = "image",
-  children
+  children,
+  isLibImage = false
 }) => {
   return (
     <div className="para-image-vertical-container">
@@ -37,9 +40,13 @@ const ParaImageVertical: React.FC<ParaImageVerticalProps> = ({
         )}
         {/*{subDescription && <p className="piv-sub-description">{subDescription}</p>}*/}
       </div>
-      <div className="piv-image-wrapper">
-        <img src={imageUrl} alt={imageAlt} className="piv-image" />
-      </div>
+      {isLibImage ? (
+        <LibImage isHideTitle={isLibImage} />
+      ) : (
+        <div className="piv-image-wrapper">
+          <img src={imageUrl} alt={imageAlt} className="piv-image" />
+        </div>
+      )}
       {children && <div className="piv-content piv-children">{children}</div>}
     </div>
   );

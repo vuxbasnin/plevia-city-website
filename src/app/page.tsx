@@ -96,16 +96,16 @@ export default function HomePage() {
               subtitle: "",
               subdescription: `Thiết kế: Công ty Kiến Trúc Việt`
             },
-              {
-                  level: 1,
-                  subtitle: "",
-                  subdescription: `Pháp lý: Sổ từng nền – Quy hoạch 1/500`
-              },
-              {
-                  level: 1,
-                  subtitle: "",
-                  subdescription: `Tiện ích nội khu: Công viên, gym, spa, sân thể thao, trường mầm non…`
-              }
+            {
+              level: 1,
+              subtitle: "",
+              subdescription: `Pháp lý: Sổ từng nền – Quy hoạch 1/500`
+            },
+            {
+              level: 1,
+              subtitle: "",
+              subdescription: `Tiện ích nội khu: Công viên, gym, spa, sân thể thao, trường mầm non…`
+            }
           ]}
           imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/06/PHOI-CANH-BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN.jpg"
           reverse={true}
@@ -168,39 +168,39 @@ export default function HomePage() {
         <TabProject />
       </ScrollReveal>
 
-        <ScrollReveal>
-            <ParaImageVertical
-                title="VỊ TRÍ ĐẮC ĐỊA – KẾT NỐI HOÀN HẢO"
-                description1={`Plevia City sở hữu vị trí đắc địa khi nằm trên trục đường chính nội đô phường Hội Phú cách trung tâm hành chính thành phố chưa đầy 2km. Trong bối cảnh quy hoạch đến năm 2030 chỉ khoảng 7% diện tích đô thị là đất bằng phẳng thuận lợi cho việc phát triển khu đô thị cao cấp, việc Plevia City phát triển trên vùng đất phẳng rộng lớn là một lợi thế cực kỳ hiếm có, lý tưởng để hình thành một đô thị hiện đại và đồng bộ.`}
-                description2={`Về lâu dài, Plevia City sẽ được hưởng lợi trực tiếp từ các dự án hạ tầng quy hoạch trọng điểm của tỉnh trong vài năm tới, cụ thể:
+      <ScrollReveal>
+        <ParaImageVertical
+          title="VỊ TRÍ ĐẮC ĐỊA – KẾT NỐI HOÀN HẢO"
+          description1={`Plevia City sở hữu vị trí đắc địa khi nằm trên trục đường chính nội đô phường Hội Phú cách trung tâm hành chính thành phố chưa đầy 2km. Trong bối cảnh quy hoạch đến năm 2030 chỉ khoảng 7% diện tích đô thị là đất bằng phẳng thuận lợi cho việc phát triển khu đô thị cao cấp, việc Plevia City phát triển trên vùng đất phẳng rộng lớn là một lợi thế cực kỳ hiếm có, lý tưởng để hình thành một đô thị hiện đại và đồng bộ.`}
+          description2={`Về lâu dài, Plevia City sẽ được hưởng lợi trực tiếp từ các dự án hạ tầng quy hoạch trọng điểm của tỉnh trong vài năm tới, cụ thể:
 `}
 
-                bullets={[
-                    "Sân bay Pleiku đang khai thác và có kế hoạch mở thêm đường bay quốc tế",
-                    "Sân bay dự phòng đang nghiên cứu phương án dân dụng",
-                    "Cao tốc Pleiku – Quy Nhơn đang đẩy mạnh đầu tư, kết hợp các tuyến QL 14, QL 19 tạo thành mạng giao thông liên kết xuyên vùng",
-                    "Phát triển khu công nghiệp Nam Pleiku ",
-                ]}
-                subDescription="Gladia by the Waters dễ dàng tiếp cận đến các cơ sở Giáo dục, Giải trí, Mua sắm và Y tế chất lượng cao như: Trường American School, Trường Quốc tế Việt Úc (VAS), Bệnh viện Quốc tế Mỹ (AIH), Bệnh viện FV, Esttela Heights, Thiso Mall, Vietnam Country Gofl Club"
-                imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/VI-TRI-GLADIA-QUAN-2.webp"
-                imageAlt="Vị trí dự án Gladia Khang Điền"
-            >
-                {/*<div style={{ marginTop: 32 }}>*/}
-                {/*  <p>*/}
-                {/*    <b>Năm 2025 – 2026, Dự án Gladia Khang Điền khẳng định tiềm năng phát triển bởi các công trình giao thông trọng điểm tại Khu Đông TP.HCM</b>*/}
-                {/*  </p>*/}
-                {/*  <ul>*/}
-                {/*    <li>Tuyến đường Liên Cảng – Cát Lái – Phú Hữu kết nối với đường Vành Đai 3 dự kiến khởi công 2026.</li>*/}
-                {/*    <li>Đường Nguyễn Thị Định mở rộng 30m – 12 làn xe. Dự kiến khởi công 2026.</li>*/}
-                {/*    <li>Mở rộng Võ Chí Công – 12 làn. Dự kiến khởi công 2028.</li>*/}
-                {/*    <li>Đường Liên Phường –  hoàn thành năm 2026</li>*/}
-                {/*    <li>Nút Giao An Phú hoàn thành năm 2026.</li>*/}
-                {/*    <li>Sân bay Quốc tế Long Thành</li>*/}
-                {/*    <li>Gladia giúp khách hàng dễ dàng kết nối với các trung tâm, nhưng lại tọa lạc tại một không gian biệt lập với 3 mặt giáp sông</li>*/}
-                {/*  </ul>*/}
-                {/*</div>*/}
-            </ParaImageVertical>
-        </ScrollReveal>
+          bullets={[
+            "Sân bay Pleiku đang khai thác và có kế hoạch mở thêm đường bay quốc tế",
+            "Sân bay dự phòng đang nghiên cứu phương án dân dụng",
+            "Cao tốc Pleiku – Quy Nhơn đang đẩy mạnh đầu tư, kết hợp các tuyến QL 14, QL 19 tạo thành mạng giao thông liên kết xuyên vùng",
+            "Phát triển khu công nghiệp Nam Pleiku ",
+          ]}
+          subDescription="Gladia by the Waters dễ dàng tiếp cận đến các cơ sở Giáo dục, Giải trí, Mua sắm và Y tế chất lượng cao như: Trường American School, Trường Quốc tế Việt Úc (VAS), Bệnh viện Quốc tế Mỹ (AIH), Bệnh viện FV, Esttela Heights, Thiso Mall, Vietnam Country Gofl Club"
+          imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/VI-TRI-GLADIA-QUAN-2.webp"
+          imageAlt="Vị trí dự án Gladia Khang Điền"
+        >
+          {/*<div style={{ marginTop: 32 }}>*/}
+          {/*  <p>*/}
+          {/*    <b>Năm 2025 – 2026, Dự án Gladia Khang Điền khẳng định tiềm năng phát triển bởi các công trình giao thông trọng điểm tại Khu Đông TP.HCM</b>*/}
+          {/*  </p>*/}
+          {/*  <ul>*/}
+          {/*    <li>Tuyến đường Liên Cảng – Cát Lái – Phú Hữu kết nối với đường Vành Đai 3 dự kiến khởi công 2026.</li>*/}
+          {/*    <li>Đường Nguyễn Thị Định mở rộng 30m – 12 làn xe. Dự kiến khởi công 2026.</li>*/}
+          {/*    <li>Mở rộng Võ Chí Công – 12 làn. Dự kiến khởi công 2028.</li>*/}
+          {/*    <li>Đường Liên Phường –  hoàn thành năm 2026</li>*/}
+          {/*    <li>Nút Giao An Phú hoàn thành năm 2026.</li>*/}
+          {/*    <li>Sân bay Quốc tế Long Thành</li>*/}
+          {/*    <li>Gladia giúp khách hàng dễ dàng kết nối với các trung tâm, nhưng lại tọa lạc tại một không gian biệt lập với 3 mặt giáp sông</li>*/}
+          {/*  </ul>*/}
+          {/*</div>*/}
+        </ParaImageVertical>
+      </ScrollReveal>
       {/*  <ScrollReveal>*/}
       {/*      <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/NHA-PHO-LIEN-KE-VUON-GLADIA-KHANG-DIEN-1.jpg" fullImage={false} />*/}
       {/*  </ScrollReveal>*/}
@@ -246,9 +246,9 @@ export default function HomePage() {
       <ScrollReveal>
         <TabExample />
       </ScrollReveal>
-        <ScrollReveal>
-            <LibImage />
-        </ScrollReveal>
+      <ScrollReveal>
+        <LibImage />
+      </ScrollReveal>
       <ScrollReveal>
         <ParaManyImage
           title="TIẾN ĐỘ XÂY DỰNG DỰ ÁN"
