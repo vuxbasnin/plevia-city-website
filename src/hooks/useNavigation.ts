@@ -19,7 +19,7 @@ export const navigationItems: NavigationItem[] = [
         hasDropdown: false,
     },
     {
-        href: '/stylelife',
+        href: '/lifestyle',
         label: 'Phong cách sống',
         hasDropdown: false,
     },

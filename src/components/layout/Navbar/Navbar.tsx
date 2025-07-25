@@ -28,7 +28,7 @@ const navLinks = [
     hasDropdown: false 
   },
   { 
-    href: '/stylelife', 
+    href: '/lifestyle', 
     label: 'Phong cách sống',
     hasDropdown: false 
   },
