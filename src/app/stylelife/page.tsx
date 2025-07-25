@@ -7,6 +7,7 @@ import TabExample2 from '@/components/ui/Tab/TabExample2';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import LibImage from '@/components/sections/LibImage/LibImage';
 import ParaImageVertical from '@/components/sections/ParaImageVertical/ParaImageVertical';
+import ParaLeftDesRight from '@/components/sections/ParaLeftDesRight/ParaLeftDesRight';
 
 export default function StyleLifePage() {
   return (
@@ -33,6 +34,37 @@ export default function StyleLifePage() {
       </ScrollReveal>
       <ScrollReveal>
         <LibImage />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ParaLeftDesRight
+          title="SỐNG HIỆN ĐẠI, HƯỞNG TRỌN MỌI GIÁ TRỊ"
+          description={`Tại Plevia City, tiện ích không chỉ là những công trình phụ trợ – mà chính là nền tảng tạo nên một phong cách sống hiện đại, trọn vẹn và khác biệt. Từng hạng mục được đầu tư đồng bộ và hài hòa, nhằm đáp ứng nhu cầu của cư dân năng động trong thời đại số, nơi ở – làm việc – nghỉ ngơi đều diễn ra trong một hệ sinh thái khép kín, thuận tiện.`}
+          sections={[
+            {
+              level: 1,
+              subtitle: "Nâng tầm trải nghiệm sống thông minh",
+              subdescription: `Plevia City được tích hợp hệ thống tiện ích công nghệ thông minh ngay trong từng trải nghiệm thường nhật: camera AI an ninh 24/7, cảm biến khói – đám cháy, wifi mesh toàn khu và đặc biệt là ứng dụng cư dân đồng bộ – tất cả tạo nên một môi trường sống hiện đại, an toàn.`
+            }
+          ]}
+          imageUrl=""
+          isShowLibImage={true}
+        />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ParaLeftDesRight
+          title=""
+          description={``}
+          sections={[
+            {
+              level: 1,
+              subtitle: "Kết nối cộng đồng, nâng cao chất lượng sống",
+              subdescription: `Từ trường mầm non quốc tế, công viên ánh sáng, hồ bơi thư giãn đến không gian rèn luyện thể chất như gym, yoga, spa – mọi nhu cầu chăm sóc sức khỏe thể chất và tinh thần đều được đặt ngay trong khuôn viên nội khu.`
+            }
+          ]}
+          imageUrl=""
+          isShowLibImage={true}
+          reverse={true}
+        />
       </ScrollReveal>
     </PageLayout>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import "./ParaLeftDesRight.css";
 import { reverse } from "dns";
+import LibImage from "../LibImage/LibImage";
 
 export interface ParaLeftDesRightSection {
   level: 1 | 2;
@@ -15,6 +16,7 @@ interface ParaLeftDesRightProps {
   imageUrl: string;
   backgroundColor?: 'white' | 'gray'; // mặc định là white
   reverse?: boolean; // nếu true, sẽ đảo ngược vị trí của text và ảnh
+  isShowLibImage?: boolean; // nếu true, sẽ hiển thị LibImage thay vì ảnh
 }
 
 const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
@@ -23,7 +25,8 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
   sections,
   imageUrl,
   backgroundColor = 'white',
-  reverse
+  reverse,
+  isShowLibImage = false, // mặc định là false
 }) => {
   return (
     <div
@@ -45,11 +48,20 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
       {reverse ? (
         <>
           <div className="para-left-des-right__inner reverse">
-            <div className="para-left-des-right__image-wrapper__reverse">
-              {imageUrl && (
-                <img src={imageUrl} alt="section" className="para-left-des-right__image" />
-              )}
-            </div>
+            {
+              isShowLibImage ? (
+                <div className="para-left-des-right__lib_image-wrapper">
+                  <LibImage isHideTitle={true} />
+                </div>
+              ) : (
+
+                <div className="para-left-des-right__image-wrapper">
+                  {imageUrl && (
+                    <img src={imageUrl} alt="section" className="para-left-des-right__image" />
+                  )}
+                </div>
+              )
+            }
             <div className="para-left-des-right__text__reverse">
               {title && (
                 <h2 className="para-left-des-right__title">{title}</h2>
@@ -137,11 +149,20 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
                 </div>
               ))}
             </div>
-            <div className="para-left-des-right__image-wrapper">
-              {imageUrl && (
-                <img src={imageUrl} alt="section" className="para-left-des-right__image" />
-              )}
-            </div>
+            {
+              isShowLibImage ? (
+                <div className="para-left-des-right__lib_image-wrapper">
+                  <LibImage isHideTitle={true} />
+                </div>
+              ) : (
+
+                <div className="para-left-des-right__image-wrapper">
+                  {imageUrl && (
+                    <img src={imageUrl} alt="section" className="para-left-des-right__image" />
+                  )}
+                </div>
+              )
+            }
           </div>
         </>
       )
