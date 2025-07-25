@@ -18,7 +18,7 @@ import './Navbar.css';
 // Navigation links based on the image
 const navLinks = [
   {
-    href: '/project',
+    href: '/storyline',
     label: 'Câu chuyện kiến tạo',
     hasDropdown: false
   },
