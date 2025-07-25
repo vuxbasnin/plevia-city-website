@@ -29,7 +29,7 @@ const StorySection: React.FC<StorySectionProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const pathname = usePathname();
-  const isProjectPage = pathname === '/project';
+  const isStorylinePage = pathname === '/storyline';
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -56,7 +56,7 @@ const StorySection: React.FC<StorySectionProps> = ({
             {stories.map((story) => (
               <div key={story.id} className="story-section-slide">
                 <ImageLeftDesRight
-                  title={isProjectPage ? "" : story.title}
+                  title={isStorylinePage ? "" : story.title}
                   imageSrc={story.imageSrc}
                   imageAlt={story.imageAlt}
                   description={story.description}

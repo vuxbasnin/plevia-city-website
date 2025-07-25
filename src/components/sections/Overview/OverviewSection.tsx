@@ -5,7 +5,7 @@ import AutoScrollSmall from '../../ui/AutoScroll/AutoScrollSmall';
 
 export default function Overview() {
   const pathname = usePathname();
-  const isProjectPage = pathname === '/project';
+  const isStorylinePage = pathname === '/storyline';
 
   // Dữ liệu cho ImageLeft_DesRight component
   const investorData = {
@@ -87,11 +87,11 @@ export default function Overview() {
       <div className="overview-container">
         {/* Phần giới thiệu chủ đầu tư */}
         <div className="overview-investor-section">
-          <ImageLeftDesRight {...(isProjectPage ? investorData2: investorData)} />
+          <ImageLeftDesRight {...(isStorylinePage ? investorData2: investorData)} />
         </div>
 
-        {/* Phần hiển thị các dự án - chỉ hiển thị khi không ở trang project */}
-        {!isProjectPage && (
+        {/* Phần hiển thị các dự án - chỉ hiển thị khi không ở trang storyline */}
+        {!isStorylinePage && (
           <div className="overview-projects-section">
             <AutoScrollSmall 
               mainTitle={projectsData.mainTitle}
@@ -101,8 +101,8 @@ export default function Overview() {
           </div>
         )}
 
-        {/* Phần video YouTube - chỉ hiển thị khi ở trang project */}
-        {isProjectPage && (
+        {/* Phần video YouTube - chỉ hiển thị khi ở trang storyline */}
+        {isStorylinePage && (
           <div className="overview-video-section">
             <div className="video-container">
               <iframe
