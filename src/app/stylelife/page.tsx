@@ -64,6 +64,7 @@ export default function StyleLifePage() {
           imageUrl=""
           isShowLibImage={true}
           reverse={true}
+          dotEnabled={false}
         />
       </ScrollReveal>
     </PageLayout>
