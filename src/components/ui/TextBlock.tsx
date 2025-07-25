@@ -5,9 +5,10 @@ interface TextBlockProps {
   content?: string;
   className?: string;
   fontSize?: string; // Thêm prop fontSize
+  header?: string; // Thêm prop header
 }
 
-const TextBlock: React.FC<TextBlockProps> = ({ children, content, className = "", fontSize = "1.5rem" }) => {
+const TextBlock: React.FC<TextBlockProps> = ({ children, content, className = "", fontSize = "1.5rem", header }) => {
   return (
     <div
       className={`textblock-container ${className}`.trim()}
@@ -22,6 +23,20 @@ const TextBlock: React.FC<TextBlockProps> = ({ children, content, className = ""
         fontFamily: "Roboto, sans-serif"
       }}
     >
+      {header && (
+        <h2 style={{
+          fontSize: "1.875rem",
+          lineHeight: "2.25rem",
+          fontFamily: "Roboto, sans-serif",
+          fontWeight: 600,
+          color: "#166534",
+          textAlign: "center",
+          marginBottom: "24px",
+          textTransform: "uppercase"
+        }}>
+          {header}
+        </h2>
+      )}
       {content ? <span dangerouslySetInnerHTML={{ __html: content }} /> : children}
     </div>
   );
