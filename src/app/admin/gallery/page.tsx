@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { getGalleryImages, addGalleryImage, deleteGalleryImage, updateGalleryImageCaption } from "@/lib/firestoreService";
-import { uploadFileToCloudinary } from "@/lib/cloudinaryUploader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
@@ -9,14 +8,36 @@ import { useAuth } from "@/hooks/useAuth";
 
 // Màn hình upload ảnh mới
 function GalleryImageUploadScreen({ onBack, onUploaded }: { onBack: () => void, onUploaded: () => void }) {
-  // Đổi từ 1 file sang nhiều file
   const [files, setFiles] = useState<FileList | null>(null);
   const [caption, setCaption] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const { toast } = useToast();
   const { user } = useAuth();
 
-  // Hàm xử lý upload nhiều ảnh
+  const handleFileUpload = async (file: File) => {
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('folder', 'gallery_images');
+
+      const response = await fetch('/api/upload-image', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Upload failed');
+      }
+
+      const result = await response.json();
+      return result.url;
+    } catch (error) {
+      console.error('Upload error:', error);
+      throw error;
+    }
+  };
+
   const handleUpload = async () => {
     if (!files || files.length === 0) return;
     setIsUploading(true);
@@ -25,7 +46,7 @@ function GalleryImageUploadScreen({ onBack, onUploaded }: { onBack: () => void, 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       try {
-        const url = await uploadFileToCloudinary(file, "gallery_images");
+        const url = await handleFileUpload(file);
         const uploadedBy = user?.displayName || user?.email || "unknown";
         await addGalleryImage({ url, caption, uploadedBy });
         successCount++;

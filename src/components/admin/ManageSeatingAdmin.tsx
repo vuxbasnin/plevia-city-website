@@ -16,7 +16,7 @@ import { getSeatingSectionData, updateSeatingSectionData } from "@/lib/firestore
 import { type SeatingOptionItem as SeatingOptionItemType, seatingOptionItemSchema, defaultSeatingSectionData } from "@/types/landingPageAdmin";
 import { Loader2, Save, PlusCircle, Edit, Trash2, Sofa, XCircle } from "lucide-react";
 import NextImage from "next/image";
-import { uploadFileToCloudinary } from "@/lib/cloudinaryUploader";
+import { uploadFileViaAPI } from "@/lib/uploadHelper";
 import { CLOUDINARY } from "@/lib/cloudinary";
 
 interface ManagedSeatingOptionItem extends SeatingOptionItemType {
@@ -73,7 +73,7 @@ export default function ManageSeatingAdmin() {
       const uploadPromises: Promise<ManagedSeatingOptionItem>[] = seatingOptions.map(async (option, index) => {
         if (option._tempFile) {
           try {
-            const newImageUrl = await uploadFileToCloudinary(option._tempFile, "landingpage_images/seating");
+            const newImageUrl = await uploadFileViaAPI(option._tempFile, "landingpage_images/seating");
             return { ...option, imageUrl: newImageUrl, _tempFile: undefined, _tempPreviewUrl: undefined };
           } catch (uploadError: any) {
             toast({

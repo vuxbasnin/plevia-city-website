@@ -30,6 +30,7 @@ const navItemsConfiguration: NavItemConfig[] = [
       { id: "site-settings", label: "Cài Đặt Website", icon: Settings, href: "/admin/settings/site", isLeaf: true },
       { id: "account-settings", label: "Tài Khoản Admin", icon: UserCog, href: "/admin/settings/account", isLeaf: true },
       { id: "trial-signups", label: "Đăng Ký Dùng Thử", icon: MailCheck, href: "/admin/data/trial-signups", isLeaf: true },
+      { id: "generate-sample-data", label: "Tạo Dữ Liệu Mẫu", icon: Plus, href: "/admin/generate-sample-data", isLeaf: true },
       // { id: "tour-bookings", label: "Lịch Tham Quan", icon: CalendarClock, href: "/admin/data/tour-bookings", isLeaf: true }, // Ẩn mục này
     ],
   },

@@ -17,7 +17,7 @@ import { type SiteSettingsData, siteSettingsFormSchema, defaultSiteSettingsData,
 import { Loader2, Save, Settings, Image as ImageIcon, XCircle, PlusCircle, Edit, Trash2, Link as LinkIcon } from "lucide-react";
 import NextImage from "next/image";
 import DynamicLucideIcon from '@/components/shared/DynamicLucideIcon';
-import { uploadFileToCloudinary } from "@/lib/cloudinaryUploader";
+import { uploadFileViaAPI } from "@/lib/uploadHelper";
 import { CLOUDINARY } from "@/lib/cloudinary";
 
 
@@ -223,7 +223,7 @@ export default function ManageSiteSettingsAdmin() {
     if (pendingLogoFile) {
       setIsUploadingLogo(true);
       try {
-        const uploadedLogoUrl = await uploadFileToCloudinary(pendingLogoFile, "site_assets/logo");
+        const uploadedLogoUrl = await uploadFileViaAPI(pendingLogoFile, "site_assets/logo");
         dataToSave.logoUrl = uploadedLogoUrl;
         setPendingLogoFile(null);
         if(logoInputRef.current) logoInputRef.current.value = "";
@@ -239,7 +239,7 @@ export default function ManageSiteSettingsAdmin() {
     if (pendingFaviconFile) {
       setIsUploadingFavicon(true);
       try {
-        const uploadedFaviconUrl = await uploadFileToCloudinary(pendingFaviconFile, "site_assets/favicon");
+        const uploadedFaviconUrl = await uploadFileViaAPI(pendingFaviconFile, "site_assets/favicon");
         dataToSave.faviconUrl = uploadedFaviconUrl;
         setPendingFaviconFile(null);
         if(faviconInputRef.current) faviconInputRef.current.value = "";

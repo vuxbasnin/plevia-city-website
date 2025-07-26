@@ -392,8 +392,8 @@ export interface NewsArticle {
   title: string;
   content: EditorJSOutput;
   author: string;
-  createdAt: Timestamp;
-  updatedAt: Timestamp;
+  createdAt: Timestamp | Date;
+  updatedAt: Timestamp | Date;
   coverImageUrl?: string;
   summary: string;
   tags: string[];

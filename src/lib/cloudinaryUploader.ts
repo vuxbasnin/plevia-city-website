@@ -1,6 +1,4 @@
 
-"use server"; // Or remove if used only by client-side, but fetch implies it can be server action compatible if needed
-
 import { CLOUDINARY } from "@/lib/cloudinary";
 
 

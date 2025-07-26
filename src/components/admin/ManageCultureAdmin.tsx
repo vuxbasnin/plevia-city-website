@@ -24,7 +24,7 @@ import {
 import { Loader2, Save, PlusCircle, Edit, Trash2, Image as ImageIconLucide, Users, Palette, Video, XCircle } from "lucide-react";
 import NextImage from "next/image";
 import DynamicLucideIcon from '@/components/shared/DynamicLucideIcon';
-import { uploadFileToCloudinary } from "@/lib/cloudinaryUploader";
+import { uploadFileViaAPI } from "@/lib/uploadHelper";
 import { CLOUDINARY } from "@/lib/cloudinary";
 import SmartVideoPlayer from "@/components/shared/SmartVideoPlayer";
 
@@ -178,7 +178,7 @@ export default function ManageCultureAdmin() {
       // 1. Handle Video Upload
       if (pendingVideoFile) {
         try {
-          const uploadedVideoUrl = await uploadFileToCloudinary(pendingVideoFile, "landingpage_images/culture_video");
+          const uploadedVideoUrl = await uploadFileViaAPI(pendingVideoFile, "landingpage_images/culture_video");
           dataToSave.videoUrl = uploadedVideoUrl;
           setPendingVideoFile(null); 
           if(cultureVideoInputRef.current) cultureVideoInputRef.current.value = "";
@@ -196,7 +196,7 @@ export default function ManageCultureAdmin() {
       const uploadedGalleryItemsPromises = currentGallery.map(async (imageItem, index) => {
         if (imageItem._tempFile) {
           try {
-            const newImageUrl = await uploadFileToCloudinary(imageItem._tempFile, "landingpage_images/culture_gallery");
+            const newImageUrl = await uploadFileViaAPI(imageItem._tempFile, "landingpage_images/culture_gallery");
             const { _tempFile, _tempPreviewUrl, ...rest } = imageItem;
             return { ...rest, imageUrl: newImageUrl };
           } catch (uploadError: any) {

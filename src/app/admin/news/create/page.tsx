@@ -14,7 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { createNewsArticle } from "@/lib/firestoreService";
 import { NewsArticleFormData, newsArticleFormSchema, defaultNewsArticleData } from "@/types/landingPageAdmin";
-import { ArrowLeft, Save, Eye, EyeOff, X } from "lucide-react";
+import { ArrowLeft, Save, Eye, EyeOff, X, Upload, Image as ImageIcon } from "lucide-react";
 import Link from "next/link";
 import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
@@ -23,12 +23,14 @@ import ImageTool from "@editorjs/image";
 import Quote from "@editorjs/quote";
 import Code from "@editorjs/code";
 import { useEffect, useRef } from "react";
-import { uploadFileToCloudinary } from "@/lib/cloudinaryUploader";
 
 export default function CreateNewsPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [editorInstance, setEditorInstance] = useState<any>(null);
   const [newTag, setNewTag] = useState("");
+  const [coverImageFile, setCoverImageFile] = useState<File | null>(null);
+  const [coverImagePreview, setCoverImagePreview] = useState<string>("");
+  const [isUploadingCover, setIsUploadingCover] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
 
@@ -62,10 +64,25 @@ export default function CreateNewsPage() {
               uploader: {
                 uploadByFile: async (file: File) => {
                   try {
-                    const url = await uploadFileToCloudinary(file, "news_images");
-                    return { success: 1, file: { url } };
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    formData.append('folder', 'news_images');
+
+                    const response = await fetch('/api/upload-image', {
+                      method: 'POST',
+                      body: formData,
+                    });
+
+                    if (!response.ok) {
+                      const errorData = await response.json();
+                      throw new Error(errorData.error || 'Upload failed');
+                    }
+
+                    const result = await response.json();
+                    return { success: 1, file: { url: result.url } };
                   } catch (error) {
-                    return { success: 0, error: "Upload failed" };
+                    console.error('EditorJS upload error:', error);
+                    return { success: 0, error: error instanceof Error ? error.message : 'Upload failed' };
                   }
                 },
               },
@@ -102,9 +119,85 @@ export default function CreateNewsPage() {
     setValue("tags", watchedTags.filter(tag => tag !== tagToRemove));
   };
 
+  // Function để generate slug từ tiêu đề
+  const generateSlug = (title: string): string => {
+    return title
+      .toLowerCase()
+      .normalize('NFD') // Tách dấu tiếng Việt
+      .replace(/[\u0300-\u036f]/g, '') // Xóa dấu tiếng Việt
+      .replace(/[đĐ]/g, 'd') // Thay đ/Đ thành d
+      .replace(/[^a-z0-9\s-]/g, '') // Chỉ giữ chữ cái, số, khoảng trắng và dấu gạch ngang
+      .replace(/\s+/g, '-') // Thay khoảng trắng thành dấu gạch ngang
+      .replace(/-+/g, '-') // Gộp nhiều dấu gạch ngang liên tiếp
+      .replace(/^-|-$/g, ''); // Xóa dấu gạch ngang ở đầu và cuối
+  };
+
+  // Auto-generate slug khi tiêu đề thay đổi
+  const watchedTitle = watch("title");
+  useEffect(() => {
+    if (watchedTitle && !watch("slug")) {
+      const generatedSlug = generateSlug(watchedTitle);
+      setValue("slug", generatedSlug);
+    }
+  }, [watchedTitle, setValue, watch]);
+
+  const handleCoverImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setCoverImageFile(file);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setCoverImagePreview(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const uploadCoverImage = async (): Promise<string> => {
+    if (!coverImageFile) {
+      throw new Error("Không có file ảnh để upload");
+    }
+    
+    setIsUploadingCover(true);
+    try {
+      console.log("Bắt đầu upload ảnh bìa...");
+      
+      const formData = new FormData();
+      formData.append('file', coverImageFile);
+      formData.append('folder', 'news_cover_images');
+
+      const response = await fetch('/api/upload-image', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Upload failed');
+      }
+
+      const result = await response.json();
+      console.log("Upload ảnh bìa thành công:", result.url);
+      return result.url;
+    } catch (error) {
+      console.error("Lỗi upload ảnh bìa:", error);
+      throw new Error(`Không thể upload ảnh bìa: ${error instanceof Error ? error.message : 'Lỗi không xác định'}`);
+    } finally {
+      setIsUploadingCover(false);
+    }
+  };
+
   const onSubmit = async (data: NewsArticleFormData) => {
     try {
       setIsSubmitting(true);
+      console.log("Bắt đầu tạo bài viết...");
+      
+      // Upload cover image if selected
+      let coverImageUrl = data.coverImageUrl || "";
+      if (coverImageFile) {
+        console.log("Có ảnh bìa cần upload...");
+        coverImageUrl = await uploadCoverImage();
+      }
       
       // Get editor content
       if (editorRef.current) {
@@ -115,11 +208,19 @@ export default function CreateNewsPage() {
           blocks: (editorData.blocks || []).map(block => ({
             id: block.id,
             type: block.type,
-            data: block.data ? block.data : {},
+            data: block.data || {},
           })),
         };
-        data.content = safeEditorData as any;
+        data.content = safeEditorData;
       }
+
+      console.log("Dữ liệu bài viết:", {
+        title: data.title,
+        author: data.author,
+        summary: data.summary,
+        coverImageUrl: coverImageUrl,
+        isPublished: data.isPublished
+      });
 
       // Create the article
       const articleId = await createNewsArticle({
@@ -129,9 +230,11 @@ export default function CreateNewsPage() {
         summary: data.summary,
         tags: data.tags,
         isPublished: data.isPublished,
-        coverImageUrl: data.coverImageUrl || "",
+        coverImageUrl: coverImageUrl,
         slug: data.slug || "",
       });
+
+      console.log("Tạo bài viết thành công, ID:", articleId);
 
       toast({
         title: "Thành công",
@@ -140,10 +243,23 @@ export default function CreateNewsPage() {
 
       router.push("/admin/news");
     } catch (error) {
-      console.error("Error creating article:", error);
+      console.error("Lỗi tạo bài viết:", error);
+      
+      let errorMessage = "Không thể tạo tin tức. Vui lòng thử lại.";
+      
+      if (error instanceof Error) {
+        if (error.message.includes("Cloudinary")) {
+          errorMessage = "Lỗi upload ảnh: " + error.message;
+        } else if (error.message.includes("Firestore")) {
+          errorMessage = "Lỗi lưu dữ liệu: " + error.message;
+        } else {
+          errorMessage = error.message;
+        }
+      }
+      
       toast({
         title: "Lỗi",
-        description: "Không thể tạo tin tức. Vui lòng thử lại.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
@@ -241,22 +357,86 @@ export default function CreateNewsPage() {
 
                 <div>
                   <Label htmlFor="coverImageUrl">Ảnh bìa</Label>
-                  <Input
-                    id="coverImageUrl"
-                    {...register("coverImageUrl")}
-                    placeholder="URL ảnh bìa..."
-                  />
+                  <div className="space-y-3">
+                    {/* File Upload */}
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
+                      <input
+                        type="file"
+                        id="coverImageFile"
+                        accept="image/*"
+                        onChange={handleCoverImageChange}
+                        className="hidden"
+                      />
+                      <label htmlFor="coverImageFile" className="cursor-pointer">
+                        <Upload className="w-8 h-8 mx-auto text-gray-400 mb-2" />
+                        <p className="text-sm text-gray-600">Chọn ảnh từ máy tính</p>
+                        <p className="text-xs text-gray-400">JPG, PNG, GIF (tối đa 10MB)</p>
+                      </label>
+                    </div>
+
+                    {/* URL Input */}
+                    <div>
+                      <p className="text-sm text-gray-600 mb-2">Hoặc nhập URL ảnh:</p>
+                      <Input
+                        id="coverImageUrl"
+                        {...register("coverImageUrl")}
+                        placeholder="https://example.com/image.jpg"
+                      />
+                    </div>
+
+                    {/* Preview */}
+                    {(coverImagePreview || watch("coverImageUrl")) && (
+                      <div className="mt-3">
+                        <p className="text-sm text-gray-600 mb-2">Xem trước:</p>
+                        <div className="relative">
+                          <img
+                            src={coverImagePreview || watch("coverImageUrl")}
+                            alt="Cover preview"
+                            className="w-full h-32 object-cover rounded-lg border"
+                          />
+                          {coverImagePreview && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setCoverImageFile(null);
+                                setCoverImagePreview("");
+                              }}
+                              className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600"
+                            >
+                              <X className="w-3 h-3" />
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <div>
                   <Label htmlFor="slug">Slug (tùy chọn)</Label>
-                  <Input
-                    id="slug"
-                    {...register("slug")}
-                    placeholder="tin-tuc-moi..."
-                  />
+                  <div className="flex gap-2">
+                    <Input
+                      id="slug"
+                      {...register("slug")}
+                      placeholder="tin-tuc-moi..."
+                    />
+                    <Button 
+                      type="button" 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => {
+                        if (watchedTitle) {
+                          const generatedSlug = generateSlug(watchedTitle);
+                          setValue("slug", generatedSlug);
+                        }
+                      }}
+                      disabled={!watchedTitle}
+                    >
+                      Tạo slug
+                    </Button>
+                  </div>
                   <p className="text-xs text-muted-foreground mt-1">
-                    URL thân thiện cho bài viết
+                    URL thân thiện cho bài viết. Tự động tạo từ tiêu đề hoặc nhập thủ công.
                   </p>
                 </div>
 
@@ -309,7 +489,7 @@ export default function CreateNewsPage() {
                   <Button
                     type="submit"
                     className="w-full"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || isUploadingCover}
                   >
                     {isSubmitting ? (
                       <>

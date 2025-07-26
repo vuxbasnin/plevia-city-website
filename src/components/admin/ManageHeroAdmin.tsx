@@ -14,7 +14,7 @@ import { getHeroSectionData, updateHeroSection } from "@/lib/firestoreService";
 import { type HeroSectionData, heroFormSchema, defaultHeroSectionData } from "@/types/landingPageAdmin";
 import { Loader2, Save, Image as ImageIcon, XCircle } from "lucide-react";
 import NextImage from "next/image";
-import { uploadFileToCloudinary } from "@/lib/cloudinaryUploader";
+import { uploadFileViaAPI } from "@/lib/uploadHelper";
 import { CLOUDINARY } from "@/lib/cloudinary";
 
 export default function ManageHeroAdmin() {
@@ -117,7 +117,7 @@ export default function ManageHeroAdmin() {
       }
       setIsUploading(true);
       try {
-        const uploadedUrl = await uploadFileToCloudinary(pendingImageFile, "landingpage_images/hero");
+        const uploadedUrl = await uploadFileViaAPI(pendingImageFile, "landingpage_images/hero");
         dataToSave.imageUrl = uploadedUrl;
         setPendingImageFile(null);
         if (heroImageInputRef.current) {

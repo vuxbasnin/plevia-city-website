@@ -11,8 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import { getNewsArticles, deleteNewsArticle } from "@/lib/firestoreService";
 import { NewsArticle } from "@/types/landingPageAdmin";
 import { Plus, Edit, Trash2, Eye, Calendar, User, Tag, FileText } from "lucide-react";
-import { format } from "date-fns";
-import { vi } from "date-fns/locale";
+import { formatDateForDisplay } from "@/lib/utils";
 
 export default function NewsListPage() {
   const [articles, setArticles] = useState<NewsArticle[]>([]);
@@ -71,12 +70,6 @@ export default function NewsListPage() {
       setDeleteDialogOpen(false);
       setArticleToDelete(null);
     }
-  };
-
-  const formatDate = (timestamp: any) => {
-    if (!timestamp) return "N/A";
-    const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-    return format(date, "dd/MM/yyyy HH:mm", { locale: vi });
   };
 
   if (loading) {
@@ -173,7 +166,7 @@ export default function NewsListPage() {
                     <TableCell>
                       <div className="flex items-center gap-2">
                         <Calendar className="w-4 h-4 text-muted-foreground" />
-                        {formatDate(article.createdAt)}
+                        {formatDateForDisplay(article.createdAt)}
                       </div>
                     </TableCell>
                     <TableCell>

@@ -9,7 +9,6 @@ import ImageTool from "@editorjs/image";
 import Quote from "@editorjs/quote";
 import Code from "@editorjs/code";
 import { getNewsArticleById, updateNewsArticle } from "@/lib/firestoreService";
-import { uploadFileToCloudinary } from "@/lib/cloudinaryUploader";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
@@ -45,8 +44,27 @@ export default function EditNewsPage() {
             config: {
               uploader: {
                 uploadByFile: async (file: File) => {
-                  const url = await uploadFileToCloudinary(file, "news_images");
-                  return { success: 1, file: { url } };
+                  try {
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    formData.append('folder', 'news_images');
+
+                    const response = await fetch('/api/upload-image', {
+                      method: 'POST',
+                      body: formData,
+                    });
+
+                    if (!response.ok) {
+                      const errorData = await response.json();
+                      throw new Error(errorData.error || 'Upload failed');
+                    }
+
+                    const result = await response.json();
+                    return { success: 1, file: { url: result.url } };
+                  } catch (error) {
+                    console.error('EditorJS upload error:', error);
+                    return { success: 0, error: error instanceof Error ? error.message : 'Upload failed' };
+                  }
                 },
               },
             },

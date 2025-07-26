@@ -17,7 +17,7 @@ import { type MemberBenefitsSectionData, type BenefitItem as BenefitItemType, be
 import { Loader2, Save, PlusCircle, Edit, Trash2, Award, XCircle } from "lucide-react";
 import NextImage from "next/image";
 import DynamicLucideIcon from '@/components/shared/DynamicLucideIcon';
-import { uploadFileToCloudinary } from "@/lib/cloudinaryUploader";
+import { uploadFileViaAPI } from "@/lib/uploadHelper";
 import { CLOUDINARY } from "@/lib/cloudinary";
 
 
@@ -84,7 +84,7 @@ export default function ManageBenefitsAdmin() {
       const uploadPromises: Promise<ManagedBenefitItem>[] = benefitsList.map(async (benefit, index) => {
         if (benefit._tempFile) {
           try {
-            const newImageUrl = await uploadFileToCloudinary(benefit._tempFile, "landingpage_images/benefits");
+            const newImageUrl = await uploadFileViaAPI(benefit._tempFile, "landingpage_images/benefits");
             return { ...benefit, imageUrl: newImageUrl, _tempFile: undefined, _tempPreviewUrl: undefined };
           } catch (uploadError: any) {
             toast({

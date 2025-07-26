@@ -332,8 +332,8 @@ export async function getNewsArticles(): Promise<NewsArticle[]> {
       articles.push({
         id: doc.id,
         ...data,
-        createdAt: data.createdAt?.toMillis ? data.createdAt.toMillis() : null,
-        updatedAt: data.updatedAt?.toMillis ? data.updatedAt.toMillis() : null,
+        createdAt: data.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt,
+        updatedAt: data.updatedAt?.toDate ? data.updatedAt.toDate() : data.updatedAt,
       } as NewsArticle);
     });
     
@@ -355,9 +355,9 @@ export async function getNewsArticleById(id: string): Promise<NewsArticle | null
     
     if (articleSnap.exists()) {
       const data = articleSnap.data();
-      // Convert Timestamp về milliseconds nếu cần
-      const createdAt = data.createdAt && typeof data.createdAt.toMillis === 'function' ? data.createdAt.toMillis() : data.createdAt;
-      const updatedAt = data.updatedAt && typeof data.updatedAt.toMillis === 'function' ? data.updatedAt.toMillis() : data.updatedAt;
+      // Convert Timestamp về Date nếu cần
+      const createdAt = data.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt;
+      const updatedAt = data.updatedAt?.toDate ? data.updatedAt.toDate() : data.updatedAt;
       return {
         id: articleSnap.id,
         ...data,
@@ -444,8 +444,8 @@ export async function getPublishedNewsArticles(): Promise<NewsArticle[]> {
       articles.push({
         id: doc.id,
         ...data,
-        createdAt: data.createdAt,
-        updatedAt: data.updatedAt,
+        createdAt: data.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt,
+        updatedAt: data.updatedAt?.toDate ? data.updatedAt.toDate() : data.updatedAt,
       } as NewsArticle);
     });
     

@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { addLifestyleImage, getLifestyleImages, deleteLifestyleImage, updateLifestyleImageCaption } from "@/lib/firestoreService";
-import { uploadFileToCloudinary } from "@/lib/cloudinaryUploader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
@@ -14,6 +13,30 @@ function LifestyleImageUploadScreen({ onBack, onUploaded }: { onBack: () => void
   const { toast } = useToast();
   const { user } = useAuth();
 
+  const handleFileUpload = async (file: File) => {
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('folder', 'gallery_images');
+
+      const response = await fetch('/api/upload-image', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Upload failed');
+      }
+
+      const result = await response.json();
+      return result.url;
+    } catch (error) {
+      console.error('Upload error:', error);
+      throw error;
+    }
+  };
+
   const handleUpload = async () => {
     if (!files || files.length === 0) return;
     setIsUploading(true);
@@ -22,7 +45,7 @@ function LifestyleImageUploadScreen({ onBack, onUploaded }: { onBack: () => void
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       try {
-        const url = await uploadFileToCloudinary(file, "gallery_images");
+        const url = await handleFileUpload(file);
         const uploadedBy = user?.displayName || user?.email || "unknown";
         await addLifestyleImage({ url, caption, uploadedBy });
         successCount++;
