@@ -6,6 +6,21 @@
   flex-direction: column;
 }
 
+/* CSS cho 16:9 mode */
+.libimage-169 .libimage-slider-image-wrapper {
+  height: auto !important;
+  max-height: none !important;
+  aspect-ratio: 16/9 !important;
+}
+
+.libimage-169-img {
+  aspect-ratio: 16/9 !important;
+  height: auto !important;
+  max-height: none !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
 .lib-image-header {
   margin-bottom: 4rem;
   padding: 0 2rem;

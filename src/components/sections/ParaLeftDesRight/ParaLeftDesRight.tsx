@@ -18,6 +18,7 @@ interface ParaLeftDesRightProps {
   reverse?: boolean; // nếu true, sẽ đảo ngược vị trí của text và ảnh
   isShowLibImage?: boolean; // nếu true, sẽ hiển thị LibImage thay vì ảnh
   dotEnabled?: boolean; // nếu true, sẽ hiển thị dot trước subdescription
+  is169?: boolean; // nếu true, LibImage sẽ hiển thị với tỷ lệ 16:9
 }
 
 const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
@@ -28,7 +29,8 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
   backgroundColor = 'white',
   reverse,
   isShowLibImage = false,
-  dotEnabled = false
+  dotEnabled = false,
+  is169 = false
 }) => {
   return (
     <div
@@ -53,7 +55,7 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
             {
               isShowLibImage ? (
                 <div className="para-left-des-right__lib_image-wrapper">
-                  <LibImage isHideTitle={true} />
+                  <LibImage isHideTitle={true} is169={is169} />
                 </div>
               ) : (
 
@@ -154,7 +156,7 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
             {
               isShowLibImage ? (
                 <div className="para-left-des-right__lib_image-wrapper">
-                  <LibImage isHideTitle={true} />
+                  <LibImage isHideTitle={true} is169={is169} />
                 </div>
               ) : (
 

@@ -15,9 +15,10 @@ interface ImageItem {
 
 interface LibImageProps {
   isHideTitle?: boolean;
+  is169?: boolean; // Thêm prop mới
 }
 
-const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false }) => {
+const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false, is169 = false }) => {
   const [images, setImages] = useState<ImageItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -120,7 +121,7 @@ const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false }) => {
   };
 
   return (
-    <section className="lib-image libimage-slider-root">
+    <section className={`lib-image libimage-slider-root ${is169 ? 'libimage-169' : ''}`}>
       {!isHideTitle && (
         <div className="lib-image-header">
           <Title variant="large" align="center">
@@ -155,8 +156,14 @@ const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false }) => {
                 alt={images[currentIndex].caption || 'Ảnh thư viện'}
                 width={1920}
                 height={800}
-                className="libimage-slider-image"
-                style={{ width: '100vw', maxWidth: '100vw', height: '100%', objectFit: 'cover' }}
+                className={`libimage-slider-image ${is169 ? 'libimage-169-img' : ''}`}
+                style={{ 
+                  width: '100vw', 
+                  maxWidth: '100vw', 
+                  height: is169 ? 'auto' : '100%', 
+                  objectFit: 'cover',
+                  aspectRatio: is169 ? '16/9' : 'auto'
+                }}
                 priority
                 draggable={false}
               />
