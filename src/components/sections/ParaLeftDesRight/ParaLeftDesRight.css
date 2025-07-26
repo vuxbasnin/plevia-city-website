@@ -188,6 +188,15 @@
     align-items: center;
   }
 
+  .para-left-des-right__lib_image-wrapper {
+    order: 1;
+    width: 100% !important;
+    padding: 0 16px 0 16px;
+    margin-bottom: 16px;
+    justify-content: center;
+    align-items: center;
+  }
+
   .para-left-des-right__image {
     width: 100%;
     height: auto;
@@ -220,6 +229,17 @@
     order: 1;
     height: auto;
   }
+  
+  .para-left-des-right__lib_image-wrapper {
+    width: 100% !important;
+    padding: 0 16px 0 16px;
+    margin-bottom: 16px;
+    justify-content: center;
+    align-items: center;
+    order: 1;
+    height: auto;
+  }
+  
   .para-left-des-right__image {
     width: 100%;
     height: auto;

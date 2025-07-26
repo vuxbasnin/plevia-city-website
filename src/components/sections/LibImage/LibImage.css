@@ -292,3 +292,107 @@
 .libimage-slider-indicator { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
 .libimage-slider-indicator span { display: block; width: 12px; height: 12px; border-radius: 50%; background: #ccc; opacity: 0.5; }
 .libimage-slider-indicator .active { background: #219653; opacity: 1; }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .libimage-slider-root { 
+    width: 100% !important; 
+    max-width: 100% !important;
+    overflow: hidden; 
+  }
+  
+  .libimage-slider-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  .libimage-slider-image-wrapper { 
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 60vh !important;
+    max-height: 60vh !important;
+  }
+  
+  .libimage-slider-image-inner { 
+    width: 100% !important; 
+    max-width: 100% !important; 
+    height: 100%; 
+    top: 0; 
+    left: 0; 
+  }
+  
+  .libimage-slider-image { 
+    width: 100% !important; 
+    max-width: 100% !important; 
+    height: 100%; 
+    max-height: 60vh !important; 
+    object-fit: cover; 
+    border-radius: 0; 
+  }
+  
+  .libimage-slider-btn-left { left: 12px; }
+  .libimage-slider-btn-right { right: 12px; }
+  
+  .libimage-slider-caption { 
+    font-size: 0.9rem; 
+    padding: 6px 16px; 
+    bottom: 16px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .libimage-slider-root { 
+    width: 100% !important; 
+    max-width: 100% !important;
+    overflow: hidden; 
+  }
+  
+  .libimage-slider-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  .libimage-slider-image-wrapper { 
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 50vh !important;
+    max-height: 50vh !important;
+  }
+  
+  .libimage-slider-image-inner { 
+    width: 100% !important; 
+    max-width: 100% !important; 
+    height: 100%; 
+    top: 0; 
+    left: 0; 
+  }
+  
+  .libimage-slider-image { 
+    width: 100% !important; 
+    max-width: 100% !important; 
+    height: 100%; 
+    max-height: 50vh !important; 
+    object-fit: cover; 
+    border-radius: 0; 
+  }
+  
+  .libimage-slider-btn-left { left: 8px; }
+  .libimage-slider-btn-right { right: 8px; }
+  
+  .libimage-slider-caption { 
+    font-size: 0.8rem; 
+    padding: 4px 12px; 
+    bottom: 12px; 
+  }
+  
+  .libimage-slider-indicator { 
+    margin-top: 12px; 
+  }
+  
+  .libimage-slider-indicator span { 
+    width: 8px; 
+    height: 8px; 
+  }
+}
