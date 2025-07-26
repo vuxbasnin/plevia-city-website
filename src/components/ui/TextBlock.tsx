@@ -9,11 +9,21 @@ interface TextBlockProps {
 }
 
 const TextBlock: React.FC<TextBlockProps> = ({ children, content, className = "", fontSize = "1.5rem", header }) => {
+  // Responsive max-width based on screen size
+  const getMaxWidth = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth <= 480) return "92vw";
+      if (window.innerWidth <= 640) return "90vw";
+      if (window.innerWidth <= 768) return "85vw";
+    }
+    return "76vw";
+  };
+
   return (
     <div
       className={`textblock-container ${className}`.trim()}
       style={{
-        maxWidth: "76vw",
+        maxWidth: getMaxWidth(),
         margin: "0 auto",
         padding: "24px 0",
         fontSize: fontSize,

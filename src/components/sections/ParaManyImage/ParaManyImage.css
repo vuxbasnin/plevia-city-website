@@ -8,8 +8,8 @@
 
 .para-many-image-title {
   text-align: center;
-  font-size: 2.5rem;
-  font-weight: 600;
+  font-size: 2.6rem;
+  font-weight: 500;
   color: #219653;
   margin-bottom: 8px;
   text-transform: uppercase;
@@ -28,7 +28,7 @@
   color: #000;
   font-size: 1.1rem;
   margin-bottom: 32px;
-  text-align: left;
+  text-align: justify;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -36,7 +36,7 @@
   color: #000;
   font-size: 1rem;
   margin-bottom: 32px;
-  text-align: left;
+  text-align: justify;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -44,7 +44,7 @@
   color: #000;
   font-size: 1rem;
   margin-bottom: 32px;
-  text-align: left;
+  text-align: justify;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -66,16 +66,48 @@
 }
 
 @media (max-width: 900px) {
+  .para-many-image-container {
+    width: 95vw;
+    padding: 24px 16px;
+  }
+  
   .para-many-image-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 }
 
 @media (max-width: 600px) {
+  .para-many-image-container {
+    width: 100%;
+    padding: 20px 12px;
+  }
+  
   .para-many-image-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
+  
   .para-many-image-title {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+  }
+  
+  .para-many-image-paragraph {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+  
+  .para-many-image-bullets {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+  
+  .para-many-image-footer {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    text-align: justify;
   }
 }

@@ -2,6 +2,7 @@
   width: 100%;
   background: #fff;
   font-family: 'Roboto', sans-serif;
+  padding: 20px 0;
 }
 
 .para-left-des-right__inner {
@@ -156,6 +157,10 @@
 }
 
 @media (max-width: 640px) {
+  .para-left-des-right__container {
+    padding: 20px 0;
+  }
+  
   .para-left-des-right__inner {
     flex-direction: column;
     width: 100%;
@@ -228,5 +233,16 @@
     align-items: stretch;
     order: 2;
     height: auto;
+  }
+  
+  /* Ẩn title dưới ảnh khi reverse = true */
+  .para-left-des-right__container--reverse .para-left-des-right__text__reverse .para-left-des-right__title {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .para-left-des-right__container {
+    padding: 20px 0;
   }
 }

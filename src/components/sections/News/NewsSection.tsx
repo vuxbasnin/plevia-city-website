@@ -33,7 +33,10 @@ const NewsSection: React.FC<NewsSectionProps> = ({
   useEffect(() => {
     if (!isDragging) {
       autoScrollRef.current = setInterval(() => {
-        setCurrentIndex((prevIndex) => prevIndex + 1);
+        setCurrentIndex((prevIndex) => {
+          const newIndex = prevIndex + 1;
+          return newIndex;
+        });
       }, scrollInterval);
     }
 
@@ -44,15 +47,16 @@ const NewsSection: React.FC<NewsSectionProps> = ({
     };
   }, [scrollInterval, isDragging]);
 
-
-
   // Update translateX when currentIndex changes
   useEffect(() => {
     if (!isDragging) {
-      // Tính toán pixel dựa trên container width
+      // Tính toán pixel dựa trên container width và số items visible
       const containerWidth = sliderRef.current?.offsetWidth || 1200;
-      const itemWidth = containerWidth / 3; // 3 items visible
+      const isMobile = window.innerWidth <= 767;
+      const itemsVisible = isMobile ? 1 : 3; // 1 item trên mobile, 3 items trên desktop
+      const itemWidth = containerWidth / itemsVisible;
       const newTranslateX = -currentIndex * itemWidth;
+      
       setTranslateX(newTranslateX);
       currentTranslateXRef.current = newTranslateX;
     }
@@ -71,37 +75,29 @@ const NewsSection: React.FC<NewsSectionProps> = ({
     setStartX(e.pageX);
     setStartTranslateX(translateX);
     
-    // Tắt transition ngay lập tức
-    if (sliderElementRef.current) {
-      sliderElementRef.current.style.transition = 'none';
-    }
-    
+    // Tắt auto scroll
     if (autoScrollRef.current) {
       clearInterval(autoScrollRef.current);
     }
   };
 
   const handleMouseLeave = () => {
-    setIsDragging(false);
+    if (isDragging) {
+      handleMouseUp();
+    }
   };
 
   const handleMouseUp = () => {
+    if (!isDragging) return;
     setIsDragging(false);
     
-    // Sử dụng ref thay vì parse từ DOM để tránh khựng
-    const currentTranslateX = currentTranslateXRef.current;
-    
-    // Snap to nearest item với animation mượt mà
+    // Snap to nearest item
     const containerWidth = sliderRef.current?.offsetWidth || 1200;
-    const itemWidth = containerWidth / 3;
-    const nearestIndex = Math.round(-currentTranslateX / itemWidth);
+    const isMobile = window.innerWidth <= 767;
+    const itemsVisible = isMobile ? 1 : 3;
+    const itemWidth = containerWidth / itemsVisible;
+    const nearestIndex = Math.round(-translateX / itemWidth);
     const targetTranslateX = -nearestIndex * itemWidth;
-    
-    // Animate to target position
-    if (sliderElementRef.current) {
-      sliderElementRef.current.style.transition = 'transform 300ms ease-out';
-      sliderElementRef.current.style.transform = `translateX(${targetTranslateX}px)`;
-    }
     
     setTranslateX(targetTranslateX);
     currentTranslateXRef.current = targetTranslateX;
@@ -114,53 +110,39 @@ const NewsSection: React.FC<NewsSectionProps> = ({
     
     const currentX = e.pageX;
     const diff = currentX - startX;
-    
-    // Thao tác trực tiếp với DOM để nhanh nhất
     const newTranslateX = startTranslateX + diff;
-    currentTranslateXRef.current = newTranslateX;
     
-    // Sử dụng requestAnimationFrame để tránh khựng khi scroll nhanh
-    requestAnimationFrame(() => {
-      if (sliderElementRef.current) {
-        sliderElementRef.current.style.transform = `translateX(${newTranslateX}px)`;
-        sliderElementRef.current.style.transition = 'none';
-      }
-    });
+    setTranslateX(newTranslateX);
+    currentTranslateXRef.current = newTranslateX;
   };
 
   // Touch event handlers
   const handleTouchStart = (e: React.TouchEvent) => {
+    console.log('Touch start detected'); // Debug
+    e.preventDefault(); // Ngăn chặn default touch behavior
     setIsDragging(true);
     setStartX(e.touches[0].pageX);
     setStartTranslateX(translateX);
     
-    // Tắt transition ngay lập tức
-    if (sliderElementRef.current) {
-      sliderElementRef.current.style.transition = 'none';
-    }
-    
+    // Tắt auto scroll
     if (autoScrollRef.current) {
       clearInterval(autoScrollRef.current);
     }
   };
 
-  const handleTouchEnd = () => {
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    console.log('Touch end detected'); // Debug
+    e.preventDefault(); // Ngăn chặn default touch behavior
+    if (!isDragging) return;
     setIsDragging(false);
     
-    // Sử dụng ref thay vì parse từ DOM để tránh khựng
-    const currentTranslateX = currentTranslateXRef.current;
-    
-    // Snap to nearest item với animation mượt mà
+    // Snap to nearest item
     const containerWidth = sliderRef.current?.offsetWidth || 1200;
-    const itemWidth = containerWidth / 3;
-    const nearestIndex = Math.round(-currentTranslateX / itemWidth);
+    const isMobile = window.innerWidth <= 767;
+    const itemsVisible = isMobile ? 1 : 3;
+    const itemWidth = containerWidth / itemsVisible;
+    const nearestIndex = Math.round(-translateX / itemWidth);
     const targetTranslateX = -nearestIndex * itemWidth;
-    
-    // Animate to target position
-    if (sliderElementRef.current) {
-      sliderElementRef.current.style.transition = 'transform 300ms ease-out';
-      sliderElementRef.current.style.transform = `translateX(${targetTranslateX}px)`;
-    }
     
     setTranslateX(targetTranslateX);
     currentTranslateXRef.current = targetTranslateX;
@@ -169,21 +151,16 @@ const NewsSection: React.FC<NewsSectionProps> = ({
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDragging) return;
+    e.preventDefault(); // Ngăn chặn default touch behavior
     
     const currentX = e.touches[0].pageX;
     const diff = currentX - startX;
-    
-    // Thao tác trực tiếp với DOM để nhanh nhất
     const newTranslateX = startTranslateX + diff;
-    currentTranslateXRef.current = newTranslateX;
     
-    // Sử dụng requestAnimationFrame để tránh khựng khi scroll nhanh
-    requestAnimationFrame(() => {
-      if (sliderElementRef.current) {
-        sliderElementRef.current.style.transform = `translateX(${newTranslateX}px)`;
-        sliderElementRef.current.style.transition = 'none';
-      }
-    });
+    console.log('Touch move:', { currentX, diff, newTranslateX }); // Debug
+    
+    setTranslateX(newTranslateX);
+    currentTranslateXRef.current = newTranslateX;
   };
 
   return (
