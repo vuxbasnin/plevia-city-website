@@ -138,14 +138,16 @@ export default function Navbar() {
       <div className="navbar-container">
         <div className="navbar-content">
           {/* Logo Section - SVG mới */}
-          <img
-            src="/Logo_Standard_Final-14.svg"
-            alt="Logo"
-            width={300}
-            height={300}
-            className="navbar-logo-img"
-            style={{ objectFit: 'contain', display: 'block', marginLeft: 0, marginRight: 0 }}
-          />
+          <Link href="/" passHref>
+            <img
+              src="/Logo_Standard_Final-14.svg"
+              alt="Logo"
+              width={300}
+              height={300}
+              className="navbar-logo-img"
+              style={{ objectFit: 'contain', display: 'block', marginLeft: 0, marginRight: 0, cursor: 'pointer' }}
+            />
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="navbar-desktop-menu">

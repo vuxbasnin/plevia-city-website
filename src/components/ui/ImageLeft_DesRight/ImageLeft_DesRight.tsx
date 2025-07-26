@@ -36,6 +36,7 @@ const ImageLeftDesRight: React.FC<ImageLeftDesRightProps> = ({
               src={imageSrc} 
               alt={imageAlt} 
               className="main-image"
+              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }}
             />
             {/* Decorative Elements */}
             <div className="decorative-elements">

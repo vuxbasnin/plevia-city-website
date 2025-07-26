@@ -166,6 +166,11 @@ const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false, is169 = false 
                 }}
                 priority
                 draggable={false}
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.onerror = null;
+                  target.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop';
+                }}
               />
               {images[currentIndex].caption && (
                 <div className="libimage-slider-caption">

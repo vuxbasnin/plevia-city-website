@@ -70,7 +70,7 @@ export default function ImageHeader({ imageUrl }: { imageUrl?: string }) {
   //   ? `https://placehold.co/1200x800.png?text=${encodeURIComponent(heroData.headline || 'Hero+Image+Error')}`
   //   : heroData.imageUrl || defaultHeroSectionData.imageUrl;
 
-  const fallbackImageUrl = "https://thanhxuanvalley.com/Upload/catalog/2025/4/b953705c-e985-41ae-b420-51760da6706f.jpg";
+  const fallbackImageUrl = "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1920&h=1080&fit=crop&crop=center";
   const currentImageUrl = imageUrl || fallbackImageUrl;
 
   if (isLoading) {

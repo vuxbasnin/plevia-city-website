@@ -25,7 +25,7 @@ const ParaManyImage: React.FC<ParaManyImageProps> = ({ title, paragraph, bullets
       <div className="para-many-image-grid">
         {images.slice(0, 9).map((img, idx) => (
           <div className="para-many-image-item" key={idx}>
-            <img src={img} alt={`image-${idx+1}`} />
+            <img src={img} alt={`image-${idx+1}`} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
           </div>
         ))}
       </div>

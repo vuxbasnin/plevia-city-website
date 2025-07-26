@@ -53,7 +53,7 @@ const TabNew: React.FC<TabNewProps> = ({ title, tabs, reverse = false }) => {
                             {reverse ? (
                                 <>
                                     <div className="tabnew-content-image">
-                                        <img src={tab.image} alt={tab.title} />
+                                        <img src={tab.image} alt={tab.title} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
                                     </div>
                                     <div className="tabnew-content-text">
                                         <h3 className="tabnew-content-heading">{tab.content.heading}</h3>
@@ -97,7 +97,7 @@ const TabNew: React.FC<TabNewProps> = ({ title, tabs, reverse = false }) => {
                                         )}
                                     </div>
                                     <div className="tabnew-content-image">
-                                        <img src={tab.image} alt={tab.title} />
+                                        <img src={tab.image} alt={tab.title} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
                                     </div>
                                 </>
                             )}

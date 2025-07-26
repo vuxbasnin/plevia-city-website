@@ -130,7 +130,7 @@ export default function GalleryAdminPage() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {images.map(img => (
           <div key={img.id} className="border rounded p-2 flex flex-col items-center">
-            <img src={img.url} alt={img.caption} className="w-full h-40 object-cover rounded" />
+            <img src={img.url} alt={img.caption} className="w-full h-40 object-cover rounded" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
             <input
               className="text-sm mt-2 border rounded px-2 py-1 text-center"
               value={img.caption}

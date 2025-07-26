@@ -185,13 +185,13 @@ export default function NewsListPage() {
                     </TableCell>
                     <TableCell className="text-right">
                       <div className="flex items-center justify-end gap-2">
-                        <Link href={`/admin/news/${article.id}`}>
+                        <Link href={`/admin/news/edit/${article.slug || article.id}`}>
                           <Button variant="outline" size="sm">
                             <Edit className="w-4 h-4" />
                           </Button>
                         </Link>
                         {/* Nút Xem trước */}
-                        <Link href={`/admin/news/preview/${article.id}`} target="_blank">
+                        <Link href={`/admin/news/preview/${article.slug || article.id}`} target="_blank">
                           <Button variant="outline" size="sm">
                             <Eye className="w-4 h-4" />
                           </Button>

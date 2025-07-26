@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ItemNewsLarge from '@/components/ui/ItemNewsLarge/ItemNewsLarge';
 import './ListNews.css';
+import Link from 'next/link';
 
 interface NewsItem {
   id: string;
@@ -9,6 +10,7 @@ interface NewsItem {
   imageAlt: string;
   title: string;
   description: string;
+  slug?: string; // Added slug to the interface
 }
 
 interface ListNewsProps {
@@ -82,14 +84,15 @@ const ListNews: React.FC<ListNewsProps> = ({
         
         <div className="list-news__grid">
           {currentItems.map((item) => (
-            <ItemNewsLarge
-              key={item.id}
-              imageUrl={item.imageUrl}
-              imageAlt={item.imageAlt}
-              title={item.title}
-              description={item.description}
-              className="list-news__item"
-            />
+            <Link key={item.id} href={`/news/${item.slug || item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <ItemNewsLarge
+                imageUrl={item.imageUrl}
+                imageAlt={item.imageAlt}
+                title={item.title}
+                description={item.description}
+                className="list-news__item"
+              />
+            </Link>
           ))}
         </div>
 

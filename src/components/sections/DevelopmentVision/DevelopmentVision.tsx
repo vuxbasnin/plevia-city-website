@@ -18,6 +18,7 @@ const DevelopmentVision: React.FC = () => {
                 src="/images/development-vision/nature-boating.jpg" 
                 alt="Nương vào thiên nhiên"
                 className="vision-image"
+                onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }}
               />
               <div className="image-caption">
                 <span>Nương vào thiên nhiên</span>
@@ -31,6 +32,7 @@ const DevelopmentVision: React.FC = () => {
                 src="/images/development-vision/environment-friendly.jpg" 
                 alt="Thân thiện với môi trường"
                 className="vision-image"
+                onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }}
               />
               <div className="image-caption">
                 <span>Thân thiện với môi trường</span>
@@ -44,6 +46,7 @@ const DevelopmentVision: React.FC = () => {
                 src="/images/development-vision/health-care.jpg" 
                 alt="Chăm sóc sức khỏe toàn diện"
                 className="vision-image"
+                onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }}
               />
               <div className="image-caption">
                 <span>Chăm sóc sức khỏe toàn diện</span>

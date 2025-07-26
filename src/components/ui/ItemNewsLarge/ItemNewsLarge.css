@@ -65,14 +65,6 @@
   opacity: 0.9;
 }
 
-.item-news-large__separator {
-  width: 60px;
-  height: 2px;
-  background-color: #6b7280; /* Gray color */
-  margin: 0 auto;
-  border-radius: 1px;
-}
-
 /* Responsive design */
 @media (max-width: 768px) {
   .item-news-large__content {
@@ -103,8 +95,5 @@
     font-size: 0.9rem;
   }
   
-  .item-news-large__separator {
-    width: 50px;
-  }
 }
 

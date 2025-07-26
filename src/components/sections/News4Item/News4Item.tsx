@@ -21,7 +21,7 @@ const News4Item: React.FC<News4ItemProps> = ({ items }) => {
         {items.map((item, idx) => (
           <div className="news4-item" key={idx}>
             <div className="news4-img-wrap">
-              <img src={item.image} alt={item.title} className="news4-img" />
+              <img src={item.image} alt={item.title} className="news4-img" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
             </div>
             <div className="news4-meta">
               <span className="news4-meta-date">

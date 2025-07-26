@@ -5,7 +5,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import ImageHeader from '@/components/sections/ImageHeader';
 import ListNews from '@/components/sections/ListNews/ListNews';
 import ScrollReveal from '@/components/shared/ScrollReveal';
-import { getPublishedNewsArticles } from '@/lib/firestoreService';
+import { getNewsArticles } from '@/lib/firestoreService';
 import { NewsArticle } from '@/types/landingPageAdmin';
 
 export default function NewsPage() {
@@ -16,8 +16,8 @@ export default function NewsPage() {
     const loadNews = async () => {
       try {
         setLoading(true);
-        console.log('Loading published news articles...');
-        const articles = await getPublishedNewsArticles();
+        console.log('Loading news articles...');
+        const articles = await getNewsArticles();
         console.log('Raw articles from Firestore:', articles);
         
         // Transform NewsArticle to ListNews format
@@ -26,7 +26,8 @@ export default function NewsPage() {
           imageUrl: article.coverImageUrl || 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop', // fallback image
           imageAlt: article.title,
           title: article.title,
-          description: article.summary || 'Không có mô tả'
+          description: article.summary || 'Không có mô tả',
+          slug: article.slug // Thêm trường slug
         }));
         
         console.log('Transformed news items:', transformedNews);

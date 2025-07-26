@@ -34,8 +34,6 @@ const ItemNewsLarge: React.FC<ItemNewsLargeProps> = ({
         <p className="item-news-large__description">
           {description}
         </p>
-        
-        <div className="item-news-large__separator"></div>
       </div>
     </article>
   );

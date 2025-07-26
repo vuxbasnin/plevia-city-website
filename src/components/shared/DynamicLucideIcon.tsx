@@ -12,7 +12,7 @@ const DynamicLucideIcon = ({ name, className, ...props }: { name: string; classN
     if (name.startsWith('http://') || name.startsWith('https://')) {
         // eslint-disable-next-line @next/next/no-img-element
         // Do NOT spread ...props here as they are LucideProps/SVGProps, not ImgHTMLAttributes
-        return <img src={name} alt="Custom icon" className={cn("w-full h-full object-contain", className)} />;
+        return <img src={name} alt="Custom icon" className={cn("w-full h-full object-contain", className)} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />;
     }
     const IconComponent = (LucideIcons as any)[name];
     if (!IconComponent) {
