@@ -69,7 +69,7 @@ export default function NewsDetailPage() {
       </ScrollReveal>
       <ScrollReveal>
                  <div
-           className="mx-auto font-roboto sm:max-w-[91.5vw] sm:w-[91.5vw] max-w-[97.5vw] w-[97.5vw] sm:px-2 px-1 py-6"
+           className="mx-auto font-sans sm:max-w-[91.5vw] sm:w-[91.5vw] max-w-[97.5vw] w-[97.5vw] sm:px-2 px-1 py-6"
          >
           <h1 style={{
             fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
@@ -78,7 +78,7 @@ export default function NewsDetailPage() {
             textTransform: "uppercase",
             marginBottom: "1rem",
             textAlign: "center",
-            fontFamily: "Roboto, sans-serif",
+            fontFamily: "Montserrat, sans-serif",
             lineHeight: 1.2
           }}>{article.title}</h1>
 

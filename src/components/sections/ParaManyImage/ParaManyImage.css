@@ -3,7 +3,7 @@
   max-width: none;
   margin: 0 auto;
   padding: 32px 0px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .para-many-image-title {
@@ -13,7 +13,7 @@
   color: #219653;
   margin-bottom: 8px;
   text-transform: uppercase;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .para-many-image-line {
@@ -29,7 +29,7 @@
   font-size: 1.1rem;
   margin-bottom: 32px;
   text-align: justify;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .para-many-image-bullets{
@@ -37,7 +37,7 @@
   font-size: 1rem;
   margin-bottom: 32px;
   text-align: justify;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .para-many-image-footer{
@@ -45,7 +45,7 @@
   font-size: 1rem;
   margin-bottom: 32px;
   text-align: justify;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .para-many-image-grid {

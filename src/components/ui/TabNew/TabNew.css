@@ -3,7 +3,7 @@
   width: 80vw;
   margin: 0 auto;
   padding: 40px 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   --mobile-width: 80vw;
   --mobile-padding: 40px 0;
   text-align: center;
@@ -65,7 +65,7 @@
   text-align: center;
   padding: 0;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   white-space: pre-line;
   word-wrap: break-word;
   line-height: 1.3;
@@ -76,7 +76,7 @@
   font-size: 0.95rem;
   color: #7a8b7a;
   margin-top: 2px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .tabnew-content-row {
