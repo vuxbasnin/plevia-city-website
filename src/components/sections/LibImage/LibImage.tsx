@@ -17,14 +17,20 @@ interface LibImageProps {
   isHideTitle?: boolean;
   is169?: boolean; // Thêm prop mới
   images?: ImageItem[]; // Thêm prop images
+  autoScrollInterval?: number; // Thêm prop cho auto scroll interval
 }
 
-const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false, is169 = false, images: propImages }) => {
+const LibImage: React.FC<LibImageProps> = ({ 
+  isHideTitle = false, 
+  is169 = false, 
+  images: propImages,
+  autoScrollInterval = 5000 // Mặc định 5 giây
+}) => {
   const [images, setImages] = useState<ImageItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // -1: left, 1: right
-  const [animating, setAnimating] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(true); // Thêm state cho auto scroll
 
   // For touch/drag
   const startX = useRef<number | null>(null);
@@ -62,67 +68,97 @@ const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false, is169 = false,
     fetchImages();
   }, [propImages]); // Thêm propImages vào dependency
 
-  const goTo = (newIndex: number, dir: number) => {
-    if (animating || newIndex < 0 || newIndex >= images.length) return;
-    setDirection(dir);
-    setAnimating(true);
+  // Auto scroll effect
+  useEffect(() => {
+    if (images.length <= 1 || !isAutoScrolling) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = prevIndex + 1;
+        return nextIndex >= images.length ? 0 : nextIndex; // Loop back to first image
+      });
+    }, autoScrollInterval);
+
+    return () => clearInterval(interval);
+  }, [images.length, isAutoScrolling, autoScrollInterval]);
+
+  const goTo = (newIndex: number) => {
+    if (isTransitioning || newIndex < 0 || newIndex >= images.length) return;
+    setIsTransitioning(true);
+    setCurrentIndex(newIndex);
+    
+    // Reset transition state after animation completes
     setTimeout(() => {
-      setCurrentIndex(newIndex);
-      setAnimating(false);
-    }, 350); // animation duration
+      setIsTransitioning(false);
+    }, 1000); // Match CSS transition duration
   };
 
-  const nextImage = () => goTo(currentIndex + 1, 1);
-  const prevImage = () => goTo(currentIndex - 1, -1);
-
-  // Animation classes
-  const getSlideClass = () => {
-    if (!animating) return 'libimage-slide-active';
-    if (direction === 1) return 'libimage-slide-to-left';
-    if (direction === -1) return 'libimage-slide-to-right';
-    return 'libimage-slide-active';
+  const nextImage = () => {
+    // Tạm dừng auto scroll khi user tương tác
+    setIsAutoScrolling(false);
+    setTimeout(() => setIsAutoScrolling(true), 10000); // Resume auto scroll after 10 seconds
+    
+    const nextIndex = currentIndex + 1;
+    goTo(nextIndex >= images.length ? 0 : nextIndex); // Loop back to first image
+  };
+  
+  const prevImage = () => {
+    // Tạm dừng auto scroll khi user tương tác
+    setIsAutoScrolling(false);
+    setTimeout(() => setIsAutoScrolling(true), 10000); // Resume auto scroll after 10 seconds
+    
+    const prevIndex = currentIndex - 1;
+    goTo(prevIndex < 0 ? images.length - 1 : prevIndex); // Loop to last image
   };
 
   // Touch events (mobile)
   const handleTouchStart = (e: React.TouchEvent) => {
-    if (animating) return;
+    if (isTransitioning) return;
     startX.current = e.touches[0].clientX;
+    // Tạm dừng auto scroll khi user touch
+    setIsAutoScrolling(false);
   };
   const handleTouchMove = (e: React.TouchEvent) => {
     // Không xử lý move ở đây để tránh lag, chỉ xử lý khi end
   };
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (animating || startX.current === null) return;
+    if (isTransitioning || startX.current === null) return;
     const endX = e.changedTouches[0].clientX;
     const diff = endX - startX.current;
-    if (diff < -dragThreshold && currentIndex < images.length - 1) {
+    if (diff < -dragThreshold) {
       nextImage();
-    } else if (diff > dragThreshold && currentIndex > 0) {
+    } else if (diff > dragThreshold) {
       prevImage();
     }
     startX.current = null;
+    // Resume auto scroll after 10 seconds
+    setTimeout(() => setIsAutoScrolling(true), 10000);
   };
 
   // Mouse drag events (desktop)
   const handleMouseDown = (e: React.MouseEvent) => {
-    if (animating) return;
+    if (isTransitioning) return;
     isDragging.current = true;
     startX.current = e.clientX;
+    // Tạm dừng auto scroll khi user drag
+    setIsAutoScrolling(false);
   };
   const handleMouseMove = (e: React.MouseEvent) => {
     // Không xử lý move ở đây để tránh lag, chỉ xử lý khi mouse up
   };
   const handleMouseUp = (e: React.MouseEvent) => {
-    if (!isDragging.current || animating || startX.current === null) return;
+    if (!isDragging.current || isTransitioning || startX.current === null) return;
     const endX = e.clientX;
     const diff = endX - startX.current;
-    if (diff < -dragThreshold && currentIndex < images.length - 1) {
+    if (diff < -dragThreshold) {
       nextImage();
-    } else if (diff > dragThreshold && currentIndex > 0) {
+    } else if (diff > dragThreshold) {
       prevImage();
     }
     isDragging.current = false;
     startX.current = null;
+    // Resume auto scroll after 10 seconds
+    setTimeout(() => setIsAutoScrolling(true), 10000);
   };
   const handleMouseLeave = (e: React.MouseEvent) => {
     isDragging.current = false;
@@ -142,7 +178,7 @@ const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false, is169 = false,
         <button 
           className="libimage-slider-btn libimage-slider-btn-left" 
           onClick={prevImage} 
-          disabled={currentIndex === 0 || animating}
+          disabled={isTransitioning}
           aria-label="Ảnh trước"
         >
           <ChevronLeft size={36} />
@@ -159,33 +195,47 @@ const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false, is169 = false,
           style={{ cursor: 'grab', userSelect: 'none' }}
         >
           {images.length > 0 && (
-            <div className={`libimage-slider-image-inner ${getSlideClass()}`} key={images[currentIndex]?.id}>
-              <Image
-                src={images[currentIndex].url}
-                alt={images[currentIndex].caption || 'Ảnh thư viện'}
-                width={1920}
-                height={1080}
-                className={`libimage-slider-image ${is169 ? 'libimage-169-img' : ''}`}
-                style={{ 
-                  width: '100vw', 
-                  maxWidth: '100vw', 
-                  height: '100%', 
-                  objectFit: 'cover',
-                  aspectRatio: '16/9'
-                }}
-                priority
-                draggable={false}
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.onerror = null;
-                  target.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop';
-                }}
-              />
-              {images[currentIndex].caption && (
-                <div className="libimage-slider-caption">
-                  {images[currentIndex].caption}
+            <div 
+              className="libimage-slider-image-inner"
+              style={{ 
+                transform: `translateX(-${currentIndex * 100}%)`,
+                transition: 'transform 1000ms ease-in-out'
+              }}
+            >
+              {images.map((image, index) => (
+                <div 
+                  key={image.id} 
+                  className="libimage-slider-image-container"
+                  style={{ width: '100vw', flexShrink: 0 }}
+                >
+                  <Image
+                    src={image.url}
+                    alt={image.caption || 'Ảnh thư viện'}
+                    width={1920}
+                    height={1080}
+                    className={`libimage-slider-image ${is169 ? 'libimage-169-img' : ''}`}
+                    style={{ 
+                      width: '100vw', 
+                      maxWidth: '100vw', 
+                      height: '100%', 
+                      objectFit: 'cover',
+                      aspectRatio: '16/9'
+                    }}
+                    priority={index === 0}
+                    draggable={false}
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.onerror = null;
+                      target.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop';
+                    }}
+                  />
+                  {image.caption && (
+                    <div className="libimage-slider-caption">
+                      {image.caption}
+                    </div>
+                  )}
                 </div>
-              )}
+              ))}
             </div>
           )}
           {loading && (
@@ -195,7 +245,7 @@ const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false, is169 = false,
         <button 
           className="libimage-slider-btn libimage-slider-btn-right" 
           onClick={nextImage} 
-          disabled={currentIndex === images.length - 1 || animating}
+          disabled={isTransitioning}
           aria-label="Ảnh tiếp theo"
         >
           <ChevronRight size={36} />
