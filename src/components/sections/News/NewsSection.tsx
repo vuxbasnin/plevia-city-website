@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import './NewsSection.css';
 
 interface NewsItem {
@@ -19,6 +20,7 @@ const NewsSection: React.FC<NewsSectionProps> = ({
   newsItems,
   scrollInterval = 5000
 }) => {
+  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [translateX, setTranslateX] = useState(0);
@@ -163,6 +165,11 @@ const NewsSection: React.FC<NewsSectionProps> = ({
     currentTranslateXRef.current = newTranslateX;
   };
 
+  // Handle explore button click
+  const handleExploreClick = () => {
+    router.push('/news');
+  };
+
   return (
     <section className="news-section">
       {/* Background với pattern lá */}
@@ -230,7 +237,7 @@ const NewsSection: React.FC<NewsSectionProps> = ({
 
         {/* Call to Action Button */}
         <div className="news-cta">
-          <button className="explore-button">
+          <button className="explore-button" onClick={handleExploreClick}>
             <span className="button-text">KHÁM PHÁ NGAY</span>
             <span className="button-arrow">→</span>
             <div className="wave-effect"></div>

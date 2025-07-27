@@ -109,6 +109,7 @@ export default function HomePage() {
           ]}
           imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/06/PHOI-CANH-BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN.jpg"
           reverse={true}
+          dotEnabled={true}
         />
       </ScrollReveal>
       <ScrollReveal>
