@@ -74,7 +74,7 @@
 
 .tabnew-tab-desc {
   font-size: 0.95rem;
-  color: #7a8b7a;
+  color: hsl(var(--muted-foreground));
   margin-top: 2px;
   font-family: 'Montserrat', sans-serif;
 }
@@ -105,8 +105,8 @@
 }
 
 .tabnew-arrow:hover {
-  background: #f0f4f2;
-  border-color: #2e4c3b;
+  background: hsl(var(--accent));
+  border-color: hsl(var(--primary));
 }
 
 .tabnew-content-text {
@@ -125,13 +125,13 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 16px;
-  color: #2e4c3b;
+  color: #000000;
   text-align: center;
 }
 
 .tabnew-content-text p {
   font-size: 1.05rem;
-  color: #4a6352;
+  color: #000000;
   margin-bottom: 10px;
   text-align: justify;
 }

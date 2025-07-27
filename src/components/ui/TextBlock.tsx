@@ -8,7 +8,7 @@ interface TextBlockProps {
   header?: string; // Thêm prop header
 }
 
-const TextBlock: React.FC<TextBlockProps> = ({ children, content, className = "", fontSize = "1.5rem", header }) => {
+const TextBlock: React.FC<TextBlockProps> = ({ children, content, className = "", fontSize = "1.1rem", header }) => {
   // Responsive max-width based on screen size
   const getMaxWidth = () => {
     if (typeof window !== 'undefined') {
@@ -27,7 +27,7 @@ const TextBlock: React.FC<TextBlockProps> = ({ children, content, className = ""
         margin: "0 auto",
         padding: "24px 0",
         fontSize: fontSize,
-        color: "#222",
+        color: "#000000",
         textAlign: "justify",
         lineHeight: 1.7,
         fontFamily: "Montserrat, sans-serif"
@@ -39,7 +39,7 @@ const TextBlock: React.FC<TextBlockProps> = ({ children, content, className = ""
           lineHeight: "2.25rem",
           fontFamily: "Montserrat, sans-serif",
           fontWeight: 600,
-          color: "#166534",
+          color: "#000000",
           textAlign: "center",
           marginBottom: "24px",
           textTransform: "uppercase"

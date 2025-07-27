@@ -10,7 +10,7 @@
   text-align: center;
   font-size: 2.6rem;
   font-weight: 500;
-  color: #219653;
+      color: #000000;
   margin-bottom: 8px;
   text-transform: uppercase;
   font-family: 'Montserrat', sans-serif;
@@ -25,7 +25,7 @@
 }
 
 .para-many-image-paragraph {
-  color: #000;
+  color: #000000;
   font-size: 1.1rem;
   margin-bottom: 32px;
   text-align: justify;
@@ -33,7 +33,7 @@
 }
 
 .para-many-image-bullets{
-  color: #000;
+  color: #000000;
   font-size: 1rem;
   margin-bottom: 32px;
   text-align: justify;
@@ -41,7 +41,7 @@
 }
 
 .para-many-image-footer{
-  color: #000;
+  color: #000000;
   font-size: 1rem;
   margin-bottom: 32px;
   text-align: justify;

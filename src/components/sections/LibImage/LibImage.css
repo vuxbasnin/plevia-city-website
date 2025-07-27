@@ -44,8 +44,8 @@
 /* Navigation Buttons */
 .nav-button {
   background: white;
-  border: 2px solid #166534;
-  color: #166534;
+  border: 2px solid hsl(var(--primary));
+  color: hsl(var(--primary));
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -60,7 +60,7 @@
 }
 
 .nav-button:hover:not(:disabled) {
-  background: #166534;
+  background: hsl(var(--primary));
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(22, 101, 52, 0.3);
@@ -170,8 +170,8 @@
 
 .view-more-button {
   background: transparent;
-  color: #166534;
-  border: 2px solid #166534;
+  color: hsl(var(--primary));
+  border: 2px solid hsl(var(--primary));
   padding: 0.75rem 2rem;
   border-radius: 25px;
   font-size: 1rem;
@@ -185,7 +185,7 @@
 }
 
 .view-more-button:hover {
-  background: #166534;
+  background: hsl(var(--primary));
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(22, 101, 52, 0.3);
