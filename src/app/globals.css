@@ -12,22 +12,22 @@ body {
 @layer base {
   :root {
     --background: 220 20% 97%; /* Very light, slightly cool gray */
-    --foreground: 220 15% 25%; /* Dark, slightly cool gray */
+    --foreground: 0 0% 0%; /* Black */
 
     --card: 0 0% 100%; /* White */
-    --card-foreground: 220 15% 25%; /* Dark, slightly cool gray on cards */
+    --card-foreground: 0 0% 0%; /* Black on cards */
 
     --popover: 0 0% 100%; /* White */
-    --popover-foreground: 220 15% 25%; /* Dark, slightly cool gray on popovers */
+    --popover-foreground: 0 0% 0%; /* Black on popovers */
 
     --primary: 158 100% 21%; /* Đã đổi sang màu #006D44 */
     --primary-foreground: 0 0% 98%; /* Light gray/white for text on primary */
 
     --secondary: 220 15% 90%; /* Light gray for subtle backgrounds */
-    --secondary-foreground: 220 10% 45%; /* Darker gray for text on secondary */
+    --secondary-foreground: 0 0% 0%; /* Black for text on secondary */
 
     --muted: 220 15% 85%; /* Muted gray */
-    --muted-foreground: 220 10% 55%; /* Lighter gray for muted text */
+    --muted-foreground: 0 0% 0%; /* Black for muted text */
 
     --accent: 38 92% 50%; /* Warm, energetic orange */
     --accent-foreground: 0 0% 100%; /* White for text on accent */
@@ -59,22 +59,22 @@ body {
 
   .dark {
     --background: 220 15% 10%; 
-    --foreground: 220 15% 90%; 
+    --foreground: 0 0% 100%; /* White in dark mode */
 
     --card: 220 15% 12%;
-    --card-foreground: 220 15% 90%;
+    --card-foreground: 0 0% 100%; /* White in dark mode */
 
     --popover: 220 15% 12%;
-    --popover-foreground: 220 15% 90%;
+    --popover-foreground: 0 0% 100%; /* White in dark mode */
 
     --primary: 217 91% 60%; 
     --primary-foreground: 0 0% 98%;
 
     --secondary: 220 15% 18%;
-    --secondary-foreground: 220 10% 75%;
+    --secondary-foreground: 0 0% 100%; /* White in dark mode */
 
     --muted: 220 15% 25%;
-    --muted-foreground: 220 10% 65%;
+    --muted-foreground: 0 0% 100%; /* White in dark mode */
 
     --accent: 38 92% 50%; 
     --accent-foreground: 0 0% 100%; 

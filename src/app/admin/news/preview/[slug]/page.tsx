@@ -51,14 +51,14 @@ export default function PreviewNewsArticlePage() {
           />
         </div>
       )}
-      <h1 style={{ fontSize: "2.5rem", fontWeight: 600, color: "#166534", textTransform: "uppercase", marginBottom: 12, textAlign: "center", fontFamily: "Montserrat, sans-serif" }}>{article.title}</h1>
-      <div style={{ textAlign: "center", marginBottom: 16, color: "#666", fontSize: "1.1rem" }}>
+      <h1 style={{ fontSize: "2.5rem", fontWeight: 600, color: "#000000", textTransform: "uppercase", marginBottom: 12, textAlign: "center", fontFamily: "Montserrat, sans-serif" }}>{article.title}</h1>
+      <div style={{ textAlign: "center", marginBottom: 16, color: "#000000", fontSize: "1.1rem" }}>
         <span>{article.author}</span>
       </div>
       {article.summary && (
-        <div style={{ fontSize: "1.15rem", color: "#219653", fontWeight: 500, textAlign: "center", marginBottom: 24 }}>{article.summary}</div>
+        <div style={{ fontSize: "1.15rem", color: "#000000", fontWeight: 500, textAlign: "center", marginBottom: 24 }}>{article.summary}</div>
       )}
-      <div style={{ fontSize: "1.15rem", color: "#222", lineHeight: 1.7 }}>
+      <div style={{ fontSize: "1.15rem", color: "#000000", lineHeight: 1.7 }}>
         {article.content && <EditorJSRenderer data={article.content} />}
       </div>
     </div>

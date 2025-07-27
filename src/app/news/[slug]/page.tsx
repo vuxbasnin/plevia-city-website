@@ -74,7 +74,7 @@ export default function NewsDetailPage() {
           <h1 style={{
             fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
             fontWeight: 600,
-            color: "#166534",
+            color: "#000000",
             textTransform: "uppercase",
             marginBottom: "1rem",
             textAlign: "center",
@@ -85,7 +85,7 @@ export default function NewsDetailPage() {
                      <div style={{
              textAlign: "center",
              marginBottom: "1.5rem",
-             color: "#666",
+             color: "#000000",
              fontSize: "clamp(0.9rem, 2vw, 1.1rem)"
            }}
            className="sm:px-2 px-1"
@@ -96,7 +96,7 @@ export default function NewsDetailPage() {
            {article.summary && (
              <div style={{
                fontSize: "clamp(1rem, 2.5vw, 1.15rem)",
-               color: "#219653",
+               color: "#000000",
                fontWeight: 500,
                textAlign: "center",
                marginBottom: "2rem",
@@ -108,7 +108,7 @@ export default function NewsDetailPage() {
 
                      <div style={{
              fontSize: "clamp(1rem, 2.5vw, 1.15rem)",
-             color: "#222",
+             color: "#000000",
              lineHeight: 1.7,
              textAlign: "justify"
            }}

@@ -4,7 +4,6 @@ import PageLayout from '@/components/layout/PageLayout';
 import ImageHeader from '@/components/sections/ImageHeader';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import ParaLeftDesRight from "@/components/sections/ParaLeftDesRight/ParaLeftDesRight";
-import TextBlock from "@/components/ui/TextBlock";
 
 export default function ProjectPage() {
     return (<PageLayout>

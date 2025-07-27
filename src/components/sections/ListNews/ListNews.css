@@ -30,7 +30,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
   font-weight: 600;
-  color: #166534;
+  color: hsl(var(--primary));
   text-align: center;
   margin-bottom: 60px;
   letter-spacing: -0.02em;
@@ -67,7 +67,7 @@
   background: #ffffff;
   border: 2px solid #e5e7eb;
   border-radius: 8px;
-  color: #374151;
+  color: #000000;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
@@ -79,7 +79,7 @@
 .list-news__pagination-button:hover:not(:disabled) {
   background: #f9fafb;
   border-color: #d1d5db;
-  color: #1f2937;
+  color: #000000;
   transform: translateY(-1px);
 }
 
@@ -108,7 +108,7 @@
   background: #ffffff;
   border: 2px solid #e5e7eb;
   border-radius: 8px;
-  color: #374151;
+  color: #000000;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
@@ -119,7 +119,7 @@
 .list-news__pagination-number:hover {
   background: #f9fafb;
   border-color: #d1d5db;
-  color: #1f2937;
+  color: #000000;
 }
 
 .list-news__pagination-number.active {
@@ -130,11 +130,11 @@
 
 .list-news__pagination-number.active:hover {
   background: #166534;
-  border-color: #166534;
+  border-color: hsl(var(--primary));
 }
 
 .list-news__pagination-ellipsis {
-  color: #6b7280;
+  color: #000000;
   font-weight: 500;
   padding: 0 8px;
 }
