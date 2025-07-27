@@ -22,7 +22,20 @@ export default function Footer() {
           <div className="footer-column">
             <h5 className="footer-title">Đơn vị phát triển</h5>
             <div className="bim-logo">
-              <span className="bim-logo-main">BẮC HẢI</span>
+              <NextImage
+                src="/assets/logo_final.png"
+                alt="Logo Bắc Hải"
+                width={120}
+                height={40}
+                className="bim-logo-image"
+                priority
+                style={{
+                  width: 'auto',
+                  height: 'auto',
+                  maxWidth: '100%'
+                }}
+              />
+              <span className="bim-logo-main">Công ty Cổ phần Tập đoàn Bắc Hải</span>
             </div>
             <ul className="footer-links">
               <li>
@@ -36,17 +49,6 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
-
-          {/* Column 2: Ghé thăm thung lũng */}
-          <div className="footer-column">
-            <h5 className="footer-title-bold">Ghé thăm </h5>
-            <p className="footer-address">
-              Địa chỉ: 63-65 Lý Nam Đế, phường Hội Phú, tỉnh Gia Lai
-            </p>
-            <button className="footer-button">
-              Đặt lịch hẹn
-            </button>
           </div>
 
           {/* Column 3: Tham quan Sales Gallery */}

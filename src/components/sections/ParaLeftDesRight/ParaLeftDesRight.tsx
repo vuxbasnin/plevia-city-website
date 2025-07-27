@@ -68,7 +68,7 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
               ) : (
 
                 <div className="para-left-des-right__image-wrapper__reverse">
-                  {imageUrl && (
+                  {imageUrl && imageUrl.trim() !== '' && (
                     <img src={imageUrl} alt="section" className="para-left-des-right__image" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
                   )}
                 </div>
@@ -169,7 +169,7 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
               ) : (
 
                 <div className="para-left-des-right__image-wrapper">
-                  {imageUrl && (
+                  {imageUrl && imageUrl.trim() !== '' && (
                     <img src={imageUrl} alt="section" className="para-left-des-right__image" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
                   )}
                 </div>

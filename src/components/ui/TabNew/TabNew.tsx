@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import './TabNew.css';
 
 interface TabContent {
@@ -22,6 +23,7 @@ interface TabNewProps {
 }
 
 const TabNew: React.FC<TabNewProps> = ({ title, tabs, reverse = false }) => {
+    const router = useRouter();
     const [activeIndex, setActiveIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
     const sliderRef = useRef<HTMLDivElement>(null);
@@ -42,6 +44,10 @@ const TabNew: React.FC<TabNewProps> = ({ title, tabs, reverse = false }) => {
 
     const handleTabClick = (idx: number) => {
         setActiveIndex(idx);
+    };
+
+    const handleExploreClick = () => {
+        router.push('/lifestyle');
     };
 
     // Swipe handlers for mobile with infinite scroll
@@ -183,7 +189,7 @@ const TabNew: React.FC<TabNewProps> = ({ title, tabs, reverse = false }) => {
                                         )}
                                         {/* Thêm button Khám phá ngay nếu activeIndex là 0, 1, 2 */}
                                         {activeIndex >= 0 && activeIndex <= 2 && idx === activeIndex && (
-                                            <button className="tabnew-explore-btn">
+                                            <button className="tabnew-explore-btn" onClick={handleExploreClick}>
                                                 Khám phá ngay <span className="arrow-icon">→</span>
                                             </button>
                                         )}
@@ -205,7 +211,7 @@ const TabNew: React.FC<TabNewProps> = ({ title, tabs, reverse = false }) => {
                                         )}
                                         {/* Thêm button Khám phá ngay nếu activeIndex là 0, 1, 2 */}
                                         {activeIndex >= 0 && activeIndex <= 2 && idx === activeIndex && (
-                                            <button className="tabnew-explore-btn">
+                                            <button className="tabnew-explore-btn" onClick={handleExploreClick}>
                                                 Khám phá ngay <span className="arrow-icon">→</span>
                                             </button>
                                         )}
