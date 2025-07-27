@@ -55,7 +55,7 @@ export default function HomePage() {
           imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/06/PHOI-CANH-BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN.jpg"
         />
       </ScrollReveal>
-      {/* <ScrollReveal>
+      <ScrollReveal>
         <ParaLeftDesRight
           title="THÔNG TIN TỔNG QUAN"
           description={``}
@@ -137,7 +137,7 @@ export default function HomePage() {
         >
         </ParaImageVertical>
       </ScrollReveal>
-      <ScrollReveal>
+      {/* <ScrollReveal>
         <TabExample />
       </ScrollReveal>
       <ScrollReveal>
@@ -164,13 +164,13 @@ export default function HomePage() {
             "https://khangdienhcm.com/wp-content/uploads/2025/05/TIEN-DO-XAY-DUNG-GLADIA-KHANG-DIEN-THANG-06-2025-KDHCM-1024x576.jpg",
           ]}
         />
-      </ScrollReveal>
+      </ScrollReveal> */}
       <ScrollReveal>
         <NewsSectionExample />
       </ScrollReveal>
       <ScrollReveal>
         <FormInfo />
-      </ScrollReveal> */}
+      </ScrollReveal>
     </PageLayout>
   );
 }
