@@ -8,7 +8,7 @@ import ParaLeftDesRight from "@/components/sections/ParaLeftDesRight/ParaLeftDes
 export default function ProjectPage() {
     return (<PageLayout>
         <ScrollReveal>
-            <ImageHeader/>
+            <ImageHeader />
         </ScrollReveal>
         <ScrollReveal>
             <ParaLeftDesRight
@@ -18,6 +18,11 @@ export default function ProjectPage() {
                     level: 1,
                     subtitle: "",
                     subdescription: `Trong bối cảnh đô thị hóa ngày càng mạnh mẽ tại Gia Lai, nhu cầu về một khu đô thị hiện đại – văn minh – thông minh trở nên cấp thiết hơn bao giờ hết. Không chỉ là nơi để ở, người dân còn đang mong muốn tìm kiếm một không gian sống hội tụ cả công nghệ, tiện ích, thiên nhiên và cộng đồng.`
+                },
+                {
+                    level: 1,
+                    subtitle: "",
+                    subdescription: `Dù cho tình trạng khu đô thị ở Gia Lai hiện nay đang có tiến triển tích cực nhưng vẫn chưa hoàn toàn đáp ứng đủ nhu cầu. Nguyên nhân đến từ việc hệ thống đô thị tại Gia Lai vẫn chưa đồng đều về hạ tầng và chất lượng dịch vụ. Một số đô thị vẫn đang trong quá trình hoàn thiện cơ sở hạ tầng, quy hoạch, chưa đủ để đáp ứng đầy đủ yêu cầu phát triển bền vững và nhu cầu ngày càng cao của người dân.`
                 }]}
                 imageUrl="/assets/storyline/big_view.png"
             />
@@ -47,6 +52,11 @@ export default function ProjectPage() {
                     level: 1,
                     subtitle: "",
                     subdescription: `Plevia City không chạy theo số lượng hay hình thức, mà muốn xác lập một tiêu chuẩn sống mới tại Gia Lai - <strong>Khu đô thị đầu tiên ứng dụng trí tuệ nhân tạo</strong>. Cùng với việc  thiết kế kiến trúc đồng bộ, hiện đại, tiện ích đa dạng – tất cả tạo nên mục tiêu lớn nhất: <strong>định hình một chuẩn sống mới – Eco Smart Living đầu tiên</strong> tại Gia Lai`
+                },
+                {
+                    level: 1,
+                    subtitle: "",
+                    subdescription: `Đằng sau mỗi tính năng công nghệ là một lựa chọn mang tính tương lai. Không phải để “trưng bày hiện đại”, mà để <strong>kiến tạo một đô thị thực sự biết phục vụ người dùng</strong> – nơi từng căn nhà là một đơn vị thông minh, từng tiện ích là một bước tiến của trải nghiệm sống.`
                 }]}
                 imageUrl="/assets/storyline/desire_to_create.png"
             />
@@ -71,7 +81,11 @@ export default function ProjectPage() {
                 sections={[{
                     level: 1,
                     subtitle: "",
-                    subdescription: `Plevia City là nơi để sống, nhưng cũng là nơi để đầu tư. Sở hữu vị trí chiến lược nằm giữa trung tâm, lại được bảo chứng bởi chủ đầu tư có tâm – có tầm, dự án mở ra cơ hội tăng trưởng bền vững, đáng giá theo thời gian.`
+                    subdescription: `Với việc Gia Lai chuyển mình mạnh mẽ với hạ tầng đô thị ngày càng phát triển, kéo theo đó là tiêu chuẩn sống của người dân ngày một cao. Plevia City ra đời như một lời đáp cho nhu cầu sống hiện đại – thông minh – đẳng cấp. Không chỉ đơn thuần là một khu đô thị, Plevia City mang trong mình khát vọng kiến tạo chuẩn sống kiểu mẫu cho thời đại số, nơi công nghệ và không gian sống hài hòa trong từng trải nghiệm.`
+                },{
+                    level: 1,
+                    subtitle: "",
+                    subdescription: `Khi mọi thứ còn đang trong giai đoạn tăng tốc, những sản phẩm như Plevia City – với quy hoạch bài bản, pháp lý rõ ràng và định vị khác biệt – chính là những “cánh cửa sớm” cho những ai biết nhìn xa. Giấc mơ an cư không còn xa vời, và cơ hội đầu tư cũng không chỉ nằm trên giấy. Plevia City là nơi để sống, nhưng cũng là nơi để đầu tư. Sở hữu vị trí chiến lược nằm giữa trung tâm, lại được bảo chứng bởi chủ đầu tư có tâm – có tầm, dự án mở ra cơ hội tăng trưởng bền vững, đáng giá theo thời gian.`
                 }]}
                 imageUrl="/assets/storyline/dream.png"
             />
