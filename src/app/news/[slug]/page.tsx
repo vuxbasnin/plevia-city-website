@@ -69,18 +69,18 @@ export default function NewsDetailPage() {
       </ScrollReveal>
       <ScrollReveal>
                  <div
-           className="mx-auto font-sans sm:max-w-[91.5vw] sm:w-[91.5vw] max-w-[97.5vw] w-[97.5vw] sm:px-2 px-1 py-6"
+           className="mx-auto font-sans w-[78vw] sm:w-[78vw] max-w-[78vw] sm:px-2 px-1 py-6"
          >
-          <h1 style={{
-            fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
-            fontWeight: 600,
-            color: "#000000",
-            textTransform: "uppercase",
-            marginBottom: "1rem",
-            textAlign: "center",
-            fontFamily: "Montserrat, sans-serif",
-            lineHeight: 1.2
-          }}>{article.title}</h1>
+                                                                                       <h1 style={{
+               fontSize: "2rem",
+               fontWeight: "bold",
+               color: "hsl(var(--primary))",
+               textTransform: "uppercase",
+               letterSpacing: "0.5px",
+               marginBottom: "20px",
+               textAlign: "center",
+               fontFamily: "Montserrat, sans-serif"
+             }}>{article.title}</h1>
 
                      <div style={{
              textAlign: "center",
