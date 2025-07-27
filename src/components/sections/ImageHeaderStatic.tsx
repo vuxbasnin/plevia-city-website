@@ -29,27 +29,32 @@ export default function ImageHeaderStatic({ imageUrl, fullImage = true }: ImageH
             </div>
           </div>
         )}
-        <div style={{ position: 'relative', width: fullImage ? '100vw' : '78vw' }}>
-          <Image
-            src={currentImageUrl}
-            alt="Hero Image"
-            width={1920}
-            height={800}
-            className="object-cover object-center rounded-[8px] shadow-[0_2px_12px_rgba(0,0,0,0.08)] mx-auto"
-            priority
-            onLoad={() => setImageLoading(false)}
-            onError={() => {
-              setImageError(true);
-              setImageLoading(false);
-            }}
-            style={fullImage
-              ? { visibility: imageLoading ? 'hidden' : 'visible', maxWidth: '100vw', width: '100vw', marginLeft: 'auto', marginRight: 'auto' }
-              : { visibility: imageLoading ? 'hidden' : 'visible', maxWidth: '78vw', width: '78vw', marginLeft: 'auto', marginRight: 'auto' }
-            }
-          />
-          {/* Overlay đen mờ chỉ phủ lên ảnh */}
-          <div className="absolute inset-0 rounded-[8px] z-10 pointer-events-none" style={{ background: 'rgba(0,0,0,0.3)' }} />
-        </div>
+                 <div 
+           style={{ 
+             position: 'relative', 
+             width: fullImage ? '100vw' : '78vw',
+             aspectRatio: '16/9'
+           }}
+         >
+           <Image
+             src={currentImageUrl}
+             alt="Hero Image"
+             width={1920}
+             height={1080}
+             className="object-cover object-center rounded-[8px] shadow-[0_2px_12px_rgba(0,0,0,0.08)] mx-auto w-full h-full"
+             priority
+             onLoad={() => setImageLoading(false)}
+             onError={() => {
+               setImageError(true);
+               setImageLoading(false);
+             }}
+             style={{
+               visibility: imageLoading ? 'hidden' : 'visible'
+             }}
+           />
+           {/* Overlay đen mờ chỉ phủ lên ảnh */}
+           <div className="absolute inset-0 rounded-[8px] z-10 pointer-events-none" style={{ background: 'rgba(0,0,0,0.3)' }} />
+         </div>
         {imageError && (
           <div className="absolute inset-0 bg-red-100 flex items-center justify-center">
             <div className="text-red-600 text-center">

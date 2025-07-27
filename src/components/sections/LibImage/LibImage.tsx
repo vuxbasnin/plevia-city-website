@@ -164,14 +164,14 @@ const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false, is169 = false,
                 src={images[currentIndex].url}
                 alt={images[currentIndex].caption || 'Ảnh thư viện'}
                 width={1920}
-                height={800}
+                height={1080}
                 className={`libimage-slider-image ${is169 ? 'libimage-169-img' : ''}`}
                 style={{ 
                   width: '100vw', 
                   maxWidth: '100vw', 
-                  height: is169 ? 'auto' : '100%', 
+                  height: '100%', 
                   objectFit: 'cover',
-                  aspectRatio: is169 ? '16/9' : 'auto'
+                  aspectRatio: '16/9'
                 }}
                 priority
                 draggable={false}

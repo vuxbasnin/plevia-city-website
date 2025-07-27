@@ -25,7 +25,7 @@ export default function ProjectPage() {
         </ScrollReveal>
         <ScrollReveal>
             <ParaLeftDesRight
-                title="2. Một chủ đầu tư dày dạn kinh nghiệm – đầy tâm huyết"
+                title="2. Một chủ đầu tư dày dặn kinh nghiệm – đầy tâm huyết"
                 description={``}
                 sections={[{
                     level: 1,
@@ -77,16 +77,5 @@ export default function ProjectPage() {
                 imageUrl="/assets/storyline/dream.png"
             />
         </ScrollReveal>
-        <ScrollReveal>
-            <TextBlock
-                header="Về Chủ Đầu Tư:"
-                content="Đứng sau dự án là một chủ đầu tư uy tín – <b>Công ty Cổ phần Tập đoàn Đầu tư Bắc Hải</b> – đơn vị đã từng triển khai nhiều dự án bất động sản. Trong hành trình kiến tạo giá trị cuộc sống, họ luôn giữ vững quan điểm: mỗi công trình phải là một giá trị thật, mang đến sự an tâm dài hạn cho người sở hữu. Không chạy theo hình thức, cũng không chọn con đường ngắn hạn, họ đặt trọn tâm huyết vào từng yếu tố – từ quy hoạch logic, thiết kế hiện đại, tích hợp công nghệ trí tuệ nhân tạo cho đến hệ sinh thái tiện ích đồng bộ. Chính sự tận tâm và tầm nhìn ấy đã tạo nên một Plevia City khác biệt – nơi khởi đầu một hành trình sống mới: thông minh - hiện đại - bền vững, trở thành lựa chọn xứng đáng cho những người thật sự biết nắm bắt.">
-
-            </TextBlock>
-
-        </ScrollReveal>
-
-
-
     </PageLayout>);
 } 

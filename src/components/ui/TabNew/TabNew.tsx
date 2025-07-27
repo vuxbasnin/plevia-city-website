@@ -127,6 +127,7 @@ const TabNew: React.FC<TabNewProps> = ({ title, tabs, reverse = false }) => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            aspectRatio: '16/9',
         },
         image: {
             width: '100%',

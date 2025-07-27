@@ -6,7 +6,7 @@ const TabExample: React.FC = () => {
   const tabData = [
     {
       id: 'location',
-      title: 'ỨNG DỤNG "TRÍ TUỆ NHÂN TẠO"',
+      title: 'ỨNG DỤNG\n"TRÍ TUỆ NHÂN TẠO"',
       description: 'Convenient connectivity location',
       image: '/assets/home/keypoints_1.png',
       content: {
@@ -21,7 +21,7 @@ const TabExample: React.FC = () => {
     },
     {
       id: 'terrain',
-      title: 'KIẾN TRÚC HIỆN ĐẠI, ĐẲNG CẤP',
+      title: 'KIẾN TRÚC HIỆN ĐẠI,\nĐẲNG CẤP',
       description: 'Unique terrain & nature',
       image: '/assets/home/keypoints_2.png',
       content: {
@@ -35,7 +35,7 @@ const TabExample: React.FC = () => {
     },
     {
       id: 'architecture',
-      title: 'TIỆN ÍCH & DỊCH VỤ',
+      title: 'TIỆN ÍCH &\nDỊCH VỤ',
       description: 'Classy planning & architecture',
       image: '/assets/home/keypoints_3.png', // Thay bằng đường dẫn ảnh thực tế
       content: {
@@ -49,7 +49,7 @@ const TabExample: React.FC = () => {
     },
     {
       id: 'amenities',
-      title: 'PHÁT TRIỂN BỀN VỮNG',
+      title: 'PHÁT TRIỂN\nBỀN VỮNG',
       description: 'International amenities & services',
       image: '/assets/home/keypoints_4.png', // Thay bằng đường dẫn ảnh thực tế
       content: {
@@ -67,7 +67,7 @@ const TabExample: React.FC = () => {
     },
     {
       id: 'community',
-      title: 'CƠ HỘI ĐẦU TƯ HẤP DẪN',
+      title: 'CƠ HỘI ĐẦU TƯ\nHẤP DẪN',
       description: 'Elite civilized community',
       image: '/assets/home/keypoints_5.png', // Thay bằng đường dẫn ảnh thực tế
       content: {
