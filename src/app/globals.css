@@ -227,4 +227,45 @@ body {
   .btn-responsive-lg {
     @apply px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg;
   }
+
+  /* Common Header Styles */
+  .header-primary {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: hsl(var(--primary));
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* Responsive Header Styles */
+  @media (max-width: 1024px) {
+    .header-primary {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header-primary {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .header-primary {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header-primary {
+      font-size: 1.125rem;
+      margin-bottom: 8px;
+    }
+  }
 }

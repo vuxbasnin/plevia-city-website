@@ -27,15 +27,9 @@
 }
 
 .list-news__title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: hsl(var(--primary));
-  text-align: center;
-  margin-bottom: 60px;
-  letter-spacing: -0.02em;
+  /* Using common header style */
+  composes: header-primary;
   position: relative;
-  text-transform: uppercase;
 }
 
 .list-news__grid {
@@ -149,11 +143,6 @@
     padding: 0 20px;
   }
   
-  .list-news__title {
-    font-size: 2.25rem;
-    margin-bottom: 50px;
-  }
-  
   .list-news__grid {
     gap: 30px;
     margin-bottom: 50px;
@@ -167,11 +156,6 @@
   
   .list-news__container {
     padding: 0 16px;
-  }
-  
-  .list-news__title {
-    font-size: 2rem;
-    margin-bottom: 40px;
   }
   
   .list-news__grid {
@@ -201,11 +185,6 @@
 @media (max-width: 480px) {
   .list-news {
     padding: 40px 0;
-  }
-  
-  .list-news__title {
-    font-size: 1.75rem;
-    margin-bottom: 30px;
   }
   
   .list-news__grid {

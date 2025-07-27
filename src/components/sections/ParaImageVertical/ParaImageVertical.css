@@ -22,12 +22,8 @@
 }
 
 .piv-title {
-  text-align: center;
-  color: #1a7f37;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  letter-spacing: 0.5px;
+  /* Using common header style */
+  composes: header-primary;
 }
 
 .piv-description {
@@ -116,10 +112,7 @@
     width: 92vw;
   }
   
-  .piv-title {
-    font-size: 1.75rem;
-    margin-bottom: 16px;
-  }
+
   
   .piv-content {
     padding: 24px 0 24px 0;
@@ -146,10 +139,7 @@
     width: 94vw;
   }
   
-  .piv-title {
-    font-size: 1.5rem;
-    margin-bottom: 12px;
-  }
+
   
   .piv-content {
     padding: 20px 0 20px 0;

@@ -3,13 +3,9 @@
 }
 
 .title h2 {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  color: hsl(var(--primary));
-  line-height: 1.25;
-  text-transform: uppercase;
+  /* Using common header style */
+  composes: header-primary;
+  line-height: 2.5rem;
 }
 
 /* Alignment variants */
@@ -27,8 +23,8 @@
 
 /* Size variants */
 .title-large h2 {
-  font-size: 2.5rem;
-  line-height: 3rem;
+  font-size: 2rem;
+  line-height: 2.5rem;
 }
 
 .title-small h2 {
@@ -39,18 +35,15 @@
 /* Responsive design */
 @media (min-width: 768px) {
   .title h2 {
-    font-size: 2.25rem;
     line-height: 2.5rem;
   }
   
   .title-large h2 {
-    font-size: 3rem;
-    line-height: 3.5rem;
+    line-height: 2.5rem;
   }
   
   .title-small h2 {
-    font-size: 1.75rem;
-    line-height: 2.25rem;
+    line-height: 2rem;
   }
 }
 
@@ -61,17 +54,14 @@
   }
   
   .title h2 {
-    font-size: 1.5rem;
     line-height: 2rem;
   }
   
   .title-large h2 {
-    font-size: 2rem;
-    line-height: 2.5rem;
+    line-height: 2rem;
   }
   
   .title-small h2 {
-    font-size: 1.25rem;
     line-height: 1.75rem;
   }
 } 

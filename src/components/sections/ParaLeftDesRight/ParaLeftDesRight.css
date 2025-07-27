@@ -76,12 +76,9 @@
 }
 
 .para-left-des-right__title {
-  color: hsl(var(--primary));
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 16px;
+  /* Using common header style */
+  composes: header-primary;
   text-align: left;
-  text-transform: uppercase;
 }
 
 .para-left-des-right__description {
@@ -170,9 +167,9 @@
   .para-left-des-right__title--mobile {
     display: block;
     text-align: center;
-    font-size: 1.25rem;
     margin-top: 24px;
-    margin-bottom: 16px;
+    /* Using common header style */
+    composes: header-primary;
   }
   .para-left-des-right__text .para-left-des-right__title {
     display: none;
