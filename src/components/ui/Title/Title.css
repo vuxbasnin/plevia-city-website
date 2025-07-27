@@ -4,7 +4,14 @@
 
 .title h2 {
   /* Using common header style */
-  composes: header-primary;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: hsl(var(--primary));
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  text-align: center;
   line-height: 2.5rem;
 }
 
@@ -47,21 +54,31 @@
   }
 }
 
-/* Mobile responsive */
-@media (max-width: 767px) {
-  .title {
-    margin-bottom: 2rem;
-  }
-  
+/* Responsive Header Styles */
+@media (max-width: 1024px) {
   .title h2 {
-    line-height: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 16px;
   }
-  
-  .title-large h2 {
-    line-height: 2rem;
+}
+
+@media (max-width: 768px) {
+  .title h2 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
   }
-  
-  .title-small h2 {
-    line-height: 1.75rem;
+}
+
+@media (max-width: 640px) {
+  .title h2 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title h2 {
+    font-size: 1.125rem;
+    margin-bottom: 8px;
   }
 } 

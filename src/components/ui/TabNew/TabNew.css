@@ -11,7 +11,14 @@
 
 .tabnew-title {
   /* Using common header style */
-  composes: header-primary;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: hsl(var(--primary));
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .tabnew-tabs-row {
@@ -646,5 +653,34 @@
     max-width: 100% !important;
     border-radius: 6px !important;
     display: block !important;
+  }
+}
+
+/* Responsive Header Styles */
+@media (max-width: 1024px) {
+  .tabnew-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tabnew-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .tabnew-title {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabnew-title {
+    font-size: 1.125rem;
+    margin-bottom: 8px;
   }
 }

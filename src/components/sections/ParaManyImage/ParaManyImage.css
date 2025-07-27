@@ -8,7 +8,14 @@
 
 .para-many-image-title {
   /* Using common header style */
-  composes: header-primary;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: hsl(var(--primary));
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .para-many-image-line {
@@ -58,6 +65,35 @@
   border-radius: 12px;
   box-shadow: 0 2px 8px #0001;
   background: #f5f5f5;
+}
+
+/* Responsive Header Styles */
+@media (max-width: 1024px) {
+  .para-many-image-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .para-many-image-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .para-many-image-title {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .para-many-image-title {
+    font-size: 1.125rem;
+    margin-bottom: 8px;
+  }
 }
 
 @media (max-width: 900px) {

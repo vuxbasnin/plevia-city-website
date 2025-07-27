@@ -24,7 +24,7 @@ const navLinks = [
   },
   { 
     href: '/location', 
-    label: 'Vị trí, tiện ích',
+    label: 'Kết nối & Tiện ích',
     hasDropdown: false 
   },
   { 
