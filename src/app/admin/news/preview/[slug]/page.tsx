@@ -33,7 +33,7 @@ export default function PreviewNewsArticlePage() {
   if (!article) return null;
 
   return (
-    <div style={{ maxWidth: "85vw", margin: "0 auto", padding: "24px 0", fontFamily: "Roboto, sans-serif" }}>
+            <div style={{ maxWidth: "85vw", margin: "0 auto", padding: "24px 0", fontFamily: "Montserrat, sans-serif" }}>
       {article.coverImageUrl && (
         <div style={{ width: "100%", maxWidth: "100vw", marginBottom: 32 }}>
           <Image
@@ -51,7 +51,7 @@ export default function PreviewNewsArticlePage() {
           />
         </div>
       )}
-      <h1 style={{ fontSize: "2.5rem", fontWeight: 600, color: "#166534", textTransform: "uppercase", marginBottom: 12, textAlign: "center", fontFamily: "Roboto, sans-serif" }}>{article.title}</h1>
+      <h1 style={{ fontSize: "2.5rem", fontWeight: 600, color: "#166534", textTransform: "uppercase", marginBottom: 12, textAlign: "center", fontFamily: "Montserrat, sans-serif" }}>{article.title}</h1>
       <div style={{ textAlign: "center", marginBottom: 16, color: "#666", fontSize: "1.1rem" }}>
         <span>{article.author}</span>
       </div>

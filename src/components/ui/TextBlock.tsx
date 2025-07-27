@@ -30,14 +30,14 @@ const TextBlock: React.FC<TextBlockProps> = ({ children, content, className = ""
         color: "#222",
         textAlign: "justify",
         lineHeight: 1.7,
-        fontFamily: "Roboto, sans-serif"
+        fontFamily: "Montserrat, sans-serif"
       }}
     >
       {header && (
         <h2 style={{
           fontSize: "1.875rem",
           lineHeight: "2.25rem",
-          fontFamily: "Roboto, sans-serif",
+          fontFamily: "Montserrat, sans-serif",
           fontWeight: 600,
           color: "#166534",
           textAlign: "center",

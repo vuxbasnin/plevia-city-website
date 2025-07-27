@@ -1,7 +1,7 @@
 .para-left-des-right__container {
   width: 100%;
   background: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   padding: 20px 0;
 }
 
@@ -127,7 +127,7 @@
 .para-left-des-right__description,
 .para-left-des-right__subtitle,
 .para-left-des-right__subdescription {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .para-left-des-right__container--reverse {
