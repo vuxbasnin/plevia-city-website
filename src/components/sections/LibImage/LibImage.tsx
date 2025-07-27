@@ -16,9 +16,10 @@ interface ImageItem {
 interface LibImageProps {
   isHideTitle?: boolean;
   is169?: boolean; // Thêm prop mới
+  images?: ImageItem[]; // Thêm prop images
 }
 
-const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false, is169 = false }) => {
+const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false, is169 = false, images: propImages }) => {
   const [images, setImages] = useState<ImageItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -34,6 +35,14 @@ const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false, is169 = false 
     async function fetchImages() {
       setLoading(true);
       try {
+        // Nếu có images từ props, sử dụng luôn
+        if (propImages && propImages.length > 0) {
+          setImages(propImages);
+          setLoading(false);
+          return;
+        }
+
+        // Nếu không có, fetch từ remote
         const imgs = await getGalleryImages();
         console.log('Fetched images:', imgs);
         setImages(
@@ -51,7 +60,7 @@ const LibImage: React.FC<LibImageProps> = ({ isHideTitle = false, is169 = false 
       setLoading(false);
     }
     fetchImages();
-  }, []);
+  }, [propImages]); // Thêm propImages vào dependency
 
   const goTo = (newIndex: number, dir: number) => {
     if (animating || newIndex < 0 || newIndex >= images.length) return;
