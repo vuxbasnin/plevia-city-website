@@ -26,7 +26,7 @@ export default function NewsDetailPage() {
       .then((articles) => {
         // Kiểm tra xem slug có phải là ID không (ID thường không có dấu gạch ngang)
         const isSlugAnId = !slug.includes('-');
-        
+
         let foundArticle;
         if (isSlugAnId) {
           // Nếu slug là ID, tìm theo ID
@@ -35,7 +35,7 @@ export default function NewsDetailPage() {
           // Nếu slug có dấu gạch ngang, tìm theo slug
           foundArticle = articles.find(article => article.slug === slug);
         }
-        
+
         if (!foundArticle) {
           setError("Không tìm thấy bài viết.");
         } else {
@@ -63,43 +63,63 @@ export default function NewsDetailPage() {
   if (!article) return null;
 
   return (
-    <PageLayout>
+    <PageLayout className="relative bg-white overflow-hidden">
       <ScrollReveal>
         <ImageHeader imageUrl={article.coverImageUrl} />
       </ScrollReveal>
       <ScrollReveal>
-        <div
-          style={{
-            maxWidth: "85vw",
-            margin: "0 auto",
-            padding: "24px 0",
-            fontFamily: "Roboto, sans-serif"
-          }}
-        >
+                 <div
+           className="mx-auto font-roboto sm:max-w-[91.5vw] sm:w-[91.5vw] max-w-[97.5vw] w-[97.5vw] sm:px-2 px-1 py-6"
+         >
           <h1 style={{
-            fontSize: "2.5rem",
+            fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
             fontWeight: 600,
             color: "#166534",
             textTransform: "uppercase",
-            marginBottom: 12,
+            marginBottom: "1rem",
             textAlign: "center",
-            fontFamily: "Roboto, sans-serif"
+            fontFamily: "Roboto, sans-serif",
+            lineHeight: 1.2
           }}>{article.title}</h1>
-          <div style={{ textAlign: "center", marginBottom: 16, color: "#666", fontSize: "1.1rem" }}>
-            <span>{article.author}</span> &nbsp;|&nbsp; <span>{formatDateForDisplay(article.createdAt)}</span>
-          </div>
-          {article.summary && (
-            <div style={{
-              fontSize: "1.15rem",
-              color: "#219653",
-              fontWeight: 500,
-              textAlign: "center",
-              marginBottom: 24
-            }}>{article.summary}</div>
-          )}
-          <div style={{ fontSize: "1.15rem", color: "#222", lineHeight: 1.7 }}>
-            {article.content && <EditorJSRenderer data={article.content} />}
-          </div>
+
+                     <div style={{
+             textAlign: "center",
+             marginBottom: "1.5rem",
+             color: "#666",
+             fontSize: "clamp(0.9rem, 2vw, 1.1rem)"
+           }}
+           className="sm:px-2 px-1"
+           >
+             <span>{article.author}</span> &nbsp;|&nbsp; <span>{formatDateForDisplay(article.createdAt)}</span>
+           </div>
+
+           {article.summary && (
+             <div style={{
+               fontSize: "clamp(1rem, 2.5vw, 1.15rem)",
+               color: "#219653",
+               fontWeight: 500,
+               textAlign: "center",
+               marginBottom: "2rem",
+               lineHeight: 1.5
+             }}
+             className="sm:px-2 px-1"
+             >{article.summary}</div>
+           )}
+
+                     <div style={{
+             fontSize: "clamp(1rem, 2.5vw, 1.15rem)",
+             color: "#222",
+             lineHeight: 1.7,
+             textAlign: "justify"
+           }}
+           className="sm:px-2 px-1"
+           >
+             {article.content && (
+               <div className="w-full">
+                 <EditorJSRenderer data={article.content} />
+               </div>
+             )}
+           </div>
         </div>
       </ScrollReveal>
     </PageLayout>

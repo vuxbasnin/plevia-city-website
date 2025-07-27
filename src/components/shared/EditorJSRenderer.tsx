@@ -50,11 +50,11 @@ const EditorJSRenderer: React.FC<EditorJSRendererProps> = ({ data }) => {
         
         case 'image':
           return `
-            <div style="margin: 1.5rem 0; text-align: center;">
+            <div style="margin: 1.5rem 0; text-align: center; width: 100%;">
               <img 
                 src="${blockData.url || ''}" 
                 alt="${blockData.caption || ''}"
-                style="max-width: 100%; height: auto; border-radius: 8px;"
+                style="width: 100%; height: auto; border-radius: 8px; max-width: 100%;"
                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop';"
               />
               ${blockData.caption ? `<p style="margin-top: 0.5rem; font-size: 0.9rem; color: #666; font-style: italic;">${blockData.caption}</p>` : ''}

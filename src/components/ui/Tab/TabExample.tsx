@@ -8,7 +8,7 @@ const TabExample: React.FC = () => {
       id: 'location',
       title: 'ỨNG DỤNG "TRÍ TUỆ NHÂN TẠO"',
       description: 'Convenient connectivity location',
-      image: 'https://thanhxuanvalley.com/Upload/catalog/2025/2/868a562d-dc95-4e48-a182-8e8a3305d0ca.jpg', // Thay bằng đường dẫn ảnh thực tế
+      image: '/assets/home/keypoints_1.png',
       content: {
         heading: 'ỨNG DỤNG "TRÍ TUỆ NHÂN TẠO"',
         paragraphs: [
@@ -23,7 +23,7 @@ const TabExample: React.FC = () => {
       id: 'terrain',
       title: 'KIẾN TRÚC HIỆN ĐẠI, ĐẲNG CẤP',
       description: 'Unique terrain & nature',
-      image: 'https://thanhxuanvalley.com/Upload/catalog/2025/2/c93aea80-3ff2-420a-a9b7-11da64d9b9e6.jpg', // Thay bằng đường dẫn ảnh thực tế
+      image: '/assets/home/keypoints_2.png',
       content: {
         heading: 'KIẾN TRÚC HIỆN ĐẠI, ĐẲNG CẤP',
         paragraphs: [
@@ -37,7 +37,7 @@ const TabExample: React.FC = () => {
       id: 'architecture',
       title: 'TIỆN ÍCH & DỊCH VỤ',
       description: 'Classy planning & architecture',
-      image: 'https://thanhxuanvalley.com/Upload/catalog/2025/2/cff60250-aa87-4b81-acc5-72a4c546236f.jpg', // Thay bằng đường dẫn ảnh thực tế
+      image: '/assets/home/keypoints_3.png', // Thay bằng đường dẫn ảnh thực tế
       content: {
         heading: 'TIỆN ÍCH & DỊCH VỤ',
         paragraphs: [
@@ -51,7 +51,7 @@ const TabExample: React.FC = () => {
       id: 'amenities',
       title: 'PHÁT TRIỂN BỀN VỮNG',
       description: 'International amenities & services',
-      image: 'https://thanhxuanvalley.com/Upload/catalog/2025/2/cda869b5-b1b0-431f-939b-062f747b7b42.png', // Thay bằng đường dẫn ảnh thực tế
+      image: '/assets/home/keypoints_4.png', // Thay bằng đường dẫn ảnh thực tế
       content: {
         heading: 'PHÁT TRIỂN BỀN VỮNG',
         paragraphs: [
@@ -69,7 +69,7 @@ const TabExample: React.FC = () => {
       id: 'community',
       title: 'CƠ HỘI ĐẦU TƯ HẤP DẪN',
       description: 'Elite civilized community',
-      image: 'https://thanhxuanvalley.com/Upload/catalog/2025/2/880f0c58-2a81-4057-a2df-176fb3b08d23.png', // Thay bằng đường dẫn ảnh thực tế
+      image: '/assets/home/keypoints_5.png', // Thay bằng đường dẫn ảnh thực tế
       content: {
         heading: 'CƠ HỘI ĐẦU TƯ HẤP DẪN',
         paragraphs: [

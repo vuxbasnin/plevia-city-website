@@ -20,7 +20,7 @@ export default function ProjectPage() {
                     subtitle: "",
                     subdescription: `Trong bối cảnh đô thị hóa ngày càng mạnh mẽ tại Gia Lai, nhu cầu về một khu đô thị hiện đại – văn minh – thông minh trở nên cấp thiết hơn bao giờ hết. Không chỉ là nơi để ở, người dân còn đang mong muốn tìm kiếm một không gian sống hội tụ cả công nghệ, tiện ích, thiên nhiên và cộng đồng.`
                 }]}
-                imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/06/PHOI-CANH-BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN.jpg"
+                imageUrl="/assets/storyline/big_view.png"
             />
         </ScrollReveal>
         <ScrollReveal>
@@ -36,7 +36,7 @@ export default function ProjectPage() {
                     subtitle: "",
                     subdescription: `Với phương châm "xây dựng không gian sống bền vững và đáng sống",  <strong>Tập đoàn Đầu tư Bắc Hải</strong> không chọn lối đi dễ dàng, mà <strong>kiên trì với những giá trị dài hạn</strong>, đầu tư nghiêm túc từ pháp lý, thiết kế, tiện ích, đến trải nghiệm sống sau khi bàn giao. Plevia City sẽ là minh chứng tiếp theo cho một dự án không chỉ được tính bằng mét vuông, mà còn được đo bằng <strong>tâm – tầm – tín</strong> của người làm thật.`
                 }]}
-                imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/06/PHOI-CANH-BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN.jpg"
+                imageUrl="/assets/storyline/investor.png"
                 reverse={true}
             />
         </ScrollReveal>
@@ -49,7 +49,7 @@ export default function ProjectPage() {
                     subtitle: "",
                     subdescription: `Plevia City không chạy theo số lượng hay hình thức, mà muốn xác lập một tiêu chuẩn sống mới tại Gia Lai - <strong>Khu đô thị đầu tiên ứng dụng trí tuệ nhân tạo</strong>. Cùng với việc  thiết kế kiến trúc đồng bộ, hiện đại, tiện ích đa dạng – tất cả tạo nên mục tiêu lớn nhất: <strong>định hình một chuẩn sống mới – Eco Smart Living đầu tiên</strong> tại Gia Lai`
                 }]}
-                imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/06/PHOI-CANH-BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN.jpg"
+                imageUrl="/assets/storyline/desire_to_create.png"
             />
         </ScrollReveal>
         <ScrollReveal>
@@ -61,7 +61,7 @@ export default function ProjectPage() {
                     subtitle: "",
                     subdescription: `Câu chuyện của Plevia City không chỉ nằm ở vị trí,công nghệ hay quy hoạch. Đó còn là câu chuyện của một cộng đồng sống văn minh, năng động, kết nối, gắn bó. Mỗi người dân sống tại đây không chỉ đang sở hữu một căn nhà, mà đang góp phần tạo nên một phong cách sống mới cho thành phố.`
                 }]}
-                imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/06/PHOI-CANH-BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN.jpg"
+                imageUrl="/assets/storyline/community.png"
                 reverse={true}
             />
         </ScrollReveal>
@@ -74,7 +74,7 @@ export default function ProjectPage() {
                     subtitle: "",
                     subdescription: `Plevia City là nơi để sống, nhưng cũng là nơi để đầu tư. Sở hữu vị trí chiến lược nằm giữa trung tâm, lại được bảo chứng bởi chủ đầu tư có tâm – có tầm, dự án mở ra cơ hội tăng trưởng bền vững, đáng giá theo thời gian.`
                 }]}
-                imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/06/PHOI-CANH-BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN.jpg"
+                imageUrl="/assets/storyline/dream.png"
             />
         </ScrollReveal>
         <ScrollReveal>
