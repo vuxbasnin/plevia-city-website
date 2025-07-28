@@ -167,7 +167,9 @@
 .para-left-des-right__container--reverse .para-left-des-right__title,
 .para-left-des-right__container--reverse .para-left-des-right__description,
 .para-left-des-right__container--reverse .para-left-des-right__subtitle,
-.para-left-des-right__container--reverse .para-left-des-right__subdescription {
+.para-left-des-right__container--reverse .para-left-des-right__subdescription,
+.para-left-des-right__container--reverse .para-left-des-right__bullets,
+.para-left-des-right__container--reverse .para-left-des-right__bullet-item {
   color: hsl(var(--primary-foreground)) !important;
 }
 
@@ -330,4 +332,22 @@
   .para-left-des-right__container {
     padding: 20px 0;
   }
+}
+
+/* Bullet points styles - giống như ParaImageVertical */
+.para-left-des-right__bullets {
+  width: 100%;
+  margin: 0 0 32px 0;
+  padding-left: 24px;
+  color: #000000;
+  font-size: 1rem;
+  text-align: justify;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.para-left-des-right__bullet-item {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #000000;
+  font-family: 'Quicksand', sans-serif;
 }

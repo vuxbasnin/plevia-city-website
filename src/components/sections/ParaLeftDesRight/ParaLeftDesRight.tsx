@@ -17,7 +17,7 @@ export interface ParaLeftDesRightSection {
 
 interface ParaLeftDesRightProps {
   title: string;
-  description: string;
+  description: string | string[];
   sections: ParaLeftDesRightSection[];
   imageUrl: string;
   backgroundColor?: 'white' | 'gray'; // mặc định là white
@@ -26,7 +26,54 @@ interface ParaLeftDesRightProps {
   dotEnabled?: boolean; // nếu true, sẽ hiển thị dot trước subdescription
   is169?: boolean; // nếu true, LibImage sẽ hiển thị với tỷ lệ 16:9
   images?: ImageItem[]; // Thêm prop images để truyền vào LibImage
+  bullets?: string[]; // Thêm prop bullets để hiển thị danh sách bullet points
 }
+
+// Helper function để render description
+const renderDescription = (description: string | string[]) => {
+  if (Array.isArray(description)) {
+    return (
+      <ul className="para-left-des-right__bullets">
+        {description.map((item, idx) => (
+          <li key={idx} className="para-left-des-right__bullet-item">{item}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  // Nếu là string và chứa bullet points (có dấu "- ")
+  if (typeof description === 'string' && description.includes('- ')) {
+    const lines = description.split('\n');
+    const bulletItems: string[] = [];
+    let plainText = '';
+
+    lines.forEach(line => {
+      if (line.trim().startsWith('- ')) {
+        bulletItems.push(line.trim().substring(2)); // Bỏ "- " ở đầu
+      } else if (line.trim()) {
+        plainText += line + '\n';
+      }
+    });
+
+    return (
+      <>
+        {plainText.trim() && (
+          <p className="para-left-des-right__description">{plainText.trim()}</p>
+        )}
+        {bulletItems.length > 0 && (
+          <ul className="para-left-des-right__bullets">
+            {bulletItems.map((item, idx) => (
+              <li key={idx} className="para-left-des-right__bullet-item">{item}</li>
+            ))}
+          </ul>
+        )}
+      </>
+    );
+  }
+
+  // Nếu là string thường
+  return <p className="para-left-des-right__description">{description}</p>;
+};
 
 const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
   title,
@@ -38,7 +85,8 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
   isShowLibImage = false,
   dotEnabled = false,
   is169 = false,
-  images
+  images,
+  bullets
 }) => {
   return (
     <div
@@ -78,8 +126,13 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
               {title && (
                 <h2 className="para-left-des-right__title">{title}</h2>
               )}
-              {description && (
-                <p className="para-left-des-right__description">{description}</p>
+              {description && renderDescription(description)}
+              {bullets && bullets.length > 0 && (
+                <ul className="para-left-des-right__bullets">
+                  {bullets.map((item, idx) => (
+                    <li key={idx} className="para-left-des-right__bullet-item">{item}</li>
+                  ))}
+                </ul>
               )}
               {sections && sections.length > 0 && sections.map((section, idx) => (
                 <div key={idx} style={{ marginBottom: 20 }}>
@@ -124,8 +177,13 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
               {title && (
                 <h2 className="para-left-des-right__title">{title}</h2>
               )}
-              {description && (
-                <p className="para-left-des-right__description">{description}</p>
+              {description && renderDescription(description)}
+              {bullets && bullets.length > 0 && (
+                <ul className="para-left-des-right__bullets">
+                  {bullets.map((item, idx) => (
+                    <li key={idx} className="para-left-des-right__bullet-item">{item}</li>
+                  ))}
+                </ul>
               )}
               {sections && sections.length > 0 && sections.map((section, idx) => (
                 <div key={idx} style={{ marginBottom: 20 }}>

@@ -45,7 +45,13 @@ export default function LifeStylePage() {
             <ParaLeftDesRight
                 title="Nâng tầm trải nghiệm sống thông minh"
                 description={`Plevia City được tích hợp hệ thống tiện ích công nghệ thông minh ngay trong từng trải nghiệm thường nhật: camera AI an ninh 24/7, cảm biến khói – đám cháy, wifi mesh toàn khu và đặc biệt là ứng dụng cư dân đồng bộ – tất cả tạo nên một môi trường sống hiện đại, an toàn.`}
-                sections={[]}
+                bullets={[
+                    "- Mạng lưới camera AI toàn khu hoạt động 24/7, hỗ trợ nhận diện thông minh và cảnh báo tức thì.",
+                    "- Hệ thống cảm biến khói và cháy nổ được bố trí tại các vị trí trọng yếu, đảm bảo phát hiện sớm và xử lý kịp thời các tình huống khẩn cấp.",
+                    "- Hạ tầng Wi-Fi mesh phủ sóng toàn khu giúp cư dân kết nối liền mạch ở bất kỳ đâu.",
+                    "- Ứng dụng cư dân đồng bộ đóng vai trò như \"trợ lý số\", cho phép cư dân đặt lịch tiện ích, theo dõi hoá đơn, nhận thông báo và tương tác với ban quản lý chỉ qua vài thao tác.",
+                    "- Khóa cửa thông minh được đặt ở mỗi căn nhà giúp kiểm soát ra vào an toàn và thuận tiện, góp phần tạo nên một không gian sống hiện đại và đầy cảm hứng.",
+                ]}
                 imageUrl=""
                 isShowLibImage={true}
                 is169={true}
@@ -88,8 +94,19 @@ export default function LifeStylePage() {
         <ScrollReveal>
             <ParaLeftDesRight
                 title="Kết nối cộng đồng, nâng cao chất lượng sống"
-                description="Từ trường mầm non quốc tế, công viên ánh sáng, hồ bơi thư giãn đến không gian rèn luyện thể chất như gym, yoga, spa – mọi nhu cầu chăm sóc sức khỏe thể chất và tinh thần đều được đặt ngay trong khuôn viên nội khu."
+                description="Tại khu đô thị, cư dân sẽ được trải nghiệm một hệ sinh thái tiện ích toàn diện, nơi mọi nhu cầu về sức khỏe, thư giãn và gắn kết cộng đồng đều được đáp ứng. "
                 sections={[]}
+                bullets={[
+                    "- Phòng gym được trang bị thiết bị hiện đại",
+                    "- Không gian tập yoga yên tĩnh giúp cân bằng tinh thần\n",
+                    "- Khu spa thư giãn mang đến những phút giây nghỉ ngơi trọn vẹn sau ngày dài\n",
+                    "- Công viên ánh sáng được phủ cây xanh rộng rãi là nơi lý tưởng để đi dạo, hít thở không khí trong lành",
+                    "- Trường mẫu giáo chuẩn quốc tế - nơi trẻ em được học tập và phát triển trong môi trường an toàn, hiện đại, giàu tính tương tác",
+                    "- Sân pickleball – môn thể thao thời thượng đang được ưa chuộng là điểm hẹn lý tưởng cho những trận đấu sôi động cùng bạn bè và gia đình.",
+                    "- Tất cả tạo nên một môi trường sống năng động, hiện đại và đáng mơ ước cho cư dân mọi lứa tuổi."
+
+
+                    ]}
                 imageUrl=""
                 isShowLibImage={true}
                 is169={true}
