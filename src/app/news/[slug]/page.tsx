@@ -71,16 +71,16 @@ export default function NewsDetailPage() {
                  <div
            className="mx-auto font-sans w-[78vw] sm:w-[78vw] max-w-[78vw] sm:px-2 px-1 py-6"
          >
-                                                                                       <h1 style={{
-               fontSize: "2rem",
-               fontWeight: "bold",
-               color: "hsl(var(--primary))",
-               textTransform: "uppercase",
-               letterSpacing: "0.5px",
-               marginBottom: "20px",
-               textAlign: "center",
-               fontFamily: "Montserrat, sans-serif"
-             }}>{article.title}</h1>
+                                                                                                                                                                               <h1 style={{
+                fontSize: "2rem",
+                fontWeight: "bold",
+                color: "hsl(var(--primary))",
+                textTransform: "uppercase",
+                letterSpacing: "0.5px",
+                marginBottom: "20px",
+                textAlign: "center",
+                fontFamily: "'Cormorant Infant', serif"
+              }}>{article.title}</h1>
 
                      <div style={{
              textAlign: "center",
