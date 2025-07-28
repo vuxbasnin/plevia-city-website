@@ -4,21 +4,14 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 24px !important;
+  padding: 0 40px !important;
   z-index: 1;
   overflow-x: visible;
-  min-height: 1px;
-}
-
-.piv-content {
-  width: unset;
-  margin: 0 auto;
-  padding: 32px 0 32px 0;
-  box-sizing: border-box;
+  min-height: 400px;
 }
 
 .piv-title {
@@ -29,20 +22,37 @@
   color: hsl(var(--primary));
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 20px;
+  margin-top: 32px;
+  margin-bottom: 16px;
   text-align: center;
+  width: 100%;
+}
+
+.piv-main-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.piv-content {
+  grid-column: 9 / 12; /* Chiếm cột 9-11 (3 cột) */
+  width: 100%;
+  margin: 0;
+  padding: 0 0 32px 0;
+  box-sizing: border-box;
+  height: auto;
 }
 
 .piv-description {
-  /*width: 85vw;*/
-  width: 78vw;
+  width: 100%;
   margin: 0 auto 24px auto;
   text-align: justify;
 }
 
 .piv-sub-description {
-  /*width: 85vw;*/
-  width: 78vw;
+  width: 100%;
   margin: 0 auto 24px auto;
   font-size: 1rem;
   color: #000000;
@@ -58,77 +68,91 @@
 }
 
 .piv-bullets {
-  /*width: 85vw;*/
-  width: 78vw;
+  width: 100%;
   margin: 0 auto 16px auto;
   padding-left: 24px;
+  list-style-type: disc;
 }
 
 .piv-bullets li {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-size: 1rem;
+  text-align: justify;
+}
+
+.piv-sub-description-list {
+  width: 100%;
+  margin: 0 auto 16px auto;
+  padding-left: 24px;
+  list-style-type: disc;
+}
+
+.piv-sub-description-list li {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #000000;
+  text-align: justify;
 }
 
 .piv-image-wrapper {
+  grid-column: 2 / 9; /* Chiếm cột 2-8 (7 cột) */
   display: flex;
   justify-content: center;
-  margin-bottom: 0;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  padding: 0 24px;
+  align-items: start;
+  margin: 0;
+  padding: 0;
+  height: auto;
 }
 
 .piv-image {
-  width: 100vw;
-  max-width: 100vw;
+  width: 100%;
+  max-width: 100%;
   height: auto;
+  margin-left: 24px;
   border-radius: 0;
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
   display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .piv-children {
-  /*width: 85vw;*/
-  width: 84vw;
-  margin: 0 auto;
+  grid-column: 9 / 12; /* Chiếm cột 9-11 (3 cột) */
+  width: 100%;
+  margin: 0;
   padding-bottom: 32px;
 }
 
 .piv-content > *:not(.piv-title):not(.piv-image-wrapper) {
-  /*width: 85vw;*/
-  width: 78vw;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* Responsive Header Styles */
 @media (max-width: 1024px) {
   .piv-title {
     font-size: 1.5rem;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   }
 }
 
 @media (max-width: 768px) {
   .piv-title {
     font-size: 1.5rem;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 }
 
 @media (max-width: 640px) {
   .piv-title {
     font-size: 1.5rem;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
 }
 
 @media (max-width: 480px) {
   .piv-title {
     font-size: 1.5rem;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
   }
 }
 
@@ -137,25 +161,41 @@
     padding: 0 20px !important;
   }
   
+  .piv-main-content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .piv-image-wrapper {
+    grid-column: 1 / -1; /* Chiếm toàn bộ chiều rộng */
+    order: 1;
+  }
+  
+  .piv-content {
+    grid-column: 1 / -1; /* Chiếm toàn bộ chiều rộng */
+    order: 2;
+    width: 100%;
+  }
+  
+  .piv-children {
+    grid-column: 1 / -1; /* Chiếm toàn bộ chiều rộng */
+    order: 3;
+    width: 100%;
+  }
+  
   .piv-description,
   .piv-sub-description,
   .piv-bullets,
   .piv-content > *:not(.piv-title):not(.piv-image-wrapper) {
-    width: 92vw;
+    width: 100%;
   }
-  
-  .piv-children {
-    width: 92vw;
-  }
-  
-
   
   .piv-content {
     padding: 24px 0 24px 0;
   }
   
   .piv-image-wrapper {
-    padding: 0 20px;
+    padding: 0;
   }
 }
 
@@ -164,25 +204,27 @@
     padding: 0 16px !important;
   }
   
+  .piv-main-content {
+    gap: 12px;
+  }
+  
   .piv-description,
   .piv-sub-description,
   .piv-bullets,
   .piv-content > *:not(.piv-title):not(.piv-image-wrapper) {
-    width: 94vw;
+    width: 100%;
   }
   
   .piv-children {
-    width: 94vw;
+    width: 100%;
   }
-  
-
   
   .piv-content {
     padding: 20px 0 20px 0;
   }
   
   .piv-image-wrapper {
-    padding: 0 16px;
+    padding: 0;
   }
   
   .piv-bullets {

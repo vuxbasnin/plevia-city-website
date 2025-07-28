@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Title from '@/components/ui/Title/Title';
 import './LibImage.css';
 import { getGalleryImages } from '@/lib/firestoreService';
+import { color } from 'framer-motion';
 
 interface ImageItem {
   id: string;
@@ -169,7 +170,7 @@ const LibImage: React.FC<LibImageProps> = ({
     <section className={`lib-image libimage-slider-root ${is169 ? 'libimage-169' : ''}`}>
       {!isHideTitle && (
         <div className="lib-image-header">
-          <Title variant="large" align="center">
+          <Title variant="large" align="center" isColorWhite={true}>
             CÁC MẪU NHÀ
           </Title>
         </div>

@@ -1,0 +1,139 @@
+.libimage-home-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem 0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 0;
+    margin: 0;
+}
+
+.libimage-home-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 0;
+    background-color: hsl(var(--primary));
+    background-image: url('/background/bg_lib_image_home.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 15% auto;
+}
+
+/* LibImage component chiếm từ cột 2 đến cột 8 */
+.libimage-home-grid .lib-image {
+    grid-column: 2 / 9; /* Từ cột 2 đến cột 8 (7 cột) */
+    width: 100%;
+    margin-left: 46px;
+}
+
+/* Ảnh bổ sung chiếm từ cột 9 đến cột 12 */
+.libimage-home-side-image {
+    grid-column: 9 / 13; /* Từ cột 9 đến cột 12 (4 cột) */
+    width: 100%;
+    height: 400px; /* Chiều cao bằng LibImage */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; /* Bỏ nền trắng */
+}
+
+.libimage-home-side-image .side-image {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: transparent; /* Bỏ nền trắng */
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .libimage-home-grid .lib-image {
+        grid-column: 2 / 10; /* Từ cột 2 đến cột 9 (8 cột) */
+    }
+
+    .libimage-home-side-image {
+        grid-column: 10 / 13; /* Từ cột 10 đến cột 12 (3 cột) */
+    }
+}
+
+@media (max-width: 992px) {
+    .libimage-home-grid .lib-image {
+        grid-column: 1 / 11; /* Từ cột 1 đến cột 10 (10 cột) */
+    }
+
+    .libimage-home-side-image {
+        grid-column: 11 / 13; /* Từ cột 11 đến cột 12 (2 cột) */
+    }
+
+    .libimage-home-grid {
+        gap: 1.5rem;
+        padding: 0 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .libimage-home-grid .lib-image {
+        grid-column: 1 / 13; /* Toàn bộ 12 cột */
+    }
+
+    .libimage-home-side-image {
+        grid-column: 1 / 13; /* Toàn bộ 12 cột */
+        margin-top: 1rem;
+    }
+
+    .libimage-home-grid {
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
+
+    .libimage-home-container {
+        padding: 1rem 0;
+        background-attachment: scroll; /* Tối ưu cho mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .libimage-home-grid {
+        gap: 0.75rem;
+        padding: 0 0.25rem;
+    }
+
+    .libimage-home-container {
+        padding: 0.5rem 0;
+    }
+}
+
+/* Đảm bảo LibImage component hiển thị đúng trong grid */
+.libimage-home-grid .lib-image {
+    width: 100%;
+    height: 100%;
+}
+
+.libimage-home-grid .libimage-slider-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+.libimage-home-grid .libimage-slider-image-wrapper {
+    width: 100%;
+    max-width: 100%;
+}
+
+.libimage-home-grid .libimage-slider-image-container {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.libimage-home-grid .libimage-slider-image {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16/9;
+}
