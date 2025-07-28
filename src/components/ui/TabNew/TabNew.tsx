@@ -144,85 +144,97 @@ const TabNew: React.FC<TabNewProps> = ({ title, tabs, reverse = false }) => {
     } : {};
 
     return (
-        <div className="tabnew-container" style={isMobile ? mobileStyles.container : undefined}>
-            <h2 className="tabnew-title">{title}</h2>
-            <div className="tabnew-tabs-row">
-                {tabs.map((tab, idx) => (
-                    <div
-                        key={tab.id}
-                        className={`tabnew-tab${idx === activeIndex ? ' active' : ''}`}
-                        onClick={() => handleTabClick(idx)}
-                    >
-                        <div className="tabnew-tab-title">{tab.title}</div>
+        <div className='root'>
+            <div className="tabnew-container" style={isMobile ? mobileStyles.container : undefined}>
+                <h2 className="tabnew-title">{title}</h2>
+                
+                {/* Decorative divider with logo */}
+                <div className="tabnew-divider">
+                    <div className="tabnew-divider-line"></div>
+                    <div className="tabnew-divider-logo">
+                        <img src="/Logo_Standard_Final-15.svg" alt="Logo" />
                     </div>
-                ))}
-            </div>
-            <div className="tabnew-content-row tabnew-slider-wrapper" 
-                style={isMobile ? mobileStyles.contentRow : undefined}
-            >
-                <div
-                    ref={sliderRef}
-                    className="tabnew-slider"
-                    style={isMobile ? mobileStyles.slider : { transform: `translateX(-${activeIndex * 100}%)` }}
-                    onTouchStart={handleTouchStart}
-                    onTouchMove={handleTouchMove}
-                    onTouchEnd={handleTouchEnd}
-                >
+                    <div className="tabnew-divider-line"></div>
+                </div>
+                
+                <div className="tabnew-tabs-row">
                     {tabs.map((tab, idx) => (
-                        <div className="tabnew-slide" key={tab.id} style={isMobile ? mobileStyles.slide : undefined}>
-                            {reverse ? (
-                                <>
-                                    <div className="tabnew-content-image" style={isMobile ? mobileStyles.contentImage : undefined}>
-                                        <img src={tab.image} alt={tab.title} style={isMobile ? mobileStyles.image : undefined} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
-                                    </div>
-                                    <div className="tabnew-content-text" style={isMobile ? mobileStyles.contentText : undefined}>
-                                        <h3 className="tabnew-content-heading">{tab.content.heading}</h3>
-                                        {tab.content.paragraphs.map((p, i) => (
-                                            <p key={i} dangerouslySetInnerHTML={{ __html: p }} />
-                                        ))}
-                                        {tab.content.bulletPoints.length > 0 && (
-                                            <ul>
-                                                {tab.content.bulletPoints.map((bp, i) => (
-                                                    <li key={i}>{bp}</li>
-                                                ))}
-                                            </ul>
-                                        )}
-                                        {/* Thêm button Khám phá ngay nếu activeIndex là 0, 1, 2 */}
-                                        {activeIndex >= 0 && activeIndex <= 2 && idx === activeIndex && (
-                                            <button className="tabnew-explore-btn" onClick={handleExploreClick}>
-                                                Khám phá ngay <span className="arrow-icon">→</span>
-                                            </button>
-                                        )}
-                                    </div>
-                                </>
-                            ) : (
-                                <>
-                                    <div className="tabnew-content-text" style={isMobile ? mobileStyles.contentText : undefined}>
-                                        <h3 className="tabnew-content-heading">{tab.content.heading}</h3>
-                                        {tab.content.paragraphs.map((p, i) => (
-                                            <p key={i} dangerouslySetInnerHTML={{ __html: p }} />
-                                        ))}
-                                        {tab.content.bulletPoints.length > 0 && (
-                                            <ul>
-                                                {tab.content.bulletPoints.map((bp, i) => (
-                                                    <li key={i}>{bp}</li>
-                                                ))}
-                                            </ul>
-                                        )}
-                                        {/* Thêm button Khám phá ngay nếu activeIndex là 0, 1, 2 */}
-                                        {activeIndex >= 0 && activeIndex <= 2 && idx === activeIndex && (
-                                            <button className="tabnew-explore-btn" onClick={handleExploreClick}>
-                                                Khám phá ngay <span className="arrow-icon">→</span>
-                                            </button>
-                                        )}
-                                    </div>
-                                    <div className="tabnew-content-image" style={isMobile ? mobileStyles.contentImage : undefined}>
-                                        <img src={tab.image} alt={tab.title} style={isMobile ? mobileStyles.image : undefined} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
-                                    </div>
-                                </>
-                            )}
+                        <div
+                            key={tab.id}
+                            className={`tabnew-tab${idx === activeIndex ? ' active' : ''}`}
+                            onClick={() => handleTabClick(idx)}
+                        >
+                            <div className="tabnew-tab-title">{tab.title}</div>
                         </div>
                     ))}
+                </div>
+                <div className="tabnew-content-row tabnew-slider-wrapper" 
+                    style={isMobile ? mobileStyles.contentRow : undefined}
+                >
+                    <div
+                        ref={sliderRef}
+                        className="tabnew-slider"
+                        style={isMobile ? mobileStyles.slider : { transform: `translateX(-${activeIndex * 100}%)` }}
+                        onTouchStart={handleTouchStart}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleTouchEnd}
+                    >
+                        {tabs.map((tab, idx) => (
+                            <div className="tabnew-slide" key={tab.id} style={isMobile ? mobileStyles.slide : undefined}>
+                                {reverse ? (
+                                    <>
+                                        <div className="tabnew-content-image" style={isMobile ? mobileStyles.contentImage : undefined}>
+                                            <img src={tab.image} alt={tab.title} style={isMobile ? mobileStyles.image : undefined} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
+                                        </div>
+                                        <div className="tabnew-content-text" style={isMobile ? mobileStyles.contentText : undefined}>
+                                            <h3 className="tabnew-content-heading">{tab.content.heading}</h3>
+                                            {tab.content.paragraphs.map((p, i) => (
+                                                <p key={i} dangerouslySetInnerHTML={{ __html: p }} />
+                                            ))}
+                                            {tab.content.bulletPoints.length > 0 && (
+                                                <ul>
+                                                    {tab.content.bulletPoints.map((bp, i) => (
+                                                        <li key={i}>{bp}</li>
+                                                    ))}
+                                                </ul>
+                                            )}
+                                            {/* Thêm button Khám phá ngay nếu activeIndex là 0, 1, 2 */}
+                                            {activeIndex >= 0 && activeIndex <= 2 && idx === activeIndex && (
+                                                <button className="tabnew-explore-btn" onClick={handleExploreClick}>
+                                                    Khám phá ngay <span className="arrow-icon">→</span>
+                                                </button>
+                                            )}
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div className="tabnew-content-text" style={isMobile ? mobileStyles.contentText : undefined}>
+                                            <h3 className="tabnew-content-heading">{tab.content.heading}</h3>
+                                            {tab.content.paragraphs.map((p, i) => (
+                                                <p key={i} dangerouslySetInnerHTML={{ __html: p }} />
+                                            ))}
+                                            {tab.content.bulletPoints.length > 0 && (
+                                                <ul>
+                                                    {tab.content.bulletPoints.map((bp, i) => (
+                                                        <li key={i}>{bp}</li>
+                                                    ))}
+                                                </ul>
+                                            )}
+                                            {/* Thêm button Khám phá ngay nếu activeIndex là 0, 1, 2 */}
+                                            {activeIndex >= 0 && activeIndex <= 2 && idx === activeIndex && (
+                                                <button className="tabnew-explore-btn" onClick={handleExploreClick}>
+                                                    Khám phá ngay <span className="arrow-icon">→</span>
+                                                </button>
+                                            )}
+                                        </div>
+                                        <div className="tabnew-content-image" style={isMobile ? mobileStyles.contentImage : undefined}>
+                                            <img src={tab.image} alt={tab.title} style={isMobile ? mobileStyles.image : undefined} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

@@ -27,29 +27,30 @@ const ParaImageVertical: React.FC<ParaImageVerticalProps> = ({
 }) => {
   return (
     <div className="para-image-vertical-container">
-      <div className="piv-content">
-        <h2 className="piv-title">{title}</h2>
-        <p className="piv-description">{description1}</p>
-        <p className="piv-description">{description2}</p>
-        {bullets && bullets.length > 0 && (
-          <ul className="piv-bullets">
-            {bullets.map((item, idx) => (
-              <li key={idx}>{item}</li>
-            ))}
-          </ul>
+      <h2 className="piv-title">{title}</h2>
+      <div className="piv-main-content">
+        {isLibImage ? (
+          <LibImage isHideTitle={isLibImage} />
+        ) : (
+          imageUrl && imageUrl.trim() !== '' && (
+            <div className="piv-image-wrapper">
+              <img src={imageUrl} alt={imageAlt} className="piv-image" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
+            </div>
+          )
         )}
-        {/*{subDescription && <p className="piv-sub-description">{subDescription}</p>}*/}
+        <div className="piv-content">
+          <p className="piv-description">{description1}</p>
+          <p className="piv-description">{description2}</p>
+          {bullets && bullets.length > 0 && (
+            <ul className="piv-bullets">
+              {bullets.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+        {children && <div className="piv-content piv-children">{children}</div>}
       </div>
-      {isLibImage ? (
-        <LibImage isHideTitle={isLibImage} />
-      ) : (
-        imageUrl && imageUrl.trim() !== '' && (
-          <div className="piv-image-wrapper">
-            <img src={imageUrl} alt={imageAlt} className="piv-image" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
-          </div>
-        )
-      )}
-      {children && <div className="piv-content piv-children">{children}</div>}
     </div>
   );
 };

@@ -92,13 +92,7 @@ const ParaLeftDesRight: React.FC<ParaLeftDesRightProps> = ({
     <div
       className={
         "para-left-des-right__container" +
-        (backgroundColor === 'gray' ? ' para-left-des-right__container--gray' : '') +
-        (reverse ? ' para-left-des-right__container--reverse' : '')
-      }
-      style={
-        reverse
-          ? { background: 'hsl(var(--primary))' }
-          : {}
+        (backgroundColor === 'gray' ? ' para-left-des-right__container--gray' : '') 
       }
     >
       {/* Title cho mobile, hiển thị trên ảnh */}

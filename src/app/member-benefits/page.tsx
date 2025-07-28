@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/layout/Navbar/Navbar';
-import Footer from '@/components/layout/Footer';
+import Footer from '@/components/layout/Footer/Footer';
 import { MessageSquare, Award, Sparkles } from 'lucide-react';
 import NextImage from 'next/image';
 import { getMemberBenefitsSectionData, getMemberBenefitsPageSettingsData } from '@/lib/firestoreService';
