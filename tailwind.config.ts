@@ -19,10 +19,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Montserrat', 'sans-serif'],
-        body: ['Montserrat', 'sans-serif'],
-        headline: ['Montserrat', 'sans-serif'],
-        code: ['Montserrat', 'sans-serif'],
+              sans: ['Quicksand', 'sans-serif'],
+      body: ['Quicksand', 'sans-serif'],
+      headline: ['Quicksand', 'sans-serif'],
+      code: ['Quicksand', 'sans-serif'],
       },
       colors: {
         background: 'hsl(var(--background))',

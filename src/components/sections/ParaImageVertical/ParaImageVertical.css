@@ -36,17 +36,21 @@
 .piv-description {
   /*width: 85vw;*/
   width: 78vw;
-  margin: 0 auto 24px auto;
+  margin: 0 auto 32px auto;
   text-align: justify;
+  color: #000000;
+  font-size: 1.1rem;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .piv-sub-description {
   /*width: 85vw;*/
   width: 78vw;
-  margin: 0 auto 24px auto;
+  margin: 0 auto 32px auto;
   font-size: 1rem;
   color: #000000;
   text-align: justify;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .piv-content > p,
@@ -60,13 +64,19 @@
 .piv-bullets {
   /*width: 85vw;*/
   width: 78vw;
-  margin: 0 auto 16px auto;
+  margin: 0 auto 32px auto;
   padding-left: 24px;
+  color: #000000;
+  font-size: 1rem;
+  text-align: justify;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .piv-bullets li {
-  margin-bottom: 6px;
+  margin-bottom: 12px;
   font-size: 1rem;
+  color: #000000;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .piv-image-wrapper {

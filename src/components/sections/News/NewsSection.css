@@ -211,6 +211,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: calc(1.6em * 4);
+  font-family: 'Quicksand', sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -222,6 +223,7 @@
     font-size: 1rem;
     -webkit-line-clamp: 4;
     max-height: calc(1.6em * 4);
+    font-family: 'Quicksand', sans-serif;
   }
 }
 
@@ -402,6 +404,7 @@
     line-height: 1.5;
     -webkit-line-clamp: 3;
     max-height: calc(1.5em * 3);
+    font-family: 'Quicksand', sans-serif;
   }
   
   .explore-button {
@@ -479,6 +482,7 @@
   .news-item-description {
     font-size: 0.75rem;
     -webkit-line-clamp: 3;
+    font-family: 'Quicksand', sans-serif;
   }
   
   .explore-button {

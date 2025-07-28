@@ -58,7 +58,7 @@
       color: #000000;
   line-height: 1.7;
   background: #fff;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .tab-content-left {
@@ -82,14 +82,14 @@
   font-weight: 700;
   color: #000000;
   font-size: 1.1rem; /* Title */
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .tab-desc {
   margin-top: 12px;
   font-size: 1.1rem; /* Subdescription */
   color: #000000;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 @media (max-width: 768px) {

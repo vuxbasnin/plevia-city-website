@@ -3,7 +3,7 @@
   max-width: none;
   margin: 0 auto;
   padding: 32px 0px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .para-many-image-title {
@@ -31,7 +31,7 @@
   font-size: 1.1rem;
   margin-bottom: 32px;
   text-align: justify;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .para-many-image-bullets{
@@ -39,7 +39,7 @@
   font-size: 1rem;
   margin-bottom: 32px;
   text-align: justify;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .para-many-image-footer{
@@ -47,7 +47,7 @@
   font-size: 1rem;
   margin-bottom: 32px;
   text-align: justify;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .para-many-image-grid {

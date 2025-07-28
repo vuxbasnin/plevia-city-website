@@ -1,7 +1,7 @@
 .para-left-des-right__container {
   width: 100%;
   background: #fff;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   padding: 20px 0;
 }
 
@@ -87,24 +87,54 @@
 }
 
 .para-left-des-right__description {
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-bottom: 20px;
   color: #000000;
+  font-size: 1.1rem;
+  margin-bottom: 32px;
   text-align: justify;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Styles cho description với danh sách */
+.para-left-des-right__description-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  color: #000000;
+  font-size: 1rem;
+  text-align: justify;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.para-left-des-right__description-bullet {
+  color: hsl(var(--primary));
+  font-weight: bold;
+  margin-right: 12px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.para-left-des-right__description-text {
+  color: #000000;
+  font-size: 1rem;
+  margin-bottom: 32px;
+  text-align: justify;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .para-left-des-right__subtitle {
-      color: #000000;
+  color: #000000;
   font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 8px;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .para-left-des-right__subdescription {
-  font-size: 1rem;
   color: #000000;
+  font-size: 1rem;
+  margin-bottom: 32px;
   text-align: justify;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .para-left-des-right__title--mobile {
@@ -128,7 +158,7 @@
 .para-left-des-right__description,
 .para-left-des-right__subtitle,
 .para-left-des-right__subdescription {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .para-left-des-right__container--reverse {

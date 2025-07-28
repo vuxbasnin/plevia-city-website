@@ -28,7 +28,7 @@
 
 .list-news__title {
   /* Using common header style */
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: 2rem;
   font-weight: bold;
   color: hsl(var(--primary));
@@ -69,7 +69,7 @@
   border: 2px solid #e5e7eb;
   border-radius: 8px;
   color: #000000;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
@@ -110,7 +110,7 @@
   border: 2px solid #e5e7eb;
   border-radius: 8px;
   color: #000000;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
