@@ -14,8 +14,8 @@
   text-align: center;
   line-height: 2.5rem;
 }
-.title-color-white {
-  color: white io !important;
+.title-color-white h2 {
+  color: white !important;
 }
 
 /* Alignment variants */

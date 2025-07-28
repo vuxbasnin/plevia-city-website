@@ -121,7 +121,7 @@
   width: 100%;
   max-width: 100%;
   height: auto;
-  margin-left: 24px;
+  margin-left: 0;
   border-radius: 0;
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
   display: block;

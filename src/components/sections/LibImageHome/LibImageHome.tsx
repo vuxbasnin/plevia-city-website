@@ -10,7 +10,7 @@ const LibImageHome: React.FC = () => {
     return (
         <div className="libimage-home-container">
             <div className="libimage-home-grid">
-                <LibImage />
+                <LibImage isHideTitle={false} />
             </div>
         </div>
     );

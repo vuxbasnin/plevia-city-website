@@ -18,7 +18,7 @@
     margin: 0 auto;
     padding: 0 0;
     background-color: hsl(var(--primary));
-    background-image: url('/background/bg_lib_image_home.png');
+    /*background-image: url('/background/bg_lib_image_home.png');*/
     background-repeat: no-repeat;
     background-position: right center;
     background-size: 15% auto;

@@ -24,6 +24,7 @@
 
 .section-title {
     font-size: 2rem;
+    font-family: 'Cormorant Infant', serif;
     font-weight: bold;
     text-align: center;
     color: hsl(var(--primary));
