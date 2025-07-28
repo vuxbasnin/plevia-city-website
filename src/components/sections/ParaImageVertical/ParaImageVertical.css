@@ -24,7 +24,7 @@
 .piv-title {
   /* Using common header style */
   font-family: 'Montserrat', sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: hsl(var(--primary));
   text-transform: uppercase;
@@ -120,14 +120,14 @@
 
 @media (max-width: 640px) {
   .piv-title {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     margin-bottom: 12px;
   }
 }
 
 @media (max-width: 480px) {
   .piv-title {
-    font-size: 1.125rem;
+    font-size: 1.5rem;
     margin-bottom: 8px;
   }
 }

@@ -12,7 +12,7 @@
 .tabnew-title {
   /* Using common header style */
   font-family: 'Montserrat', sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: hsl(var(--primary));
   text-transform: uppercase;
@@ -90,7 +90,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  min-height: 220px;
+  min-height: auto;
 }
 
 .tabnew-arrow {
@@ -125,7 +125,7 @@
 }
 
 .tabnew-content-heading {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 16px;
   color: hsl(var(--primary));
@@ -271,7 +271,7 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  min-height: 220px;
+  min-height: auto;
 }
 
 .tabnew-slider {
@@ -286,6 +286,7 @@
   flex-shrink: 0;
   display: flex;
   align-items: stretch;
+  min-height: auto;
 }
 
 .tabnew-explore-btn {
@@ -334,15 +335,16 @@
 @media (max-width: 768px) {
   .tabnew-container {
     width: 100vw !important;
-    padding: 24px 0 !important;
+    padding: 16px 0 !important;
     margin: 0 !important;
     box-sizing: border-box !important;
     --mobile-width: 100vw !important;
-    --mobile-padding: 24px 0 !important;
+    --mobile-padding: 16px 0 !important;
   }
   
   .tabnew-title {
-    padding: 0 16px !important;
+    padding: 0 !important;
+    margin-bottom: 12px !important;
   }
   
   .tabnew-tabs-row {
@@ -351,7 +353,7 @@
   
   .tabnew-content-row {
     min-height: auto !important;
-    gap: 20px !important;
+    gap: 12px !important;
     flex-direction: column !important;
     width: 100% !important;
     margin: 0 !important;
@@ -361,7 +363,7 @@
   
   .tabnew-content-text {
     margin: 0 !important;
-    padding: 0 16px !important;
+    padding: 0 !important;
     order: 1 !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -369,17 +371,17 @@
     box-sizing: border-box !important;
     --mobile-width: 100% !important;
     --mobile-max-width: 100% !important;
-    --mobile-padding: 0 16px !important;
+    --mobile-padding: 0 !important;
   }
   
   .tabnew-content-heading {
     font-size: 1.25rem !important;
-    margin-bottom: 12px !important;
+    margin-bottom: 8px !important;
   }
   
   .tabnew-content-text p {
     font-size: 1rem !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 6px !important;
   }
   
   .tabnew-content-image {
@@ -404,7 +406,7 @@
   .tabnew-explore-btn {
     padding: 12px 24px !important;
     font-size: 0.95rem !important;
-    margin-top: 20px !important;
+    margin-top: 12px !important;
   }
 }
 
@@ -412,15 +414,16 @@
 @media (max-width: 640px) {
   .tabnew-container {
     width: 100vw !important;
-    padding: 20px 0 !important;
+    padding: 12px 0 !important;
     margin: 0 !important;
     box-sizing: border-box !important;
     --mobile-width: 100vw !important;
-    --mobile-padding: 20px 0 !important;
+    --mobile-padding: 12px 0 !important;
   }
   
   .tabnew-title {
-    padding: 0 12px !important;
+    padding: 0 !important;
+    margin-bottom: 8px !important;
   }
   
   .tabnew-tabs-row {
@@ -428,7 +431,7 @@
   }
   
   .tabnew-content-row {
-    gap: 16px !important;
+    gap: 8px !important;
     flex-direction: column !important;
     width: 100% !important;
     margin: 0 !important;
@@ -437,7 +440,7 @@
   }
   
   .tabnew-content-text {
-    padding: 0 12px !important;
+    padding: 0 !important;
     order: 1 !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -445,21 +448,22 @@
     box-sizing: border-box !important;
     --mobile-width: 100% !important;
     --mobile-max-width: 100% !important;
-    --mobile-padding: 0 12px !important;
+    --mobile-padding: 0 !important;
   }
   
   .tabnew-content-heading {
-    font-size: 1.125rem !important;
-    margin-bottom: 8px !important;
+    font-size: 1.25rem !important;
+    margin-bottom: 6px !important;
   }
   
   .tabnew-content-text p {
     font-size: 0.95rem !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 4px !important;
   }
   
   .tabnew-content-text ul {
     padding-left: 16px !important;
+    margin-top: 6px !important;
   }
   
   .tabnew-content-image {
@@ -483,7 +487,7 @@
   .tabnew-explore-btn {
     padding: 10px 20px !important;
     font-size: 0.9rem !important;
-    margin-top: 16px !important;
+    margin-top: 8px !important;
   }
 }
 
@@ -491,7 +495,7 @@
 @media (max-width: 768px) {
   .tabnew-container.tabnew-container {
     width: 100% !important;
-    padding: 24px 0 !important;
+    padding: 16px 0 !important;
     margin: 0 !important;
     box-sizing: border-box !important;
     text-align: center !important;
@@ -500,7 +504,7 @@
   
   .tabnew-content-row {
     flex-direction: column !important;
-    gap: 20px !important;
+    gap: 12px !important;
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -530,30 +534,34 @@
   
   .tabnew-content-text.tabnew-content-text {
     margin: 0 !important;
-    padding: 0 8px !important;
+    padding: 0 !important;
     order: 1 !important;
     width: 100% !important;
     max-width: 100% !important;
-    flex: none !important;
+    flex: 0 0 auto !important;
     box-sizing: border-box !important;
     text-align: justify !important;
   }
   
   .tabnew-content-heading {
+    font-size: 1.25rem !important;
     text-align: center !important;
+    margin-bottom: 8px !important;
   }
   
   .tabnew-content-text p {
     text-align: justify !important;
+    margin-bottom: 6px !important;
   }
   
   .tabnew-content-text ul {
     text-align: left !important;
     list-style-position: outside !important;
+    margin-top: 6px !important;
   }
   
   .tabnew-content-image.tabnew-content-image {
-    margin: 32px 0 0 0 !important;
+    margin: 12px 0 0 0 !important;
     padding: 0 !important;
     order: 2 !important;
     width: 100% !important;
@@ -571,12 +579,16 @@
     border-radius: 8px !important;
     display: block !important;
   }
+  
+  .tabnew-explore-btn {
+    margin-top: 12px !important;
+  }
 }
 
 @media (max-width: 640px) {
   .tabnew-container.tabnew-container {
     width: 100% !important;
-    padding: 20px 0 !important;
+    padding: 12px 0 !important;
     margin: 0 !important;
     box-sizing: border-box !important;
     text-align: center !important;
@@ -585,7 +597,7 @@
   
   .tabnew-content-row {
     flex-direction: column !important;
-    gap: 16px !important;
+    gap: 8px !important;
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -614,7 +626,7 @@
   }
   
   .tabnew-content-text.tabnew-content-text {
-    padding: 0 6px !important;
+    padding: 0 !important;
     order: 1 !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -624,16 +636,20 @@
   }
   
   .tabnew-content-heading {
+    font-size: 1.25rem !important;
     text-align: center !important;
+    margin-bottom: 6px !important;
   }
   
   .tabnew-content-text p {
     text-align: justify !important;
+    margin-bottom: 4px !important;
   }
   
   .tabnew-content-text ul {
     text-align: left !important;
     list-style-position: outside !important;
+    margin-top: 4px !important;
   }
   
   .tabnew-content-image.tabnew-content-image {
@@ -654,6 +670,10 @@
     border-radius: 6px !important;
     display: block !important;
   }
+  
+  .tabnew-explore-btn {
+    margin-top: 8px !important;
+  }
 }
 
 /* Responsive Header Styles */
@@ -673,14 +693,14 @@
 
 @media (max-width: 640px) {
   .tabnew-title {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     margin-bottom: 12px;
   }
 }
 
 @media (max-width: 480px) {
   .tabnew-title {
-    font-size: 1.125rem;
+    font-size: 1.5rem;
     margin-bottom: 8px;
   }
 }
