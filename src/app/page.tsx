@@ -113,7 +113,7 @@ export default function HomePage() {
         />
       </ScrollReveal>
       <ScrollReveal>
-        <ImageHeaderStatic imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/MAT-BANG-DU-AN-GLADIA-KHANG-DIEN-QUAN-2-1.webp" fullImage={true} />
+        <ImageHeaderStatic imageUrl="/assets/home/quy_mo_du_an.png" fullImage={true} />
       </ScrollReveal>
       <ScrollReveal>
         <TabProject />
@@ -131,8 +131,8 @@ export default function HomePage() {
             "Phát triển khu công nghiệp Nam Pleiku ",
           ]}
           subDescription="Gladia by the Waters dễ dàng tiếp cận đến các cơ sở Giáo dục, Giải trí, Mua sắm và Y tế chất lượng cao như: Trường American School, Trường Quốc tế Việt Úc (VAS), Bệnh viện Quốc tế Mỹ (AIH), Bệnh viện FV, Esttela Heights, Thiso Mall, Vietnam Country Gofl Club"
-          imageUrl="https://khangdienhcm.com/wp-content/uploads/2025/07/VI-TRI-GLADIA-QUAN-2.webp"
-          imageAlt="Vị trí dự án Gladia Khang Điền"
+          imageUrl="/assets/home/ban_do_vi_tri.png"
+          imageAlt="Vị trí dự án Plevia City"
         >
         </ParaImageVertical>
       </ScrollReveal>
@@ -145,7 +145,7 @@ export default function HomePage() {
       <ScrollReveal>
         <ParaManyImage
           title="TIẾN ĐỘ XÂY DỰNG DỰ ÁN"
-          paragraph="Cập nhật tiến độ xây dựng mới nhất dự án Gladia. Nhà thầu An Phong và Weathcons đang tích cực xây dựng, khối lượng công việc đạt hơn 95%. Trong đó:"
+          paragraph="Cập nhật tiến độ xây dựng mới nhất dự án Plevia City. Nhà thầu An Phong và Weathcons đang tích cực xây dựng, khối lượng công việc đạt hơn 95%. Trong đó:"
           bullets={[
             "Hạ tầng dự án đã hoàn thiện.",
             "Chủ đầu tư đang trồng và chăm sóc cây xanh của dự án.",

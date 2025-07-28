@@ -39,12 +39,12 @@ export default function Footer() {
             </div>
             <ul className="footer-links">
               <li>
-                <Link href="#" className="footer-link">
+                <Link href="https://tapdoanbachai.vn/" className="footer-link">
                   Về chúng tôi
                 </Link>
               </li>
               <li>
-                <Link href="#" className="footer-link">
+                <Link href="/news" className="footer-link">
                   Tin tức
                 </Link>
               </li>

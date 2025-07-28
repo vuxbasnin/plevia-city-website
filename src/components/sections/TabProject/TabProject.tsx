@@ -6,13 +6,13 @@ const TabProject = () => {
     <div className="tab-project-container">
       <div className="tab-both-wrapper">
         <div className="tab-content tab-content-left">
-          <b>QUY MÔ DỰ ÁN GLADIA:</b>
+          <b>QUY MÔ DỰ ÁN PLEVIA CITY:</b>
           <ul>
             <li>Phân khu <b>The Grand</b> – Biệt thự Đơn Lập và Tứ Lập</li>
             <li>Phân khu <b>The Grace</b> – Biệt thự Song Lập – Đơn Lập</li>
             <li>Phân khu <b>The Posh</b> – Nhà phố liền kề vườn</li>
             <li>Phân khu <b>Cao tầng</b> – 2 Block cao 25 tầng, 617 căn hộ.</li>
-            <li>Dự án <b>Gladia mở rộng</b> – diện tích 6ha</li>
+            <li>Dự án <b>Plevia City mở rộng</b> – diện tích 6ha</li>
           </ul>
           <div className="tab-desc">
             Dự án bao gồm: <b>86 căn nhà phố liền kề, 16 căn biệt thự tứ lập, 64 căn biệt thự song lập, 60 căn biệt thự đơn lập và 617 căn hộ cao cấp</b>.
