@@ -7,7 +7,7 @@
   align-items: flex-start;
   justify-content: center;
   padding: 24px 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .formreport-form {
@@ -25,10 +25,10 @@
   border-radius: 6px;
   padding: 12px 16px;
   font-size: 1rem;
-  color: #222;
+  color: #000000;
   outline: none;
   resize: none;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .formreport-input::placeholder,
@@ -48,7 +48,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 .formreport-btn:hover {
   background: #117dc0;
@@ -57,10 +57,10 @@
 .formreport-info {
   flex: 1 1 0;
   max-width: 52%;
-  color: #444;
+      color: #000000;
   font-size: 1rem;
   padding-left: 24px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .formreport-info-title {
@@ -78,7 +78,7 @@
 }
 
 .formreport-link {
-  color: #169fe6;
+      color: #000000;
   text-decoration: underline;
 }
 

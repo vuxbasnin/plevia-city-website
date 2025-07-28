@@ -5,7 +5,7 @@
   margin: 0 auto;
   padding: 60px 20px;
   background: white;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Title Section */
@@ -17,9 +17,9 @@
 .tab-main-title {
   font-size: 1.875rem;
   line-height: 1.25;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  color: #166534;
+  color: hsl(var(--primary));
   margin-bottom: 20px;
   letter-spacing: -0.025em;
 }

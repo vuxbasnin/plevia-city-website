@@ -33,14 +33,13 @@ export default function LifeStylePage() {
             <LibImage />
         </ScrollReveal>
         <ScrollReveal>
-            <ParaLeftDesRight
+            <ParaImageVertical
                 title="SỐNG HIỆN ĐẠI, HƯỞNG TRỌN MỌI GIÁ TRỊ"
-                description={`Tại Plevia City, tiện ích không chỉ là những công trình phụ trợ – mà chính là nền tảng tạo nên một phong cách sống hiện đại, trọn vẹn và khác biệt. Từng hạng mục được đầu tư đồng bộ và hài hòa, nhằm đáp ứng nhu cầu của cư dân năng động trong thời đại số, nơi ở – làm việc – nghỉ ngơi đều diễn ra trong một hệ sinh thái khép kín, thuận tiện.`}
-                sections={[]}
+                description1={`Tại Plevia City, tiện ích không chỉ là những công trình phụ trợ – mà chính là nền tảng tạo nên một phong cách sống hiện đại, trọn vẹn và khác biệt. Từng hạng mục được đầu tư đồng bộ và hài hòa, nhằm đáp ứng nhu cầu của cư dân năng động trong thời đại số, nơi ở – làm việc – nghỉ ngơi đều diễn ra trong một hệ sinh thái khép kín, thuận tiện.`}
+                description2={``}
                 imageUrl=""
-                isShowLibImage={true}
-                is169={true}
-            />
+            >
+            </ParaImageVertical>
         </ScrollReveal>
         <ScrollReveal>
             <ParaLeftDesRight

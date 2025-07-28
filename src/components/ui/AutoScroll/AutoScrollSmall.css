@@ -13,9 +13,9 @@
 .auto-scroll-title h2 {
   font-size: 1.875rem;
   line-height: 2.25rem;
-  font-family: serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  color: #166534;
+  color: hsl(var(--primary));
   line-height: 1.25;
 }
 
@@ -77,7 +77,7 @@
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 500;
-  color: #1f2937;
+      color: #000000;
 }
 
 @media (min-width: 768px) {
@@ -109,7 +109,7 @@
 }
 
 .auto-scroll-dot.active {
-  background-color: #166534;
+  background-color: hsl(var(--primary));
 }
 
 /* Responsive cho mobile */

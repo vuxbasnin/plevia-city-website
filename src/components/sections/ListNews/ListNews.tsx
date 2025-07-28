@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ItemNewsLarge from '@/components/ui/ItemNewsLarge/ItemNewsLarge';
 import './ListNews.css';
@@ -25,6 +25,7 @@ const ListNews: React.FC<ListNewsProps> = ({
   className = ''
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const titleRef = useRef<HTMLHeadingElement>(null);
 
   // Tính toán số trang
   const totalPages = Math.ceil(newsItems.length / itemsPerPage);
@@ -37,8 +38,13 @@ const ListNews: React.FC<ListNewsProps> = ({
   // Xử lý chuyển trang
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    // Scroll to top khi chuyển trang
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Scroll đến title thay vì scroll đến top
+    if (titleRef.current) {
+      titleRef.current.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   };
 
   // Tạo mảng các số trang để hiển thị
@@ -80,7 +86,7 @@ const ListNews: React.FC<ListNewsProps> = ({
   return (
     <section className={`list-news ${className}`}>
       <div className="list-news__container">
-        <h2 className="list-news__title">TIN TỨC</h2>
+        <h2 className="list-news__title" ref={titleRef}>TIN TỨC</h2>
         
         <div className="list-news__grid">
           {currentItems.map((item) => (

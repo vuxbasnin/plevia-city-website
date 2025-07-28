@@ -19,10 +19,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Roboto', 'sans-serif'],
-        body: ['Roboto', 'sans-serif'],
-        headline: ['Roboto', 'sans-serif'],
-        code: ['Roboto', 'sans-serif'],
+        sans: ['Montserrat', 'sans-serif'],
+        body: ['Montserrat', 'sans-serif'],
+        headline: ['Montserrat', 'sans-serif'],
+        code: ['Montserrat', 'sans-serif'],
       },
       colors: {
         background: 'hsl(var(--background))',

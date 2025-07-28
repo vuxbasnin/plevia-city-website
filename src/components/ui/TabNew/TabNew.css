@@ -3,44 +3,49 @@
   width: 80vw;
   margin: 0 auto;
   padding: 40px 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   --mobile-width: 80vw;
   --mobile-padding: 40px 0;
   text-align: center;
 }
 
 .tabnew-title {
-  text-align: center;
-  font-size: 2.6rem;
-  font-weight: 500;
-  margin-bottom: 32px;
-  letter-spacing: 2px;
+  /* Using common header style */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
   color: hsl(var(--primary));
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .tabnew-tabs-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   margin-bottom: 32px;
   border-bottom: 1px solid #cfd8dc;
   padding-bottom: 12px;
   width: 97%;
   margin-left: auto;
   margin-right: auto;
+  gap: 8px;
 }
 
 .tabnew-tab {
   flex: 1;
   text-align: center;
   cursor: pointer;
-  padding: 0;
+  padding: 8px 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: color 0.2s, font-weight 0.2s;
   color: hsl(var(--primary));
   font-size: 1.1rem;
+  min-height: 60px;
 }
 
 .tabnew-tab.active {
@@ -63,14 +68,18 @@
   text-align: center;
   padding: 0;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  white-space: pre-line;
+  word-wrap: break-word;
+  line-height: 1.3;
+  max-width: 100%;
 }
 
 .tabnew-tab-desc {
   font-size: 0.95rem;
-  color: #7a8b7a;
+  color: hsl(var(--muted-foreground));
   margin-top: 2px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .tabnew-content-row {
@@ -99,8 +108,8 @@
 }
 
 .tabnew-arrow:hover {
-  background: #f0f4f2;
-  border-color: #2e4c3b;
+  background: hsl(var(--accent));
+  border-color: hsl(var(--primary));
 }
 
 .tabnew-content-text {
@@ -117,15 +126,17 @@
 
 .tabnew-content-heading {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: bold;
   margin-bottom: 16px;
-  color: #2e4c3b;
+  color: hsl(var(--primary));
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .tabnew-content-text p {
   font-size: 1.05rem;
-  color: #4a6352;
+  color: #000000;
   margin-bottom: 10px;
   text-align: justify;
 }
@@ -331,9 +342,6 @@
   }
   
   .tabnew-title {
-    font-size: 2rem !important;
-    margin-bottom: 24px !important;
-    letter-spacing: 1px !important;
     padding: 0 16px !important;
   }
   
@@ -365,7 +373,7 @@
   }
   
   .tabnew-content-heading {
-    font-size: 1.3rem !important;
+    font-size: 1.25rem !important;
     margin-bottom: 12px !important;
   }
   
@@ -412,9 +420,6 @@
   }
   
   .tabnew-title {
-    font-size: 1.8rem !important;
-    margin-bottom: 20px !important;
-    letter-spacing: 0.5px !important;
     padding: 0 12px !important;
   }
   
@@ -444,8 +449,8 @@
   }
   
   .tabnew-content-heading {
-    font-size: 1.2rem !important;
-    margin-bottom: 10px !important;
+    font-size: 1.125rem !important;
+    margin-bottom: 8px !important;
   }
   
   .tabnew-content-text p {
@@ -648,5 +653,34 @@
     max-width: 100% !important;
     border-radius: 6px !important;
     display: block !important;
+  }
+}
+
+/* Responsive Header Styles */
+@media (max-width: 1024px) {
+  .tabnew-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tabnew-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .tabnew-title {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabnew-title {
+    font-size: 1.125rem;
+    margin-bottom: 8px;
   }
 }

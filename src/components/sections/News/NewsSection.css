@@ -79,7 +79,7 @@
 .news-title h2 {
   font-size: 1.875rem;
   line-height: 2.25rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   color: white;
   text-transform: uppercase;
@@ -99,7 +99,8 @@
   position: relative;
   overflow: hidden;
   margin-bottom: 0rem;
-  height: 650px;
+  height: auto;
+  min-height: 600px;
   touch-action: pan-x;
   -webkit-overflow-scrolling: touch;
   user-select: none;
@@ -134,7 +135,8 @@
   width: 33.333333%;
   flex-shrink: 0;
   padding: 0 1rem;
-  height: 560px;
+  height: auto;
+  min-height: 520px;
 }
 
 .news-item-content {
@@ -162,7 +164,7 @@
 .news-image-wrapper {
   width: 100%;
   height: auto;
-  aspect-ratio: 16/10;
+  aspect-ratio: 16/9;
   position: relative;
   max-width: 100%;
   flex-shrink: 0;
@@ -184,13 +186,13 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 260px;
+  min-height: 220px;
 }
 
 .news-item-title {
   font-size: 1rem;
   font-weight: 700;
-  color: #1f2937;
+  color: #000000;
   margin: 0 0 1rem 0;
   line-height: 1.4;
   text-transform: uppercase;
@@ -199,7 +201,7 @@
 
 .news-item-description {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: #000000;
   line-height: 1.6;
   margin: 0;
   display: -webkit-box;
@@ -335,7 +337,8 @@
   }
   
   .news-scroll-wrapper {
-    height: 420px;
+    height: auto;
+    min-height: 380px;
     margin-bottom: 1.5rem;
     overflow: hidden;
     touch-action: pan-x;
@@ -360,7 +363,8 @@
     width: 100vw;
     flex-shrink: 0;
     padding: 0 0.5rem;
-    height: 420px;
+    height: auto;
+    min-height: 380px;
   }
   
   .news-item-content {
@@ -376,12 +380,13 @@
   }
   
   .news-image-wrapper {
-    height: 160px;
+    height: auto;
+    aspect-ratio: 16/9;
   }
   
   .news-content {
     padding: 1rem;
-    min-height: 200px;
+    min-height: 180px;
   }
   
   .news-item-title {
@@ -438,12 +443,14 @@
   }
   
   .news-scroll-wrapper {
-    height: 380px;
+    height: auto;
+    min-height: 340px;
   }
   
   .news-item {
     width: 100vw;
-    height: 380px;
+    height: auto;
+    min-height: 340px;
     padding: 0 0.25rem;
   }
   
@@ -452,12 +459,13 @@
   }
   
   .news-image-wrapper {
-    height: 140px;
+    height: auto;
+    aspect-ratio: 16/9;
   }
   
   .news-content {
     padding: 0.75rem;
-    min-height: 180px;
+    min-height: 160px;
   }
   
   .news-item-title {

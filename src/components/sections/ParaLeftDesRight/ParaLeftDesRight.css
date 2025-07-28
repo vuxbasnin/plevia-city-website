@@ -1,7 +1,7 @@
 .para-left-des-right__container {
   width: 100%;
   background: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   padding: 20px 0;
 }
 
@@ -49,12 +49,11 @@
 
 .para-left-des-right__text__reverse {
   width: 45%;
-  padding: 40px 40px 24px 32px;
+  padding: 40px 0px 24px 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   height: 100%;
-  margin-right: 32px;
 }
 
 .para-left-des-right__image-wrapper__reverse {
@@ -77,6 +76,8 @@
 }
 
 .para-left-des-right__title {
+  /* Using common header style */
+  font-family: 'Montserrat', sans-serif;
   color: hsl(var(--primary));
   font-size: 1.5rem;
   font-weight: bold;
@@ -89,12 +90,12 @@
   font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 20px;
-  color: #222;
+  color: #000000;
   text-align: justify;
 }
 
 .para-left-des-right__subtitle {
-  color: #1db954;
+      color: #000000;
   font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 8px;
@@ -102,7 +103,7 @@
 
 .para-left-des-right__subdescription {
   font-size: 1rem;
-  color: #444;
+  color: #000000;
   text-align: justify;
 }
 
@@ -128,7 +129,7 @@
 .para-left-des-right__description,
 .para-left-des-right__subtitle,
 .para-left-des-right__subdescription {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .para-left-des-right__container--reverse {
@@ -139,6 +140,35 @@
 .para-left-des-right__container--reverse .para-left-des-right__subtitle,
 .para-left-des-right__container--reverse .para-left-des-right__subdescription {
   color: hsl(var(--primary-foreground)) !important;
+}
+
+/* Responsive Header Styles */
+@media (max-width: 1024px) {
+  .para-left-des-right__title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .para-left-des-right__title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .para-left-des-right__title {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .para-left-des-right__title {
+    font-size: 1.125rem;
+    margin-bottom: 8px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -171,9 +201,15 @@
   .para-left-des-right__title--mobile {
     display: block;
     text-align: center;
-    font-size: 1.25rem;
     margin-top: 24px;
-    margin-bottom: 16px;
+    /* Using common header style */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: hsl(var(--primary));
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
   }
   .para-left-des-right__text .para-left-des-right__title {
     display: none;

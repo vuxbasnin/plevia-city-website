@@ -43,9 +43,11 @@ const ParaImageVertical: React.FC<ParaImageVerticalProps> = ({
       {isLibImage ? (
         <LibImage isHideTitle={isLibImage} />
       ) : (
-        <div className="piv-image-wrapper">
-          <img src={imageUrl} alt={imageAlt} className="piv-image" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
-        </div>
+        imageUrl && imageUrl.trim() !== '' && (
+          <div className="piv-image-wrapper">
+            <img src={imageUrl} alt={imageAlt} className="piv-image" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
+          </div>
+        )
       )}
       {children && <div className="piv-content piv-children">{children}</div>}
     </div>

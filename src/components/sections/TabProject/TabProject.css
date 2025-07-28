@@ -23,7 +23,7 @@
   border-top-right-radius: 4px;
   font-size: 18px;
   font-weight: 600;
-  color: #555;
+  color: #000000;
   border-bottom: 2px solid #e0e0e0;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border-bottom 0.2s;
@@ -31,13 +31,13 @@
 
 .tab-btn.active {
   background: #f5f5f5;
-  color: #222;
+  color: #000000;
   border-bottom: 2px solid #f5f5f5;
 }
 
 .tab-btn:not(.active):hover {
   background: #f0f0f0;
-  color: #111;
+      color: #000000;
 }
 
 .tab-both-wrapper {
@@ -55,10 +55,10 @@
   box-sizing: border-box;
   padding: 24px 20px 16px 20px;
   font-size: 1rem; /* Description */
-  color: #333;
+      color: #000000;
   line-height: 1.7;
   background: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .tab-content-left {
@@ -80,16 +80,16 @@
 
 .tab-content b {
   font-weight: 700;
-  color: #222;
+  color: #000000;
   font-size: 1.1rem; /* Title */
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .tab-desc {
   margin-top: 12px;
   font-size: 1.1rem; /* Subdescription */
-  color: #222;
-  font-family: 'Roboto', sans-serif;
+  color: #000000;
+  font-family: 'Montserrat', sans-serif;
 }
 
 @media (max-width: 768px) {

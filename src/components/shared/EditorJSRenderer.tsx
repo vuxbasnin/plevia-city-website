@@ -18,18 +18,18 @@ const EditorJSRenderer: React.FC<EditorJSRendererProps> = ({ data }) => {
 
       switch (type) {
         case 'paragraph':
-          return `<p style="margin-bottom: 1rem; line-height: 1.7;">${blockData.text || ''}</p>`;
+          return `<p style="margin-bottom: 1rem; line-height: 1.7; color: #000000;">${blockData.text || ''}</p>`;
         
         case 'header':
           const level = blockData.level || 2;
           const tag = `h${level}`;
           const fontSize = level === 1 ? '2rem' : level === 2 ? '1.5rem' : '1.25rem';
-          return `<${tag} style="font-size: ${fontSize}; font-weight: 600; margin: 1.5rem 0 1rem 0; color: #166534;">${blockData.text || ''}</${tag}>`;
+          return `<${tag} style="font-size: ${fontSize}; font-weight: 600; margin: 1.5rem 0 1rem 0; color: hsl(var(--primary));">${blockData.text || ''}</${tag}>`;
         
         case 'list':
           const listType = blockData.style === 'ordered' ? 'ol' : 'ul';
-          const listItems = blockData.items.map((item: string) => `<li style="margin-bottom: 0.5rem;">${item}</li>`).join('');
-          return `<${listType} style="margin: 1rem 0; padding-left: 1.5rem;">${listItems}</${listType}>`;
+          const listItems = blockData.items.map((item: string) => `<li style="margin-bottom: 0.5rem; color: #000000;">${item}</li>`).join('');
+          return `<${listType} style="margin: 1rem 0; padding-left: 1.5rem; color: #000000;">${listItems}</${listType}>`;
         
         case 'quote':
           return `
@@ -38,13 +38,13 @@ const EditorJSRenderer: React.FC<EditorJSRendererProps> = ({ data }) => {
               padding-left: 1rem; 
               margin: 1.5rem 0; 
               font-style: italic; 
-              color: #666;
+              color: #000000;
               background: #f8f9fa;
               padding: 1rem;
               border-radius: 0 8px 8px 0;
             ">
-              <p style="margin: 0 0 0.5rem 0;">${blockData.text || ''}</p>
-              ${blockData.caption ? `<cite style="font-size: 0.9rem; color: #888;">— ${blockData.caption}</cite>` : ''}
+              <p style="margin: 0 0 0.5rem 0; color: #000000;">${blockData.text || ''}</p>
+              ${blockData.caption ? `<cite style="font-size: 0.9rem; color: #000000;">— ${blockData.caption}</cite>` : ''}
             </blockquote>
           `;
         
@@ -57,7 +57,7 @@ const EditorJSRenderer: React.FC<EditorJSRendererProps> = ({ data }) => {
                 style="width: 100%; height: auto; border-radius: 8px; max-width: 100%;"
                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop';"
               />
-              ${blockData.caption ? `<p style="margin-top: 0.5rem; font-size: 0.9rem; color: #666; font-style: italic;">${blockData.caption}</p>` : ''}
+              ${blockData.caption ? `<p style="margin-top: 0.5rem; font-size: 0.9rem; color: #000000; font-style: italic;">${blockData.caption}</p>` : ''}
             </div>
           `;
         
