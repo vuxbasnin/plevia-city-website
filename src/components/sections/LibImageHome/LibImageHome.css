@@ -13,8 +13,7 @@
 }
 
 .libimage-home-grid {
-    width: 100%;
-    max-width: 1200px;
+    width: 80vw;
     margin: 0 auto;
     padding: 0 0;
     /*background-image: url('/background/bg_lib_image_home.png');*/
@@ -28,8 +27,8 @@
 
 /* LibImage component với width 83vw và căn giữa */
 .libimage-home-grid .lib-image {
-    width: 83vw;
-    max-width: 83vw;
+    width: 80vw;
+    max-width: 80vw;
     margin: 0 auto;
 }
 
