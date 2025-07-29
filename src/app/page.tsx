@@ -24,6 +24,7 @@ import ScrollReveal from '@/components/shared/ScrollReveal';
 import LibImage from "@/components/sections/LibImage/LibImage";
 import SectionOneHome from '@/components/sections/SectionOneHome/SectionOneHome';
 import LibImageHome from '@/components/sections/LibImageHome/LibImageHome';
+import SectionOneHomeExample from '@/components/sections/SectionOneHome/SectionOneHomeExample';
 
 export default function HomePage() {
   return (
@@ -32,7 +33,7 @@ export default function HomePage() {
         <ImageHeader />
       </ScrollReveal>
       <ScrollReveal>
-        <SectionOneHome/>
+        <SectionOneHomeExample />
       </ScrollReveal>
       <ScrollReveal>
         <ImageHeaderStatic imageUrl="/assets/home/quy_mo_du_an.png" fullImage={true} />

@@ -2,11 +2,24 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   width: 100%;
-  margin-bottom: 32px;
 }
 
 .content {
   grid-column: 2 / 12; /* từ cột 2 đến cột 10 */
+}
+
+/* Khi sử dụng SectionOneHome với isStoryLine = true */
+.content .section-one-home-no-bg {
+  grid-column: 1 / -1; /* Chiếm toàn bộ chiều rộng */
+  width: 100vw;
+  margin-left: calc(-1 * ((100vw - 100%) / 2)); /* Căn sát mép trái */
+}
+
+/* Khi sử dụng FormInfo để full chiều rộng */
+.content .form-info-container {
+  grid-column: 1 / -1; /* Chiếm toàn bộ chiều rộng */
+  width: 100vw;
+  margin-left: calc(-1 * ((100vw - 100%) / 2)); /* Căn sát mép trái */
 }
 
 .fullWidth {

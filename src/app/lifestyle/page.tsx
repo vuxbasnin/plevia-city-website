@@ -6,6 +6,7 @@ import ScrollReveal from '@/components/shared/ScrollReveal';
 import LibImage from '@/components/sections/LibImage/LibImage';
 import ParaImageVertical from '@/components/sections/ParaImageVertical/ParaImageVertical';
 import ParaLeftDesRight from '@/components/sections/ParaLeftDesRight/ParaLeftDesRight';
+import FormInfo from '@/components/sections/FormInfo/FormInfo';
 
 export default function LifeStylePage() {
     return (<PageLayout>
@@ -138,6 +139,9 @@ export default function LifeStylePage() {
                     }
                 ]}
             />
+        </ScrollReveal>
+        <ScrollReveal>
+            <FormInfo />
         </ScrollReveal>
     </PageLayout>);
 } 

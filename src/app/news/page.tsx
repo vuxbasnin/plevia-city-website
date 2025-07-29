@@ -7,6 +7,7 @@ import ListNews from '@/components/sections/ListNews/ListNews';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import { getNewsArticles } from '@/lib/firestoreService';
 import { NewsArticle } from '@/types/landingPageAdmin';
+import FormInfo from '@/components/sections/FormInfo/FormInfo';
 
 export default function NewsPage() {
   const [newsItems, setNewsItems] = useState<any[]>([]);
@@ -64,6 +65,9 @@ export default function NewsPage() {
       </ScrollReveal>
       <ScrollReveal>
         <ListNews newsItems={newsItems} />
+      </ScrollReveal>
+      <ScrollReveal>
+        <FormInfo />
       </ScrollReveal>
     </PageLayout>
   );
