@@ -18,7 +18,7 @@ export interface ParaLeftDesRightSection {
 interface ParaLeftDesRightProps {
   title: string;
   description: string | string[];
-  sections: ParaLeftDesRightSection[];
+  sections?: ParaLeftDesRightSection[];
   imageUrl: string;
   backgroundColor?: 'white' | 'gray'; // mặc định là white
   reverse?: boolean; // nếu true, sẽ đảo ngược vị trí của text và ảnh
