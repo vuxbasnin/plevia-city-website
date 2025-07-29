@@ -1,0 +1,132 @@
+.content-lifestyle__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  font-family: 'Quicksand', sans-serif;
+  align-self: stretch;
+}
+
+.content-lifestyle__description {
+  color: #000000;
+  font-size: 1rem;
+  margin-bottom: 32px;
+  text-align: justify;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.content-lifestyle__subtitle {
+  color: #000000;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.content-lifestyle__subdescription {
+  color: #000000;
+  font-size: 1rem;
+  margin-bottom: 32px;
+  text-align: justify;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.content-lifestyle__dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #000000;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+.content-lifestyle__description,
+.content-lifestyle__subtitle,
+.content-lifestyle__subdescription {
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Bullet points styles - giống như ParaImageVertical */
+.content-lifestyle__bullets {
+  width: 100%;
+  margin: 0 0 32px 0;
+  padding-left: 24px;
+  color: #000000;
+  font-size: 1rem;
+  text-align: justify;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.content-lifestyle__bullet-item {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #000000;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Responsive styles cho reverse mode */
+.content-lifestyle__container--reverse .content-lifestyle__description,
+.content-lifestyle__container--reverse .content-lifestyle__subtitle,
+.content-lifestyle__container--reverse .content-lifestyle__subdescription,
+.content-lifestyle__container--reverse .content-lifestyle__bullet-item {
+  color: #000000 !important;
+}
+
+.content-lifestyle__container--reverse .content-lifestyle__dot {
+  background: #000000 !important;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .content-lifestyle__description {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+  
+  .content-lifestyle__subtitle {
+    font-size: 1rem;
+  }
+  
+  .content-lifestyle__subdescription {
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+  }
+  
+  .content-lifestyle__bullets {
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+  }
+  
+  .content-lifestyle__bullet-item {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-lifestyle__description {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .content-lifestyle__subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .content-lifestyle__subdescription {
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .content-lifestyle__bullets {
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .content-lifestyle__bullet-item {
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+  }
+} 

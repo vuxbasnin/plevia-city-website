@@ -1,0 +1,237 @@
+.para-image-vertical-lifestyle-container {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 40px !important;
+  z-index: 1;
+  overflow-x: visible;
+  min-height: 400px;
+}
+
+.pivl-title {
+  /* Using common header style */
+  /* Using Cormorant Infant font for headers */
+  font-family: 'Cormorant Infant', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: hsl(var(--primary));
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  text-align: center;
+  width: 100%;
+}
+
+.pivl-main-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.pivl-content {
+  width: 100%;
+  max-width: 78vw;
+  margin: 0;
+  padding: 0 0 0 0;
+  box-sizing: border-box;
+  height: auto;
+}
+
+.pivl-description {
+  width: 100%;
+  margin: 0 auto 16px auto;
+  text-align: justify;
+  color: #000000;
+  font-size: 1.1rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.pivl-sub-description {
+  width: 100%;
+  margin: 0 auto 32px auto;
+  font-size: 1rem;
+  color: #000000;
+  text-align: justify;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.pivl-content > p,
+.pivl-content > ul,
+.pivl-children > p,
+.pivl-children > ul {
+  text-align: justify;
+  width: 100%;
+}
+
+.pivl-bullets {
+  width: 100%;
+  margin: 0 auto 32px auto;
+  padding-left: 24px;
+  color: #000000;
+  font-size: 1rem;
+  text-align: justify;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.pivl-bullets li {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.pivl-sub-description-list {
+  width: 100%;
+  margin: 0 auto 16px auto;
+  padding-left: 24px;
+  list-style-type: disc;
+}
+
+.pivl-sub-description-list li {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #000000;
+  text-align: justify;
+  color: #000000;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.pivl-image-wrapper {
+  width: 100%;
+  max-width: 78vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  height: auto;
+}
+
+.pivl-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin-left: 0;
+  border-radius: 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  display: block;
+}
+
+.pivl-children {
+  width: 100%;
+  max-width: 78vw;
+  margin: 0;
+  padding-bottom: 32px;
+}
+
+.pivl-content > *:not(.pivl-title):not(.pivl-image-wrapper) {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Responsive Header Styles */
+@media (max-width: 1024px) {
+  .pivl-title {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pivl-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .pivl-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pivl-title {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .para-image-vertical-lifestyle-container {
+    padding: 0 20px !important;
+  }
+  
+  .pivl-main-content {
+    gap: 16px;
+  }
+
+  .pivl-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .pivl-children {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .pivl-description,
+  .pivl-sub-description,
+  .pivl-bullets,
+  .pivl-content > *:not(.pivl-title):not(.pivl-image-wrapper) {
+    width: 100%;
+  }
+  
+  .pivl-content {
+    padding: 24px 0 24px 0;
+  }
+  
+  .pivl-image-wrapper {
+    padding: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .para-image-vertical-lifestyle-container {
+    padding: 0 16px !important;
+  }
+  
+  .pivl-main-content {
+    gap: 12px;
+  }
+
+  .pivl-description,
+  .pivl-sub-description,
+  .pivl-bullets,
+  .pivl-content > *:not(.pivl-title):not(.pivl-image-wrapper) {
+    width: 100%;
+  }
+  
+  .pivl-children {
+    width: 100%;
+  }
+  
+  .pivl-content {
+    padding: 0 0 0 0;
+  }
+  
+  .pivl-image-wrapper {
+    padding: 0;
+  }
+  
+  .pivl-bullets {
+    padding-left: 20px;
+  }
+} 

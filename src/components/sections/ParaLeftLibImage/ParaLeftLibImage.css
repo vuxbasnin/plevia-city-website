@@ -1,0 +1,136 @@
+.para-left-lib-image__container {
+  width: 100%;
+  background: transparent;
+  padding: 0 0;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.para-left-lib-image__inner {
+  width: 78vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  min-height: 400px;
+  box-sizing: border-box;
+  align-items: stretch;
+  justify-content: center;
+  gap: 60px;
+}
+
+.para-left-lib-image__container--gray {
+  background: #f6f8fa;
+}
+
+.para-left-lib-image__text {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 0 0 24px 0;
+  align-self: stretch;
+}
+
+.para-left-lib-image__lib-image-wrapper {
+  width: 50%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 0 24px 0;
+  height: 100%;
+  align-self: stretch;
+}
+
+.para-left-lib-image__text__reverse {
+  width: 50%;
+  padding: 0 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  align-self: stretch;
+}
+
+/* Text styles đã chuyển sang ContentLifestyle component */
+
+/* Responsive Header Styles - đã chuyển sang ContentLifestyle */
+
+@media (max-width: 900px) {
+  .para-left-lib-image__container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .para-left-lib-image__text, .para-left-lib-image__lib-image-wrapper {
+    width: 100%;
+    padding: 4px;
+    height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .para-left-lib-image__container {
+    padding: 10px 0;
+  }
+  
+  .para-left-lib-image__inner {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    min-height: unset;
+  }
+
+  /* Title đã chuyển sang TitleLifestyle component */
+
+  .para-left-lib-image__lib-image-wrapper {
+    order: 1;
+    width: 100% !important;
+    padding: 0 2px 0 2px;
+    margin-bottom: 16px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .para-left-lib-image__text {
+    order: 2;
+    width: 100%;
+    padding: 0 2px 12px 2px;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 640px) {
+  .para-left-lib-image__inner.reverse {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    min-height: unset;
+  }
+  
+  .para-left-lib-image__lib-image-wrapper {
+    width: 100% !important;
+    padding: 0 2px 0 2px;
+    margin-bottom: 16px;
+    justify-content: center;
+    align-items: center;
+    order: 1;
+    height: auto;
+  }
+  
+  .para-left-lib-image__text__reverse {
+    width: 100%;
+    padding: 0 2px 12px 2px;
+    align-items: stretch;
+    order: 2;
+    height: auto;
+  }
+  
+  /* Title đã chuyển sang TitleLifestyle component */
+}
+
+@media (max-width: 480px) {
+  .para-left-lib-image__container {
+    padding: 0 0;
+  }
+}
+
+/* Bullet points styles - đã chuyển sang ContentLifestyle */ 

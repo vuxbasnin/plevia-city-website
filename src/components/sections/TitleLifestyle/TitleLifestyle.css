@@ -1,0 +1,66 @@
+.title-lifestyle__container {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 40px 20px;
+  max-width: 1200px;
+}
+
+.title-lifestyle__main-title {
+  font-family: 'Cormorant Infant', serif;
+  color: hsl(var(--primary));
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+  text-transform: uppercase;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title-lifestyle__container--mobile {
+  padding: 20px 10px;
+}
+
+.title-lifestyle__container--mobile .title-lifestyle__main-title {
+  font-size: 1.4rem;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .title-lifestyle__main-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .title-lifestyle__container {
+    padding: 30px 15px;
+  }
+  
+  .title-lifestyle__main-title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .title-lifestyle__container {
+    padding: 20px 10px;
+  }
+  
+  .title-lifestyle__main-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-lifestyle__container {
+    padding: 15px 8px;
+  }
+  
+  .title-lifestyle__main-title {
+    font-size: 1.1rem;
+  }
+} 

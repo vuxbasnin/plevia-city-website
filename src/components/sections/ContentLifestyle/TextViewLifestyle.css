@@ -1,0 +1,71 @@
+.text-view-lifestyle__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  font-family: 'Quicksand', sans-serif;
+  align-self: stretch;
+}
+
+/* Title styles đã chuyển sang TitleLifestyle component */
+
+.text-view-lifestyle__description {
+  color: #000000;
+  font-size: 1.1rem;
+  margin-bottom: 32px;
+  text-align: justify;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.text-view-lifestyle__subtitle {
+  color: #000000;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.text-view-lifestyle__subdescription {
+  color: #000000;
+  font-size: 1rem;
+  margin-bottom: 32px;
+  text-align: justify;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.text-view-lifestyle__dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #000000;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+.text-view-lifestyle__description,
+.text-view-lifestyle__subtitle,
+.text-view-lifestyle__subdescription {
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Bullet points styles - giống như ParaImageVertical */
+.text-view-lifestyle__bullets {
+  width: 100%;
+  margin: 0 0 32px 0;
+  padding-left: 24px;
+  color: #000000;
+  font-size: 1rem;
+  text-align: justify;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.text-view-lifestyle__bullet-item {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #000000;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Responsive Header Styles - đã chuyển sang TitleLifestyle */ 
