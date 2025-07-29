@@ -5,11 +5,15 @@ import Image from 'next/image';
 import Title from '@/components/ui/Title/Title';
 import './MapExtension.css';
 
-export function MapExtensionMainTitle() {
+interface MapExtensionMainTitleProps {
+  title?: string;
+}
+
+export function MapExtensionMainTitle({ title = "KẾT NỐI VÙNG ĐỒNG BỘ – VỪA Ở VỪA SINH LỜI" }: MapExtensionMainTitleProps) {
   return (
-    <div className="map-extension-header" style={{ marginTop: 32 }}>
+    <div className="map-extension-header" style={{ marginTop: 48 }}>
       <Title variant="large" align="center">
-        KẾT NỐI VÙNG ĐỒNG BỘ – VỪA Ở VỪA SINH LỜI
+        {title}
       </Title>
     </div>
   );

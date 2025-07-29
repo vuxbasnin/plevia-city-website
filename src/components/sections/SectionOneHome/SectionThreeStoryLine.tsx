@@ -22,7 +22,7 @@ const sectionOneStoryLineData = {
                     subdescription: `Đằng sau mỗi tính năng công nghệ là một lựa chọn mang tính tương lai. Không phải để “trưng bày hiện đại”, mà để <strong>kiến tạo một đô thị thực sự biết phục vụ người dùng</strong> – nơi từng căn nhà là một đơn vị thông minh, từng tiện ích là một bước tiến của trải nghiệm sống.`,
                 },
             ],
-            imageUrl: "/assets/storyline/desire_to_create.png"
+            imageUrl: "/assets/storyline/desire_to_create.jpg"
         }
     ]
 };

@@ -7,11 +7,14 @@ import LibImage from '@/components/sections/LibImage/LibImage';
 import ParaImageVertical from '@/components/sections/ParaImageVertical/ParaImageVertical';
 import ParaLeftDesRight from '@/components/sections/ParaLeftDesRight/ParaLeftDesRight';
 import FormInfo from '@/components/sections/FormInfo/FormInfo';
+import ParaLeftLibImage from "@/components/sections/ParaLeftLibImage";
+import LibImageHome from "@/components/sections/LibImageHome/LibImageHome";
+import ParaImageVerticalLifestyle from "@/components/sections/ParaImageVerticalLifestyle";
 
 export default function LifeStylePage() {
     return (<PageLayout>
         <ScrollReveal>
-            <ImageHeader/>
+            <ImageHeader imageUrl="/assets/lifestyle/banner_lifestyle.jpg"/>
         </ScrollReveal>
         <ScrollReveal>
             <ParaLeftLibImage
@@ -28,15 +31,13 @@ export default function LifeStylePage() {
                 }]}
                 is169={true}
                 images={[{
-                    id: '1', url: '/assets/lifestyle/1.png', caption: ''
+                    id: '1', url: '/assets/lifestyle/living_standard/ls_1.jpg', caption: ''
                 }, {
-                    id: '2', url: '/assets/lifestyle/2.png', caption: ''
+                    id: '2', url: '/assets/lifestyle/living_standard/ls_2.jpg', caption: ''
                 }, {
-                    id: '3', url: '/assets/lifestyle/3.png', caption: ''
+                    id: '3', url: '/assets/lifestyle/living_standard/ls_3.jpg', caption: ''
                 }, {
-                    id: '4', url: '/assets/lifestyle/4.png', caption: ''
-                }, {
-                    id: '5', url: '/assets/lifestyle/5.png', caption: ''
+                    id: '4', url: '/assets/lifestyle/living_standard/ls_4.jpg', caption: ''
                 }]}
             />
         </ScrollReveal>
@@ -56,15 +57,13 @@ export default function LifeStylePage() {
                 is169={true}
                 reverse={true}
                 images={[{
-                    id: '1', url: '/assets/lifestyle/1.png', caption: ''
+                    id: '1', url: '/assets/lifestyle/scientific_planning/sp_1.jpg', caption: ''
                 }, {
-                    id: '2', url: '/assets/lifestyle/2.png', caption: ''
+                    id: '2', url: '/assets/lifestyle/scientific_planning/sp_2.jpg', caption: ''
                 }, {
-                    id: '3', url: '/assets/lifestyle/3.png', caption: ''
+                    id: '3', url: '/assets/lifestyle/scientific_planning/sp_3.jpg', caption: ''
                 }, {
-                    id: '4', url: '/assets/lifestyle/4.png', caption: ''
-                }, {
-                    id: '5', url: '/assets/lifestyle/5.png', caption: ''
+                    id: '4', url: '/assets/lifestyle/scientific_planning/sp_4.jpg', caption: ''
                 }]}
             />
         </ScrollReveal>
@@ -75,7 +74,7 @@ export default function LifeStylePage() {
             <ParaImageVerticalLifestyle
                 title="SỐNG HIỆN ĐẠI, HƯỞNG TRỌN MỌI GIÁ TRỊ"
                 description={`Tại Plevia City, tiện ích không chỉ là những công trình phụ trợ – mà chính là nền tảng tạo nên một phong cách sống hiện đại, trọn vẹn và khác biệt. Từng hạng mục được đầu tư đồng bộ và hài hòa, nhằm đáp ứng nhu cầu của cư dân năng động trong thời đại số, nơi ở – làm việc – nghỉ ngơi đều diễn ra trong một hệ sinh thái khép kín, thuận tiện.`}
-                imageUrl="/assets/lifestyle/6.png"
+                imageUrl="/assets/lifestyle/modern_living.jpg"
             >
             </ParaImageVerticalLifestyle>
         </ScrollReveal>
@@ -88,39 +87,43 @@ export default function LifeStylePage() {
                 reverse={true}
                 dotEnabled={false}
                 images={[{
-                    id: '1', url: '/assets/lifestyle/6.png', caption: ''
+                    id: '1', url: '/assets/lifestyle/living_experience/le_1.jpg', caption: ''
                 }, {
-                    id: '2', url: '/assets/lifestyle/7.png', caption: ''
+                    id: '2', url: '/assets/lifestyle/living_experience/le_2.png', caption: ''
                 }, {
-                    id: '3', url: '/assets/lifestyle/8.png', caption: ''
+                    id: '3', url: '/assets/lifestyle/living_experience/le_3.png', caption: ''
                 }, {
-                    id: '4', url: '/assets/lifestyle/9.png', caption: ''
+                    id: '4', url: '/assets/lifestyle/living_experience/le_4.png', caption: ''
                 }, {
-                    id: '5', url: '/assets/lifestyle/10.png', caption: ''
+                    id: '5', url: '/assets/lifestyle/living_experience/le_5.png', caption: ''
                 }, {
-                    id: '6', url: '/assets/lifestyle/11.png', caption: ''
+                    id: '6', url: '/assets/lifestyle/living_experience/le_6.png', caption: ''
                 }]}
             />
         </ScrollReveal>
         <ScrollReveal>
             <ParaLeftLibImage
                 title="Kết nối cộng đồng, nâng cao chất lượng sống"
-                description="Tại khu đô thị, cư dân sẽ được trải nghiệm một hệ sinh thái tiện ích toàn diện, nơi mọi nhu cầu về sức khỏe, thư giãn và gắn kết cộng đồng đều được đáp ứng. "
+                description="Tại khu đô thị, cư dân sẽ được trải nghiệm một hệ sinh thái tiện ích toàn diện, nơi mọi nhu cầu về sức khỏe, thư giãn và gắn kết cộng đồng đều được đáp ứng. Tất cả tạo nên một môi trường sống năng động, hiện đại và đáng mơ ước cho cư dân mọi lứa tuổi."
                 sections={[]}
-                bullets={["- **Phòng gym** được trang bị thiết bị hiện đại", "- **Không gian tập yoga** yên tĩnh giúp cân bằng tinh thần\n", "- **Khu spa thư giãn** mang đến những phút giây nghỉ ngơi trọn vẹn sau ngày dài\n", "- **Công viên ánh sáng** được phủ cây xanh rộng rãi là nơi lý tưởng để đi dạo, hít thở không khí trong lành", "- **Trường mẫu giáo chuẩn quốc tế** - nơi trẻ em được học tập và phát triển trong môi trường an toàn, hiện đại, giàu tính tương tác", "- **Sân pickleball** – môn thể thao thời thượng đang được ưa chuộng là điểm hẹn lý tưởng cho những trận đấu sôi động cùng bạn bè và gia đình.", "- Tất cả tạo nên một môi trường sống năng động, hiện đại và đáng mơ ước cho cư dân mọi lứa tuổi."
+                bullets={["- **Phòng gym** được trang bị thiết bị hiện đại", "- **Không gian tập yoga** yên tĩnh giúp cân bằng tinh thần\n", "- **Khu spa thư giãn** mang đến những phút giây nghỉ ngơi trọn vẹn sau ngày dài\n", "- **Công viên ánh sáng** được phủ cây xanh rộng rãi là nơi lý tưởng để đi dạo, hít thở không khí trong lành", "- **Trường mẫu giáo chuẩn quốc tế** - nơi trẻ em được học tập và phát triển trong môi trường an toàn, hiện đại, giàu tính tương tác", "- **Sân pickleball** – môn thể thao thời thượng đang được ưa chuộng là điểm hẹn lý tưởng cho những trận đấu sôi động cùng bạn bè và gia đình.",
 
                 ]}
                 is169={true}
                 images={[{
-                    id: '1', url: '/assets/lifestyle/1.png', caption: ''
+                    id: '1', url: '/assets/lifestyle/connecting_community/cc_1.jpg', caption: ''
                 }, {
-                    id: '2', url: '/assets/lifestyle/2.png', caption: ''
+                    id: '2', url: '/assets/lifestyle/connecting_community/cc_2.jpg', caption: ''
                 }, {
-                    id: '3', url: '/assets/lifestyle/3.png', caption: ''
+                    id: '3', url: '/assets/lifestyle/connecting_community/cc_3.png', caption: ''
                 }, {
-                    id: '4', url: '/assets/lifestyle/4.png', caption: ''
+                    id: '4', url: '/assets/lifestyle/connecting_community/cc_4.png', caption: ''
                 }, {
-                    id: '5', url: '/assets/lifestyle/5.png', caption: ''
+                    id: '5', url: '/assets/lifestyle/connecting_community/cc_5.png', caption: ''
+                }, {
+                    id: '6', url: '/assets/lifestyle/connecting_community/cc_6.png', caption: ''
+                }, {
+                    id: '7', url: '/assets/lifestyle/connecting_community/cc_7.png', caption: ''
                 }]}
             />
         </ScrollReveal>

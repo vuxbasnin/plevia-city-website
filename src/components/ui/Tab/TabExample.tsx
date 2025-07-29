@@ -23,7 +23,7 @@ const TabExample: React.FC = () => {
       id: 'terrain',
       title: 'KIẾN TRÚC HIỆN ĐẠI,\nĐẲNG CẤP',
       description: 'Unique terrain & nature',
-      image: '/assets/home/keypoints_2.png',
+      image: '/assets/home/keypoints_2.jpg',
       content: {
         heading: 'KIẾN TRÚC HIỆN ĐẠI, ĐẲNG CẤP',
         paragraphs: [
@@ -37,7 +37,7 @@ const TabExample: React.FC = () => {
       id: 'architecture',
       title: 'TIỆN ÍCH &\nDỊCH VỤ',
       description: 'Classy planning & architecture',
-      image: '/assets/home/keypoints_3.png', // Thay bằng đường dẫn ảnh thực tế
+      image: '/assets/home/keypoints_3.jpg', // Thay bằng đường dẫn ảnh thực tế
       content: {
         heading: 'TIỆN ÍCH & DỊCH VỤ',
         paragraphs: [
@@ -69,7 +69,7 @@ const TabExample: React.FC = () => {
       id: 'community',
       title: 'CƠ HỘI ĐẦU TƯ\nHẤP DẪN',
       description: 'Elite civilized community',
-      image: '/assets/home/keypoints_5.png', // Thay bằng đường dẫn ảnh thực tế
+      image: '/assets/home/keypoints_5.jpg', // Thay bằng đường dẫn ảnh thực tế
       content: {
         heading: 'CƠ HỘI ĐẦU TƯ HẤP DẪN',
         paragraphs: [

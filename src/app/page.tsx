@@ -30,13 +30,14 @@ export default function HomePage() {
   return (
     <PageLayout>
       <ScrollReveal>
-        <ImageHeader />
+        <ImageHeader
+            imageUrl="/assets/home/banner_home.png"/>
       </ScrollReveal>
       <ScrollReveal>
         <SectionOneHomeExample />
       </ScrollReveal>
       <ScrollReveal>
-        <ImageHeaderStatic imageUrl="/assets/home/quy_mo_du_an.png" fullImage={true} />
+        <ImageHeaderStatic imageUrl="/assets/home/MB_so_do_phan_lo.svg" fullImage={true} />
       </ScrollReveal>
       <ScrollReveal>
         <TabProject />
@@ -81,9 +82,6 @@ export default function HomePage() {
             "https://khangdienhcm.com/wp-content/uploads/2025/06/TIEN-DO-DU-AN-GLADIA-KHANG-DIEN-KEPPEL-LAND-THANG-06-1024x683.jpeg",
             "https://khangdienhcm.com/wp-content/uploads/2025/06/TIEN-DO-GLADIA-THANG-06-1024x683.jpeg",
             "https://khangdienhcm.com/wp-content/uploads/2025/06/TIEN-DO-DU-AN-GLADIA-KHANG-DIEN-THANG-06-1024x682.jpeg",
-            "https://khangdienhcm.com/wp-content/uploads/2025/06/tien-do-du-an-gladia-02-1024x576.webp",
-            "https://khangdienhcm.com/wp-content/uploads/2025/06/tien-do-du-an-gladia-04-1024x576.webp",
-            "https://khangdienhcm.com/wp-content/uploads/2025/05/TIEN-DO-XAY-DUNG-GLADIA-KHANG-DIEN-THANG-06-2025-KDHCM-1024x576.jpg",
           ]}
         />
       </ScrollReveal>

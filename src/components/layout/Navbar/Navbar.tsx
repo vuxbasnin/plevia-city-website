@@ -8,12 +8,12 @@ import { Menu, X, Briefcase, MessageCircle, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import NextImage from 'next/image';
-import { useSiteSettings } from '@/context/SiteSettingsContext';
 import { Skeleton } from '@/components/ui/skeleton';
 import ContactFormDialog from '@/components/shared/ContactFormDialog';
 import NavigationLink from '@/components/shared/NavigationLink';
 import { usePathname } from 'next/navigation';
 import './Navbar.css';
+import { useSiteSettings } from '@/context/SiteSettingsContext';
 
 // Navigation links based on the image
 const navLinks = [

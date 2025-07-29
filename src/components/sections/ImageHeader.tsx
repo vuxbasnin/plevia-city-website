@@ -70,7 +70,7 @@ export default function ImageHeader({ imageUrl }: { imageUrl?: string }) {
   //   ? `https://placehold.co/1200x800.png?text=${encodeURIComponent(heroData.headline || 'Hero+Image+Error')}`
   //   : heroData.imageUrl || defaultHeroSectionData.imageUrl;
 
-  const fallbackImageUrl = "/assets/home/Banner.png";
+  const fallbackImageUrl = "/assets/home/banner_home.png";
   const currentImageUrl = imageUrl || fallbackImageUrl;
 
   if (isLoading) {

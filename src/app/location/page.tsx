@@ -10,15 +10,16 @@ import ScrollReveal from '@/components/shared/ScrollReveal';
 import ImageHeaderStatic from "@/components/sections/ImageHeaderStatic";
 import TextBlock from '@/components/ui/TextBlock';
 import ImageWithDoubleCaption from "@/components/ui/ImageWithDoubleCaption";
+import FormInfo from "@/components/sections/FormInfo/FormInfo";
 
 export default function LocationPage() {
   return (
     <PageLayout>
       <ScrollReveal>
-        <Map />
+        <Map/>
       </ScrollReveal>
       <ScrollReveal>
-        <MapExtensionMainTitle />
+        <MapExtensionMainTitle title="KẾT NỐI VÙNG ĐỒNG BỘ – VỪA Ở VỪA SINH LỜI" />
       </ScrollReveal>
       <ScrollReveal>
         <TextBlock
@@ -31,12 +32,16 @@ export default function LocationPage() {
         <TextBlock
           content="Với hạ tầng đô thị đang phát triển mạnh mẽ tại Gia Lai, đặc biệt khu vực phía Đông – nơi tập trung loạt dự án nâng cấp và mở rộng đường, bến xe, sân bay – vị trí của Plevia không chỉ mang lại trải nghiệm sống tiện nghi mà còn mở ra <b>cơ hội đầu tư sinh lời bền vững</b> theo thời gian.Đây chính là yếu tố khiến Plevia trở nên thực sự khác biệt - một nơi sống lý tưởng để tận hưởng từng khoảnh khắc vừa là một cơ hội đầu tư đáng giá để sinh lời theo thời gian." />
       </ScrollReveal>
+        <ScrollReveal>
+            <MapExtensionMainTitle title="LIÊN KẾT VÙNG"  />
+        </ScrollReveal>
       <ScrollReveal>
         <ImageWithDoubleCaption
-          imageUrl="/assets/location/local_relation.png"
-          caption1="Từ điểm kết nối – Đến trung tâm giá trị sống & đầu tư"
-          caption2="Hưởng lợi từ làn sóng hạ tầng bứt phá mạnh mẽ" />
+            imageUrl="/assets/location/local_relation.svg" caption1={''} caption2={''}/>
       </ScrollReveal>
+        <ScrollReveal>
+            <FormInfo />
+        </ScrollReveal>
     </PageLayout>
   );
 } 

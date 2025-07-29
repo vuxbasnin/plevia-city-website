@@ -25,7 +25,7 @@ const TextBlock: React.FC<TextBlockProps> = ({ children, content, className = ""
       style={{
         maxWidth: getMaxWidth(),
         margin: "0 auto",
-        padding: "24px 0",
+        padding: "0px 0",
         fontSize: fontSize,
         color: "#000000",
         textAlign: "justify",

@@ -17,7 +17,8 @@ export default function ProjectPage() {
     <PageLayout>
       <div className="fullWidth">
         <ScrollReveal>
-          <ImageHeader />
+          <ImageHeader
+          imageUrl="/assets/storyline/banner_storyline.jpg"/>
         </ScrollReveal>
       </div>
 

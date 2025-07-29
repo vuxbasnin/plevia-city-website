@@ -26,7 +26,7 @@ const sectionOneHomeData = {
                     subdescription: `Được quy hoạch bài bản theo định hướng "hiện đại – thông minh – bền vững", Plevia City không chỉ mở ra tiềm năng lớn cho các nhà đầu tư mà còn kiến tạo nên một phong cách sống mới tại phố núi – nơi thiên nhiên, công nghệ và con người cùng vận hành hài hòa.`
                 }
             ],
-            imageUrl: "https://khangdienhcm.com/wp-content/uploads/2025/06/PHOI-CANH-BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN.jpg"
+            imageUrl: "/assets/home/plevia_city.jpg"
         },
         {
             title: "THÔNG TIN TỔNG QUAN",
@@ -78,7 +78,7 @@ const sectionOneHomeData = {
                     subdescription: `Tiện ích nội khu: Công viên, gym, spa, sân thể thao, trường mầm non…`
                 }
             ],
-            imageUrl: "https://khangdienhcm.com/wp-content/uploads/2025/06/PHOI-CANH-BIET-THU-SONG-LAP-GLADIA-KHANG-DIEN.jpg",
+            imageUrl: "/assets/home/thong_tin_tong_quan.jpg",
             reverse: true,
             dotEnabled: true
         }
@@ -96,13 +96,13 @@ const SectionOneHomeExample: React.FC = () => {
                 isStoryLine={false}
             />
             
-            {/* Sử dụng không có background (cho storyline) */}
-            <SectionOneHome
-                mainTitle="STORY LINE"
-                subtitle="CÂU CHUYỆN CỦA CHÚNG TÔI"
-                contentSections={sectionOneHomeData.contentSections}
-                isStoryLine={true}
-            />
+            {/*/!* Sử dụng không có background (cho storyline) *!/*/}
+            {/*<SectionOneHome*/}
+            {/*    mainTitle="STORY LINE"*/}
+            {/*    subtitle="CÂU CHUYỆN CỦA CHÚNG TÔI"*/}
+            {/*    contentSections={sectionOneHomeData.contentSections}*/}
+            {/*    isStoryLine={true}*/}
+            {/*/>*/}
         </>
     );
 };
