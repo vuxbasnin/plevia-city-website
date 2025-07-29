@@ -14,8 +14,17 @@
     min-height: 100vh;
 }
 
-.section-one-home .container {
-    width: 80vw;
+.section-one-home-no-bg {
+    padding: 1rem 0;
+    background-color: #ffffff;
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.section-one-home .container,
+.section-one-home-no-bg .container {
+    width: 80vw;                        /* Desktop: 80% viewport width */
     margin: 0 auto;
     padding: 0 1rem;
     position: relative;
@@ -60,6 +69,10 @@
         width: 100vw;
     }
 
+    .section-one-home-no-bg .container {
+        width: 100vw;
+    }
+
     .section-title {
         font-size: 2rem;
     }
@@ -76,6 +89,10 @@
 
 @media (max-width: 480px) {
     .section-one-home .container {
+        width: 100vw;
+    }
+
+    .section-one-home-no-bg .container {
         width: 100vw;
     }
 

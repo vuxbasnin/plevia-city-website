@@ -5,10 +5,8 @@ import ImageHeader from '@/components/sections/ImageHeader';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import LibImage from '@/components/sections/LibImage/LibImage';
 import ParaImageVertical from '@/components/sections/ParaImageVertical/ParaImageVertical';
-import ParaLeftLibImage from '@/components/sections/ParaLeftLibImage/ParaLeftLibImage';
-import LibImageLifestyle from "@/components/sections/LibImageLifestyle";
-import LibImageHome from "@/components/sections/LibImageHome/LibImageHome";
-import ParaImageVerticalLifestyle from "@/components/sections/ParaImageVerticalLifestyle";
+import ParaLeftDesRight from '@/components/sections/ParaLeftDesRight/ParaLeftDesRight';
+import FormInfo from '@/components/sections/FormInfo/FormInfo';
 
 export default function LifeStylePage() {
     return (<PageLayout>
@@ -126,6 +124,8 @@ export default function LifeStylePage() {
                 }]}
             />
         </ScrollReveal>
-
+        <ScrollReveal>
+            <FormInfo />
+        </ScrollReveal>
     </PageLayout>);
 } 
