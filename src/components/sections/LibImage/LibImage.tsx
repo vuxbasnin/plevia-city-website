@@ -207,7 +207,7 @@ const LibImage: React.FC<LibImageProps> = ({
                 <div 
                   key={image.id} 
                   className="libimage-slider-image-container"
-                  style={{ width: '100vw', flexShrink: 0 }}
+                  style={{ width: '100%', flexShrink: 0 }}
                 >
                   <Image
                     src={image.url}
@@ -216,8 +216,8 @@ const LibImage: React.FC<LibImageProps> = ({
                     height={1080}
                     className={`libimage-slider-image ${is169 ? 'libimage-169-img' : ''}`}
                     style={{ 
-                      width: '100vw', 
-                      maxWidth: '100vw', 
+                      width: '100%', 
+                      maxWidth: '100%', 
                       height: '100%', 
                       objectFit: 'cover',
                       aspectRatio: '16/9'
