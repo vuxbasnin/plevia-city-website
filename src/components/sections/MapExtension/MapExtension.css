@@ -9,6 +9,12 @@
   padding: 0 2rem;
 }
 
+/* Custom title size for MapExtension */
+.map-extension-header .title h2 {
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+}
+
 .map-extension-content {
   display: flex;
   gap: 2rem;
@@ -272,5 +278,11 @@
   
   .sidebar-description {
     font-size: 0.875rem;
+  }
+  
+  /* Responsive title size for MapExtension */
+  .map-extension-header .title h2 {
+    font-size: 1.5rem !important;
+    line-height: 1.75rem !important;
   }
 }

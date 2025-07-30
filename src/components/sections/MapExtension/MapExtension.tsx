@@ -12,7 +12,7 @@ interface MapExtensionMainTitleProps {
 export function MapExtensionMainTitle({ title = "KẾT NỐI VÙNG ĐỒNG BỘ – VỪA Ở VỪA SINH LỜI" }: MapExtensionMainTitleProps) {
   return (
     <div className="map-extension-header" style={{ marginTop: 48 }}>
-      <Title variant="large" align="center">
+      <Title variant="small" align="center">
         {title}
       </Title>
     </div>

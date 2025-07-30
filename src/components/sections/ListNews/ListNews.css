@@ -1,5 +1,5 @@
 .list-news {
-  padding: 80px 0;
+  padding: 40px 0;
   background: #ffffff;
   position: relative;
   overflow: hidden;
@@ -28,8 +28,8 @@
 
 .list-news__title {
   /* Using common header style */
-  font-family: 'Quicksand', sans-serif;
-  font-size: 2rem;
+  font-family: 'Cormorant Infant', serif;
+  font-size: 2.5rem;
   font-weight: bold;
   color: hsl(var(--primary));
   text-transform: uppercase;

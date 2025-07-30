@@ -21,7 +21,7 @@
 .tabnew-container {
   width: 80vw;
   margin: 0 auto;
-  padding: 40px 0;
+  padding-bottom: 40px;
   font-family: 'Quicksand', sans-serif;
   --mobile-width: 80vw;
   --mobile-padding: 40px 0;
@@ -187,6 +187,7 @@
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  font-family: 'Cormorant Infant', serif;
 }
 
 .tabnew-content-text p {
