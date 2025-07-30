@@ -21,7 +21,7 @@ const NewsSectionExample: React.FC = () => {
       try {
         setLoading(true);
         console.log('Loading published news articles for homepage...');
-        const articles = await getPublishedNewsArticles();
+        const articles = await getPublishedNewsArticles(5); // Chỉ load 5 bài viết mới nhất
         console.log('Raw published articles from Firestore:', articles);
         
         // Transform NewsArticle to NewsItem format
