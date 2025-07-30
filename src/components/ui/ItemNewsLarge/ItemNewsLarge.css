@@ -50,7 +50,7 @@
 }
 
 .item-news-large__title {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Cormorant Infant', serif;
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.3;
@@ -98,6 +98,7 @@
   
   .item-news-large__title {
     font-size: 1.25rem;
+    font-family: 'Cormorant Infant', serif;
   }
   
   .item-news-large__description {
@@ -119,6 +120,7 @@
   
   .item-news-large__title {
     font-size: 1.125rem;
+    font-family: 'Cormorant Infant', serif;
   }
   
   .item-news-large__description {
