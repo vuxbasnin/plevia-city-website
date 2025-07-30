@@ -3,26 +3,14 @@
 
 import PageLayout from '@/components/layout/PageLayout';
 import ImageHeader from '@/components/sections/ImageHeader';
-import AutoScrollSmall from '@/components/ui/AutoScroll/AutoScrollSmall';
-import Overview from '@/components/sections/Overview/OverviewSection';
 import TabExample from '@/components/ui/Tab/TabExample';
 import NewsSectionExample from '@/components/sections/News/NewsSectionExample';
 import FormInfo from '@/components/sections/FormInfo/FormInfo';
-import ParaLeftDesRight, { paraLeftDesRightExample } from '@/components/sections/ParaLeftDesRight/ParaLeftDesRight';
-import TableLeftImageRight, { tableLeftImageRightExample, tableLeftImageRightPriceExample } from '@/components/sections/TableLeftImageRight/TableLeftImageRight';
 import ParaImageVertical from '@/components/sections/ParaImageVertical/ParaImageVertical';
 import ImageHeaderStatic from '@/components/sections/ImageHeaderStatic';
 import TabProject from '@/components/sections/TabProject/TabProject';
-import ImageLeftDesRight from '@/components/ui/ImageLeft_DesRight/ImageLeft_DesRight';
 import ParaManyImage from '@/components/sections/ParaManyImage/ParaManyImage';
-import { title } from 'process';
-import TabProjectBgBlue from '@/components/sections/TabProjectBgBlue/TabProjectBgBlue';
-import News4Item from '@/components/sections/News4Item/News4Item';
-import FormReport from '@/components/sections/FormReport/FormReport';
-import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/shared/ScrollReveal';
-import LibImage from "@/components/sections/LibImage/LibImage";
-import SectionOneHome from '@/components/sections/SectionOneHome/SectionOneHome';
 import LibImageHome from '@/components/sections/LibImageHome/LibImageHome';
 import SectionOneHomeExample from '@/components/sections/SectionOneHome/SectionOneHomeExample';
 
