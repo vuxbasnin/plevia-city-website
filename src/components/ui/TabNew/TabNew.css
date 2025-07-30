@@ -41,7 +41,7 @@
   text-align: center;
 }
 
-/* Decorative divider with logo */
+/* Decorative divider with logo and navigation buttons */
 .tabnew-divider {
   display: flex;
   align-items: center;
@@ -50,6 +50,7 @@
   width: 100%;
   max-width: 83vw;
   position: relative;
+  gap: 16px;
 }
 
 .tabnew-divider-line {
@@ -68,12 +69,51 @@
   background: transparent;
   border-radius: 0;
   box-shadow: none;
+  flex-shrink: 0;
 }
 
 .tabnew-divider-logo img {
   width: 100px;
   height: 100px;
   object-fit: contain;
+}
+
+/* Navigation buttons */
+.tabnew-nav-btn {
+  background: #fff;
+  border: 2px solid hsl(var(--primary));
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: hsl(var(--primary));
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(44, 76, 59, 0.1);
+}
+
+.tabnew-nav-btn:hover {
+  background: hsl(var(--primary));
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(44, 76, 59, 0.2);
+}
+
+.tabnew-nav-btn:active {
+  transform: scale(0.95);
+}
+
+.tabnew-nav-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(44, 76, 59, 0.2);
+}
+
+.tabnew-nav-btn svg {
+  width: 20px;
+  height: 20px;
 }
 
 .tabnew-tabs-row {
@@ -408,7 +448,8 @@
 
   .tabnew-divider {
     margin: 16px auto 20px auto !important;
-    max-width: 83vw !important;
+    max-width: 90vw !important;
+    gap: 8px !important;
   }
 
   .tabnew-divider-logo {
@@ -419,6 +460,18 @@
   .tabnew-divider-logo img {
     width: 80px !important;
     height: 80px !important;
+  }
+
+  /* Mobile navigation buttons */
+  .tabnew-nav-btn {
+    width: 40px !important;
+    height: 40px !important;
+    border-width: 1.5px !important;
+  }
+
+  .tabnew-nav-btn svg {
+    width: 16px !important;
+    height: 16px !important;
   }
   
   .tabnew-tabs-row {
@@ -506,7 +559,8 @@
 
   .tabnew-divider {
     margin: 12px auto 16px auto !important;
-    max-width: 83vw !important;
+    max-width: 92vw !important;
+    gap: 6px !important;
   }
 
   .tabnew-divider-logo {
@@ -517,6 +571,18 @@
   .tabnew-divider-logo img {
     width: 60px !important;
     height: 60px !important;
+  }
+
+  /* Small mobile navigation buttons */
+  .tabnew-nav-btn {
+    width: 36px !important;
+    height: 36px !important;
+    border-width: 1px !important;
+  }
+
+  .tabnew-nav-btn svg {
+    width: 14px !important;
+    height: 14px !important;
   }
   
   .tabnew-tabs-row {
@@ -581,6 +647,29 @@
     padding: 10px 20px !important;
     font-size: 0.9rem !important;
     margin-top: 8px !important;
+  }
+}
+
+/* Extra small mobile styles - 480px and below */
+@media (max-width: 480px) {
+  .tabnew-divider {
+    max-width: 95vw !important;
+    gap: 4px !important;
+  }
+
+  .tabnew-divider-logo img {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .tabnew-nav-btn {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .tabnew-nav-btn svg {
+    width: 12px !important;
+    height: 12px !important;
   }
 }
 

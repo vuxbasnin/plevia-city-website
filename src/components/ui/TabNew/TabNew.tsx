@@ -46,6 +46,14 @@ const TabNew: React.FC<TabNewProps> = ({ title, tabs, reverse = false }) => {
         setActiveIndex(idx);
     };
 
+    const handleNext = () => {
+        setActiveIndex((prevIndex) => (prevIndex + 1) % tabs.length);
+    };
+
+    const handlePrevious = () => {
+        setActiveIndex((prevIndex) => (prevIndex - 1 + tabs.length) % tabs.length);
+    };
+
     const handleExploreClick = () => {
         router.push('/lifestyle');
     };
@@ -148,13 +156,31 @@ const TabNew: React.FC<TabNewProps> = ({ title, tabs, reverse = false }) => {
             <div className="tabnew-container" style={isMobile ? mobileStyles.container : undefined}>
                 <h2 className="tabnew-title">{title}</h2>
                 
-                {/* Decorative divider with logo */}
+                {/* Decorative divider with logo and navigation buttons */}
                 <div className="tabnew-divider">
+                    <button 
+                        className="tabnew-nav-btn tabnew-nav-prev" 
+                        onClick={handlePrevious}
+                        aria-label="Previous tab"
+                    >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </button>
                     <div className="tabnew-divider-line"></div>
                     <div className="tabnew-divider-logo">
                         <img src="/Logo_Standard_Final-15.svg" alt="Logo" />
                     </div>
                     <div className="tabnew-divider-line"></div>
+                    <button 
+                        className="tabnew-nav-btn tabnew-nav-next" 
+                        onClick={handleNext}
+                        aria-label="Next tab"
+                    >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </button>
                 </div>
                 
                 <div className="tabnew-tabs-row">
