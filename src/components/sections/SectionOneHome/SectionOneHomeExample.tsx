@@ -7,7 +7,7 @@ const sectionOneHomeData = {
     subtitle: "NƠI THỂ HIỆN ĐẲNG CẤP",
     contentSections: [
         {
-            title: "PLEVIA CITY",
+            title: "Sống tinh hoa - Đầu tư sinh lời - Dẫn đầu Pleiku\n",
             description: "",
             sections: [
                 {

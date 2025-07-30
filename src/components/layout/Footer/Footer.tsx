@@ -67,7 +67,7 @@ export default function Footer() {
               <p>hotro@tapdoanbachai.vn</p>
               <div className="footer-hotline">
                 <span>Hotline: </span>
-                <span className="footer-hotline-number">0923.15.3939</span>
+                <span className="footer-hotline-number">07.67.67.67.72</span>
               </div>
             </div>
             <div className="footer-social-icons">

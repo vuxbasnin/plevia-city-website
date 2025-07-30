@@ -20,7 +20,7 @@
 
 .list-news__container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
   padding: 0 24px;
   position: relative;
   z-index: 1;
@@ -29,12 +29,12 @@
 .list-news__title {
   /* Using common header style */
   font-family: 'Cormorant Infant', serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   color: hsl(var(--primary));
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   text-align: center;
   position: relative;
 }
@@ -224,27 +224,27 @@
 @media (max-width: 1024px) {
   .list-news__title {
     font-size: 1.5rem;
-    margin-bottom: 16px;
+    margin-bottom: 40px;
   }
 }
 
 @media (max-width: 768px) {
   .list-news__title {
     font-size: 1.5rem;
-    margin-bottom: 16px;
+    margin-bottom: 40px;
   }
 }
 
 @media (max-width: 640px) {
   .list-news__title {
     font-size: 1.25rem;
-    margin-bottom: 12px;
+    margin-bottom: 40px;
   }
 }
 
 @media (max-width: 480px) {
   .list-news__title {
-    font-size: 1.125rem;
-    margin-bottom: 8px;
+    font-size: 1.5rem;
+    margin-bottom: 40px;
   }
 }

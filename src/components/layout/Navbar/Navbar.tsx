@@ -140,7 +140,7 @@ export default function Navbar() {
           {/* Logo Section - SVG mới */}
           <Link href="/" passHref>
             <img
-              src="/Logo_Standard_Final-14.svg"
+              src="/Logo_Standard_Final-7.png"
               alt="Logo"
               width={300}
               height={300}

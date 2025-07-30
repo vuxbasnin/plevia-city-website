@@ -1,5 +1,6 @@
 .para-left-lib-image__container {
   width: 100%;
+  margin-top: 16px;
   background: transparent;
   padding: 0 0;
   font-family: 'Quicksand', sans-serif;

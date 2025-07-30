@@ -15,7 +15,7 @@
 }
 
 .section-one-home-no-bg {
-    padding: 1rem 0;
+    padding: 2rem 0;
     background-color: #ffffff;
     width: 100%;
     position: relative;
@@ -97,10 +97,10 @@
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .section-subtitle {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 }
