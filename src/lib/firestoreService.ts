@@ -15,6 +15,7 @@ import {
   addDoc,
   deleteDoc,
   where,
+  limit,
 } from "firebase/firestore";
 import { db } from "./firebase"; // db can be null if Firebase fails to initialize
 import type {
@@ -424,7 +425,7 @@ export async function deleteNewsArticle(id: string): Promise<void> {
   }
 }
 
-export async function getPublishedNewsArticles(): Promise<NewsArticle[]> {
+export async function getPublishedNewsArticles(limit?: number): Promise<NewsArticle[]> {
   if (!db) {
     throw new Error("Firestore not initialized");
   }
@@ -436,6 +437,7 @@ export async function getPublishedNewsArticles(): Promise<NewsArticle[]> {
       where("isPublished", "==", true),
       orderBy("createdAt", "desc")
     );
+    
     const querySnapshot = await getDocs(q);
     
     const articles: NewsArticle[] = [];
@@ -448,6 +450,11 @@ export async function getPublishedNewsArticles(): Promise<NewsArticle[]> {
         updatedAt: data.updatedAt?.toDate ? data.updatedAt.toDate() : data.updatedAt,
       } as NewsArticle);
     });
+    
+    // Giới hạn số lượng kết quả nếu có parameter limit
+    if (limit) {
+      return articles.slice(0, limit);
+    }
     
     return articles;
   } catch (error) {

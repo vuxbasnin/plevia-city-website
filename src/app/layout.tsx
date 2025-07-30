@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   // Use fetched faviconUrl if available and not an empty string
-  const faviconUrlToUse = siteSettings?.faviconUrl ? siteSettings.faviconUrl : '/Logo_Standard_Final-3.svg';
+  const faviconUrlToUse = siteSettings?.faviconUrl ? siteSettings.faviconUrl : undefined;
   
   // Use fetched siteTitle or default
   const title = siteSettings?.siteTitle || defaultSiteSettingsData.siteTitle;
@@ -29,12 +29,13 @@ export async function generateMetadata(): Promise<Metadata> {
   const metadataResult: Metadata = {
     title: title,
     description: description,
-    icons: {
-      icon: faviconUrlToUse,
-      shortcut: faviconUrlToUse,
-      apple: faviconUrlToUse,
-    },
   };
+
+  if (faviconUrlToUse) {
+    metadataResult.icons = { icon: faviconUrlToUse };
+  }
+  // If faviconUrlToUse is undefined (because it was empty in settings or settings failed to load),
+  // the icons property will not be set. The browser may then attempt to load /favicon.ico by convention.
 
   return metadataResult;
 }
@@ -50,11 +51,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-        
-        {/* Favicon links */}
-        <link rel="icon" type="image/svg+xml" href="/Logo_Standard_Final-3.svg" />
-        <link rel="shortcut icon" type="image/svg+xml" href="/Logo_Standard_Final-3.svg" />
-        <link rel="apple-touch-icon" href="/Logo_Standard_Final-3.svg" />
+        {/* Favicon links are now handled by generateMetadata's icons property */}
       </head>
       <body className="antialiased">
         <ClientOnly>
