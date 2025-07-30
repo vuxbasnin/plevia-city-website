@@ -8,7 +8,7 @@ const TabExample: React.FC = () => {
       id: 'location',
       title: 'ỨNG DỤNG\n"TRÍ TUỆ NHÂN TẠO"',
       description: 'Convenient connectivity location',
-      image: '/assets/home/keypoints_1.png',
+      image: 'https://res.cloudinary.com/dytm93eoj/image/upload/v1753845489/home-assets/zm6fpdtf4t9xnsuvk2h7.png',
       content: {
         heading: 'ỨNG DỤNG "TRÍ TUỆ NHÂN TẠO"',
         paragraphs: [
@@ -23,7 +23,7 @@ const TabExample: React.FC = () => {
       id: 'terrain',
       title: 'KIẾN TRÚC HIỆN ĐẠI,\nĐẲNG CẤP',
       description: 'Unique terrain & nature',
-      image: '/assets/home/keypoints_2.jpg',
+      image: 'https://res.cloudinary.com/dytm93eoj/image/upload/v1753845490/home-assets/oyu3smqr90yie7y40qah.jpg',
       content: {
         heading: 'KIẾN TRÚC HIỆN ĐẠI, ĐẲNG CẤP',
         paragraphs: [
@@ -37,7 +37,7 @@ const TabExample: React.FC = () => {
       id: 'architecture',
       title: 'TIỆN ÍCH &\nDỊCH VỤ',
       description: 'Classy planning & architecture',
-      image: '/assets/home/keypoints_3.jpg', // Thay bằng đường dẫn ảnh thực tế
+      image: 'https://res.cloudinary.com/dytm93eoj/image/upload/v1753845493/home-assets/bilwsghljmgm1twn5yku.jpg', // Thay bằng đường dẫn ảnh thực tế
       content: {
         heading: 'TIỆN ÍCH & DỊCH VỤ',
         paragraphs: [
@@ -51,7 +51,7 @@ const TabExample: React.FC = () => {
       id: 'amenities',
       title: 'PHÁT TRIỂN\nBỀN VỮNG',
       description: 'International amenities & services',
-      image: '/assets/home/keypoints_4.png', // Thay bằng đường dẫn ảnh thực tế
+      image: 'https://res.cloudinary.com/dytm93eoj/image/upload/v1753845496/home-assets/xn1remull4wn4rugfpmv.png', // Thay bằng đường dẫn ảnh thực tế
       content: {
         heading: 'PHÁT TRIỂN BỀN VỮNG',
         paragraphs: [
@@ -69,7 +69,7 @@ const TabExample: React.FC = () => {
       id: 'community',
       title: 'CƠ HỘI ĐẦU TƯ\nHẤP DẪN',
       description: 'Elite civilized community',
-      image: '/assets/home/keypoints_5.jpg', // Thay bằng đường dẫn ảnh thực tế
+      image: 'https://res.cloudinary.com/dytm93eoj/image/upload/v1753845497/home-assets/gixz9kuy0bezsckdlkwp.jpg', // Thay bằng đường dẫn ảnh thực tế
       content: {
         heading: 'CƠ HỘI ĐẦU TƯ HẤP DẪN',
         paragraphs: [

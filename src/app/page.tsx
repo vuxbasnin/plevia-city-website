@@ -31,13 +31,13 @@ export default function HomePage() {
     <PageLayout>
       <ScrollReveal>
         <ImageHeader
-            imageUrl="/assets/home/banner_home.png"/>
+          imageUrl="https://res.cloudinary.com/dytm93eoj/image/upload/v1753845485/home-assets/ssknbjvtcnhrl9woana1.jpg" />
       </ScrollReveal>
       <ScrollReveal>
         <SectionOneHomeExample />
       </ScrollReveal>
       <ScrollReveal>
-        <ImageHeaderStatic imageUrl="/assets/home/MB_so_do_phan_lo.svg" fullImage={true} />
+        <ImageHeaderStatic imageUrl="https://res.cloudinary.com/dytm93eoj/image/upload/v1753847210/home-assets/fu4kdckrsurv5addankl.png" fullImage={true} />
       </ScrollReveal>
       <ScrollReveal>
         <TabProject />
@@ -55,7 +55,7 @@ export default function HomePage() {
             "- Phát triển khu công nghiệp Nam Pleiku ",
           ]}
           subDescription="Gladia by the Waters dễ dàng tiếp cận đến các cơ sở Giáo dục, Giải trí, Mua sắm và Y tế chất lượng cao như: Trường American School, Trường Quốc tế Việt Úc (VAS), Bệnh viện Quốc tế Mỹ (AIH), Bệnh viện FV, Esttela Heights, Thiso Mall, Vietnam Country Gofl Club"
-          imageUrl="/assets/home/ban_do_vi_tri.png"
+          imageUrl="https://res.cloudinary.com/dytm93eoj/image/upload/v1753845487/home-assets/gn3glzslmrkope10iufp.png"
           imageAlt="Vị trí dự án Plevia City"
         >
         </ParaImageVertical>

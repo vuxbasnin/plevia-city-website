@@ -26,7 +26,7 @@ const sectionOneHomeData = {
                     subdescription: `Được quy hoạch bài bản theo định hướng "hiện đại – thông minh – bền vững", Plevia City không chỉ mở ra tiềm năng lớn cho các nhà đầu tư mà còn kiến tạo nên một phong cách sống mới tại phố núi – nơi thiên nhiên, công nghệ và con người cùng vận hành hài hòa.`
                 }
             ],
-            imageUrl: "/assets/home/plevia_city.jpg"
+            imageUrl: "https://res.cloudinary.com/dytm93eoj/image/upload/v1753845501/home-assets/rlu2crw59gyoecnvf1rt.jpg"
         },
         {
             title: "THÔNG TIN TỔNG QUAN",
@@ -78,7 +78,7 @@ const sectionOneHomeData = {
                     subdescription: `Tiện ích nội khu: Công viên, gym, spa, sân thể thao, trường mầm non…`
                 }
             ],
-            imageUrl: "/assets/home/thong_tin_tong_quan.jpg",
+            imageUrl: "https://res.cloudinary.com/dytm93eoj/image/upload/v1753845504/home-assets/tn1twcf3bwszo20sv5de.jpg",
             reverse: true,
             dotEnabled: true
         }
