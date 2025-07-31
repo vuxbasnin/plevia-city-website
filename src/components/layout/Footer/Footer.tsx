@@ -26,7 +26,7 @@ export default function Footer() {
                 src="/assets/logo_final.png"
                 alt="Logo Bắc Hải"
                 width={120}
-                height={40}
+                height={120}
                 className="bim-logo-image"
                 priority
               />

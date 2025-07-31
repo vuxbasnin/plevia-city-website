@@ -46,7 +46,7 @@ const SectionOneHome: React.FC<SectionOneHomeProps> = ({
                             sections={section.sections}
                             imageUrl={section.imageUrl}
                             reverse={section.reverse}
-                            dotEnabled={section.dotEnabled}
+                            dotEnabled={false}
                         />
                     ))}
                 </div>
