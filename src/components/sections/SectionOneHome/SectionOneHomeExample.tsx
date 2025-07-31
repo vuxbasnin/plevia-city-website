@@ -35,47 +35,47 @@ const sectionOneHomeData = {
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `Tên dự án: Plevia City`
+                    subdescription: `- Tên dự án: Plevia City`
                 },
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `Vị trí: 63–65 Lý Nam Đế, p. Hội Phú, t.Gia Lai`
+                    subdescription: `- Vị trí: 63–65 Lý Nam Đế, p. Hội Phú, t. Gia Lai`
                 },
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `Chủ đầu tư: Công ty Cổ phần Tập đoàn Đầu tư Bắc Hải`
+                    subdescription: `- Chủ đầu tư: Công ty Cổ phần Tập đoàn Đầu tư Bắc Hải`
                 },
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `Diện tích: 7,04 ha`
+                    subdescription: `- Diện tích: 7,04 ha`
                 },
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `Quy mô: 368 căn nhà phố & shophouse`
+                    subdescription: `- Quy mô: 368 căn nhà phố & shophouse`
                 },
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `Diện tích sản phẩm: 110 m² đến 120 m²`
+                    subdescription: `- Diện tích sản phẩm: 110 m² đến 120 m²`
                 },
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `Thiết kế: Công ty Kiến Trúc Việt`
+                    subdescription: `- Thiết kế: Công ty Kiến Trúc Việt`
                 },
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `Pháp lý: Sổ từng nền – Quy hoạch 1/500`
+                    subdescription: `- Pháp lý: Sổ từng nền – Quy hoạch 1/500`
                 },
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `Tiện ích nội khu: Công viên, gym, spa, sân thể thao, trường mầm non…`
+                    subdescription: `- Tiện ích nội khu: Công viên, gym, spa, sân thể thao, trường mầm non…`
                 }
             ],
             imageUrl: "https://res.cloudinary.com/dytm93eoj/image/upload/v1753845504/home-assets/tn1twcf3bwszo20sv5de.jpg",
