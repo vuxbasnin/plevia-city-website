@@ -1,5 +1,5 @@
 .footer {
-  background-color: #2D3731;
+  background-color: hsl(var(--primary));
   color: white;
   padding-top: 4rem;
   padding-bottom: 2rem;
@@ -59,7 +59,7 @@
 }
 
 .bim-logo-image {
-  filter: brightness(0) invert(1);
+  /*filter: brightness(0) invert(1);*/
   margin-bottom: 0.5rem;
   object-fit: contain;
 }
@@ -166,7 +166,7 @@
 .social-icon {
   width: 2.5rem;
   height: 2.5rem;
-  background-color: #2D3731;
+  background-color: hsl(var(--primary));
   border: 1px solid white;
   border-radius: 50%;
   display: flex;
