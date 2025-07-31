@@ -16,8 +16,18 @@ npm run build
 Write-Host "📤 Uploading files to VPS..." -ForegroundColor Yellow
 scp -P $PORT -r .next package.json package-lock.json "$USERNAME@${VPS_IP}:${APP_PATH}/"
 
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "❌ Upload failed. Please check SSH port, network, and firewall." -ForegroundColor Red
+    exit 1
+}
+
 # SSH vào VPS và restart ứng dụng (sử dụng port tùy chỉnh)
 Write-Host "🔄 Restarting application on VPS..." -ForegroundColor Yellow
 ssh -p $PORT $USERNAME@$VPS_IP "bash -c 'cd $APP_PATH && npm install --production && pm2 restart pleviacity'"
+
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "❌ SSH connection failed. Please check SSH port, network, and firewall." -ForegroundColor Red
+    exit 1
+}
 
 Write-Host "✅ Deployment completed!" -ForegroundColor Green
