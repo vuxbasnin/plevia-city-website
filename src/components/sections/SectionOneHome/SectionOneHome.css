@@ -102,5 +102,17 @@
 
     .section-subtitle {
         font-size: 1.5rem;
+        padding-bottom: 1rem;
+    }
+
+    /* Giảm khoảng cách giữa sections trên iPhone 14 Pro Max */
+    .section-one-home {
+        padding-top: 2rem;
+        padding-bottom: 0;
+    }
+
+    .section-one-home-no-bg {
+        padding-top: 2rem;
+        padding-bottom: 0;
     }
 }

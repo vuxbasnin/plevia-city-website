@@ -332,6 +332,15 @@
   .para-left-des-right__container {
     padding: 0 0;
   }
+
+  /* Bỏ bottom padding của text trên iPhone 14 Pro Max */
+  .para-left-des-right__text {
+    padding: 0 2px 0 2px;
+  }
+
+  .para-left-des-right__text__reverse {
+    padding: 0 2px 0 2px;
+  }
 }
 
 /* Bullet points styles - giống như ParaImageVertical */
