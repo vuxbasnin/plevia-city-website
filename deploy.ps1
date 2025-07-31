@@ -1,10 +1,12 @@
 # Deploy script cho Windows
 param(
     [string]$VPS_IP = "103.56.163.188",
-    [string]$USERNAME = "nextjs",
+    [string]$USERNAME = "root",
     [string]$APP_PATH = "/home/nextjs/apps/pleviacity",
     [int]$PORT = 24700
 )
+
+git pull origin main
 
 Write-Host "🚀 Starting deployment..." -ForegroundColor Green
 
