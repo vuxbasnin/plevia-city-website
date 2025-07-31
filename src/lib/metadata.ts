@@ -8,9 +8,9 @@ export function generatePageMetadata(pageTitle: string): Metadata {
     title: fullTitle,
     description: `Khám phá ${pageTitle.toLowerCase()} tại ${baseTitle} - Dự án bất động sản cao cấp tại Gia Lai`,
     icons: {
-      icon: '/Logo_Standard_Final-3.svg', // Logo SVG
-      shortcut: '/Logo_Standard_Final-3.svg',
-      apple: '/Logo_Standard_Final-3.svg',
+      icon: '/Logo_green_3.png', // Logo SVG
+      shortcut: '/Logo_green_3.png',
+      apple: '/Logo_green_3.png',
     },
   };
 }

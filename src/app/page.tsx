@@ -57,15 +57,15 @@ export default function HomePage() {
       <ScrollReveal>
         <ParaManyImage
           title="TIẾN ĐỘ XÂY DỰNG DỰ ÁN"
-          paragraph="Cập nhật tiến độ xây dựng mới nhất dự án Plevia City. Nhà thầu An Phong và Weathcons đang tích cực xây dựng, khối lượng công việc đạt hơn 95%. Trong đó:"
-          bullets={[
-            "Hạ tầng dự án đã hoàn thiện.",
-            "Chủ đầu tư đang trồng và chăm sóc cây xanh của dự án.",
-            "Đã hoàn thiện nhà Mẫu và nhà điều hành",
-            "Biệt thự Đơn Lập, Song Lập Tứ Lập, Nhà phố liên kế đang hoàn thiện",
-            "Tiện ích, nhà điều hành, công viên hàng hoàn thiện"
-          ]}
-          footer="Chủ đầu tư Khang Điền – Keppel Land dự kiến hoàn thiện tiện ích, nhà mẫu và sản phẩm vào Quý 3/2025."
+          paragraph="Dự án Plevia City đã hoàn thiện hạ tầng, chuẩn bị đi vào khởi công xây dựng."
+          // bullets={[
+          //   "Hạ tầng dự án đã hoàn thiện.",
+          //   "Chủ đầu tư đang trồng và chăm sóc cây xanh của dự án.",
+          //   "Đã hoàn thiện nhà Mẫu và nhà điều hành",
+          //   "Biệt thự Đơn Lập, Song Lập Tứ Lập, Nhà phố liên kế đang hoàn thiện",
+          //   "Tiện ích, nhà điều hành, công viên hàng hoàn thiện"
+          // ]}
+          // footer="Chủ đầu tư Khang Điền – Keppel Land dự kiến hoàn thiện tiện ích, nhà mẫu và sản phẩm vào Quý 3/2025."
           images={[
             "https://khangdienhcm.com/wp-content/uploads/2025/06/TIEN-DO-DU-AN-GLADIA-KHANG-DIEN-KEPPEL-LAND-THANG-06-1024x683.jpeg",
             "https://khangdienhcm.com/wp-content/uploads/2025/06/TIEN-DO-GLADIA-THANG-06-1024x683.jpeg",

@@ -76,6 +76,18 @@
 
 .tab-content li {
   margin-bottom: 8px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.tab-content li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #000000;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 .tab-content b {
@@ -124,6 +136,12 @@
   
   .tab-content li {
     margin-bottom: 6px;
+    padding-left: 16px;
+  }
+  
+  .tab-content li::before {
+    left: 0;
+    font-size: 1.1em;
   }
   
   .tab-desc {
@@ -154,6 +172,12 @@
   
   .tab-content li {
     margin-bottom: 5px;
+    padding-left: 14px;
+  }
+  
+  .tab-content li::before {
+    left: 0;
+    font-size: 1em;
   }
   
   .tab-desc {

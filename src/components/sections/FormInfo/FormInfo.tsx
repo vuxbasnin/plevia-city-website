@@ -41,7 +41,7 @@ const FormInfo: React.FC = () => {
       {/* Left Section - Information */}
       <div className="form-info-left">
         <div>
-          <h2 className="form-info-heading">CÙNG KẾT NỐI</h2>
+          <h2 className="form-info-heading">KẾT NỐI VỚI CHÚNG TÔI</h2>
           <p className="form-info-subtext">
             Chào đón bạn đến với Plevia City<br />
             Vui lòng để lại thông tin tại đây

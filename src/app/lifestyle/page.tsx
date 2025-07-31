@@ -14,7 +14,7 @@ import ParaImageVerticalLifestyle from "@/components/sections/ParaImageVerticalL
 export default function LifeStylePage() {
     return (<PageLayout>
         <ScrollReveal>
-            <ImageHeader imageUrl="/assets/lifestyle/banner_lifestyle.jpg"/>
+            <ImageHeader imageUrl="/assets/lifestyle/banner_lifestyle.png"/>
         </ScrollReveal>
         <ScrollReveal>
             <ParaLeftLibImage
@@ -23,7 +23,7 @@ export default function LifeStylePage() {
                 sections={[{
                     level: 1,
                     subtitle: "",
-                    subdescription: `Plevia City không đơn thuần là nơi an cư, mà còn là biểu tượng cho phong cách sống hiện đại, thông minh nơi công nghệ trở thành nền tảng kiến tạo nên một không gian sống chuẩn mực thời đại số. Mỗi căn nhà là một mắt xích trong tổng thể được quy hoạch đồng bộ, thông minh – nơi kiến trúc không chỉ đẹp mà còn được tối ưu để tận dụng hết công năng từ thiên nhiên ban tặng giúp trải nghiệm sống.`
+                    subdescription: `Plevia City không đơn thuần là nơi an cư, mà còn là biểu tượng cho phong cách sống hiện đại, thông minh nơi công nghệ trở thành nền tảng kiến tạo nên một không gian sống chuẩn mực thời đại số. Mỗi căn nhà là một mắt xích trong tổng thể được quy hoạch đồng bộ, thông minh – nơi kiến trúc không chỉ đẹp mà còn được tối ưu để tận dụng hết công năng từ thiên nhiên ban tặng giúp trải nghiệm sống.`
                 }, {
                     level: 2,
                     subtitle: "",

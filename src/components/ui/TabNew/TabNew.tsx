@@ -169,7 +169,7 @@ const TabNew: React.FC<TabNewProps> = ({ title, tabs, reverse = false }) => {
                     </button>
                     <div className="tabnew-divider-line"></div>
                     <div className="tabnew-divider-logo">
-                        <img src="/Logo_Standard_Final-15.svg" alt="Logo" />
+                        <img src="/Logo_Standard_Final-9.png" alt="Logo" />
                     </div>
                     <div className="tabnew-divider-line"></div>
                     <button 
