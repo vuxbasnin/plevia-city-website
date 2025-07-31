@@ -190,23 +190,29 @@ export default function Navbar() {
             className="navbar-mobile-menu"
           >
             <div className="navbar-mobile-container">
-              {navLinks.map((link, index) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.3 }}
-                >
-                  <Link href={link.href} passHref>
-                    <span
-                      className="navbar-mobile-link"
-                      onClick={handleLinkClick}
-                    >
-                      {link.label}
-                    </span>
-                  </Link>
-                </motion.div>
-              ))}
+              {navLinks.map((link, index) => {
+                const isActive = pathname === link.href;
+                return (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.3 }}
+                  >
+                    <Link href={link.href} passHref>
+                      <span
+                        className={cn(
+                          "navbar-mobile-link",
+                          isActive && "navbar-mobile-link-active"
+                        )}
+                        onClick={handleLinkClick}
+                      >
+                        {link.label}
+                      </span>
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         )}
