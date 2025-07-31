@@ -90,43 +90,43 @@
   }
   
   .content-lifestyle__subdescription {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 24px;
   }
   
   .content-lifestyle__bullets {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 24px;
   }
   
   .content-lifestyle__bullet-item {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 8px;
   }
 }
 
 @media (max-width: 480px) {
   .content-lifestyle__description {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 20px;
   }
   
   .content-lifestyle__subtitle {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
   
   .content-lifestyle__subdescription {
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-bottom: 20px;
   }
   
   .content-lifestyle__bullets {
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-bottom: 20px;
   }
   
   .content-lifestyle__bullet-item {
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-bottom: 6px;
   }
 } 

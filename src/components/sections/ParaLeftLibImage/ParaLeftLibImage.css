@@ -1,6 +1,6 @@
 .para-left-lib-image__container {
   width: 100%;
-  margin-top: 16px;
+  /*margin-top: 16px;*/
   background: transparent;
   padding: 0 0;
   font-family: 'Quicksand', sans-serif;
@@ -99,7 +99,7 @@
   .para-left-lib-image__text {
     order: 2;
     width: 100%;
-    padding: 0 2px 12px 2px;
+    padding: 0 2px 0 2px;
     align-items: stretch;
   }
 }
@@ -136,6 +136,7 @@
 
 @media (max-width: 480px) {
   .para-left-lib-image__container {
+    margin-top: 16px;
     padding: 0 0;
   }
 
