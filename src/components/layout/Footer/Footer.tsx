@@ -29,11 +29,6 @@ export default function Footer() {
                 height={120}
                 className="bim-logo-image"
                 priority
-                style={{
-                  width: 'auto',
-                  height: 'auto',
-                  maxWidth: '100%'
-                }}
               />
               <span className="bim-logo-main">Công ty Cổ phần Tập đoàn Bắc Hải</span>
             </div>

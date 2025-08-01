@@ -17,6 +17,7 @@ import { NewsArticle, NewsArticleFormData, newsArticleFormSchema } from "@/types
 import { ArrowLeft, Save, X, Upload } from "lucide-react";
 import Link from "next/link";
 
+
 export default function EditNewsArticlePage() {
   const { slug } = useParams() as { slug: string };
   const [article, setArticle] = useState<NewsArticle | null>(null);
@@ -43,7 +44,7 @@ export default function EditNewsArticlePage() {
   const watchedTags = watch("tags");
   const watchedIsPublished = watch("isPublished");
   const watchedTitle = watch("title");
-  const editorRef = useRef<any>(null);
+  const editorRef = useRef<EditorJS | null>(null);
 
   // Load article data
   useEffect(() => {
@@ -71,24 +72,41 @@ export default function EditNewsArticlePage() {
 
   // Initialize EditorJS
   useEffect(() => {
-    const initEditor = async () => {
-      if (!loading && article && !editorRef.current && typeof window !== 'undefined') {
+    // Only initialize EditorJS on client-side
+    if (typeof window !== 'undefined' && !loading && article && !editorRef.current) {
+      const initEditor = async () => {
         try {
-          const EditorJSModule = await import("@editorjs/editorjs");
-          const HeaderModule = await import("@editorjs/header");
-          const ListModule = await import("@editorjs/list");
-          const ImageToolModule = await import("@editorjs/image");
-          const QuoteModule = await import("@editorjs/quote");
-          const CodeModule = await import("@editorjs/code");
+          const [
+            EditorJSModule,
+            HeaderModule,
+            ListModule,
+            ImageToolModule,
+            QuoteModule,
+            CodeModule
+          ] = await Promise.all([
+            import("@editorjs/editorjs"),
+            import("@editorjs/header"),
+            import("@editorjs/list"),
+            import("@editorjs/image"),
+            import("@editorjs/quote"),
+            import("@editorjs/code")
+          ]);
 
-          editorRef.current = new EditorJSModule.default({
+          const EditorJS = EditorJSModule.default;
+          const Header = HeaderModule.default;
+          const List = ListModule.default;
+          const ImageTool = ImageToolModule.default;
+          const Quote = QuoteModule.default;
+          const Code = CodeModule.default;
+
+          editorRef.current = new EditorJS({
             holder: "editorjs",
             placeholder: "Bắt đầu viết bài viết của bạn...",
             tools: {
-              header: HeaderModule.default,
-              list: ListModule.default,
+              header: Header,
+              list: List,
               image: {
-                class: ImageToolModule.default,
+                class: ImageTool,
                 config: {
                   uploader: {
                     uploadByFile: async (file: File) => {
@@ -117,8 +135,8 @@ export default function EditNewsArticlePage() {
                   },
                 },
               },
-              quote: QuoteModule.default,
-              code: CodeModule.default,
+              quote: Quote,
+              code: Code,
             },
             data: article.content,
             onChange: async () => {
@@ -129,12 +147,12 @@ export default function EditNewsArticlePage() {
             },
           });
         } catch (error) {
-          console.error('Error initializing EditorJS:', error);
+          console.error('Failed to initialize EditorJS:', error);
         }
-      }
-    };
+      };
 
-    initEditor();
+      initEditor();
+    }
 
     return () => {
       if (editorRef.current && typeof editorRef.current.destroy === "function") {

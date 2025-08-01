@@ -45,24 +45,41 @@ export default function CreateNewsPage() {
   const editorRef = useRef<EditorJS | null>(null);
 
   useEffect(() => {
-    const initEditor = async () => {
-      if (!editorRef.current && typeof window !== 'undefined') {
+    // Only initialize EditorJS on client-side
+    if (typeof window !== 'undefined' && !editorRef.current) {
+      const initEditor = async () => {
         try {
-          const EditorJSModule = await import("@editorjs/editorjs");
-          const HeaderModule = await import("@editorjs/header");
-          const ListModule = await import("@editorjs/list");
-          const ImageToolModule = await import("@editorjs/image");
-          const QuoteModule = await import("@editorjs/quote");
-          const CodeModule = await import("@editorjs/code");
+          const [
+            EditorJSModule,
+            HeaderModule,
+            ListModule,
+            ImageToolModule,
+            QuoteModule,
+            CodeModule
+          ] = await Promise.all([
+            import("@editorjs/editorjs"),
+            import("@editorjs/header"),
+            import("@editorjs/list"),
+            import("@editorjs/image"),
+            import("@editorjs/quote"),
+            import("@editorjs/code")
+          ]);
 
-          editorRef.current = new EditorJSModule.default({
+          const EditorJS = EditorJSModule.default;
+          const Header = HeaderModule.default;
+          const List = ListModule.default;
+          const ImageTool = ImageToolModule.default;
+          const Quote = QuoteModule.default;
+          const Code = CodeModule.default;
+
+          editorRef.current = new EditorJS({
             holder: "editorjs",
             placeholder: "Bắt đầu viết bài viết của bạn...",
             tools: {
-              header: HeaderModule.default,
-              list: ListModule.default,
+              header: Header,
+              list: List,
               image: {
-                class: ImageToolModule.default,
+                class: ImageTool,
                 config: {
                   uploader: {
                     uploadByFile: async (file: File) => {
@@ -91,8 +108,8 @@ export default function CreateNewsPage() {
                   },
                 },
               },
-              quote: QuoteModule.default,
-              code: CodeModule.default,
+              quote: Quote,
+              code: Code,
             },
             data: defaultNewsArticleData.content,
             onChange: async () => {
@@ -103,12 +120,12 @@ export default function CreateNewsPage() {
             },
           });
         } catch (error) {
-          console.error('Error initializing EditorJS:', error);
+          console.error('Failed to initialize EditorJS:', error);
         }
-      }
-    };
+      };
 
-    initEditor();
+      initEditor();
+    }
 
     return () => {
       if (editorRef.current && typeof editorRef.current.destroy === "function") {
