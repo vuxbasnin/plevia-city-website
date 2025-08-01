@@ -499,14 +499,14 @@ export const defaultNewsArticleData: NewsArticleFormData = {
 
 // Default structures
 export const defaultSiteSettingsData: SiteSettingsData = {
-  siteTitle: "WorkspaceCo - Không Gian Làm Việc Chung Hiện Đại",
+  siteTitle: "Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai",
   siteDescription:
-    "Khám phá không gian làm việc chung linh hoạt, đầy đủ tiện nghi và cộng đồng sáng tạo tại WorkspaceCo.",
+    "Plevia City là khu đô thị thông minh đầu tiên có ứng dụng 'Trí tuệ nhân tạo' được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.",
   logoUrl: "",
   faviconUrl: "",
-  contactPhone: "(+84) 28 1234 5678",
-  contactEmail: "info@pleviacity.com",
-  contactAddress: "123 Đường ABC, Phường XYZ, Quận 1, TP. Hồ Chí Minh",
+  contactPhone: "(+84) 123 456 789",
+  contactEmail: "info@pleviacity.vn",
+  contactAddress: "Phường Hội Phú, Thành phố Pleiku, Tỉnh Gia Lai",
   companyName: "Plevia City",
   socialLinks: [],
 };
