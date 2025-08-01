@@ -16,12 +16,6 @@ import { getNewsArticles, updateNewsArticle } from "@/lib/firestoreService";
 import { NewsArticle, NewsArticleFormData, newsArticleFormSchema } from "@/types/landingPageAdmin";
 import { ArrowLeft, Save, X, Upload } from "lucide-react";
 import Link from "next/link";
-import EditorJS from "@editorjs/editorjs";
-import Header from "@editorjs/header";
-import List from "@editorjs/list";
-import ImageTool from "@editorjs/image";
-import Quote from "@editorjs/quote";
-import Code from "@editorjs/code";
 
 export default function EditNewsArticlePage() {
   const { slug } = useParams() as { slug: string };
@@ -49,7 +43,7 @@ export default function EditNewsArticlePage() {
   const watchedTags = watch("tags");
   const watchedIsPublished = watch("isPublished");
   const watchedTitle = watch("title");
-  const editorRef = useRef<EditorJS | null>(null);
+  const editorRef = useRef<any>(null);
 
   // Load article data
   useEffect(() => {
@@ -77,55 +71,71 @@ export default function EditNewsArticlePage() {
 
   // Initialize EditorJS
   useEffect(() => {
-    if (!loading && article && !editorRef.current) {
-      editorRef.current = new EditorJS({
-        holder: "editorjs",
-        placeholder: "Bắt đầu viết bài viết của bạn...",
-        tools: {
-          header: Header,
-          list: List,
-          image: {
-            class: ImageTool,
-            config: {
-              uploader: {
-                uploadByFile: async (file: File) => {
-                  try {
-                    const formData = new FormData();
-                    formData.append('file', file);
-                    formData.append('folder', 'news_images');
+    const initEditor = async () => {
+      if (!loading && article && !editorRef.current && typeof window !== 'undefined') {
+        try {
+          const EditorJSModule = await import("@editorjs/editorjs");
+          const HeaderModule = await import("@editorjs/header");
+          const ListModule = await import("@editorjs/list");
+          const ImageToolModule = await import("@editorjs/image");
+          const QuoteModule = await import("@editorjs/quote");
+          const CodeModule = await import("@editorjs/code");
 
-                    const response = await fetch('/api/upload-image', {
-                      method: 'POST',
-                      body: formData,
-                    });
+          editorRef.current = new EditorJSModule.default({
+            holder: "editorjs",
+            placeholder: "Bắt đầu viết bài viết của bạn...",
+            tools: {
+              header: HeaderModule.default,
+              list: ListModule.default,
+              image: {
+                class: ImageToolModule.default,
+                config: {
+                  uploader: {
+                    uploadByFile: async (file: File) => {
+                      try {
+                        const formData = new FormData();
+                        formData.append('file', file);
+                        formData.append('folder', 'news_images');
 
-                    if (!response.ok) {
-                      const errorData = await response.json();
-                      throw new Error(errorData.error || 'Upload failed');
-                    }
+                        const response = await fetch('/api/upload-image', {
+                          method: 'POST',
+                          body: formData,
+                        });
 
-                    const result = await response.json();
-                    return { success: 1, file: { url: result.url } };
-                  } catch (error) {
-                    console.error('EditorJS upload error:', error);
-                    return { success: 0, error: error instanceof Error ? error.message : 'Upload failed' };
-                  }
+                        if (!response.ok) {
+                          const errorData = await response.json();
+                          throw new Error(errorData.error || 'Upload failed');
+                        }
+
+                        const result = await response.json();
+                        return { success: 1, file: { url: result.url } };
+                      } catch (error) {
+                        console.error('EditorJS upload error:', error);
+                        return { success: 0, error: error instanceof Error ? error.message : 'Upload failed' };
+                      }
+                    },
+                  },
                 },
               },
+              quote: QuoteModule.default,
+              code: CodeModule.default,
             },
-          },
-          quote: Quote,
-          code: Code,
-        },
-        data: article.content,
-        onChange: async () => {
-          if (editorRef.current) {
-            const outputData = await editorRef.current.save();
-            setValue("content", outputData);
-          }
-        },
-      });
-    }
+            data: article.content,
+            onChange: async () => {
+              if (editorRef.current) {
+                const outputData = await editorRef.current.save();
+                setValue("content", outputData);
+              }
+            },
+          });
+        } catch (error) {
+          console.error('Error initializing EditorJS:', error);
+        }
+      }
+    };
+
+    initEditor();
+
     return () => {
       if (editorRef.current && typeof editorRef.current.destroy === "function") {
         editorRef.current.destroy();
