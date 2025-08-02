@@ -61,7 +61,9 @@
 .bim-logo-image {
   /*filter: brightness(0) invert(1);*/
   margin-bottom: 0.5rem;
-  object-fit: contain;
+  object-fit: cover;
+  width: 120px !important;
+  height: 120px !important;
 }
 
 .bim-logo-main {

@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import PrivateRoute from "@/components/auth/PrivateRoute";
 import { useAuth } from "@/hooks/useAuth";
-import { LogOut, LayoutDashboard, Settings, MailCheck, CalendarClock, FileText, Home, Settings2, Newspaper, Package, ImageIcon, Sofa, Sparkles, Users, Send, Palette, Layers, UserCog, FileText as FileTextIcon, Plus, Edit } from "lucide-react";
+import { LogOut, LayoutDashboard, Settings, MailCheck, CalendarClock, FileText, Home, Settings2, Newspaper, Package, ImageIcon, Sofa, Sparkles, Users, Send, Palette, Layers, UserCog, FileText as FileTextIcon, Plus, Edit, MessageCircle } from "lucide-react";
 import { SidebarProvider, Sidebar, SidebarHeader, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarInset, SidebarTrigger, SidebarFooter, SidebarGroup, SidebarGroupLabel, SidebarGroupContent } from "@/components/ui/sidebar";
 
 interface NavItemConfig {
@@ -29,7 +29,8 @@ const navItemsConfiguration: NavItemConfig[] = [
     children: [
       { id: "site-settings", label: "Cài Đặt Website", icon: Settings, href: "/admin/settings/site", isLeaf: true },
       { id: "account-settings", label: "Tài Khoản Admin", icon: UserCog, href: "/admin/settings/account", isLeaf: true },
-      // { id: "trial-signups", label: "Đăng Ký Dùng Thử", icon: MailCheck, href: "/admin/data/trial-signups", isLeaf: true },
+      // { id: "trial-signups", label: "Quản lý Email", icon: MailCheck, href: "/admin/data/trial-signups", isLeaf: true },
+      { id: "connect-signups", label: "Quản lý Kết nối", icon: MessageCircle, href: "/admin/data/connect-signups", isLeaf: true },
       
       // { id: "tour-bookings", label: "Lịch Tham Quan", icon: CalendarClock, href: "/admin/data/tour-bookings", isLeaf: true }, // Ẩn mục này
     ],

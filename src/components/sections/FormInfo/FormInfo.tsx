@@ -1,6 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useToast } from "@/hooks/use-toast";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { Loader2 } from "lucide-react";
 import './FormInfo.css';
 
 interface FormData {
@@ -15,6 +19,8 @@ const FormInfo: React.FC = () => {
     email: '',
     content: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -24,16 +30,43 @@ const FormInfo: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Xử lý gửi form ở đây
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      content: ''
-    });
+    setIsSubmitting(true);
+    
+    try {
+      // Lưu vào Firestore collection connect_signups
+      await addDoc(collection(db, "connect_signups"), {
+        fullName: formData.name,
+        email: formData.email,
+        message: formData.content,
+        createdAt: serverTimestamp(),
+        status: "pending",
+        source: "form_info" // Đánh dấu nguồn từ FormInfo
+      });
+
+      toast({
+        title: "Đã gửi thành công!",
+        description: "Cảm ơn bạn đã liên hệ. Chúng tôi sẽ sớm phản hồi.",
+        variant: "default",
+      });
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        content: ''
+      });
+    } catch (error) {
+      console.error("Failed to submit form to Firestore:", error);
+      toast({
+        title: "Gửi thất bại!",
+        description: "Đã có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại sau.",
+        variant: "destructive",
+      });
+    }
+    
+    setIsSubmitting(false);
   };
 
   return (
@@ -90,8 +123,17 @@ const FormInfo: React.FC = () => {
             />
           </div>
           
-          <button type="submit" className="form-submit">
-            GỬI <span className="arrow-icon">→</span>
+          <button type="submit" className="form-submit" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <>
+                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                ĐANG GỬI...
+              </>
+            ) : (
+              <>
+                GỬI <span className="arrow-icon">→</span>
+              </>
+            )}
           </button>
         </form>
       </div>
