@@ -28,6 +28,8 @@ import type {
   SectionKey,
   TrialSignupData,
   TrialSignupStatus,
+  ConnectSignupData,
+  ConnectSignupStatus,
   TourBookingData,
   TourBookingStatus,
   MemberBenefitsPageSettingsData,
@@ -39,6 +41,7 @@ import type { TourBookingFormData as ClientTourBookingFormData } from "@/types/l
 
 const PAGE_CONTENT_COLLECTION = "page_content";
 const TRIAL_SIGNUPS_COLLECTION = "trial_signups";
+const CONNECT_SIGNUPS_COLLECTION = "connect_signups";
 const TOUR_BOOKINGS_COLLECTION = "tour_bookings";
 const NEWS_ARTICLES_COLLECTION = "news_articles";
 
@@ -238,6 +241,71 @@ export async function updateTrialSignupStatus(
     return true;
   } catch (error) {
     console.error(`Error updating status for signup ${id}:`, error);
+    return false;
+  }
+}
+
+// Connect Signups
+export async function getConnectSignups(): Promise<ConnectSignupData[]> {
+  if (!db) {
+    console.warn("Firestore (db) is not initialized. Cannot fetch connect signups. Returning empty array. Check Firebase configuration.");
+    return [];
+  }
+  try {
+    const q = query(
+      collection(db, CONNECT_SIGNUPS_COLLECTION),
+      orderBy("createdAt", "desc")
+    );
+    const querySnapshot = await getDocs(q);
+    const signups: ConnectSignupData[] = [];
+    querySnapshot.forEach((docSnap) => {
+      const data = docSnap.data();
+      signups.push({
+        id: docSnap.id,
+        fullName: data.fullName,
+        email: data.email,
+        message: data.message,
+        createdAt: (data.createdAt as Timestamp).toDate(),
+        status: data.status,
+        source: data.source,
+      } as ConnectSignupData);
+    });
+    return signups;
+  } catch (error) {
+    console.error("Error fetching connect signups:", error);
+    return [];
+  }
+}
+
+export async function updateConnectSignupStatus(
+  id: string,
+  status: ConnectSignupStatus
+): Promise<boolean> {
+  if (!db) {
+    console.error(`Firestore (db) is not initialized. Cannot update status for connect signup ${id}. Check Firebase configuration.`);
+    return false;
+  }
+  try {
+    const docRef = doc(db, CONNECT_SIGNUPS_COLLECTION, id);
+    await updateDoc(docRef, { status });
+    return true;
+  } catch (error) {
+    console.error(`Error updating status for connect signup ${id}:`, error);
+    return false;
+  }
+}
+
+export async function deleteConnectSignup(id: string): Promise<boolean> {
+  if (!db) {
+    console.error(`Firestore (db) is not initialized. Cannot delete connect signup ${id}. Check Firebase configuration.`);
+    return false;
+  }
+  try {
+    const docRef = doc(db, CONNECT_SIGNUPS_COLLECTION, id);
+    await deleteDoc(docRef);
+    return true;
+  } catch (error) {
+    console.error(`Error deleting connect signup ${id}:`, error);
     return false;
   }
 }

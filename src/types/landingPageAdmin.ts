@@ -325,6 +325,26 @@ export interface TrialSignupData {
   status: TrialSignupStatus;
 }
 
+// Connect Signups (from FormInfo)
+export const connectSignupStatuses = [
+  "pending",
+  "contacted",
+  "resolved",
+  "archived",
+  "deleted",
+] as const;
+export type ConnectSignupStatus = (typeof connectSignupStatuses)[number];
+
+export interface ConnectSignupData {
+  id: string;
+  fullName: string;
+  email: string;
+  message?: string;
+  createdAt: Date;
+  status: ConnectSignupStatus;
+  source?: string;
+}
+
 // Tour Booking
 export const tourBookingTimeSlots = [
   "09:00 - 10:00",
