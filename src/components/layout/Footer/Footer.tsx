@@ -23,14 +23,14 @@ export default function Footer() {
             <h5 className="footer-title">Đơn vị phát triển</h5>
             <div className="bim-logo">
               <NextImage
-                src="/assets/logo_final.png"
+                src="/assets/logo_bachai_golden.png"
                 alt="Logo Bắc Hải"
                 width={120}
                 height={120}
                 className="bim-logo-image"
                 priority
               />
-              <span className="bim-logo-main">Công ty Cổ phần Tập đoàn Bắc Hải</span>
+              <span className="bim-logo-main">Công ty Cổ phần Tập đoàn Đầu tư Bắc Hải</span>
             </div>
             <ul className="footer-links">
               <li>
