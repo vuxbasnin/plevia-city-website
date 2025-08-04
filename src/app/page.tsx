@@ -78,9 +78,6 @@ export default function HomePage() {
                     <FormInfo/>
                 </ScrollReveal>
             </PageLayout>
-            
-            {/* Debug component - chỉ hiển thị trong development */}
-            {process.env.NODE_ENV === 'development' && <SocialMediaDebug />}
         </>
     );
 }
