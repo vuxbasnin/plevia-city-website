@@ -13,6 +13,7 @@ import LibImageHome from '@/components/sections/LibImageHome/LibImageHome';
 import SectionOneHomeExample from '@/components/sections/SectionOneHome/SectionOneHomeExample';
 import TabProject from "@/components/sections/TabProject/TabProject";
 import StructuredData from '@/components/shared/StructuredData';
+import SocialMediaDebug from '@/components/shared/SocialMediaDebug';
 
 export default function HomePage() {
     return (
@@ -77,6 +78,9 @@ export default function HomePage() {
                     <FormInfo/>
                 </ScrollReveal>
             </PageLayout>
+            
+            {/* Debug component - chỉ hiển thị trong development */}
+            {process.env.NODE_ENV === 'development' && <SocialMediaDebug />}
         </>
     );
 }
