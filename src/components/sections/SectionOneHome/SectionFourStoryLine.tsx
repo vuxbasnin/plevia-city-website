@@ -19,7 +19,7 @@ const sectionOneStoryLineData = {
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `Plevia City không hướng đến số đông, mà hướng đến những cư dân có cùng cách nghĩ lối sống thông minh, hiện đại. Chính sự đồng điệu ấy đã và sẽ kiến tạo nên một cộng đồng thân thiện, cởi mở và đầy cảm hứng – nơi người ta không chỉ sống gần nhau, mà còn thật sự hiểu nhau.`,
+                    subdescription: `Plevia City không hướng đến số đông, mà hướng đến những cư dân có cùng cách nghĩ lối sống thông minh, hiện đại. Chính sự đồng điệu ấy đã và sẽ kiến tạo nên một cộng đồng thân thiện, cởi mở và đầy cảm hứng – nơi người ta không chỉ sống gần nhau, mà còn thật sự hiểu nhau.`,
                 },
             ],
             imageUrl: "/assets/storyline/community.png",

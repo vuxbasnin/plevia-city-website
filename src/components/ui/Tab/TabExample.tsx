@@ -12,7 +12,7 @@ const TabExample: React.FC = () => {
       content: {
         heading: 'ỨNG DỤNG "TRÍ TUỆ NHÂN TẠO"',
         paragraphs: [
-          'Plevia City tiên phong trở thành khu đô thị đầu tiên tại Gia Lai ứng dụng trí tuệ nhân tạo (AI) vào vận hành – từ camera AI an ninh thông minh 24/7, hệ thống wifi mesh phủ khắp, đến app cư dân giúp việc vận hành mọi thứ trở nên vô cùng tiện lợi.'
+          'Plevia City tiên phong trở thành khu đô thị đầu tiên tại Gia Lai ứng dụng trí tuệ nhân tạo (AI) vào vận hành – từ camera AI an ninh thông minh 24/7, hệ thống wifi mesh phủ khắp, đến app cư dân giúp việc vận hành mọi thứ trở nên vô cùng tiện lợi.'
         ],
         bulletPoints: [
 
@@ -41,7 +41,7 @@ const TabExample: React.FC = () => {
       content: {
         heading: 'TIỆN ÍCH & DỊCH VỤ',
         paragraphs: [
-          'Với cốt lõi là công nghệ, Plevia City kiến tạo hệ sinh thái sống hiện đại, mang đến trải nghiệm sống tiện nghi và an toàn cho cư dân. Các tiện ích thông minh như app cư dân, camera AI an ninh 24/7, wifi mesh phủ toàn khu, cảm biến khói tự động và bãi đỗ xe thông minh đều được tích hợp, giúp quản lý vận hành tối ưu và nâng cao chất lượng sống. Bên cạnh đó, cư dân còn được tận hưởng các tiện ích công cộng như trường mầm non quốc tế, công viên ánh sáng, hồ bơi, khu gym – yoga – spa, tạo nên một không gian sống đủ đầy, đáp ứng cả nhu cầu thể chất lẫn tinh thần.'
+          'Với cốt lõi là công nghệ, Plevia City kiến tạo hệ sinh thái sống hiện đại, mang đến trải nghiệm sống tiện nghi và an toàn cho cư dân. Các tiện ích thông minh như app cư dân, camera AI an ninh 24/7, wifi mesh phủ toàn khu, cảm biến khói tự động và bãi đỗ xe thông minh đều được tích hợp, giúp quản lý vận hành tối ưu và nâng cao chất lượng sống. Bên cạnh đó, cư dân còn được tận hưởng các tiện ích công cộng như trường mầm non quốc tế, công viên ánh sáng, hồ bơi, khu gym – yoga – spa, tạo nên một không gian sống đủ đầy, đáp ứng cả nhu cầu thể chất lẫn tinh thần.'
         ],
         bulletPoints: [
         ]

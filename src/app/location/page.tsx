@@ -32,7 +32,7 @@ export default function LocationPage() {
       </ScrollReveal>
       <ScrollReveal>
         <TextBlock
-          content="Với hạ tầng đô thị đang phát triển mạnh mẽ tại Gia Lai, đặc biệt khu vực phía Đông – nơi tập trung loạt dự án nâng cấp và mở rộng đường, bến xe, sân bay – vị trí của Plevia không chỉ mang lại trải nghiệm sống tiện nghi mà còn mở ra <b>cơ hội đầu tư sinh lời bền vững</b> theo thời gian. Đây chính là yếu tố khiến Plevia trở nên thực sự khác biệt - một nơi sống lý tưởng để tận hưởng từng khoảnh khắc vừa là một cơ hội đầu tư đáng giá để sinh lời theo thời gian." />
+          content="Với hạ tầng đô thị đang phát triển mạnh mẽ tại Gia Lai, đặc biệt khu vực phía Đông – nơi tập trung loạt dự án nâng cấp và mở rộng đường, bến xe, sân bay – vị trí của Plevia không chỉ mang lại trải nghiệm sống tiện nghi mà còn mở ra <b>cơ hội đầu tư sinh lời bền vững</b> theo thời gian. Đây chính là yếu tố khiến Plevia trở nên thực sự khác biệt - một nơi sống lý tưởng để tận hưởng từng khoảnh khắc vừa là một cơ hội đầu tư đáng giá để sinh lời theo thời gian." />
       </ScrollReveal>
         <ScrollReveal>
             <TitleLifestyle title={"Liên kết vùng"}/>
