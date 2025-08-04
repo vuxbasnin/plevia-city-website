@@ -34,6 +34,7 @@ const SectionFiveStoryLine: React.FC = () => {
             subtitle={sectionOneStoryLineData.subtitle}
             contentSections={sectionOneStoryLineData.contentSections}
             isStoryLine={true}
+            sectionType="section-five"
         />
     );
 };

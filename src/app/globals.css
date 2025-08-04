@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
@@ -7,284 +6,292 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 400;
-  line-height: 1.5;
-}
-
-@layer base {
-  :root {
-    --background: 220 20% 97%; /* Very light, slightly cool gray */
-    --foreground: 0 0% 0%; /* Black */
-
-    --card: 0 0% 100%; /* White */
-    --card-foreground: 0 0% 0%; /* Black on cards */
-
-    --popover: 0 0% 100%; /* White */
-    --popover-foreground: 0 0% 0%; /* Black on popovers */
-
-    --primary: 158 100% 21%; /* Đã đổi sang màu #006D44 */
-    --primary-foreground: 0 0% 98%; /* Light gray/white for text on primary */
-
-    --secondary: 220 15% 90%; /* Light gray for subtle backgrounds */
-    --secondary-foreground: 0 0% 0%; /* Black for text on secondary */
-
-    --muted: 220 15% 85%; /* Muted gray */
-    --muted-foreground: 0 0% 0%; /* Black for muted text */
-
-    --accent: 38 92% 50%; /* Warm, energetic orange */
-    --accent-foreground: 0 0% 100%; /* White for text on accent */
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 220 15% 88%; /* Border color */
-    --input: 220 15% 88%; /* Input border */
-    --ring: 217 91% 60%; /* Primary color for rings */
-
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.75rem; /* Increased radius for a more modern feel */
-
-    /* Sidebar variables - can be adjusted if admin theme needs to differ significantly */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 220 15% 10%; 
-    --foreground: 0 0% 100%; /* White in dark mode */
-
-    --card: 220 15% 12%;
-    --card-foreground: 0 0% 100%; /* White in dark mode */
-
-    --popover: 220 15% 12%;
-    --popover-foreground: 0 0% 100%; /* White in dark mode */
-
-    --primary: 217 91% 60%; 
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 0 0% 100%; /* White in dark mode */
-
-    --muted: 220 15% 25%;
-    --muted-foreground: 0 0% 100%; /* White in dark mode */
-
-    --accent: 38 92% 50%; 
-    --accent-foreground: 0 0% 100%; 
-
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 220 15% 28%;
-    --input: 220 15% 28%;
-    --ring: 217 91% 60%;
-
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
     font-family: 'Quicksand', sans-serif;
     font-weight: 400;
     line-height: 1.5;
-  }
-  html {
-    scroll-behavior: smooth;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 400;
-  }
+}
+
+@layer base {
+    :root {
+        --background: 220 20% 97%; /* Very light, slightly cool gray */
+        --foreground: 0 0% 0%; /* Black */
+
+        --card: 0 0% 100%; /* White */
+        --card-foreground: 0 0% 0%; /* Black on cards */
+
+        --popover: 0 0% 100%; /* White */
+        --popover-foreground: 0 0% 0%; /* Black on popovers */
+
+        --primary: 158 100% 21%; /* Đã đổi sang màu #006D44 */
+        --primary-foreground: 0 0% 98%; /* Light gray/white for text on primary */
+
+        --secondary: 220 15% 90%; /* Light gray for subtle backgrounds */
+        --secondary-foreground: 0 0% 0%; /* Black for text on secondary */
+
+        --muted: 220 15% 85%; /* Muted gray */
+        --muted-foreground: 0 0% 0%; /* Black for muted text */
+
+        --accent: 38 92% 50%; /* Warm, energetic orange */
+        --accent-foreground: 0 0% 100%; /* White for text on accent */
+
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+
+        --border: 220 15% 88%; /* Border color */
+        --input: 220 15% 88%; /* Input border */
+        --ring: 217 91% 60%; /* Primary color for rings */
+
+        --chart-1: 12 76% 61%;
+        --chart-2: 173 58% 39%;
+        --chart-3: 197 37% 24%;
+        --chart-4: 43 74% 66%;
+        --chart-5: 27 87% 67%;
+        --radius: 0.75rem; /* Increased radius for a more modern feel */
+
+        /* Sidebar variables - can be adjusted if admin theme needs to differ significantly */
+        --sidebar-background: 0 0% 98%;
+        --sidebar-foreground: 240 5.3% 26.1%;
+        --sidebar-primary: 240 5.9% 10%;
+        --sidebar-primary-foreground: 0 0% 98%;
+        --sidebar-accent: 240 4.8% 95.9%;
+        --sidebar-accent-foreground: 240 5.9% 10%;
+        --sidebar-border: 220 13% 91%;
+        --sidebar-ring: 217.2 91.2% 59.8%;
+    }
+
+    .dark {
+        --background: 220 15% 10%;
+        --foreground: 0 0% 100%; /* White in dark mode */
+
+        --card: 220 15% 12%;
+        --card-foreground: 0 0% 100%; /* White in dark mode */
+
+        --popover: 220 15% 12%;
+        --popover-foreground: 0 0% 100%; /* White in dark mode */
+
+        --primary: 217 91% 60%;
+        --primary-foreground: 0 0% 98%;
+
+        --secondary: 220 15% 18%;
+        --secondary-foreground: 0 0% 100%; /* White in dark mode */
+
+        --muted: 220 15% 25%;
+        --muted-foreground: 0 0% 100%; /* White in dark mode */
+
+        --accent: 38 92% 50%;
+        --accent-foreground: 0 0% 100%;
+
+        --destructive: 0 70% 50%;
+        --destructive-foreground: 0 0% 98%;
+
+        --border: 220 15% 28%;
+        --input: 220 15% 28%;
+        --ring: 217 91% 60%;
+
+        --chart-1: 220 70% 50%;
+        --chart-2: 160 60% 45%;
+        --chart-3: 30 80% 55%;
+        --chart-4: 280 65% 60%;
+        --chart-5: 340 75% 55%;
+
+        --sidebar-background: 240 5.9% 10%;
+        --sidebar-foreground: 240 4.8% 95.9%;
+        --sidebar-primary: 224.3 76.3% 48%;
+        --sidebar-primary-foreground: 0 0% 100%;
+        --sidebar-accent: 240 3.7% 15.9%;
+        --sidebar-accent-foreground: 240 4.8% 95.9%;
+        --sidebar-border: 240 3.7% 15.9%;
+        --sidebar-ring: 217.2 91.2% 59.8%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 400;
+        line-height: 1.5;
+    }
+    html {
+        scroll-behavior: smooth;
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 400;
+    }
 }
 
 @layer components {
-  /* Responsive Typography */
-  .text-responsive-xs {
-    @apply text-xs sm:text-sm md:text-base;
-  }
-  
-  .text-responsive-sm {
-    @apply text-sm sm:text-base md:text-lg;
-  }
-  
-  .text-responsive-base {
-    @apply text-base sm:text-lg md:text-xl;
-  }
-  
-  .text-responsive-lg {
-    @apply text-lg sm:text-xl md:text-2xl;
-  }
-  
-  .text-responsive-xl {
-    @apply text-xl sm:text-2xl md:text-3xl;
-  }
-  
-  .text-responsive-2xl {
-    @apply text-2xl sm:text-3xl md:text-4xl;
-  }
-  
-  .text-responsive-3xl {
-    @apply text-3xl sm:text-4xl md:text-5xl;
-  }
-  
-  .text-responsive-4xl {
-    @apply text-4xl sm:text-5xl md:text-6xl;
-  }
-
-  /* Responsive Spacing */
-  .section-padding {
-    @apply py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24;
-  }
-  
-  .container-padding {
-    @apply px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16;
-  }
-
-  /* Responsive Grid */
-  .grid-responsive-1 {
-    @apply grid grid-cols-1;
-  }
-  
-  .grid-responsive-2 {
-    @apply grid grid-cols-1 sm:grid-cols-2;
-  }
-  
-  .grid-responsive-3 {
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
-  }
-  
-  .grid-responsive-4 {
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4;
-  }
-
-  /* Responsive Flex */
-  .flex-responsive-col {
-    @apply flex flex-col sm:flex-row;
-  }
-  
-  .flex-responsive-row {
-    @apply flex flex-row sm:flex-col;
-  }
-
-  /* Responsive Visibility */
-  .hide-mobile {
-    @apply hidden sm:block;
-  }
-  
-  .show-mobile {
-    @apply block sm:hidden;
-  }
-  
-  .hide-tablet {
-    @apply hidden md:block;
-  }
-  
-  .show-tablet {
-    @apply block md:hidden;
-  }
-
-  /* Responsive Images */
-  .image-responsive {
-    @apply w-full h-auto object-cover;
-  }
-  
-  .image-responsive-square {
-    @apply w-full aspect-square object-cover;
-  }
-
-  /* Responsive Buttons */
-  .btn-responsive {
-    @apply w-full sm:w-auto;
-  }
-  
-  .btn-responsive-sm {
-    @apply px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base;
-  }
-  
-  .btn-responsive-lg {
-    @apply px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg;
-  }
-
-  /* Custom Font Classes */
-  .font-chillax-light {
-    font-family: '1FTVVIPChillax-Light', sans-serif;
-    font-weight: 300;
-  }
-
-  .font-opaline {
-    font-family: '1FTV-VIP-Opaline', sans-serif;
-    font-weight: normal;
-  }
-
-  .font-cormorant-infant {
-    font-family: 'Cormorant Infant', serif;
-    font-weight: 600;
-  }
-
-  /* Common Header Styles */
-  .header-primary {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 2rem;
-    font-weight: bold;
-    color: hsl(var(--primary));
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  /* Responsive Header Styles */
-  @media (max-width: 1024px) {
-    .header-primary {
-      font-size: 1.5rem;
-      margin-bottom: 16px;
+    /* Responsive Typography */
+    .text-responsive-xs {
+        @apply text-xs sm:text-sm md:text-base;
     }
-  }
 
-  @media (max-width: 768px) {
-    .header-primary {
-      font-size: 1.5rem;
-      margin-bottom: 16px;
+    .text-responsive-sm {
+        @apply text-sm sm:text-base md:text-lg;
     }
-  }
 
-  @media (max-width: 640px) {
-    .header-primary {
-      font-size: 1.25rem;
-      margin-bottom: 12px;
+    .text-responsive-base {
+        @apply text-base sm:text-lg md:text-xl;
     }
-  }
 
-  @media (max-width: 480px) {
-    .header-primary {
-      font-size: 1.125rem;
-      margin-bottom: 8px;
+    .text-responsive-lg {
+        @apply text-lg sm:text-xl md:text-2xl;
     }
-  }
+
+    .text-responsive-xl {
+        @apply text-xl sm:text-2xl md:text-3xl;
+    }
+
+    .text-responsive-2xl {
+        @apply text-2xl sm:text-3xl md:text-4xl;
+    }
+
+    .text-responsive-3xl {
+        @apply text-3xl sm:text-4xl md:text-5xl;
+    }
+
+    .text-responsive-4xl {
+        @apply text-4xl sm:text-5xl md:text-6xl;
+    }
+
+    /* Responsive Spacing */
+    .section-padding {
+        @apply py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24;
+    }
+
+    .container-padding {
+        @apply px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16;
+    }
+
+    /* Responsive Grid */
+    .grid-responsive-1 {
+        @apply grid grid-cols-1;
+    }
+
+    .grid-responsive-2 {
+        @apply grid grid-cols-1 sm:grid-cols-2;
+    }
+
+    .grid-responsive-3 {
+        @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+    }
+
+    .grid-responsive-4 {
+        @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4;
+    }
+
+    /* Responsive Flex */
+    .flex-responsive-col {
+        @apply flex flex-col sm:flex-row;
+    }
+
+    .flex-responsive-row {
+        @apply flex flex-row sm:flex-col;
+    }
+
+    /* Responsive Visibility */
+    .hide-mobile {
+        @apply hidden sm:block;
+    }
+
+    .show-mobile {
+        @apply block sm:hidden;
+    }
+
+    .hide-tablet {
+        @apply hidden md:block;
+    }
+
+    .show-tablet {
+        @apply block md:hidden;
+    }
+
+    /* Responsive Images */
+    .image-responsive {
+        @apply w-full h-auto object-cover;
+    }
+
+    .image-responsive-square {
+        @apply w-full aspect-square object-cover;
+    }
+
+    /* Responsive Buttons */
+    .btn-responsive {
+        @apply w-full sm:w-auto;
+    }
+
+    .btn-responsive-sm {
+        @apply px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base;
+    }
+
+    .btn-responsive-lg {
+        @apply px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg;
+    }
+
+    /* Custom Font Classes */
+    .font-chillax-light {
+        font-family: '1FTVVIPChillax-Light', sans-serif;
+        font-weight: 300;
+    }
+
+    .font-opaline {
+        font-family: '1FTV-VIP-Opaline', sans-serif;
+        font-weight: normal;
+    }
+
+    .font-cormorant-infant {
+        font-family: 'Cormorant Infant', serif;
+        font-weight: 600;
+    }
+
+    /* Common Header Styles */
+    .header-primary {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 2rem;
+        font-weight: bold;
+        color: hsl(var(--primary));
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Responsive Header Styles */
+    @media (max-width: 1024px) {
+        .header-primary {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .header-primary {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .header-primary {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header-primary {
+            font-size: 1.125rem;
+            margin-bottom: 8px;
+        }
+    }
+
+    /* Custom background for location page */
+    .bg-custom-location {
+        background-image: url('/background/bg_bottom_left.svg');
+        background-repeat: no-repeat;
+        background-position: left bottom;
+        background-size: 15% auto;
+    }
 }
