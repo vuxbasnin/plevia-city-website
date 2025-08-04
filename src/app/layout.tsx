@@ -38,8 +38,8 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical: '/',
     },
     openGraph: {
-      title: 'Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai',
-      description: 'Dự án bất động sản cao cấp với ứng dụng trí tuệ nhân tạo, tạo nên môi trường sống hiện đại và tiện nghi tại Gia Lai',
+      title: 'Plevia City',
+      description: 'Nơi thể hiện đẳng cấp',
       url: 'https://pleviacity.vn',
       siteName: 'Plevia City',
       locale: 'vi_VN',
@@ -61,8 +61,8 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai',
-      description: 'Dự án bất động sản cao cấp với ứng dụng trí tuệ nhân tạo, tạo nên môi trường sống hiện đại và tiện nghi tại Gia Lai',
+      title: 'Plevia City',
+      description: 'Nơi thể hiện đẳng cấp',
       images: ['https://pleviacity.vn/social_media.png'],
       creator: '@pleviacity',
       site: '@pleviacity',
@@ -112,8 +112,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Plevia City" />
         
         {/* Enhanced Open Graph Tags */}
-        <meta property="og:title" content="Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai" />
-        <meta property="og:description" content="Dự án bất động sản cao cấp với ứng dụng trí tuệ nhân tạo, tạo nên môi trường sống hiện đại và tiện nghi tại Gia Lai" />
+        <meta property="og:title" content="Plevia City" />
+        <meta property="og:description" content="Nơi thể hiện đẳng cấp" />
         <meta property="og:url" content="https://pleviacity.vn" />
         <meta property="og:site_name" content="Plevia City" />
         <meta property="og:locale" content="vi_VN" />
@@ -121,13 +121,13 @@ export default function RootLayout({
         <meta property="og:image" content="https://pleviacity.vn/social_media.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai" />
+        <meta property="og:image:alt" content="Plevia City" />
         <meta property="og:image:type" content="image/png" />
         
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai" />
-        <meta name="twitter:description" content="Dự án bất động sản cao cấp với ứng dụng trí tuệ nhân tạo, tạo nên môi trường sống hiện đại và tiện nghi tại Gia Lai" />
+        <meta name="twitter:title" content="Plevia City" />
+        <meta name="twitter:description" content="Nơi thể hiện đẳng cấp" />
         <meta name="twitter:image" content="https://pleviacity.vn/social_media.png" />
         <meta name="twitter:creator" content="@pleviacity" />
         <meta name="twitter:site" content="@pleviacity" />

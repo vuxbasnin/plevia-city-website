@@ -18,7 +18,7 @@ const sectionOneStoryLineData = {
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `Dù cho tình trạng khu đô thị ở Gia Lai hiện nay đang có tiến triển tích cực nhưng vẫn chưa hoàn toàn đáp ứng đủ nhu cầu. Nguyên nhân đến từ việc hệ thống đô thị tại Gia Lai vẫn chưa đồng đều về hạ tầng và chất lượng dịch vụ. Một số đô thị vẫn đang trong quá trình hoàn thiện cơ sở hạ tầng, quy hoạch, chưa đủ để đáp ứng đầy đủ yêu cầu phát triển bền vững và nhu cầu ngày càng cao của người dân.`,
+                    subdescription: `Dù cho tình trạng khu đô thị ở Gia Lai hiện nay đang có tiến triển tích cực nhưng vẫn chưa hoàn toàn đáp ứng đủ nhu cầu. Nguyên nhân đến từ việc hệ thống đô thị tại Gia Lai vẫn chưa đồng đều về hạ tầng và chất lượng dịch vụ. Một số đô thị vẫn đang trong quá trình hoàn thiện cơ sở hạ tầng, quy hoạch, chưa đủ để đáp ứng đầy đủ yêu cầu phát triển bền vững và nhu cầu ngày càng cao của người dân.`,
                 },
             ],
             imageUrl: "/assets/storyline/big_view.png"

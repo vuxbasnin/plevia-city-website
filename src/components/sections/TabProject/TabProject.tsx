@@ -23,9 +23,9 @@ const TabProject = () => {
         <div className="tab-content tab-content-right">
           <b>THÔNG TIN SẢN PHẨM:</b>
           <ul>
-            <li>Mẫu nhà góc 6m 2 mặt tiền trục chính tuyến đường 19.5m</li>
+            <li>Mẫu nhà góc 6m 2 mặt tiền trục chính tuyến đường 19.5m</li>
             <li>Mẫu nhà 5m liền kề trục đường 11.5m</li>
-            <li>Mẫu nhà góc 2 mặt tiền trục đường nhỏ 11.5m</li>
+            <li>Mẫu nhà góc 2 mặt tiền trục đường nhỏ 11.5m</li>
             <li>Mẫu nhà góc trục đường 14m</li>
             <li>Mẫu nhà 5m liền kề trục đường 14m</li>
             <li>Mẫu nhà 5m liền kề bán hầm Block G</li>
