@@ -79,7 +79,7 @@ export default function NewsDetailPage() {
                 letterSpacing: "0.5px",
                 marginBottom: "20px",
                 textAlign: "center",
-                fontFamily: "'Cormorant Infant', serif"
+                fontFamily: "'Opaline', 'Times New Roman', serif"
               }}>{article.title}</h1>
 
                      <div style={{

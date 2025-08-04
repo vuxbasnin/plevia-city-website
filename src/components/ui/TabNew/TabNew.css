@@ -30,8 +30,8 @@
 
 .tabnew-title {
   /* Using common header style */
-  /* Using Cormorant Infant font for headers */
-  font-family: 'Cormorant Infant', serif;
+  /* Using Opaline font for headers */
+font-family: 'Opaline', 'Times New Roman', serif;
   font-size: 2rem;
   font-weight: bold;
   color: hsl(var(--primary));
@@ -227,7 +227,7 @@
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-family: 'Cormorant Infant', serif;
+  font-family: 'Opaline', 'Times New Roman', serif;
 }
 
 .tabnew-content-text p {

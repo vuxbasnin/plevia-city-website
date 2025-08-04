@@ -76,8 +76,8 @@
 }
 
 .para-left-des-right__title {
-  /* Using Cormorant Infant font for headers */
-  font-family: 'Cormorant Infant', serif;
+  /* Using Opaline font for headers */
+font-family: 'Opaline', 'Times New Roman', serif;
   color: hsl(var(--primary));
   font-size: 1.5rem;
   font-weight: bold;
@@ -234,7 +234,7 @@
     text-align: center;
     margin-top: 4px;
     /* Using common header style */
-    font-family: 'Cormorant Infant', serif;
+    font-family: 'Opaline', 'Times New Roman', serif;
     font-size: 1.5rem;
     font-weight: bold;
     color: hsl(var(--primary));
