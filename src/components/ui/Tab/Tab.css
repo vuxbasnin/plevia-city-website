@@ -5,7 +5,7 @@
   margin: 0 auto;
   padding: 60px 20px;
   background: white;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 /* Title Section */
@@ -17,7 +17,7 @@
 .tab-main-title {
   font-size: 1.875rem;
   line-height: 1.25;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
   font-weight: 600;
   color: hsl(var(--primary));
   margin-bottom: 20px;

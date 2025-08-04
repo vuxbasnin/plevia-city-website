@@ -36,6 +36,7 @@
 }
 
 .footer-title {
+  /*font-family: 'Chillax-Light', serif;*/
   font-weight: 600;
   color: white;
   margin-bottom: 1rem;
@@ -101,6 +102,7 @@
 }
 
 .footer-text {
+  font-family: 'Chillax-Light', serif;
   color: white;
   font-size: 0.875rem;
   margin-bottom: 1rem;
