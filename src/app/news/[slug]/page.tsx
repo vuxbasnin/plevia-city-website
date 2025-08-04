@@ -69,7 +69,8 @@ export default function NewsDetailPage() {
       </ScrollReveal>
       <ScrollReveal>
                  <div
-           className="mx-auto font-sans w-[78vw] sm:w-[78vw] max-w-[78vw] sm:px-2 px-1 py-6"
+           className="mx-auto w-[78vw] sm:w-[78vw] max-w-[78vw] sm:px-2 px-1 py-6"
+           style={{ fontFamily: "'Chillax-Light', Arial, sans-serif" }}
          >
                                                                                                                                                                                <h1 style={{
                 fontSize: "2rem",
@@ -79,14 +80,15 @@ export default function NewsDetailPage() {
                 letterSpacing: "0.5px",
                 marginBottom: "20px",
                 textAlign: "center",
-                fontFamily: "'Cormorant Infant', serif"
+                fontFamily: "'Opaline', 'Times New Roman', serif"
               }}>{article.title}</h1>
 
                      <div style={{
              textAlign: "center",
              marginBottom: "1.5rem",
              color: "#000000",
-             fontSize: "clamp(0.9rem, 2vw, 1.1rem)"
+             fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
+             fontFamily: "'Chillax-Light', Arial, sans-serif"
            }}
            className="sm:px-2 px-1"
            >
@@ -100,7 +102,8 @@ export default function NewsDetailPage() {
                fontWeight: 500,
                textAlign: "center",
                marginBottom: "2rem",
-               lineHeight: 1.5
+               lineHeight: 1.5,
+               fontFamily: "'Chillax-Light', Arial, sans-serif"
              }}
              className="sm:px-2 px-1"
              >{article.summary}</div>
@@ -110,7 +113,8 @@ export default function NewsDetailPage() {
              fontSize: "clamp(1rem, 2.5vw, 1.15rem)",
              color: "#000000",
              lineHeight: 1.7,
-             textAlign: "justify"
+             textAlign: "justify",
+             fontFamily: "'Chillax-Light', Arial, sans-serif"
            }}
            className="sm:px-2 px-1"
            >

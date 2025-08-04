@@ -76,8 +76,8 @@
 }
 
 .para-left-des-right__title {
-  /* Using Cormorant Infant font for headers */
-  font-family: 'Cormorant Infant', serif;
+  /* Using Opaline font for headers */
+font-family: 'Opaline', 'Times New Roman', serif;
   color: hsl(var(--primary));
   font-size: 1.5rem;
   font-weight: bold;
@@ -91,7 +91,7 @@
   font-size: 1.1rem;
   margin-bottom: 32px;
   text-align: justify;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 /* Styles cho description với danh sách */
@@ -102,7 +102,7 @@
   color: #000000;
   font-size: 1rem;
   text-align: justify;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 .para-left-des-right__description-bullet {
@@ -111,6 +111,7 @@
   margin-right: 12px;
   margin-top: 2px;
   flex-shrink: 0;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 .para-left-des-right__description-text {
@@ -118,7 +119,7 @@
   font-size: 1rem;
   margin-bottom: 32px;
   text-align: justify;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 .para-left-des-right__subtitle {
@@ -126,7 +127,7 @@
   font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 8px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 .para-left-des-right__subdescription {
@@ -134,7 +135,7 @@
   font-size: 1rem;
   margin-bottom: 32px;
   text-align: justify;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 .para-left-des-right__title--mobile {
@@ -158,7 +159,7 @@
 .para-left-des-right__description,
 .para-left-des-right__subtitle,
 .para-left-des-right__subdescription {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 .para-left-des-right__container--reverse {
@@ -234,7 +235,7 @@
     text-align: center;
     margin-top: 4px;
     /* Using common header style */
-    font-family: 'Cormorant Infant', serif;
+    font-family: 'Opaline', 'Times New Roman', serif;
     font-size: 1.5rem;
     font-weight: bold;
     color: hsl(var(--primary));
@@ -351,12 +352,12 @@
   color: #000000;
   font-size: 1rem;
   text-align: justify;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 .para-left-des-right__bullet-item {
   margin-bottom: 12px;
   font-size: 1rem;
   color: #000000;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }

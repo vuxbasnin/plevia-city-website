@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: flex-start;
   height: 100%;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
   align-self: stretch;
 }
 
@@ -13,7 +13,7 @@
   font-size: 1rem;
   margin-bottom: 32px;
   text-align: justify;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 .content-lifestyle__subtitle {
@@ -21,7 +21,7 @@
   font-size: 1rem;
   font-weight: bold;
   margin-bottom: 8px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', serif;
 }
 
 .content-lifestyle__subdescription {
@@ -29,7 +29,7 @@
   font-size: 1rem;
   margin-bottom: 32px;
   text-align: justify;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', serif;
 }
 
 .content-lifestyle__dot {
@@ -45,7 +45,7 @@
 .content-lifestyle__description,
 .content-lifestyle__subtitle,
 .content-lifestyle__subdescription {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 /* Bullet points styles - giống như ParaImageVertical */
@@ -56,14 +56,14 @@
   color: #000000;
   font-size: 1rem;
   text-align: justify;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 .content-lifestyle__bullet-item {
   margin-bottom: 12px;
   font-size: 1rem;
   color: #000000;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 /* Responsive styles cho reverse mode */
@@ -71,6 +71,7 @@
 .content-lifestyle__container--reverse .content-lifestyle__subtitle,
 .content-lifestyle__container--reverse .content-lifestyle__subdescription,
 .content-lifestyle__container--reverse .content-lifestyle__bullet-item {
+  font-family: 'Chillax-Light', serif;
   color: #000000 !important;
 }
 

@@ -46,7 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       images: [
         {
-          url: '/social_media.png',
+          url: 'https://pleviacity.vn/social_media.png', // ✅ ABSOLUTE URL
           width: 1200,
           height: 630,
           alt: 'Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai',
@@ -64,7 +64,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       title: 'Plevia City', // Cho Social Media
       description: 'Nơi thể hiện đẳng cấp', // Cho Social Media
-      images: ['/social_media.png'],
+      images: ['https://pleviacity.vn/social_media.png'], // ✅ ABSOLUTE URL
       creator: '@pleviacity',
       site: '@pleviacity',
     },
@@ -111,22 +111,12 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Plevia City" />
         
-        {/* Additional Social Media Meta Tags */}
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:alt" content="Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai" />
-        
-        {/* Facebook specific */}
-        <meta property="fb:app_id" content="" />
-        <meta property="fb:pages" content="" />
+        {/* Facebook App ID - Cần thêm App ID thực tế */}
+        <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
         
         {/* LinkedIn specific */}
         <meta property="linkedin:owner" content="pleviacity" />
         <meta property="linkedin:company" content="Plevia City" />
-        
-        {/* WhatsApp specific */}
-        <meta property="og:image:secure_url" content="/social_media.png" />
         
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

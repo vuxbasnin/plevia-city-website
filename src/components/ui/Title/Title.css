@@ -3,8 +3,8 @@
 }
 
 .title h2 {
-  /* Using Cormorant Infant font for headers */
-  font-family: 'Cormorant Infant', serif;
+  /* Using Opaline font for headers */
+  font-family: 'Opaline', 'Times New Roman', serif;
   font-size: 2rem;
   font-weight: bold;
   color: hsl(var(--primary));

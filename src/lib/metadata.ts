@@ -47,7 +47,7 @@ export function generatePageMetadata(pageTitle: string, customDescription?: stri
       type: 'website',
       images: [
         {
-          url: '/Logo_green_3.png',
+          url: 'https://pleviacity.vn/social_media.png',
           width: 1200,
           height: 630,
           alt: 'Plevia City - Dự án bất động sản cao cấp tại Gia Lai',
@@ -58,7 +58,7 @@ export function generatePageMetadata(pageTitle: string, customDescription?: stri
       card: 'summary_large_image',
       title: fullTitle,
       description: description,
-      images: ['/Logo_green_3.png'],
+      images: ['https://pleviacity.vn/social_media.png'],
       creator: '@pleviacity',
     },
     robots: {

@@ -16,8 +16,8 @@
 
 .piv-title {
   /* Using common header style */
-  /* Using Cormorant Infant font for headers */
-  font-family: 'Cormorant Infant', serif;
+  /* Using Opaline font for headers */
+font-family: 'Opaline', 'Times New Roman', serif;
   font-size: 2rem;
   font-weight: bold;
   color: hsl(var(--primary));
@@ -52,7 +52,7 @@
   text-align: justify;
   color: #000000;
   font-size: 1.1rem;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 .piv-sub-description {
@@ -62,7 +62,7 @@
   font-size: 1rem;
   color: #000000;
   text-align: justify;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 .piv-content > p,
@@ -81,7 +81,7 @@
   color: #000000;
   font-size: 1rem;
   text-align: justify;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 .piv-bullets li {
@@ -103,7 +103,7 @@
   color: #000000;
   text-align: justify;
   color: #000000;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 .piv-image-wrapper {

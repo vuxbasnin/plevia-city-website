@@ -59,7 +59,7 @@
       color: #000000;
   line-height: 1.7;
   background: #fff;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 .tab-content-left {
@@ -95,14 +95,14 @@
   font-weight: 700;
   color: #000000;
   font-size: 1.1rem; /* Title */
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 .tab-desc {
   margin-top: 12px;
   font-size: 1.1rem; /* Subdescription */
   color: #000000;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Chillax-Light', sans-serif;
 }
 
 @media (max-width: 768px) {

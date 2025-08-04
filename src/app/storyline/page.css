@@ -13,6 +13,50 @@
   grid-column: 1 / -1; /* Chiếm toàn bộ chiều rộng */
   width: 100vw;
   margin-left: calc(-1 * ((100vw - 100%) / 2)); /* Căn sát mép trái */
+  background-image: url('/background/bg_left_center.svg');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 30% auto;
+  min-height: 400px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Background cho từng section với class riêng biệt */
+.content .section-one-home-no-bg.section-one {
+  background-image: url('/background/bg_left_center.svg');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 30% auto;
+}
+
+.content .section-one-home-no-bg.section-two {
+  background-image: url('/background/bg_top.png');
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: 35% auto;
+}
+
+.content .section-one-home-no-bg.section-three {
+  background-image: url('/background/bg_bottom_left.svg');
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 40% auto;
+}
+
+
+.content .section-one-home-no-bg.section-four {
+  background-image: url('/background/bg_bottom_left1.svg'); 
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 20% auto;
+}
+
+.content .section-one-home-no-bg.section-five {
+  background-image: url('/background/bg_bottom_right1.png');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: 35% auto;
 }
 
 /* Khi sử dụng FormInfo để full chiều rộng */

@@ -23,16 +23,22 @@ interface SectionOneHomeProps {
     subtitle: string;
     contentSections: ParaLeftDesRightData[];
     isStoryLine?: boolean;
+    sectionType?: string;
 }
 
 const SectionOneHome: React.FC<SectionOneHomeProps> = ({ 
     mainTitle, 
     subtitle, 
     contentSections,
-    isStoryLine = false
+    isStoryLine = false,
+    sectionType = ""
 }) => {
+    const sectionClass = isStoryLine 
+        ? `section-one-home-no-bg ${sectionType}` 
+        : "section-one-home";
+    
     return (
-        <section className={isStoryLine ? "section-one-home-no-bg" : "section-one-home"}>
+        <section className={sectionClass}>
             <div className="container">
                 <h1 className="section-title">{mainTitle}</h1>
                 <h1 className="section-title">{subtitle}</h1>
