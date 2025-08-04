@@ -22,8 +22,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const description = siteSettings?.siteDescription || defaultSiteSettingsData.siteDescription;
 
   const metadataResult: Metadata = {
-    title: title, // Cho Google Search
-    description: description, // Cho Google Search
+    title: title,
+    description: description,
     keywords: ['Plevia City', 'khu đô thị thông minh', 'Gia Lai', 'trí tuệ nhân tạo', 'công nghệ 4.0', 'đô thị hiện đại', 'môi trường sống xanh', 'smart city', 'AI', 'IoT'],
     authors: [{ name: 'Plevia City' }],
     creator: 'Plevia City',
@@ -38,15 +38,15 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical: '/',
     },
     openGraph: {
-      title: 'Plevia City', // Cho Social Media
-      description: 'Nơi thể hiện đẳng cấp', // Cho Social Media
+      title: 'Plevia City',
+      description: 'Nơi thể hiện đẳng cấp',
       url: 'https://pleviacity.vn',
       siteName: 'Plevia City',
       locale: 'vi_VN',
       type: 'website',
       images: [
         {
-          url: 'https://pleviacity.vn/social_media.png', // ✅ ABSOLUTE URL
+          url: 'https://pleviacity.vn/social_media.png',
           width: 1200,
           height: 630,
           alt: 'Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai',
@@ -57,14 +57,13 @@ export async function generateMetadata(): Promise<Metadata> {
       emails: ['info@pleviacity.vn'],
       phoneNumbers: ['+84 123 456 789'],
       faxNumbers: ['+84 123 456 790'],
-      // Additional OG properties for better social media display
       determiner: 'the',
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Plevia City', // Cho Social Media
-      description: 'Nơi thể hiện đẳng cấp', // Cho Social Media
-      images: ['https://pleviacity.vn/social_media.png'], // ✅ ABSOLUTE URL
+      title: 'Plevia City',
+      description: 'Nơi thể hiện đẳng cấp',
+      images: ['https://pleviacity.vn/social_media.png'],
       creator: '@pleviacity',
       site: '@pleviacity',
     },
@@ -105,11 +104,33 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <head>
+        {/* Basic Meta Tags */}
         <meta name="theme-color" content="#1A7A57" />
         <meta name="msapplication-TileColor" content="#1A7A57" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Plevia City" />
+        
+        {/* Enhanced Open Graph Tags */}
+        <meta property="og:title" content="Plevia City" />
+        <meta property="og:description" content="Nơi thể hiện đẳng cấp" />
+        <meta property="og:url" content="https://pleviacity.vn" />
+        <meta property="og:site_name" content="Plevia City" />
+        <meta property="og:locale" content="vi_VN" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://pleviacity.vn/social_media.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Plevia City" />
+        <meta property="og:image:type" content="image/png" />
+        
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Plevia City" />
+        <meta name="twitter:description" content="Nơi thể hiện đẳng cấp" />
+        <meta name="twitter:image" content="https://pleviacity.vn/social_media.png" />
+        <meta name="twitter:creator" content="@pleviacity" />
+        <meta name="twitter:site" content="@pleviacity" />
         
         {/* Facebook App ID - Cần thêm App ID thực tế */}
         <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
@@ -118,6 +139,15 @@ export default function RootLayout({
         <meta property="linkedin:owner" content="pleviacity" />
         <meta property="linkedin:company" content="Plevia City" />
         
+        {/* Additional Social Media Tags */}
+        <meta name="author" content="Plevia City" />
+        <meta name="copyright" content="Plevia City" />
+        <meta name="coverage" content="Worldwide" />
+        <meta name="distribution" content="Global" />
+        <meta name="rating" content="General" />
+        <meta name="revisit-after" content="7 days" />
+        
+        {/* Preconnect and DNS Prefetch */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -142,7 +172,7 @@ export default function RootLayout({
               "description": "Khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo tại Gia Lai",
               "url": "https://pleviacity.vn",
               "logo": "https://pleviacity.vn/Logo_green_3.png",
-              "image": "https://pleviacity.vn/Logo_green_3.png",
+              "image": "https://pleviacity.vn/social_media.png",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Pleiku",

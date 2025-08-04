@@ -1,158 +1,137 @@
-# 🛠️ HƯỚNG DẪN KHẮC PHỤC SOCIAL MEDIA SHARING
+# Hướng dẫn khắc phục vấn đề Social Media Preview
 
-## 📋 **VẤN ĐỀ ĐÃ ĐƯỢC KHẮC PHỤC**
+## Vấn đề hiện tại
+Khi chia sẻ link website qua social media (Facebook, Twitter, LinkedIn, etc.), không hiển thị bản xem trước (preview) của trang web.
 
-### ✅ **1. Sửa URL Images thành Absolute**
-```typescript
-// TRƯỚC (SAI):
-url: '/social_media.png'
+## Nguyên nhân có thể
+1. **Cache của social media platforms** - Các nền tảng social media cache preview trong vài giờ đến vài ngày
+2. **Meta tags không đúng** - Open Graph và Twitter Card tags không được cấu hình đúng
+3. **Image không đúng kích thước** - Social media yêu cầu image có kích thước cụ thể
+4. **URL không phải absolute** - Social media cần absolute URL (bắt đầu bằng https://)
 
-// SAU (ĐÚNG):
-url: 'https://pleviacity.vn/social_media.png'
+## Các thay đổi đã thực hiện
+
+### 1. Cải thiện Open Graph Tags
+```html
+<meta property="og:title" content="Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai" />
+<meta property="og:description" content="Dự án bất động sản cao cấp với ứng dụng trí tuệ nhân tạo, tạo nên môi trường sống hiện đại và tiện nghi tại Gia Lai" />
+<meta property="og:url" content="https://pleviacity.vn" />
+<meta property="og:site_name" content="Plevia City" />
+<meta property="og:locale" content="vi_VN" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://pleviacity.vn/social_media.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai" />
+<meta property="og:image:type" content="image/png" />
 ```
 
-### ✅ **2. Loại bỏ Duplicate Meta Tags**
-- Đã xóa các meta tags trùng lặp
-- Chỉ giữ lại Next.js metadata API
-
-### ✅ **3. Thống nhất Image Paths**
-- Tất cả metadata dùng chung `social_media.png`
-- Đã sửa trong `layout.tsx` và `metadata.ts`
-
----
-
-## 🎯 **CÁC BƯỚC TIẾP THEO**
-
-### **BƯỚC 1: Tạo Social Media Image**
-**Yêu cầu:**
-- Kích thước: **1200x630px**
-- Format: **PNG hoặc JPG**
-- Nội dung:
-  - Logo Plevia City
-  - Tagline "Nơi thể hiện đẳng cấp"
-  - Background màu brand `#1A7A57`
-  - Text màu trắng
-  - Font size phù hợp
-
-**Cách tạo:**
-1. Dùng Canva, Figma hoặc Photoshop
-2. Template size: 1200x630px
-3. Export thành `social_media.png`
-4. Upload vào thư mục `public/`
-
-### **BƯỚC 2: Thêm Facebook App ID**
-```typescript
-// Thay thế trong src/app/layout.tsx dòng 118:
-<meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
-
-// Cách lấy Facebook App ID:
-// 1. Vào https://developers.facebook.com/
-// 2. Tạo app mới
-// 3. Copy App ID
+### 2. Cải thiện Twitter Card Tags
+```html
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai" />
+<meta name="twitter:description" content="Dự án bất động sản cao cấp với ứng dụng trí tuệ nhân tạo, tạo nên môi trường sống hiện đại và tiện nghi tại Gia Lai" />
+<meta name="twitter:image" content="https://pleviacity.vn/social_media.png" />
+<meta name="twitter:creator" content="@pleviacity" />
+<meta name="twitter:site" content="@pleviacity" />
 ```
 
-### **BƯỚC 3: Test Social Media Sharing**
-
-#### **Facebook Debugger:**
-```
-https://developers.facebook.com/tools/debug/?q=https://pleviacity.vn
-```
-
-#### **Twitter Card Validator:**
-```
-https://cards-dev.twitter.com/validator?url=https://pleviacity.vn
+### 3. Thêm các meta tags bổ sung
+```html
+<meta name="author" content="Plevia City" />
+<meta name="copyright" content="Plevia City" />
+<meta name="coverage" content="Worldwide" />
+<meta name="distribution" content="Global" />
+<meta name="rating" content="General" />
+<meta name="revisit-after" content="7 days" />
 ```
 
-#### **LinkedIn Post Inspector:**
-```
-https://www.linkedin.com/post-inspector/inspect/https://pleviacity.vn
-```
+## Cách kiểm tra và khắc phục
 
-### **BƯỚC 4: Clear Cache**
-**Nếu vẫn không hiển thị đúng:**
-
-#### **Facebook:**
-1. Vào Facebook Debugger
-2. Click "Scrape Again"
-3. Clear cache
-
-#### **Twitter:**
-1. Vào Twitter Card Validator
-2. Click "Preview card"
-3. Clear cache
-
-#### **LinkedIn:**
-1. Vào LinkedIn Post Inspector
-2. Click "Inspect"
-3. Clear cache
-
----
-
-## 🔧 **COMPONENT DEBUG**
-
-Đã tạo component `SocialMediaDebug.tsx` để test nhanh:
-
-```typescript
-import SocialMediaDebug from '@/components/shared/SocialMediaDebug';
-
-// Sử dụng trong admin panel
-<SocialMediaDebug />
+### Bước 1: Deploy website với code mới
+```bash
+npm run build
+# Deploy lên hosting
 ```
 
----
+### Bước 2: Sử dụng các công cụ debug
 
-## 📊 **KIỂM TRA KẾT QUẢ**
+#### Facebook Debugger
+- Truy cập: https://developers.facebook.com/tools/debug/
+- Nhập URL: https://pleviacity.vn
+- Click "Debug"
+- Nếu có cache cũ, click "Scrape Again"
 
-### **Sau khi khắc phục, social media sẽ hiển thị:**
+#### Twitter Card Validator
+- Truy cập: https://cards-dev.twitter.com/validator
+- Nhập URL: https://pleviacity.vn
+- Kiểm tra preview
 
-#### **Facebook/Instagram:**
-- ✅ Title: "Plevia City"
-- ✅ Description: "Nơi thể hiện đẳng cấp"
-- ✅ Image: 1200x630px social media image
-- ✅ URL: https://pleviacity.vn
+#### LinkedIn Post Inspector
+- Truy cập: https://www.linkedin.com/post-inspector/
+- Nhập URL: https://pleviacity.vn
+- Kiểm tra preview
 
-#### **Twitter:**
-- ✅ Card Type: Summary Large Image
-- ✅ Title: "Plevia City"
-- ✅ Description: "Nơi thể hiện đẳng cấp"
-- ✅ Image: 1200x630px social media image
+#### Google Rich Results Test
+- Truy cập: https://search.google.com/test/rich-results
+- Nhập URL: https://pleviacity.vn
+- Kiểm tra structured data
 
-#### **LinkedIn:**
-- ✅ Title: "Plevia City"
-- ✅ Description: "Nơi thể hiện đẳng cấp"
-- ✅ Image: 1200x630px social media image
+### Bước 3: Kiểm tra image
+- Đảm bảo file `social_media.png` có kích thước 1200x630px
+- File phải có thể truy cập tại: https://pleviacity.vn/social_media.png
+- Format: PNG hoặc JPG
 
----
+### Bước 4: Test trên các nền tảng
+1. **Facebook**: Tạo post mới với link website
+2. **Twitter**: Tweet với link website
+3. **LinkedIn**: Tạo post với link website
+4. **WhatsApp**: Gửi link qua chat
+5. **Telegram**: Gửi link qua chat
 
-## ⚠️ **LƯU Ý QUAN TRỌNG**
+## Lưu ý quan trọng
 
-### **1. Cache Issues:**
-- Social media platforms cache metadata
-- Cần clear cache sau khi thay đổi
-- Có thể mất 24-48h để update
+### Cache
+- Social media platforms cache preview trong 24-48 giờ
+- Sử dụng debug tools để force refresh cache
+- Có thể mất vài giờ để thay đổi có hiệu lực
 
-### **2. Image Requirements:**
-- **Minimum size:** 600x315px
-- **Optimal size:** 1200x630px
-- **Maximum size:** 8MB
-- **Format:** PNG, JPG, GIF
+### Image requirements
+- **Facebook**: 1200x630px (tỷ lệ 1.91:1)
+- **Twitter**: 1200x600px (tỷ lệ 2:1)
+- **LinkedIn**: 1200x627px (tỷ lệ 1.91:1)
+- **File size**: Dưới 5MB
+- **Format**: PNG, JPG, GIF
 
-### **3. URL Requirements:**
-- **Must be absolute:** `https://pleviacity.vn/social_media.png`
-- **Must be accessible:** Không bị chặn bởi robots.txt
-- **Must be public:** Không cần authentication
+### URL requirements
+- Phải là absolute URL (https://pleviacity.vn)
+- Không được redirect
+- Phải trả về HTTP 200
+- Phải có valid SSL certificate
 
----
+## Troubleshooting
 
-## 🚀 **KẾT QUẢ DỰ KIẾN**
+### Nếu vẫn không hiển thị preview:
+1. **Kiểm tra file image**: Đảm bảo `social_media.png` tồn tại và có thể truy cập
+2. **Clear cache**: Sử dụng debug tools để clear cache
+3. **Kiểm tra meta tags**: Sử dụng View Page Source để kiểm tra meta tags
+4. **Test với URL khác**: Thử với một URL test khác để xác định vấn đề
 
-Sau khi hoàn thành tất cả bước:
-- ✅ **Facebook sharing:** Hiển thị đầy đủ thông tin
-- ✅ **Twitter sharing:** Card đẹp với image
-- ✅ **LinkedIn sharing:** Preview hoàn chỉnh
-- ✅ **WhatsApp sharing:** Image và description
-- ✅ **Instagram sharing:** Link preview đẹp
+### Debug component
+Trong development mode, website có component debug ở góc phải dưới:
+- Click "Debug Social Media" để xem tất cả meta tags
+- Sử dụng các link debug tools có sẵn
 
-**Thời gian thực hiện:** 30 phút
-**Độ khó:** Dễ
-**Tác động:** Cao 
+## Kết quả mong đợi
+Sau khi áp dụng các thay đổi và clear cache:
+- Facebook: Hiển thị title, description, và image
+- Twitter: Hiển thị card với image lớn
+- LinkedIn: Hiển thị preview với image và description
+- WhatsApp/Telegram: Hiển thị preview khi gửi link
+
+## Liên hệ hỗ trợ
+Nếu vẫn gặp vấn đề sau khi thực hiện các bước trên, hãy:
+1. Kiểm tra console errors
+2. Sử dụng debug tools để xem chi tiết lỗi
+3. Kiểm tra network tab để đảm bảo image load được
+4. Test với các URL khác để so sánh 
