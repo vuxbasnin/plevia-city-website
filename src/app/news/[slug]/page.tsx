@@ -70,7 +70,7 @@ export default function NewsDetailPage() {
       <ScrollReveal>
                  <div
            className="mx-auto w-[78vw] sm:w-[78vw] max-w-[78vw] sm:px-2 px-1 py-6"
-           style={{ fontFamily: "'Chillax-Light', Arial, sans-serif" }}
+           style={{ fontFamily: "'Quicksand', Arial, sans-serif" }}
          >
                                                                                                                                                                                <h1 style={{
                 fontSize: "2rem",
@@ -88,7 +88,7 @@ export default function NewsDetailPage() {
              marginBottom: "1.5rem",
              color: "#000000",
              fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
-             fontFamily: "'Chillax-Light', Arial, sans-serif"
+             fontFamily: "'Quicksand', Arial, sans-serif"
            }}
            className="sm:px-2 px-1"
            >
@@ -103,7 +103,7 @@ export default function NewsDetailPage() {
                textAlign: "center",
                marginBottom: "2rem",
                lineHeight: 1.5,
-               fontFamily: "'Chillax-Light', Arial, sans-serif"
+               fontFamily: "'Quicksand', Arial, sans-serif"
              }}
              className="sm:px-2 px-1"
              >{article.summary}</div>
@@ -114,7 +114,7 @@ export default function NewsDetailPage() {
              color: "#000000",
              lineHeight: 1.7,
              textAlign: "justify",
-             fontFamily: "'Chillax-Light', Arial, sans-serif"
+             fontFamily: "'Quicksand', Arial, sans-serif"
            }}
            className="sm:px-2 px-1"
            >
