@@ -441,6 +441,37 @@ export async function getNewsArticleById(id: string): Promise<NewsArticle | null
   }
 }
 
+export async function getNewsArticleBySlug(slug: string): Promise<NewsArticle | null> {
+  if (!db) {
+    throw new Error("Firestore not initialized");
+  }
+
+  try {
+    const articlesRef = collection(db, NEWS_ARTICLES_COLLECTION);
+    const q = query(articlesRef, where("slug", "==", slug));
+    const querySnapshot = await getDocs(q);
+    
+    if (!querySnapshot.empty) {
+      const doc = querySnapshot.docs[0];
+      const data = doc.data();
+      // Convert Timestamp về Date nếu cần
+      const createdAt = data.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt;
+      const updatedAt = data.updatedAt?.toDate ? data.updatedAt.toDate() : data.updatedAt;
+      return {
+        id: doc.id,
+        ...data,
+        createdAt,
+        updatedAt,
+      } as NewsArticle;
+    }
+    
+    return null;
+  } catch (error) {
+    console.error("Error fetching news article by slug:", error);
+    throw error;
+  }
+}
+
 export async function createNewsArticle(articleData: Omit<NewsArticle, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
   if (!db) {
     throw new Error("Firestore not initialized");

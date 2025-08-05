@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { getNewsArticles } from "@/lib/firestoreService";
+import { getNewsArticleBySlug } from "@/lib/firestoreService";
 import { NewsArticle } from "@/types/landingPageAdmin";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -18,11 +18,13 @@ export default function PreviewNewsArticlePage() {
   useEffect(() => {
     if (!slug) return;
     setLoading(true);
-    getNewsArticles()
-      .then((articles) => {
-        const found = articles.find((a) => a.slug === slug);
-        if (!found) setError("Không tìm thấy bài viết.");
-        setArticle(found || null);
+    getNewsArticleBySlug(slug)
+      .then((foundArticle) => {
+        if (!foundArticle) {
+          setError("Không tìm thấy bài viết.");
+        } else {
+          setArticle(foundArticle);
+        }
       })
       .catch(() => setError("Lỗi khi tải bài viết."))
       .finally(() => setLoading(false));
