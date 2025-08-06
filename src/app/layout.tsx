@@ -51,7 +51,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     metadataBase: new URL('https://pleviacity.vn'),
     alternates: {
-      canonical: '/',
+      canonical: 'https://pleviacity.vn',
     },
     openGraph: {
       title: 'Plevia City',
@@ -94,7 +94,12 @@ export async function generateMetadata(): Promise<Metadata> {
         'max-snippet': -1,
       },
     },
-    manifest: '/manifest.json',
+    verification: {
+      google: 'YOUR_GOOGLE_VERIFICATION_CODE',
+      yandex: 'YOUR_YANDEX_VERIFICATION_CODE',
+      yahoo: 'YOUR_YAHOO_VERIFICATION_CODE',
+    },
+    manifest: 'https://pleviacity.vn/manifest.json',
     icons: {
       icon: 'https://pleviacity.vn/Logo_green_3.png',
       shortcut: 'https://pleviacity.vn/Logo_green_3.png',
@@ -102,9 +107,10 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   };
 
-  if (faviconUrlToUse) {
-    metadataResult.icons = { icon: faviconUrlToUse };
-  }
+  // Không cho phép Firebase ghi đè icons
+  // if (faviconUrlToUse) {
+  //   metadataResult.icons = { icon: faviconUrlToUse };
+  // }
 
   return metadataResult;
 }
@@ -125,67 +131,38 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <head>
-        {/* Basic Meta Tags */}
+        {/* Theme and Mobile Meta Tags */}
         <meta name="theme-color" content="#1A7A57" />
         <meta name="msapplication-TileColor" content="#1A7A57" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Plevia City" />
         
-        {/* Enhanced Open Graph Tags */}
-        <meta property="og:title" content="Plevia City" />
-        <meta property="og:description" content="Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp." />
-        <meta property="og:url" content="https://pleviacity.vn" />
-        <meta property="og:site_name" content="Plevia City" />
-        <meta property="og:locale" content="vi_VN" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://pleviacity.vn/social_media.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai" />
-        <meta property="og:image:type" content="image/png" />
-        
-        {/* Twitter Card Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Plevia City" />
-        <meta name="twitter:description" content="Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp." />
-        <meta name="twitter:image" content="https://pleviacity.vn/social_media.png" />
-        <meta name="twitter:creator" content="@pleviacity" />
-        <meta name="twitter:site" content="@pleviacity" />
-        
-        {/* Facebook App ID - Cần thêm App ID thực tế */}
-        <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
-        
-        {/* LinkedIn specific */}
-        <meta property="linkedin:owner" content="pleviacity" />
-        <meta property="linkedin:company" content="Plevia City" />
-        
-        {/* Additional Social Media Tags */}
+        {/* Additional SEO Meta Tags */}
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="google" content="notranslate" />
+        <meta name="format-detection" content="telephone=no" />
         <meta name="author" content="Plevia City" />
         <meta name="copyright" content="Plevia City" />
         <meta name="coverage" content="Worldwide" />
         <meta name="distribution" content="Global" />
         <meta name="rating" content="General" />
         <meta name="revisit-after" content="7 days" />
+        <link rel="canonical" href="https://pleviacity.vn" />
+        
+        {/* Facebook App ID */}
+        <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
+        
+        {/* LinkedIn specific */}
+        <meta property="linkedin:owner" content="pleviacity" />
+        <meta property="linkedin:company" content="Plevia City" />
         
         {/* Preconnect and DNS Prefetch */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
-        <link rel="manifest" href="https://pleviacity.vn/manifest.json" />
-        <link rel="icon" type="image/png" sizes="32x32" href="https://pleviacity.vn/Logo_green_3.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="https://pleviacity.vn/Logo_green_3.png" />
-        <link rel="shortcut icon" href="https://pleviacity.vn/Logo_green_3.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="https://pleviacity.vn/Logo_green_3.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="https://pleviacity.vn/Logo_green_3.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="https://pleviacity.vn/Logo_green_3.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="https://pleviacity.vn/Logo_green_3.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="https://pleviacity.vn/Logo_green_3.png" />
-        <link rel="apple-touch-icon" sizes="76x76" href="https://pleviacity.vn/Logo_green_3.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="https://pleviacity.vn/Logo_green_3.png" />
-        <link rel="apple-touch-icon" sizes="60x60" href="https://pleviacity.vn/Logo_green_3.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="https://pleviacity.vn/Logo_green_3.png" />
         
         {/* DNS Prefetch for external domains */}
         <link rel="dns-prefetch" href="//res.cloudinary.com" />
