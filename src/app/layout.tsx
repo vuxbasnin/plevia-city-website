@@ -18,12 +18,14 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   const faviconUrlToUse = siteSettings?.faviconUrl ? siteSettings.faviconUrl : undefined;
-  const title = siteSettings?.siteTitle || defaultSiteSettingsData.siteTitle;
-  const description = siteSettings?.siteDescription || defaultSiteSettingsData.siteDescription;
+  
+  // Sử dụng title và description cố định để đảm bảo SEO
+  const title = 'Plevia City';
+  const description = 'Plevia City là khu đô thị thông minh đầu tiên có ứng dụng "Trí tuệ nhân tạo" được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.';
 
   const metadataResult: Metadata = {
-    title: 'Plevia City - Khu Đô Thị Thông Minh Đầu Tiên Tại Gia Lai | PleviaCity',
-    description: 'Plevia City - Dự án bất động sản cao cấp tại Gia Lai với ứng dụng trí tuệ nhân tạo AI. Khám phá căn hộ, biệt thự, shophouse tại khu đô thị thông minh đầu tiên Pleiku. Vị trí đắc địa, tiện ích đẳng cấp.',
+    title: title,
+    description: description,
     keywords: [
       'Plevia City', 
       'pleviacity', 
@@ -53,7 +55,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       title: 'Plevia City',
-      description: 'Nơi thể hiện đẳng cấp',
+      description: 'Plevia City là khu đô thị thông minh đầu tiên có ứng dụng "Trí tuệ nhân tạo" được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.',
       url: 'https://pleviacity.vn',
       siteName: 'Plevia City',
       locale: 'vi_VN',
@@ -76,7 +78,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: 'summary_large_image',
       title: 'Plevia City',
-      description: 'Nơi thể hiện đẳng cấp',
+      description: 'Plevia City là khu đô thị thông minh đầu tiên có ứng dụng "Trí tuệ nhân tạo" được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.',
       images: ['https://pleviacity.vn/social_media.png'],
       creator: '@pleviacity',
       site: '@pleviacity',
@@ -126,8 +128,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Plevia City" />
         
         {/* Enhanced Open Graph Tags */}
-        <meta property="og:title" content="Plevia City - Khu Đô Thị Thông Minh Đầu Tiên Tại Gia Lai" />
-        <meta property="og:description" content="Plevia City - Dự án bất động sản cao cấp tại Gia Lai với ứng dụng trí tuệ nhân tạo AI. Khám phá căn hộ, biệt thự, shophouse tại khu đô thị thông minh đầu tiên Pleiku." />
+        <meta property="og:title" content="Plevia City" />
+        <meta property="og:description" content="Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp." />
         <meta property="og:url" content="https://pleviacity.vn" />
         <meta property="og:site_name" content="Plevia City" />
         <meta property="og:locale" content="vi_VN" />
@@ -140,8 +142,8 @@ export default function RootLayout({
         
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Plevia City - Khu Đô Thị Thông Minh Đầu Tiên Tại Gia Lai" />
-        <meta name="twitter:description" content="Plevia City - Dự án bất động sản cao cấp tại Gia Lai với ứng dụng trí tuệ nhân tạo AI. Khám phá căn hộ, biệt thự, shophouse tại khu đô thị thông minh đầu tiên Pleiku." />
+        <meta name="twitter:title" content="Plevia City" />
+        <meta name="twitter:description" content="Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp." />
         <meta name="twitter:image" content="https://pleviacity.vn/social_media.png" />
         <meta name="twitter:creator" content="@pleviacity" />
         <meta name="twitter:site" content="@pleviacity" />
@@ -184,7 +186,7 @@ export default function RootLayout({
               "@type": "RealEstateAgent",
               "name": "Plevia City",
               "alternateName": "PleviaCity",
-              "description": "Plevia City - Khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo tại Gia Lai. Dự án bất động sản cao cấp với căn hộ, biệt thự, shophouse thông minh.",
+              "description": "Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.",
               "url": "https://pleviacity.vn",
               "logo": "https://pleviacity.vn/Logo_green_3.png",
               "image": "https://pleviacity.vn/social_media.png",
