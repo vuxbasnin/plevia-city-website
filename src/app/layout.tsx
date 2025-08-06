@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
   
   // Sử dụng title và description cố định để đảm bảo SEO
   const title = 'Plevia City';
-  const description = 'Plevia City là khu đô thị thông minh đầu tiên có ứng dụng "Trí tuệ nhân tạo" được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.';
+  const description = 'Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.';
 
   const metadataResult: Metadata = {
     title: title,
@@ -55,7 +55,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       title: 'Plevia City',
-      description: 'Plevia City là khu đô thị thông minh đầu tiên có ứng dụng "Trí tuệ nhân tạo" được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.',
+      description: 'Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.',
       url: 'https://pleviacity.vn',
       siteName: 'Plevia City',
       locale: 'vi_VN',
@@ -78,7 +78,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: 'summary_large_image',
       title: 'Plevia City',
-      description: 'Plevia City là khu đô thị thông minh đầu tiên có ứng dụng "Trí tuệ nhân tạo" được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.',
+      description: 'Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.',
       images: ['https://pleviacity.vn/social_media.png'],
       creator: '@pleviacity',
       site: '@pleviacity',
@@ -95,6 +95,11 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     manifest: '/manifest.json',
+    icons: {
+      icon: 'https://pleviacity.vn/Logo_green_3.png',
+      shortcut: 'https://pleviacity.vn/Logo_green_3.png',
+      apple: 'https://pleviacity.vn/Logo_green_3.png',
+    },
   };
 
   if (faviconUrlToUse) {
@@ -168,9 +173,19 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" href="/Logo_green_3.png" />
-        <link rel="apple-touch-icon" href="/Logo_green_3.png" />
+        <link rel="manifest" href="https://pleviacity.vn/manifest.json" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://pleviacity.vn/Logo_green_3.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="https://pleviacity.vn/Logo_green_3.png" />
+        <link rel="shortcut icon" href="https://pleviacity.vn/Logo_green_3.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="https://pleviacity.vn/Logo_green_3.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="https://pleviacity.vn/Logo_green_3.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="https://pleviacity.vn/Logo_green_3.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="https://pleviacity.vn/Logo_green_3.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="https://pleviacity.vn/Logo_green_3.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="https://pleviacity.vn/Logo_green_3.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="https://pleviacity.vn/Logo_green_3.png" />
+        <link rel="apple-touch-icon" sizes="60x60" href="https://pleviacity.vn/Logo_green_3.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="https://pleviacity.vn/Logo_green_3.png" />
         
         {/* DNS Prefetch for external domains */}
         <link rel="dns-prefetch" href="//res.cloudinary.com" />
