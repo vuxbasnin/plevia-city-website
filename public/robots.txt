@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://pleviacity.vn/sitemap.xml
+
+# Disallow admin and API
+Disallow: /admin/
+Disallow: /api/
+
+# Allow all other pages
+Allow: /lifestyle/
+Allow: /location/
+Allow: /storyline/
+Allow: /member-benefits/
+Allow: /news/
+
+# Crawl delay
+Crawl-delay: 1 
