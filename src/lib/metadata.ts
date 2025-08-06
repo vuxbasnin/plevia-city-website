@@ -2,12 +2,15 @@ import type { Metadata } from 'next';
 
 export function generatePageMetadata(pageTitle: string, customDescription?: string): Metadata {
   const baseTitle = "Plevia City";
-  const fullTitle = `${baseTitle} - ${pageTitle}`;
-  const description = customDescription || `Khám phá ${pageTitle.toLowerCase()} tại ${baseTitle} - Dự án bất động sản cao cấp tại Gia Lai`;
+  const fullTitle = `${baseTitle} - ${pageTitle} | PleviaCity`;
+  const description = customDescription || `Khám phá ${pageTitle.toLowerCase()} tại ${baseTitle} - Dự án bất động sản cao cấp tại Gia Lai với ứng dụng trí tuệ nhân tạo AI`;
   
-  // Keywords tối ưu cho SEO
+  // Keywords tối ưu cho SEO với focus vào "pleviacity"
   const keywords = [
     'Plevia City',
+    'pleviacity',
+    'pleviacity.vn',
+    'dự án Plevia',
     'bất động sản Gia Lai',
     'dự án cao cấp Pleiku',
     'căn hộ Gia Lai',
@@ -19,7 +22,10 @@ export function generatePageMetadata(pageTitle: string, customDescription?: stri
     'dự án đô thị',
     'khu đô thị cao cấp',
     'tiện ích đẳng cấp',
-    'vị trí đắc địa'
+    'vị trí đắc địa',
+    'đô thị thông minh',
+    'AI Gia Lai',
+    'smart city Pleiku'
   ];
   
   return {

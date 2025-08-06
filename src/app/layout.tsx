@@ -22,9 +22,23 @@ export async function generateMetadata(): Promise<Metadata> {
   const description = siteSettings?.siteDescription || defaultSiteSettingsData.siteDescription;
 
   const metadataResult: Metadata = {
-    title: title,
-    description: description,
-    keywords: ['Plevia City', 'khu đô thị thông minh', 'Gia Lai', 'trí tuệ nhân tạo', 'công nghệ 4.0', 'đô thị hiện đại', 'môi trường sống xanh', 'smart city', 'AI', 'IoT'],
+    title: 'Plevia City - Khu Đô Thị Thông Minh Đầu Tiên Tại Gia Lai | PleviaCity',
+    description: 'Plevia City - Dự án bất động sản cao cấp tại Gia Lai với ứng dụng trí tuệ nhân tạo AI. Khám phá căn hộ, biệt thự, shophouse tại khu đô thị thông minh đầu tiên Pleiku. Vị trí đắc địa, tiện ích đẳng cấp.',
+    keywords: [
+      'Plevia City', 
+      'pleviacity', 
+      'khu đô thị thông minh Gia Lai', 
+      'dự án bất động sản Pleiku', 
+      'căn hộ Gia Lai', 
+      'biệt thự Pleiku', 
+      'shophouse Gia Lai', 
+      'đô thị thông minh', 
+      'AI Gia Lai', 
+      'bất động sản cao cấp',
+      'pleviacity.vn',
+      'dự án Plevia',
+      'đầu tư bất động sản Gia Lai'
+    ],
     authors: [{ name: 'Plevia City' }],
     creator: 'Plevia City',
     publisher: 'Plevia City',
@@ -112,8 +126,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Plevia City" />
         
         {/* Enhanced Open Graph Tags */}
-        <meta property="og:title" content="Plevia City" />
-        <meta property="og:description" content="Nơi thể hiện đẳng cấp" />
+        <meta property="og:title" content="Plevia City - Khu Đô Thị Thông Minh Đầu Tiên Tại Gia Lai" />
+        <meta property="og:description" content="Plevia City - Dự án bất động sản cao cấp tại Gia Lai với ứng dụng trí tuệ nhân tạo AI. Khám phá căn hộ, biệt thự, shophouse tại khu đô thị thông minh đầu tiên Pleiku." />
         <meta property="og:url" content="https://pleviacity.vn" />
         <meta property="og:site_name" content="Plevia City" />
         <meta property="og:locale" content="vi_VN" />
@@ -121,13 +135,13 @@ export default function RootLayout({
         <meta property="og:image" content="https://pleviacity.vn/social_media.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Plevia City" />
+        <meta property="og:image:alt" content="Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai" />
         <meta property="og:image:type" content="image/png" />
         
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Plevia City" />
-        <meta name="twitter:description" content="Nơi thể hiện đẳng cấp" />
+        <meta name="twitter:title" content="Plevia City - Khu Đô Thị Thông Minh Đầu Tiên Tại Gia Lai" />
+        <meta name="twitter:description" content="Plevia City - Dự án bất động sản cao cấp tại Gia Lai với ứng dụng trí tuệ nhân tạo AI. Khám phá căn hộ, biệt thự, shophouse tại khu đô thị thông minh đầu tiên Pleiku." />
         <meta name="twitter:image" content="https://pleviacity.vn/social_media.png" />
         <meta name="twitter:creator" content="@pleviacity" />
         <meta name="twitter:site" content="@pleviacity" />
@@ -169,15 +183,18 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "RealEstateAgent",
               "name": "Plevia City",
-              "description": "Khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo tại Gia Lai",
+              "alternateName": "PleviaCity",
+              "description": "Plevia City - Khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo tại Gia Lai. Dự án bất động sản cao cấp với căn hộ, biệt thự, shophouse thông minh.",
               "url": "https://pleviacity.vn",
               "logo": "https://pleviacity.vn/Logo_green_3.png",
               "image": "https://pleviacity.vn/social_media.png",
               "address": {
                 "@type": "PostalAddress",
+                "streetAddress": "Phường Hội Phú",
                 "addressLocality": "Pleiku",
                 "addressRegion": "Gia Lai",
-                "addressCountry": "VN"
+                "addressCountry": "VN",
+                "postalCode": "60000"
               },
               "geo": {
                 "@type": "GeoCoordinates",
@@ -187,7 +204,8 @@ export default function RootLayout({
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "availableLanguage": "Vietnamese"
+                "availableLanguage": "Vietnamese",
+                "areaServed": "VN"
               },
               "areaServed": {
                 "@type": "City",
@@ -195,17 +213,19 @@ export default function RootLayout({
               },
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
-                "name": "Sản phẩm đô thị thông minh",
+                "name": "Sản phẩm đô thị thông minh Plevia City",
                 "itemListElement": [
-                  { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Căn hộ thông minh" } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Biệt thự thông minh" } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Shophouse thông minh" } }
+                  { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Căn hộ thông minh Plevia City" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Biệt thự thông minh Plevia City" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Shophouse thông minh Plevia City" } }
                 ]
               },
               "sameAs": [
                 "https://facebook.com/pleviacity",
-                "https://instagram.com/pleviacity"
-              ]
+                "https://instagram.com/pleviacity",
+                "https://youtube.com/@pleviacity"
+              ],
+              "keywords": "Plevia City, pleviacity, khu đô thị thông minh Gia Lai, dự án bất động sản Pleiku, căn hộ Gia Lai, biệt thự Pleiku, shophouse Gia Lai, đô thị thông minh, AI Gia Lai, bất động sản cao cấp"
             })
           }}
         />
