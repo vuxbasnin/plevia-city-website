@@ -441,6 +441,39 @@ export async function getNewsArticleById(id: string): Promise<NewsArticle | null
   }
 }
 
+export async function getNewsArticleBySlug(slug: string): Promise<NewsArticle | null> {
+  if (!db) {
+    throw new Error("Firestore not initialized");
+  }
+
+  try {
+    const articlesRef = collection(db, NEWS_ARTICLES_COLLECTION);
+    const q = query(articlesRef, where("slug", "==", slug));
+    const querySnapshot = await getDocs(q);
+    
+    if (!querySnapshot.empty) {
+      const doc = querySnapshot.docs[0];
+      const data = doc.data();
+      
+      // Convert Timestamp về Date nếu cần
+      const createdAt = data.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt;
+      const updatedAt = data.updatedAt?.toDate ? data.updatedAt.toDate() : data.updatedAt;
+      const article = {
+        id: doc.id,
+        ...data,
+        createdAt,
+        updatedAt,
+      } as NewsArticle;
+      return article;
+    }
+    
+    return null;
+  } catch (error) {
+    console.error("Error fetching news article by slug:", error);
+    throw error;
+  }
+}
+
 export async function createNewsArticle(articleData: Omit<NewsArticle, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
   if (!db) {
     throw new Error("Firestore not initialized");
@@ -455,8 +488,24 @@ export async function createNewsArticle(articleData: Omit<NewsArticle, 'id' | 'c
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
     };
+    
     const docRef = await addDoc(articlesRef, newArticle);
-    return docRef.id;
+                    console.log("createNewsArticle - Article created with ID:", docRef.id);
+                
+                // 3. Dữ liệu load ra từ Firestore để cho vào màn Preview hoặc Detail
+                console.log("📖 FIRESTORE OUTPUT:", {
+                  id: docRef.id,
+                  title: newArticle.title,
+                  content: newArticle.content,
+                  author: newArticle.author,
+                  summary: newArticle.summary,
+                  tags: newArticle.tags,
+                  isPublished: newArticle.isPublished,
+                  coverImageUrl: newArticle.coverImageUrl,
+                  slug: newArticle.slug,
+                });
+                
+                return docRef.id;
   } catch (error) {
     console.error("Error creating news article:", error);
     throw error;
@@ -472,6 +521,19 @@ export async function updateNewsArticle(id: string, articleData: Partial<NewsArt
       updatedAt: serverTimestamp(),
     };
     await updateDoc(articleRef, updateData);
+
+    // 3. Dữ liệu load ra từ Firestore để cho vào màn Preview hoặc Detail
+    console.log("📖 FIRESTORE OUTPUT:", {
+      id: id,
+      title: articleData.title,
+      content: articleData.content,
+      author: articleData.author,
+      summary: articleData.summary,
+      tags: articleData.tags,
+      isPublished: articleData.isPublished,
+      coverImageUrl: articleData.coverImageUrl,
+      slug: articleData.slug,
+    });
   } catch (error) {
     console.error("Error updating news article:", error);
     throw error;

@@ -501,13 +501,14 @@ export const defaultNewsArticleData: NewsArticleFormData = {
     time: Date.now(),
     blocks: [
       {
+        id: "default-paragraph",
         type: "paragraph",
         data: {
           text: "Bắt đầu viết bài viết của bạn ở đây..."
         }
       }
     ],
-    version: "2.28.2"
+    version: "2.30.8"
   },
   author: "",
   summary: "",

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { getNewsArticles } from "@/lib/firestoreService";
+import { getNewsArticleBySlug } from "@/lib/firestoreService";
 import { NewsArticle } from "@/types/landingPageAdmin";
 import { formatDateForDisplay } from "@/lib/utils";
 import dynamic from "next/dynamic";
@@ -22,20 +22,8 @@ export default function NewsDetailPage() {
   useEffect(() => {
     if (!slug) return;
     setLoading(true);
-    getNewsArticles()
-      .then((articles) => {
-        // Kiểm tra xem slug có phải là ID không (ID thường không có dấu gạch ngang)
-        const isSlugAnId = !slug.includes('-');
-
-        let foundArticle;
-        if (isSlugAnId) {
-          // Nếu slug là ID, tìm theo ID
-          foundArticle = articles.find(article => article.id === slug);
-        } else {
-          // Nếu slug có dấu gạch ngang, tìm theo slug
-          foundArticle = articles.find(article => article.slug === slug);
-        }
-
+    getNewsArticleBySlug(slug)
+      .then((foundArticle) => {
         if (!foundArticle) {
           setError("Không tìm thấy bài viết.");
         } else {
@@ -63,15 +51,12 @@ export default function NewsDetailPage() {
   if (!article) return null;
 
   return (
-    <PageLayout className="relative bg-white overflow-hidden">
-      <ScrollReveal>
-        <ImageHeader imageUrl={article.coverImageUrl} />
-      </ScrollReveal>
-      <ScrollReveal>
-                 <div
-           className="mx-auto w-[78vw] sm:w-[78vw] max-w-[78vw] sm:px-2 px-1 py-6"
-           style={{ fontFamily: "'Chillax-Light', Arial, sans-serif" }}
-         >
+    <PageLayout className="relative bg-white">
+      <ImageHeader imageUrl={article.coverImageUrl} />
+      <div
+        className="mx-auto w-[78vw] sm:w-[78vw] max-w-[78vw] sm:px-2 px-1 py-6"
+        style={{ fontFamily: "'Quicksand', Arial, sans-serif" }}
+      >
                                                                                                                                                                                <h1 style={{
                 fontSize: "2rem",
                 fontWeight: "bold",
@@ -88,7 +73,7 @@ export default function NewsDetailPage() {
              marginBottom: "1.5rem",
              color: "#000000",
              fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
-             fontFamily: "'Chillax-Light', Arial, sans-serif"
+             fontFamily: "'Quicksand', Arial, sans-serif"
            }}
            className="sm:px-2 px-1"
            >
@@ -103,7 +88,7 @@ export default function NewsDetailPage() {
                textAlign: "center",
                marginBottom: "2rem",
                lineHeight: 1.5,
-               fontFamily: "'Chillax-Light', Arial, sans-serif"
+               fontFamily: "'Quicksand', Arial, sans-serif"
              }}
              className="sm:px-2 px-1"
              >{article.summary}</div>
@@ -114,18 +99,17 @@ export default function NewsDetailPage() {
              color: "#000000",
              lineHeight: 1.7,
              textAlign: "justify",
-             fontFamily: "'Chillax-Light', Arial, sans-serif"
+             fontFamily: "'Quicksand', Arial, sans-serif"
            }}
            className="sm:px-2 px-1"
            >
-             {article.content && (
-               <div className="w-full">
-                 <EditorJSRenderer data={article.content} />
-               </div>
-             )}
+                                                       {article.content && (
+                 <div className="w-full">
+                   <EditorJSRenderer data={article.content} />
+                 </div>
+               )}
            </div>
         </div>
-      </ScrollReveal>
     </PageLayout>
   );
 } 

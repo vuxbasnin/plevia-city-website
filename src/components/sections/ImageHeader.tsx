@@ -75,7 +75,7 @@ export default function ImageHeader({ imageUrl }: { imageUrl?: string }) {
 
   if (isLoading) {
     return (
-      <section className="relative min-h-screen flex items-center justify-center bg-background px-6 overflow-hidden">
+      <section className="relative h-[50vh] flex items-center justify-center bg-background px-6 overflow-hidden">
         <Skeleton className="absolute inset-0 z-0" />
       </section>
     );
@@ -85,7 +85,7 @@ export default function ImageHeader({ imageUrl }: { imageUrl?: string }) {
     <section
       ref={ref}
       id="hero"
-      className="relative min-h-screen flex items-center justify-center px-6 sm:px-10 overflow-hidden"
+      className="relative h-[50vh] flex items-center justify-center px-6 sm:px-10 overflow-hidden"
     >
       <motion.div
         className="absolute inset-0 z-0"
