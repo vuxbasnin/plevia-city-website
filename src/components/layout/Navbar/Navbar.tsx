@@ -16,7 +16,20 @@ import './Navbar.css';
 import { useSiteSettings } from '@/context/SiteSettingsContext';
 
 // Navigation links based on the image
-const navLinks = [
+const navLinks: Array<{
+  href: string;
+  label: string;
+  hasDropdown: boolean;
+  isExternal?: boolean;
+  openInNewTab?: boolean;
+}> = [
+  {
+    href: 'https://pleviacity.com.vn/iot',
+    label: 'Bước chạm AI',
+    hasDropdown: false,
+    isExternal: true,
+    openInNewTab: true
+  },
   {
     href: '/storyline',
     label: 'Câu chuyện kiến tạo',
@@ -159,6 +172,8 @@ export default function Navbar() {
                 isTransparent={isTransparentState}
                 onClick={handleLinkClick}
                 className={idx === 0 ? 'navbar-nav-first' : ''}
+                isExternal={link.isExternal}
+                openInNewTab={link.openInNewTab}
               />
             ))}
           </div>
@@ -199,8 +214,11 @@ export default function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.3 }}
                   >
-                    <Link href={link.href} passHref>
-                      <span
+                    {link.isExternal ? (
+                      <a 
+                        href={link.href}
+                        target={link.openInNewTab ? "_blank" : "_self"}
+                        rel={link.openInNewTab ? "noopener noreferrer" : ""}
                         className={cn(
                           "navbar-mobile-link",
                           isActive && "navbar-mobile-link-active"
@@ -208,8 +226,20 @@ export default function Navbar() {
                         onClick={handleLinkClick}
                       >
                         {link.label}
-                      </span>
-                    </Link>
+                      </a>
+                    ) : (
+                      <Link href={link.href} passHref>
+                        <span
+                          className={cn(
+                            "navbar-mobile-link",
+                            isActive && "navbar-mobile-link-active"
+                          )}
+                          onClick={handleLinkClick}
+                        >
+                          {link.label}
+                        </span>
+                      </Link>
+                    )}
                   </motion.div>
                 );
               })}

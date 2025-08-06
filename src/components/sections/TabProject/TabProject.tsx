@@ -28,7 +28,6 @@ const TabProject = () => {
             <li>Mẫu nhà góc 2 mặt tiền trục đường nhỏ 11.5m</li>
             <li>Mẫu nhà góc trục đường 14m</li>
             <li>Mẫu nhà 5m liền kề trục đường 14m</li>
-            <li>Mẫu nhà 5m liền kề bán hầm Block G</li>
           </ul>
         </div>
       </div>
