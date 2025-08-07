@@ -11,7 +11,7 @@ import NextImage from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import ContactFormDialog from '@/components/shared/ContactFormDialog';
 import NavigationLink from '@/components/shared/NavigationLink';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import './Navbar.css';
 import { useSiteSettings } from '@/context/SiteSettingsContext';
 
@@ -25,7 +25,7 @@ const navLinks: Array<{
 }> = [
   {
     href: 'https://pleviacity.com.vn/iot',
-    label: 'Bước chạm AI',
+    label: 'Công nghệ vận hành AI',
     hasDropdown: false,
     isExternal: true,
     openInNewTab: true
@@ -59,6 +59,7 @@ export default function Navbar() {
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
   const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     let ticking = false;
@@ -204,46 +205,48 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="navbar-mobile-menu"
           >
-            <div className="navbar-mobile-container">
-              {navLinks.map((link, index) => {
-                const isActive = pathname === link.href;
-                return (
-                  <motion.div
-                    key={link.href}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.3 }}
-                  >
-                    {link.isExternal ? (
-                      <a 
-                        href={link.href}
-                        target={link.openInNewTab ? "_blank" : "_self"}
-                        rel={link.openInNewTab ? "noopener noreferrer" : ""}
-                        className={cn(
-                          "navbar-mobile-link",
-                          isActive && "navbar-mobile-link-active"
-                        )}
-                        onClick={handleLinkClick}
-                      >
-                        {link.label}
-                      </a>
-                    ) : (
-                      <Link href={link.href} passHref>
-                        <span
-                          className={cn(
-                            "navbar-mobile-link",
-                            isActive && "navbar-mobile-link-active"
-                          )}
-                          onClick={handleLinkClick}
-                        >
-                          {link.label}
-                        </span>
-                      </Link>
-                    )}
-                  </motion.div>
-                );
-              })}
-            </div>
+                         <div className="navbar-mobile-container">
+               {navLinks.map((link, index) => {
+                 const isActive = pathname === link.href;
+                 return (
+                   <motion.div
+                     key={link.href}
+                     initial={{ opacity: 0, x: -20 }}
+                     animate={{ opacity: 1, x: 0 }}
+                     transition={{ delay: index * 0.1, duration: 0.3 }}
+                   >
+                     {link.isExternal ? (
+                       <a 
+                         href={link.href}
+                         target={link.openInNewTab ? "_blank" : "_self"}
+                         rel={link.openInNewTab ? "noopener noreferrer" : ""}
+                         className={cn(
+                           "navbar-mobile-link",
+                           isActive && "navbar-mobile-link-active"
+                         )}
+                         onClick={handleLinkClick}
+                       >
+                         {link.label}
+                       </a>
+                     ) : (
+                       <Link href={link.href} passHref>
+                         <span
+                           className={cn(
+                             "navbar-mobile-link",
+                             isActive && "navbar-mobile-link-active"
+                           )}
+                           onClick={handleLinkClick}
+                         >
+                           {link.label}
+                         </span>
+                       </Link>
+                     )}
+                     
+
+                   </motion.div>
+                 );
+               })}
+             </div>
           </motion.div>
         )}
       </AnimatePresence>
