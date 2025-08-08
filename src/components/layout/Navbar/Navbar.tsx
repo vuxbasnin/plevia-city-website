@@ -24,34 +24,36 @@ const navLinks: Array<{
   openInNewTab?: boolean;
   dropdownItems?: Array<{ href: string; label: string }>;
 }> = [
-  {
-    href: '/iot',
-    label: 'Công nghệ vận hành AI',
-    hasDropdown: false,
-    // isExternal: true,
-    // openInNewTab: true
-  },
-  {
-    href: '/storyline',
-    label: 'Câu chuyện kiến tạo',
-    hasDropdown: false
-  },
-  { 
-    href: '/location', 
-    label: 'Kết nối & Tiện ích',
-    hasDropdown: false 
-  },
-  { 
-    href: '/lifestyle',
-    label: 'Phong cách sống',
-    hasDropdown: false
-  },
-  { 
-    href: '/news', 
-    label: 'Tin tức',
-    hasDropdown: false 
-  }
-];
+    {
+      href: '/iot',
+      label: 'Công nghệ vận hành AI',
+      hasDropdown: false
+    },
+    {
+      href: '/storyline',
+      label: 'Câu chuyện kiến tạo',
+      hasDropdown: false
+    },
+    {
+      href: '/location',
+      label: 'Kết nối & Tiện ích',
+      hasDropdown: false
+    },
+    {
+      href: '/lifestyle',
+      label: 'Phong cách sống',
+      hasDropdown: true,
+      dropdownItems: [
+        { href: '/lifestyle#house-models', label: 'Các mẫu nhà' },
+        { href: '/lifestyle#interior-designs', label: 'Mẫu nội thất' }
+      ]
+    },
+    {
+      href: '/news',
+      label: 'Tin tức',
+      hasDropdown: false
+    }
+  ];
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -64,27 +66,27 @@ export default function Navbar() {
 
   useEffect(() => {
     let ticking = false;
-    
+
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
           const newScrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
-          
+
           // Update scroll direction with debounce
           if (Math.abs(currentScrollY - lastScrollY) > 5) {
             setScrollDirection(newScrollDirection);
           }
-          
+
           // Smooth scroll state update
           const scrollThreshold = 20;
           const isCurrentlyScrolled = currentScrollY > scrollThreshold;
-          
+
           // Only update if state actually changed to prevent unnecessary re-renders
           if (isCurrentlyScrolled !== isScrolled) {
             setIsScrolled(isCurrentlyScrolled);
           }
-          
+
           setLastScrollY(currentScrollY);
           ticking = false;
         });
@@ -219,7 +221,7 @@ export default function Navbar() {
                     transition={{ delay: index * 0.1, duration: 0.3 }}
                   >
                     {link.isExternal ? (
-                      <a 
+                      <a
                         href={link.href}
                         target={link.openInNewTab ? "_blank" : "_self"}
                         rel={link.openInNewTab ? "noopener noreferrer" : ""}
@@ -244,7 +246,7 @@ export default function Navbar() {
                         </span>
                       </Link>
                     )}
-                    
+
                     {/* Mobile dropdown items */}
                     {link.hasDropdown && link.dropdownItems && (
                       <div className="navbar-mobile-dropdown">
@@ -270,7 +272,7 @@ export default function Navbar() {
                                     if (pathname === '/lifestyle' && sectionId) {
                                       const element = document.getElementById(sectionId);
                                       if (element) {
-                                        element.scrollIntoView({ 
+                                        element.scrollIntoView({
                                           behavior: 'smooth',
                                           block: 'start'
                                         });
