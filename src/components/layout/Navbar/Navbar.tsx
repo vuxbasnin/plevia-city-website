@@ -24,11 +24,11 @@ const navLinks: Array<{
   openInNewTab?: boolean;
 }> = [
   {
-    href: 'https://pleviacity.com.vn/iot',
+    href: '/iot',
     label: 'Công nghệ vận hành AI',
     hasDropdown: false,
-    isExternal: true,
-    openInNewTab: true
+    // isExternal: true,
+    // openInNewTab: true
   },
   {
     href: '/storyline',
@@ -43,7 +43,7 @@ const navLinks: Array<{
   { 
     href: '/lifestyle',
     label: 'Phong cách sống',
-    hasDropdown: false 
+    hasDropdown: false
   },
   { 
     href: '/news', 
