@@ -74,10 +74,10 @@ const FormInfo: React.FC = () => {
       {/* Left Section - Information */}
       <div className="form-info-left">
         <div>
-          <h2 className="form-info-heading">KẾT NỐI VỚI CHÚNG TÔI</h2>
+          <h2 className="form-info-heading">NHẬN TÀI LIỆU THÔNG TIN DỰ ÁN</h2>
           <p className="form-info-subtext">
-            Chào đón bạn đến với Plevia City<br />
-            Vui lòng để lại thông tin tại đây
+            Xin vui lòng điền đầy đủ thông tin để nhận tài liệu.<br/>
+            Tài liệu thông tin dự án sẽ được gửi về email của bạn trong thời gian sớm nhất!
           </p>
         </div>
         
@@ -89,7 +89,7 @@ const FormInfo: React.FC = () => {
         <form onSubmit={handleSubmit} className="form-fields">
           <div className="form-row">
             <div className="form-field">
-              <label className="form-label">TÊN CỦA BẠN *</label>
+              <label className="form-label">TÊN *</label>
               <input
                 type="text"
                 name="name"
@@ -100,7 +100,7 @@ const FormInfo: React.FC = () => {
               />
             </div>
             <div className="form-field">
-              <label className="form-label">EMAIL *</label>
+              <label className="form-label">Số điện thoại *</label>
               <input
                 type="email"
                 name="email"
@@ -113,7 +113,7 @@ const FormInfo: React.FC = () => {
           </div>
           
           <div className="form-field full-width">
-            <label className="form-label">NỘI DUNG *</label>
+            <label className="form-label">Email *</label>
             <textarea
               name="content"
               value={formData.content}
@@ -131,7 +131,7 @@ const FormInfo: React.FC = () => {
               </>
             ) : (
               <>
-                GỬI <span className="arrow-icon">→</span>
+                NHẬN TÀI LIỆU <span className="arrow-icon">→</span>
               </>
             )}
           </button>
