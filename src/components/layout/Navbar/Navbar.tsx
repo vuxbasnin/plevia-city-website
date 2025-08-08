@@ -27,7 +27,9 @@ const navLinks: Array<{
   {
     href: '/iot',
     label: 'Công nghệ vận hành AI',
-    hasDropdown: false
+    hasDropdown: false,
+    // isExternal: true,
+    // openInNewTab: true
   },
   {
     href: '/storyline',
@@ -42,11 +44,7 @@ const navLinks: Array<{
   { 
     href: '/lifestyle',
     label: 'Phong cách sống',
-    hasDropdown: true,
-    dropdownItems: [
-      { href: '/lifestyle#house-models', label: 'Các mẫu nhà' },
-      { href: '/lifestyle#interior-designs', label: 'Mẫu nội thất' }
-    ]
+    hasDropdown: false
   },
   { 
     href: '/news', 
