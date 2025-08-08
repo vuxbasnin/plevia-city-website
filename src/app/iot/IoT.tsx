@@ -15,6 +15,9 @@ const img10 = 'https://pleviacity.com.vn/demo/9.png';
 const img11 = 'https://pleviacity.com.vn/demo/10.png';
 const img12 = 'https://pleviacity.com.vn/demo/11.png';
 
+console.log('a');
+
+
 // Video URLs
 const video1 = 'https://pleviacity.com.vn/demo/1.mp4';
 const video2 = 'https://pleviacity.com.vn/demo/2.mp4';
