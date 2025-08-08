@@ -31,6 +31,8 @@ export default function LifeStylePage() {
                 }]}
                 is169={true}
                 images={[{
+                    id: '0', url: '/assets/lifestyle/living_standard/ls_0.png', caption: ''
+                }, {
                     id: '1', url: '/assets/lifestyle/living_standard/ls_1.jpg', caption: ''
                 }, {
                     id: '2', url: '/assets/lifestyle/living_standard/ls_2.jpg', caption: ''
@@ -43,27 +45,25 @@ export default function LifeStylePage() {
         </ScrollReveal>
         <ScrollReveal>
             <ParaLeftLibImage
-                title=" QUY HOẠCH KHOA HỌC, KẾT NỐI THÔNG MINH "
+                title="Cộng đồng dân cư văn minh, gắn kết"
                 description=""
                 sections={[{
                     level: 1,
                     subtitle: "",
-                    subdescription: `Plevia City được quy hoạch theo hướng đô thị hiện đại, lấy tính khoa học và kết nối thông minh làm nền tảng. Dự án gồm 9 phân khu mang ký hiệu A đến K, được bố trí đối xứng theo trục giao thông trung tâm – trục đường huyết mạch dẫn trực tiếp ra tuyến đường lớn.`
+                    subdescription: `Tại Plevia City, mỗi cư dân không chỉ là hàng xóm – mà còn là một phần của một cộng đồng văn minh, gắn kết.`
                 }, {
                     level: 2,
                     subtitle: "",
-                    subdescription: `Mỗi phân khu đều có lối đi thuận tiện, kết nối liền mạch với mạng lưới giao thông nội khu rộng rãi, không hề tồn tại điểm thắt hay đường cụt, giúp cư dân di chuyển dễ dàng đến bất kỳ vị trí nào trong khu đô thị. Quy hoạch ưu tiên sự tiếp cận nhanh chóng với các tiện ích chung đảm bảo mọi cư dân đều được tận hưởng trải nghiệm sống như nhau dù ở bất kỳ phân khu nào.`
+                    subdescription: `Tại đây, giá trị sống không chỉ đo bằng tiện nghi hiện đại, mà còn bằng những mối quan hệ bền chặt và sự sẻ chia giữa những con người cùng chung lý tưởng “Sống xanh – Sống thông minh – Sống hạnh phúc”.`
                 }]}
                 is169={true}
                 reverse={true}
                 images={[{
-                    id: '1', url: '/assets/lifestyle/scientific_planning/sp_1.jpg', caption: ''
+                    id: '0', url: '/assets/lifestyle/scientific_planning/sp_0.png', caption: ''
                 }, {
-                    id: '2', url: '/assets/lifestyle/scientific_planning/sp_2.jpg', caption: ''
+                    id: '1', url: '/assets/lifestyle/scientific_planning/sp_1.png', caption: ''
                 }, {
-                    id: '3', url: '/assets/lifestyle/scientific_planning/sp_3.jpg', caption: ''
-                }, {
-                    id: '4', url: '/assets/lifestyle/scientific_planning/sp_4.jpg', caption: ''
+                    id: '2', url: '/assets/lifestyle/scientific_planning/sp_4.jpg', caption: ''
                 }]}
             />
         </ScrollReveal>
@@ -77,7 +77,7 @@ export default function LifeStylePage() {
                 <ParaImageVerticalLifestyle
                     title="SỐNG HIỆN ĐẠI, HƯỞNG TRỌN MỌI GIÁ TRỊ"
                     description={`Tại Plevia City, tiện ích không chỉ là những công trình phụ trợ – mà chính là nền tảng tạo nên một phong cách sống hiện đại, trọn vẹn và khác biệt. Từng hạng mục được đầu tư đồng bộ và hài hòa, nhằm đáp ứng nhu cầu của cư dân năng động trong thời đại số, nơi ở – làm việc – nghỉ ngơi đều diễn ra trong một hệ sinh thái khép kín, thuận tiện.`}
-                    imageUrl="/assets/lifestyle/modern_living.jpg"
+                    imageUrl="/assets/lifestyle/modern_living.png"
                 >
                 </ParaImageVerticalLifestyle>
             </div>
@@ -91,17 +91,13 @@ export default function LifeStylePage() {
                 reverse={true}
                 dotEnabled={false}
                 images={[{
-                    id: '1', url: '/assets/lifestyle/living_experience/le_1.jpg', caption: ''
+                    id: '0', url: '/assets/lifestyle/living_experience/le_0.png', caption: ''
                 }, {
-                    id: '2', url: '/assets/lifestyle/living_experience/le_2.png', caption: ''
+                    id: '1', url: '/assets/lifestyle/living_experience/le_1.png', caption: ''
                 }, {
-                    id: '3', url: '/assets/lifestyle/living_experience/le_3.png', caption: ''
+                    id: '2', url: '/assets/lifestyle/living_experience/le_12.png', caption: ''
                 }, {
-                    id: '4', url: '/assets/lifestyle/living_experience/le_4.png', caption: ''
-                }, {
-                    id: '5', url: '/assets/lifestyle/living_experience/le_5.png', caption: ''
-                }, {
-                    id: '6', url: '/assets/lifestyle/living_experience/le_6.png', caption: ''
+                    id: '3', url: '/assets/lifestyle/living_experience/le_13.png', caption: ''
                 }]}
             />
         </ScrollReveal>
@@ -115,6 +111,8 @@ export default function LifeStylePage() {
                 ]}
                 is169={true}
                 images={[{
+                    id: '0', url: '/assets/lifestyle/connecting_community/cc_0.png', caption: ''
+                },{
                     id: '1', url: '/assets/lifestyle/connecting_community/cc_1.jpg', caption: ''
                 }, {
                     id: '2', url: '/assets/lifestyle/connecting_community/cc_2.jpg', caption: ''
@@ -126,8 +124,6 @@ export default function LifeStylePage() {
                     id: '5', url: '/assets/lifestyle/connecting_community/cc_5.png', caption: ''
                 }, {
                     id: '6', url: '/assets/lifestyle/connecting_community/cc_6.png', caption: ''
-                }, {
-                    id: '7', url: '/assets/lifestyle/connecting_community/cc_7.png', caption: ''
                 }]}
             />
         </ScrollReveal>
