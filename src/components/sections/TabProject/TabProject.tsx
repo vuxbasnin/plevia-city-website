@@ -17,7 +17,7 @@ const TabProject = () => {
             <b>Dự án Plevia City mở rộng</b> – diện tích 7ha
           </div>
           <div className="tab-desc">
-            <b>Dự án bao gồm:</b> 86 căn nhà phố liền kề,và shophouse cao cấp.
+            <b>Dự án bao gồm:</b> 86 căn nhà phố liền kề và shophouse cao cấp.
           </div>
         </div>
         <div className="tab-content tab-content-right">

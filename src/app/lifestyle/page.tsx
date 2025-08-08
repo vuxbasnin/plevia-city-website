@@ -6,10 +6,12 @@ import ScrollReveal from '@/components/shared/ScrollReveal';
 import LibImage from '@/components/sections/LibImage/LibImage';
 import ParaImageVertical from '@/components/sections/ParaImageVertical/ParaImageVertical';
 import ParaLeftDesRight from '@/components/sections/ParaLeftDesRight/ParaLeftDesRight';
+import LibImageFurnitureHome from '@/components/sections/LibImageFurnitureHome/LibImageFurnitureHome';
 import FormInfo from '@/components/sections/FormInfo/FormInfo';
 import ParaLeftLibImage from "@/components/sections/ParaLeftLibImage";
 import LibImageHome from "@/components/sections/LibImageHome/LibImageHome";
 import ParaImageVerticalLifestyle from "@/components/sections/ParaImageVerticalLifestyle";
+import React from "react";
 
 export default function LifeStylePage() {
     return (<PageLayout>
@@ -70,6 +72,13 @@ export default function LifeStylePage() {
         <ScrollReveal>
             <div id="house-models">
                 <LibImageHome/>
+            </div>
+        </ScrollReveal>
+        {/* Khoảng cách giữa 2 section */}
+        <div className="py-8 bg-transparent"></div>
+        <ScrollReveal>
+            <div id="furniture-models">
+                <LibImageFurnitureHome/>
             </div>
         </ScrollReveal>
         <ScrollReveal>

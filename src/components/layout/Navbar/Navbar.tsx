@@ -45,7 +45,7 @@ const navLinks: Array<{
       hasDropdown: true,
       dropdownItems: [
         { href: '/lifestyle#house-models', label: 'Các mẫu nhà' },
-        { href: '/lifestyle#interior-designs', label: 'Mẫu nội thất' }
+        { href: '/lifestyle#furniture-models', label: 'Mẫu nội thất' }
       ]
     },
     {

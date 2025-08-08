@@ -56,6 +56,15 @@ const navItemsConfiguration: NavItemConfig[] = [
       // { id: "gallery-upload", label: "Upload Ảnh Mới", icon: Plus, href: "/admin/gallery/upload", isLeaf: true },
     ],
   },
+  {
+    id: "group-furniture-management",
+    label: "Quản Lý Nội Thất",
+    icon: Sofa,
+    isLeaf: false,
+    children: [
+      { id: "furniture-list", label: "Danh Sách Mẫu Nội Thất", icon: Sofa, href: "/admin/furniture", isLeaf: true },
+    ],
+  },
   // {
   //   id: "group-lifestyle-images-management",
   //   label: "Quản Lý Ảnh Lifestyle",

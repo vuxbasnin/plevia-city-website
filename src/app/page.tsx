@@ -10,6 +10,7 @@ import ImageHeaderStatic from '@/components/sections/ImageHeaderStatic';
 import ParaManyImage from '@/components/sections/ParaManyImage/ParaManyImage';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import LibImageHome from '@/components/sections/LibImageHome/LibImageHome';
+import LibImageFurnitureHome from '@/components/sections/LibImageFurnitureHome/LibImageFurnitureHome';
 import SectionOneHomeExample from '@/components/sections/SectionOneHome/SectionOneHomeExample';
 import TabProject from "@/components/sections/TabProject/TabProject";
 import StructuredData from '@/components/shared/StructuredData';
@@ -55,6 +56,13 @@ export default function HomePage() {
                 </ScrollReveal>
                 <ScrollReveal>
                     <LibImageHome/>
+                </ScrollReveal>
+                
+                {/* Khoảng cách giữa 2 section */}
+                <div className="py-8 bg-transparent"></div>
+                
+                <ScrollReveal>
+                    <LibImageFurnitureHome/>
                 </ScrollReveal>
 
 

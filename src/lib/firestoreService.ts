@@ -34,6 +34,7 @@ import type {
   TourBookingStatus,
   MemberBenefitsPageSettingsData,
   NewsArticle,
+  FurnitureSectionData,
 } from "@/types/landingPageAdmin";
 import { getDefaultData } from "@/types/landingPageAdmin";
 import type { ContactFormData } from "@/components/shared/ContactFormDialog";
@@ -175,6 +176,50 @@ export async function updateFinalCtaSectionData(
   data: FinalCtaSectionData
 ): Promise<boolean> {
   return updateSectionData("finalCta", data);
+}
+
+// Furniture Section (Các mẫu Nội thất) - Simple CRUD like Gallery
+export async function addFurnitureImage({ url, caption, tags, uploadedBy }: { url: string, caption?: string, tags?: string[], uploadedBy?: string }) {
+  if (!db) throw new Error("Firestore not initialized");
+  const docRef = await addDoc(collection(db, "furniture_images"), {
+    url,
+    caption: caption || "",
+    tags: tags || [],
+    uploadedAt: serverTimestamp(),
+    uploadedBy: uploadedBy || "",
+  });
+  return docRef.id;
+}
+
+export async function getFurnitureImages() {
+  if (!db) throw new Error("Firestore not initialized");
+  const snapshot = await getDocs(collection(db, "furniture_images"));
+  return snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data(),
+    uploadedAt: doc.data().uploadedAt?.toMillis ? doc.data().uploadedAt.toMillis() : null,
+  }));
+}
+
+export async function deleteFurnitureImage(id: string) {
+  if (!db) throw new Error("Firestore not initialized");
+  await deleteDoc(doc(db, "furniture_images", id));
+}
+
+export async function updateFurnitureImageCaption(id: string, newCaption: string) {
+  if (!db) throw new Error("Firestore not initialized");
+  const imgRef = doc(db, "furniture_images", id);
+  await updateDoc(imgRef, { caption: newCaption });
+}
+
+// Legacy Furniture Section (Các mẫu Nội thất) - Keep for backward compatibility
+export async function getFurnitureSectionData(): Promise<FurnitureSectionData> {
+  return getSectionData<FurnitureSectionData>("furniture");
+}
+export async function updateFurnitureSectionData(
+  data: FurnitureSectionData
+): Promise<boolean> {
+  return updateSectionData("furniture", data);
 }
 
 // Trial Signups (from Contact Form)
