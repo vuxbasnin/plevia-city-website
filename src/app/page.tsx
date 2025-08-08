@@ -14,6 +14,8 @@ import SectionOneHomeExample from '@/components/sections/SectionOneHome/SectionO
 import TabProject from "@/components/sections/TabProject/TabProject";
 import StructuredData from '@/components/shared/StructuredData';
 import SocialMediaDebug from '@/components/shared/SocialMediaDebug';
+import TitleLifestyle from "@/components/sections/TitleLifestyle";
+import React from "react";
 
 export default function HomePage() {
     return (
@@ -28,19 +30,6 @@ export default function HomePage() {
                     <SectionOneHomeExample/>
                 </ScrollReveal>
                 <ScrollReveal>
-                    <ImageHeaderStatic
-                        imageUrl="https://res.cloudinary.com/dytm93eoj/image/upload/v1753847210/home-assets/fu4kdckrsurv5addankl.png"
-                        fullImage={true}/>
-                </ScrollReveal>
-                <ScrollReveal>
-                    <TabProject/>
-                </ScrollReveal>
-                <ScrollReveal>
-                    <LibImageHome/>
-                </ScrollReveal>
-
-
-                <ScrollReveal>
                     <ParaImageVertical
                         title="VỊ TRÍ ĐẮC ĐỊA – KẾT NỐI HOÀN HẢO"
                         description1={`Plevia City sở hữu vị trí đắc địa khi nằm trên trục đường chính nội đô phường Hội Phú cách trung tâm hành chính thành phố chưa đầy 2km. Trong bối cảnh quy hoạch đến năm 2030 chỉ khoảng 7% diện tích đô thị là đất bằng phẳng thuận lợi cho việc phát triển khu đô thị cao cấp, việc Plevia City phát triển trên vùng đất phẳng rộng lớn là một lợi thế cực kỳ hiếm có, lý tưởng để hình thành một đô thị hiện đại và đồng bộ.`}
@@ -53,13 +42,30 @@ export default function HomePage() {
                     </ParaImageVertical>
                 </ScrollReveal>
                 <ScrollReveal>
+                    <TitleLifestyle title="Mặt bằng dự án" />
+                </ScrollReveal>
+
+                <ScrollReveal>
+                    <ImageHeaderStatic
+                        imageUrl="/assets/home/mat_bang.png"
+                        fullImage={true}/>
+                </ScrollReveal>
+                <ScrollReveal>
+                    <TabProject/>
+                </ScrollReveal>
+                <ScrollReveal>
+                    <LibImageHome/>
+                </ScrollReveal>
+
+
+                <ScrollReveal>
                     <TabExample/>
                 </ScrollReveal>
 
                 <ScrollReveal>
                     <ParaManyImage
                         title="TIẾN ĐỘ XÂY DỰNG DỰ ÁN"
-                        paragraph="Dự án Plevia City đã hoàn thiện hạ tầng, chuẩn bị đi vào khởi công xây dựng."
+                        paragraph="Đang cập nhật"
                         // bullets={[
                         //   "Hạ tầng dự án đã hoàn thiện.",
                         //   "Chủ đầu tư đang trồng và chăm sóc cây xanh của dự án.",
@@ -68,7 +74,11 @@ export default function HomePage() {
                         //   "Tiện ích, nhà điều hành, công viên hàng hoàn thiện"
                         // ]}
                         // footer="Chủ đầu tư Khang Điền – Keppel Land dự kiến hoàn thiện tiện ích, nhà mẫu và sản phẩm vào Quý 3/2025."
-                        images={["https://khangdienhcm.com/wp-content/uploads/2025/06/TIEN-DO-DU-AN-GLADIA-KHANG-DIEN-KEPPEL-LAND-THANG-06-1024x683.jpeg", "https://khangdienhcm.com/wp-content/uploads/2025/06/TIEN-DO-GLADIA-THANG-06-1024x683.jpeg", "https://khangdienhcm.com/wp-content/uploads/2025/06/TIEN-DO-DU-AN-GLADIA-KHANG-DIEN-THANG-06-1024x682.jpeg",]}
+                        images={[
+                            "/assets/home/tien_do_1.png",
+                            "/assets/home/tien_do_2.png",
+                            "/assets/home/tien_do_3.png",
+                        ]}
                     />
                 </ScrollReveal>
                 <ScrollReveal>

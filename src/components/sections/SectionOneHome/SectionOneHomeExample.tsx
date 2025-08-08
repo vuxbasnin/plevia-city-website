@@ -4,10 +4,10 @@ import SectionOneHome from './SectionOneHome';
 // Example data structure for SectionOneHome props
 const sectionOneHomeData = {
     mainTitle: "PLEVIA CITY",
-    subtitle: "NƠI THỂ HIỆN ĐẲNG CẤP",
+    subtitle: "",
     contentSections: [
         {
-            title: "Sống tinh hoa - Đầu tư sinh lời - Dẫn đầu Pleiku\n",
+            title: "Nơi phố thị mang dáng hình tương lai\n",
             description: "",
             sections: [
                 {
@@ -26,7 +26,7 @@ const sectionOneHomeData = {
                     subdescription: `Được quy hoạch bài bản theo định hướng "hiện đại – thông minh – bền vững", Plevia City không chỉ mở ra tiềm năng lớn cho các nhà đầu tư mà còn kiến tạo nên một phong cách sống mới tại phố núi – nơi thiên nhiên, công nghệ và con người cùng vận hành hài hòa.`
                 }
             ],
-            imageUrl: "https://res.cloudinary.com/dytm93eoj/image/upload/v1753845501/home-assets/rlu2crw59gyoecnvf1rt.jpg"
+            imageUrl: "/assets/home/song_tinh_hoa.png"
         },
         {
             title: "THÔNG TIN TỔNG QUAN",
