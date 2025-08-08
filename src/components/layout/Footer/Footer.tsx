@@ -50,7 +50,7 @@ export default function Footer() {
           <div className="footer-column">
             <h5 className="footer-title-bold">Tham quan Dự án</h5>
             <div className="footer-text">
-              <p>1/ Tại dự án: Khu đô thị Plevia City</p>
+              <p>1/ Tại dự án: 63–65 Lý Nam Đế, phường Hội Phú, tỉnh Gia Lai</p>
               <p>2/ Tại Hà Nội: Tầng 04, tòa nhà Thương mại và dịch vụ B-CC, Dự án khu nhà ở Ngân Hà Vạn Phúc, Phố Tố Hữu, Phường Hà Đông, Thành phố Hà Nội, Việt Nam</p>
             </div>
           </div>

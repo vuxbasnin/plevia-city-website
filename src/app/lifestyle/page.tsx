@@ -68,15 +68,19 @@ export default function LifeStylePage() {
             />
         </ScrollReveal>
         <ScrollReveal>
-            <LibImageHome/>
+            <div id="house-models">
+                <LibImageHome/>
+            </div>
         </ScrollReveal>
         <ScrollReveal>
-            <ParaImageVerticalLifestyle
-                title="SỐNG HIỆN ĐẠI, HƯỞNG TRỌN MỌI GIÁ TRỊ"
-                description={`Tại Plevia City, tiện ích không chỉ là những công trình phụ trợ – mà chính là nền tảng tạo nên một phong cách sống hiện đại, trọn vẹn và khác biệt. Từng hạng mục được đầu tư đồng bộ và hài hòa, nhằm đáp ứng nhu cầu của cư dân năng động trong thời đại số, nơi ở – làm việc – nghỉ ngơi đều diễn ra trong một hệ sinh thái khép kín, thuận tiện.`}
-                imageUrl="/assets/lifestyle/modern_living.jpg"
-            >
-            </ParaImageVerticalLifestyle>
+            <div id="interior-designs">
+                <ParaImageVerticalLifestyle
+                    title="SỐNG HIỆN ĐẠI, HƯỞNG TRỌN MỌI GIÁ TRỊ"
+                    description={`Tại Plevia City, tiện ích không chỉ là những công trình phụ trợ – mà chính là nền tảng tạo nên một phong cách sống hiện đại, trọn vẹn và khác biệt. Từng hạng mục được đầu tư đồng bộ và hài hòa, nhằm đáp ứng nhu cầu của cư dân năng động trong thời đại số, nơi ở – làm việc – nghỉ ngơi đều diễn ra trong một hệ sinh thái khép kín, thuận tiện.`}
+                    imageUrl="/assets/lifestyle/modern_living.jpg"
+                >
+                </ParaImageVerticalLifestyle>
+            </div>
         </ScrollReveal>
         <ScrollReveal>
             <ParaLeftLibImage

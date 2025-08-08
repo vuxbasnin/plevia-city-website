@@ -35,8 +35,6 @@ export default function NavigationLink({
     if (isExternal && openInNewTab) {
       return;
     }
-    
-    // Nếu có onClick handler, không cần preventDefault vì Link sẽ xử lý
   };
 
   if (isExternal) {
