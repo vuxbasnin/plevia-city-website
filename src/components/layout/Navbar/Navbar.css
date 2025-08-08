@@ -72,7 +72,7 @@
 .navbar-desktop-menu {
     display: flex;
     align-items: center;
-    gap: 56px;
+    gap: 12px;
     position: absolute;
     right: 0;
     left: unset;
@@ -83,7 +83,7 @@
 }
 
 .navbar-desktop-menu > *:not(:last-child) {
-  margin-right: 56px;
+  margin-right: 12px;
 }
 
 @media (max-width: 1023px) {
@@ -334,12 +334,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    line-height: 1.1;
+    min-height: 2.8rem;
+    justify-content: center;
+    padding: 0.25rem 0;
 }
 
 .navbar-link-main {
-    line-height: 1.25;
-    font-size: 1rem;
+    line-height: 1.1;
+    font-size: 0.95rem;
     font-weight: 500;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 85px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
 }
 
 .navbar-link-sub {
