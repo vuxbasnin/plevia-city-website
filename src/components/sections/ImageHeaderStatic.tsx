@@ -33,7 +33,7 @@ export default function ImageHeaderStatic({ imageUrl, fullImage = true }: ImageH
            style={{ 
              position: 'relative', 
              width: fullImage ? '100vw' : '78vw',
-             aspectRatio: '16/9'
+             aspectRatio: '13/9'
            }}
          >
            <Image

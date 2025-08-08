@@ -171,7 +171,7 @@ const LibImage: React.FC<LibImageProps> = ({
       {!isHideTitle && (
         <div className="lib-image-header">
           <Title variant="large" align="center" isColorWhite={true}>
-            CÁC MẪU NHÀ
+            Mẫu nhà điển hình 5*20m
           </Title>
         </div>
       )}
