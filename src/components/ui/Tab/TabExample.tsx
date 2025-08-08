@@ -10,7 +10,7 @@ const TabExample: React.FC = () => {
       description: 'Convenient connectivity location',
       image: '/assets/home/key_1.png',
       content: {
-        heading: 'ỨNG DỤNG "TRÍ TUỆ NHÂN TẠO"',
+        heading: '',
         paragraphs: [
           'Plevia City tiên phong trở thành khu đô thị đầu tiên tại Gia Lai ứng dụng trí tuệ nhân tạo (AI) vào vận hành – từ camera AI an ninh thông minh 24/7, hệ thống wifi mesh phủ khắp, đến app cư dân giúp việc vận hành mọi thứ trở nên vô cùng tiện lợi.'
         ],
@@ -25,7 +25,7 @@ const TabExample: React.FC = () => {
       description: 'Unique terrain & nature',
       image: '/assets/home/key_2.png',
       content: {
-        heading: 'KIẾN TRÚC HIỆN ĐẠI, ĐẲNG CẤP',
+        heading: '',
         paragraphs: [
           'Thiết kế đồng bộ toàn khu theo phong cách hiện đại, quy hoạch tối ưu công năng. Mỗi căn đều có sân trước – sân sau, ban công và sân thượng rộng, đón sáng – đón gió tự nhiên, mang lại không gian sống thoáng đãng, tiện nghi và thẩm mỹ.'
         ],
@@ -39,7 +39,7 @@ const TabExample: React.FC = () => {
       description: 'Classy planning & architecture',
       image: '/assets/home/key_3.png', // Thay bằng đường dẫn ảnh thực tế
       content: {
-        heading: 'TIỆN ÍCH & DỊCH VỤ',
+        heading: '',
         paragraphs: [
           'Với cốt lõi là công nghệ, Plevia City kiến tạo hệ sinh thái sống hiện đại, mang đến trải nghiệm sống tiện nghi và an toàn cho cư dân. Các tiện ích thông minh như app cư dân, camera AI an ninh 24/7, wifi mesh phủ toàn khu, cảm biến khói tự động và bãi đỗ xe thông minh đều được tích hợp, giúp quản lý vận hành tối ưu và nâng cao chất lượng sống. Bên cạnh đó, cư dân còn được tận hưởng các tiện ích công cộng như trường mầm non quốc tế, công viên ánh sáng, hồ bơi, khu gym – yoga – spa, tạo nên một không gian sống đủ đầy, đáp ứng cả nhu cầu thể chất lẫn tinh thần.'
         ],
@@ -53,7 +53,7 @@ const TabExample: React.FC = () => {
       description: 'International amenities & services',
       image: '/assets/home/key_4.png', // Thay bằng đường dẫn ảnh thực tế
       content: {
-        heading: 'PHÁT TRIỂN BỀN VỮNG',
+        heading: '',
         paragraphs: [
           '<strong>Chuẩn mực từ thiết kế đến xây dựng</strong>',
           'Plevia City được thiết kế bởi đơn vị uy tín Kiến Trúc Việt, tuân thủ quy hoạch 1/500 và pháp lý rõ ràng. Dự án xây dựng theo tiêu chuẩn chất lượng cao, bàn giao hoàn thiện mặt ngoài, sẵn sàng đáp ứng nhu cầu an cư và khai thác kinh doanh.',
@@ -71,7 +71,7 @@ const TabExample: React.FC = () => {
       description: 'Elite civilized community',
       image: '/assets/home/key_5.png', // Thay bằng đường dẫn ảnh thực tế
       content: {
-        heading: 'CƠ HỘI ĐẦU TƯ HẤP DẪN',
+        heading: '',
         paragraphs: [
           '<strong>Tiềm năng tăng giá mạnh mẽ</strong>',
           'Giá bất động sản tại Gia Lai đang tăng ổn định 10–15% mỗi năm. Plevia City được kỳ vọng tăng giá 30–50% trong 2–3 năm tới nhờ quy hoạch đô thị mở rộng và hệ thống hạ tầng phát triển',
