@@ -2,21 +2,24 @@
 
 import PageLayout from '@/components/layout/PageLayout';
 import ImageHeader from '@/components/sections/ImageHeader';
-import TabExample from '@/components/ui/Tab/TabExample';
-import NewsSectionExample from '@/components/sections/News/NewsSectionExample';
-import FormInfo from '@/components/sections/FormInfo/FormInfo';
-import ParaImageVertical from '@/components/sections/ParaImageVertical/ParaImageVertical';
-import ImageHeaderStatic from '@/components/sections/ImageHeaderStatic';
-import ParaManyImage from '@/components/sections/ParaManyImage/ParaManyImage';
-import ScrollReveal from '@/components/shared/ScrollReveal';
-import LibImageHome from '@/components/sections/LibImageHome/LibImageHome';
-import LibImageFurnitureHome from '@/components/sections/LibImageFurnitureHome/LibImageFurnitureHome';
-import SectionOneHomeExample from '@/components/sections/SectionOneHome/SectionOneHomeExample';
-import TabProject from "@/components/sections/TabProject/TabProject";
-import StructuredData from '@/components/shared/StructuredData';
-import SocialMediaDebug from '@/components/shared/SocialMediaDebug';
-import TitleLifestyle from "@/components/sections/TitleLifestyle";
+import dynamic from 'next/dynamic';
 import React from "react";
+
+// Lazy load components để giảm memory usage
+const TabExample = dynamic(() => import('@/components/ui/Tab/TabExample'), { ssr: false });
+const NewsSectionExample = dynamic(() => import('@/components/sections/News/NewsSectionExample'), { ssr: false });
+const FormInfo = dynamic(() => import('@/components/sections/FormInfo/FormInfo'), { ssr: false });
+const ParaImageVertical = dynamic(() => import('@/components/sections/ParaImageVertical/ParaImageVertical'), { ssr: false });
+const ImageHeaderStatic = dynamic(() => import('@/components/sections/ImageHeaderStatic'), { ssr: false });
+const ParaManyImage = dynamic(() => import('@/components/sections/ParaManyImage/ParaManyImage'), { ssr: false });
+const ScrollReveal = dynamic(() => import('@/components/shared/ScrollReveal'), { ssr: false });
+const LibImageHome = dynamic(() => import('@/components/sections/LibImageHome/LibImageHome'), { ssr: false });
+const LibImageFurnitureHome = dynamic(() => import('@/components/sections/LibImageFurnitureHome/LibImageFurnitureHome'), { ssr: false });
+const SectionOneHomeExample = dynamic(() => import('@/components/sections/SectionOneHome/SectionOneHomeExample'), { ssr: false });
+const TabProject = dynamic(() => import("@/components/sections/TabProject/TabProject"), { ssr: false });
+const StructuredData = dynamic(() => import('@/components/shared/StructuredData'), { ssr: false });
+const SocialMediaDebug = dynamic(() => import('@/components/shared/SocialMediaDebug'), { ssr: false });
+const TitleLifestyle = dynamic(() => import("@/components/sections/TitleLifestyle"), { ssr: false });
 
 export default function HomePage() {
     return (
