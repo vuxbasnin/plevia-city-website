@@ -22,39 +22,43 @@ const navLinks: Array<{
   hasDropdown: boolean;
   isExternal?: boolean;
   openInNewTab?: boolean;
+  dropdownItems?: Array<{ href: string; label: string }>;
 }> = [
-  {
-    href: 'https://pleviacity.com.vn/iot',
-    label: 'Công nghệ vận hành AI',
-    hasDropdown: false,
-    isExternal: true,
-    openInNewTab: true
-  },
-  {
-    href: '/storyline',
-    label: 'Câu chuyện kiến tạo',
-    hasDropdown: false
-  },
-  { 
-    href: '/location', 
-    label: 'Kết nối & Tiện ích',
-    hasDropdown: false 
-  },
-  { 
-    href: '/lifestyle',
-    label: 'Phong cách sống',
-    hasDropdown: false 
-  },
-  { 
-    href: '/news', 
-    label: 'Tin tức',
-    hasDropdown: false 
-  }
-];
+    {
+      href: '/iot',
+      label: 'Công nghệ vận hành AI',
+      hasDropdown: false
+    },
+    {
+      href: '/storyline',
+      label: 'Câu chuyện kiến tạo',
+      hasDropdown: false
+    },
+    {
+      href: '/location',
+      label: 'Kết nối & Tiện ích',
+      hasDropdown: false
+    },
+    {
+      href: '/lifestyle',
+      label: 'Phong cách sống',
+      hasDropdown: true,
+      dropdownItems: [
+        { href: '/lifestyle#house-models', label: 'Các mẫu nhà' },
+        { href: '/lifestyle#furniture-models', label: 'Mẫu nội thất' }
+      ]
+    },
+    {
+      href: '/news',
+      label: 'Tin tức',
+      hasDropdown: false
+    }
+  ];
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
   const { siteSettings, isLoading: isLoadingSettings } = useSiteSettings();
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -63,27 +67,27 @@ export default function Navbar() {
 
   useEffect(() => {
     let ticking = false;
-    
+
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
           const newScrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
-          
+
           // Update scroll direction with debounce
           if (Math.abs(currentScrollY - lastScrollY) > 5) {
             setScrollDirection(newScrollDirection);
           }
-          
+
           // Smooth scroll state update
           const scrollThreshold = 20;
           const isCurrentlyScrolled = currentScrollY > scrollThreshold;
-          
+
           // Only update if state actually changed to prevent unnecessary re-renders
           if (isCurrentlyScrolled !== isScrolled) {
             setIsScrolled(isCurrentlyScrolled);
           }
-          
+
           setLastScrollY(currentScrollY);
           ticking = false;
         });
@@ -104,6 +108,20 @@ export default function Navbar() {
   const handleLinkClick = () => {
     if (isMobileMenuOpen) {
       toggleMobileMenu();
+    }
+    // Reset dropdown state when closing mobile menu
+    setMobileDropdownOpen(null);
+  };
+
+  const handleMobileDropdownToggle = (linkHref: string) => {
+    if (mobileDropdownOpen === linkHref) {
+      // Nếu dropdown đang mở, navigate đến page và đóng menu
+      setMobileDropdownOpen(null);
+      handleLinkClick();
+      router.push(linkHref);
+    } else {
+      // Nếu dropdown đang đóng, mở dropdown
+      setMobileDropdownOpen(linkHref);
     }
   };
 
@@ -175,6 +193,8 @@ export default function Navbar() {
                 className={idx === 0 ? 'navbar-nav-first' : ''}
                 isExternal={link.isExternal}
                 openInNewTab={link.openInNewTab}
+                hasDropdown={link.hasDropdown}
+                dropdownItems={link.dropdownItems}
               />
             ))}
           </div>
@@ -205,48 +225,117 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="navbar-mobile-menu"
           >
-                         <div className="navbar-mobile-container">
-               {navLinks.map((link, index) => {
-                 const isActive = pathname === link.href;
-                 return (
-                   <motion.div
-                     key={link.href}
-                     initial={{ opacity: 0, x: -20 }}
-                     animate={{ opacity: 1, x: 0 }}
-                     transition={{ delay: index * 0.1, duration: 0.3 }}
-                   >
-                     {link.isExternal ? (
-                       <a 
-                         href={link.href}
-                         target={link.openInNewTab ? "_blank" : "_self"}
-                         rel={link.openInNewTab ? "noopener noreferrer" : ""}
-                         className={cn(
-                           "navbar-mobile-link",
-                           isActive && "navbar-mobile-link-active"
-                         )}
-                         onClick={handleLinkClick}
-                       >
-                         {link.label}
-                       </a>
-                     ) : (
-                       <Link href={link.href} passHref>
-                         <span
-                           className={cn(
-                             "navbar-mobile-link",
-                             isActive && "navbar-mobile-link-active"
-                           )}
-                           onClick={handleLinkClick}
-                         >
-                           {link.label}
-                         </span>
-                       </Link>
-                     )}
-                     
+            <div className="navbar-mobile-container">
+              {navLinks.map((link, index) => {
+                const isActive = pathname === link.href;
+                const isDropdownOpen = mobileDropdownOpen === link.href;
+                return (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.3 }}
+                  >
+                    {link.isExternal ? (
+                      <a
+                        href={link.href}
+                        target={link.openInNewTab ? "_blank" : "_self"}
+                        rel={link.openInNewTab ? "noopener noreferrer" : ""}
+                        className={cn(
+                          "navbar-mobile-link",
+                          isActive && "navbar-mobile-link-active"
+                        )}
+                        onClick={handleLinkClick}
+                      >
+                        {link.label}
+                      </a>
+                    ) : link.hasDropdown ? (
+                      // Dropdown link - only toggle dropdown, don't navigate
+                      <span
+                        className={cn(
+                          "navbar-mobile-link",
+                          isActive && "navbar-mobile-link-active"
+                        )}
+                        onClick={() => handleMobileDropdownToggle(link.href)}
+                      >
+                        {link.label}
+                        <ChevronDown 
+                          className={cn(
+                            "navbar-mobile-dropdown-icon",
+                            isDropdownOpen && "navbar-mobile-dropdown-icon-rotated"
+                          )} 
+                        />
+                      </span>
+                    ) : (
+                      // Regular link - navigate and close menu
+                      <Link href={link.href} passHref>
+                        <span
+                          className={cn(
+                            "navbar-mobile-link",
+                            isActive && "navbar-mobile-link-active"
+                          )}
+                          onClick={handleLinkClick}
+                        >
+                          {link.label}
+                        </span>
+                      </Link>
+                    )}
 
-                   </motion.div>
-                 );
-               })}
-             </div>
+                    {/* Mobile dropdown items - only show when dropdown is open */}
+                    {link.hasDropdown && link.dropdownItems && isDropdownOpen && (
+                      <AnimatePresence>
+                        <motion.div 
+                          className="navbar-mobile-dropdown"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        >
+                          {link.dropdownItems.map((dropdownItem, dropdownIndex) => {
+                            const isDropdownActive = pathname === dropdownItem.href;
+                            return (
+                              <motion.div
+                                key={dropdownItem.href}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: dropdownIndex * 0.05, duration: 0.3 }}
+                              >
+                                <span
+                                  className={cn(
+                                    "navbar-mobile-dropdown-item",
+                                    isDropdownActive && "navbar-mobile-dropdown-item-active"
+                                  )}
+                                  onClick={() => {
+                                    handleLinkClick();
+                                    // Handle scroll for mobile
+                                    if (dropdownItem.href.includes('#')) {
+                                      const [path, sectionId] = dropdownItem.href.split('#');
+                                      if (pathname === '/lifestyle' && sectionId) {
+                                        const element = document.getElementById(sectionId);
+                                        if (element) {
+                                          element.scrollIntoView({
+                                            behavior: 'smooth',
+                                            block: 'start'
+                                          });
+                                        }
+                                      } else if (pathname !== '/lifestyle' && path === '/lifestyle') {
+                                        router.push(dropdownItem.href);
+                                      }
+                                    }
+                                  }}
+                                >
+                                  {dropdownItem.label}
+                                </span>
+                              </motion.div>
+                            );
+                          })}
+                        </motion.div>
+                      </AnimatePresence>
+                    )}
+                  </motion.div>
+                );
+              })}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -74,10 +74,10 @@ const FormInfo: React.FC = () => {
       {/* Left Section - Information */}
       <div className="form-info-left">
         <div>
-          <h2 className="form-info-heading">KẾT NỐI VỚI CHÚNG TÔI</h2>
+          <h2 className="form-info-heading">NHẬN TÀI LIỆU THÔNG TIN DỰ ÁN</h2>
           <p className="form-info-subtext">
-            Chào đón bạn đến với Plevia City<br />
-            Vui lòng để lại thông tin tại đây
+            Xin vui lòng điền đầy đủ thông tin để nhận tài liệu.<br/>
+            Tài liệu thông tin dự án sẽ được gửi về email của bạn trong thời gian sớm nhất!
           </p>
         </div>
         
@@ -89,7 +89,7 @@ const FormInfo: React.FC = () => {
         <form onSubmit={handleSubmit} className="form-fields">
           <div className="form-row">
             <div className="form-field">
-              <label className="form-label">TÊN CỦA BẠN *</label>
+              <label className="form-label">TÊN *</label>
               <input
                 type="text"
                 name="name"
@@ -100,28 +100,42 @@ const FormInfo: React.FC = () => {
               />
             </div>
             <div className="form-field">
-              <label className="form-label">EMAIL *</label>
+              <label className="form-label"> Số điện thoại *</label>
               <input
-                type="email"
-                name="email"
-                value={formData.email}
+                type="text"
+                name="content"
+                value={formData.content}
                 onChange={handleInputChange}
                 className="form-input"
                 required
               />
             </div>
           </div>
-          
-          <div className="form-field full-width">
-            <label className="form-label">NỘI DUNG *</label>
-            <textarea
-              name="content"
-              value={formData.content}
-              onChange={handleInputChange}
-              className="form-textarea"
-              required
-            />
+
+          <div className="form-row">
+            <div className="form-field">
+              <label className="form-label">Email *</label>
+              <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="form-input"
+                  required
+              />
+            </div>
           </div>
+          
+          {/*<div className="form-field full-width">*/}
+          {/*  <label className="form-label">Nội dung *</label>*/}
+          {/*  <textarea*/}
+          {/*    name="content"*/}
+          {/*    value={formData.content}*/}
+          {/*    onChange={handleInputChange}*/}
+          {/*    className="form-textarea"*/}
+          {/*    required*/}
+          {/*  />*/}
+          {/*</div>*/}
           
           <button type="submit" className="form-submit" disabled={isSubmitting}>
             {isSubmitting ? (
@@ -131,7 +145,7 @@ const FormInfo: React.FC = () => {
               </>
             ) : (
               <>
-                GỬI <span className="arrow-icon">→</span>
+                NHẬN TÀI LIỆU <span className="arrow-icon">→</span>
               </>
             )}
           </button>

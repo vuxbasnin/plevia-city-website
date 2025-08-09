@@ -1,0 +1,282 @@
+.libimage-furniture-home-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem 0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 0;
+    
+    background-color: hsl(var(--primary));
+    margin: 0;
+}
+
+.libimage-furniture-home-grid {
+    width: 80vw;
+    margin: 0 auto;
+    padding: 0 0;
+    /*background-image: url('/background/bg_lib_image_home.png');*/
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 15% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* LibImage component với width 83vw và căn giữa */
+.libimage-furniture-home-grid .lib-image {
+    width: 80vw;
+    max-width: 80vw;
+    margin: 0 auto;
+}
+
+/* Ảnh bổ sung chiếm từ cột 9 đến cột 12 */
+.libimage-furniture-home-side-image {
+    grid-column: 9 / 13; /* Từ cột 9 đến cột 12 (4 cột) */
+    width: 100%;
+    height: 400px; /* Chiều cao bằng LibImage */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; /* Bỏ nền trắng */
+}
+
+.libimage-furniture-home-side-image .side-image {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: transparent; /* Bỏ nền trắng */
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .libimage-furniture-home-grid.libimage-furniture-home-grid {
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    .libimage-furniture-home-grid .lib-image {
+        width: 83vw !important;
+        max-width: 83vw !important;
+        margin: 0 auto !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .libimage-furniture-home-grid.libimage-furniture-home-grid {
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 1rem !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    .libimage-furniture-home-grid .lib-image {
+        width: 83vw !important;
+        max-width: 83vw !important;
+        margin: 0 auto !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .libimage-furniture-home-container.libimage-furniture-home-container {
+        padding: 0 !important;
+        background-attachment: scroll !important; /* Tối ưu cho mobile */
+    }
+    
+    .libimage-furniture-home-grid.libimage-furniture-home-grid {
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 16px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    .libimage-furniture-home-grid .lib-image {
+        width: 83vw !important;
+        max-width: 83vw !important;
+        margin: 0 auto !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .libimage-furniture-home-container.libimage-furniture-home-container {
+        padding: 0 !important;
+    }
+    
+    .libimage-furniture-home-grid.libimage-furniture-home-grid {
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 12px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    .libimage-furniture-home-grid .lib-image {
+        width: 83vw !important;
+        max-width: 83vw !important;
+        margin: 0 auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .libimage-furniture-home-container.libimage-furniture-home-container {
+        padding: 0 !important;
+    }
+    
+    .libimage-furniture-home-grid.libimage-furniture-home-grid {
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 8px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    .libimage-furniture-home-grid .lib-image {
+        width: 83vw !important;
+        max-width: 83vw !important;
+        margin: 0 auto !important;
+    }
+}
+
+/* Đảm bảo LibImage component hiển thị đúng trong grid */
+.libimage-furniture-home-grid .lib-image {
+    width: 100%;
+    height: 100%;
+}
+
+.libimage-furniture-home-grid .libimage-slider-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+.libimage-furniture-home-grid .libimage-slider-image-wrapper {
+    width: 100%;
+    max-width: 100%;
+}
+
+.libimage-furniture-home-grid .libimage-slider-image-container {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.libimage-furniture-home-grid .libimage-slider-image {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16/9;
+}
+
+/* Mobile specific overrides cho LibImage */
+@media (max-width: 768px) {
+    .libimage-furniture-home-container.libimage-furniture-home-container {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .libimage-furniture-home-grid.libimage-furniture-home-grid {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        gap: 0.5rem !important;
+        padding: 0 16px !important;
+        display: grid !important;
+        grid-template-columns: repeat(12, 1fr) !important;
+    }
+    
+    .libimage-furniture-home-grid .lib-image {
+        grid-column: 1 / 13 !important; /* Toàn bộ 12 cột */
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+    
+    .libimage-furniture-home-grid .libimage-slider-root {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden;
+    }
+    
+    .libimage-furniture-home-grid .libimage-slider-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    .libimage-furniture-home-grid .libimage-slider-image-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16/9 !important;
+    }
+    
+    .libimage-furniture-home-grid .libimage-slider-image-inner {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .libimage-furniture-home-grid .libimage-slider-image-container {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .libimage-furniture-home-grid .libimage-slider-image {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+        border-radius: 8px;
+        aspect-ratio: 16/9 !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .libimage-furniture-home-container.libimage-furniture-home-container {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .libimage-furniture-home-grid.libimage-furniture-home-grid {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        gap: 0.5rem !important;
+        padding: 0 12px !important;
+    }
+    
+    .libimage-furniture-home-grid .libimage-slider-image {
+        border-radius: 6px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .libimage-furniture-home-container.libimage-furniture-home-container {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .libimage-furniture-home-grid.libimage-furniture-home-grid {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        gap: 0.25rem !important;
+        padding: 0 8px !important;
+    }
+    
+    .libimage-furniture-home-grid .libimage-slider-image {
+        border-radius: 4px !important;
+    }
+}

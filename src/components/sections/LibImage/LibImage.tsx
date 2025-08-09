@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Title from '@/components/ui/Title/Title';
 import './LibImage.css';
-import { getGalleryImages } from '@/lib/firestoreService';
+import { getGalleryImages, getFurnitureImages } from '@/lib/firestoreService';
 import { color } from 'framer-motion';
 
 interface ImageItem {
@@ -19,13 +19,15 @@ interface LibImageProps {
   is169?: boolean; // Thêm prop mới
   images?: ImageItem[]; // Thêm prop images
   autoScrollInterval?: number; // Thêm prop cho auto scroll interval
+  dataSource?: 'gallery' | 'furniture'; // Thêm prop để chọn nguồn dữ liệu
 }
 
 const LibImage: React.FC<LibImageProps> = ({ 
   isHideTitle = false, 
   is169 = false, 
   images: propImages,
-  autoScrollInterval = 5000 // Mặc định 5 giây
+  autoScrollInterval = 5000, // Mặc định 5 giây
+  dataSource = 'gallery' // Mặc định là gallery
 }) => {
   const [images, setImages] = useState<ImageItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -50,8 +52,8 @@ const LibImage: React.FC<LibImageProps> = ({
         }
 
         // Nếu không có, fetch từ remote
-        const imgs = await getGalleryImages();
-        console.log('Fetched images:', imgs);
+        const imgs = dataSource === 'furniture' ? await getFurnitureImages() : await getGalleryImages();
+        console.log(`Fetched ${dataSource} images:`, imgs);
         setImages(
           imgs
             .filter((img: any) => !!img.url)
@@ -67,7 +69,7 @@ const LibImage: React.FC<LibImageProps> = ({
       setLoading(false);
     }
     fetchImages();
-  }, [propImages]); // Thêm propImages vào dependency
+  }, [propImages, dataSource]); // Thêm propImages và dataSource vào dependency
 
   // Auto scroll effect
   useEffect(() => {
@@ -171,7 +173,7 @@ const LibImage: React.FC<LibImageProps> = ({
       {!isHideTitle && (
         <div className="lib-image-header">
           <Title variant="large" align="center" isColorWhite={true}>
-            CÁC MẪU NHÀ
+            {dataSource === 'furniture' ? 'Các Mẫu Nội Thất' : 'Mẫu nhà điển hình 5*20m'}
           </Title>
         </div>
       )}
@@ -211,7 +213,7 @@ const LibImage: React.FC<LibImageProps> = ({
                 >
                   <Image
                     src={image.url}
-                    alt={image.caption || 'Ảnh thư viện'}
+                    alt={image.caption || (dataSource === 'furniture' ? 'Ảnh nội thất' : 'Ảnh thư viện')}
                     width={1920}
                     height={1080}
                     className={`libimage-slider-image ${is169 ? 'libimage-169-img' : ''}`}
@@ -240,7 +242,9 @@ const LibImage: React.FC<LibImageProps> = ({
             </div>
           )}
           {loading && (
-            <div className="libimage-slider-loading">Đang tải ảnh...</div>
+            <div className="libimage-slider-loading">
+              {dataSource === 'furniture' ? 'Đang tải ảnh nội thất...' : 'Đang tải ảnh...'}
+            </div>
           )}
         </div>
         <button 

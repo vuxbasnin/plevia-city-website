@@ -238,7 +238,7 @@ const NewsSection: React.FC<NewsSectionProps> = ({
         {/* Call to Action Button */}
         <div className="news-cta">
           <button className="explore-button" onClick={handleExploreClick}>
-            <span className="button-text">KHÁM PHÁ NGAY</span>
+            <span className="button-text">Xem thêm</span>
             <span className="button-arrow">→</span>
             <div className="wave-effect"></div>
           </button>

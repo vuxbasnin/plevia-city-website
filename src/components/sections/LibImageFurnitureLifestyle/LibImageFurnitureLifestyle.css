@@ -1,0 +1,254 @@
+.lib-image-furniture-lifestyle {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+/* CSS cho 16:9 mode */
+.libimage-furniture-lifestyle-169 .libimage-furniture-lifestyle-slider-image-wrapper {
+  height: auto !important;
+  max-height: none !important;
+  aspect-ratio: 16/9 !important;
+}
+
+.libimage-furniture-lifestyle-169-img {
+  aspect-ratio: 16/9 !important;
+  height: auto !important;
+  max-height: none !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+.lib-image-furniture-lifestyle-header {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  color: hsl(var(--primary));
+  padding: 0 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lib-image-furniture-lifestyle-header .title {
+  text-transform: uppercase;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.lib-image-furniture-lifestyle-header .title h2 {
+  font-size: 2rem;
+  line-height: 1.2;
+  text-align: center;
+  color: hsl(var(--primary)) !important;
+}
+
+/* Override any other CSS that might be affecting the title color */
+.lib-image-furniture-lifestyle .lib-image-furniture-lifestyle-header .title h2 {
+  color: hsl(var(--primary)) !important;
+}
+
+.lib-image-furniture-lifestyle .lib-image-furniture-lifestyle-header .title.title-color-white h2 {
+  color: hsl(var(--primary)) !important;
+}
+
+.libimage-furniture-lifestyle-slider-root { 
+  width: 100%; 
+  overflow: hidden; 
+}
+
+.libimage-furniture-lifestyle-slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.libimage-furniture-lifestyle-slider-btn { 
+  background: none; 
+  border: none; 
+  color: #fff; 
+  opacity: 0.8; 
+  cursor: pointer; 
+  z-index: 20; 
+  transition: opacity 0.2s; 
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); 
+}
+
+.libimage-furniture-lifestyle-slider-btn-left { left: 24px; }
+.libimage-furniture-lifestyle-slider-btn-right { right: 24px; z-index: 20 !important; }
+.libimage-furniture-lifestyle-slider-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.libimage-furniture-lifestyle-slider-image-wrapper { 
+  flex: 1; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  overflow: hidden; 
+  position: relative; 
+  height: auto; 
+  max-height: none; 
+  aspect-ratio: 16/9; 
+}
+
+.libimage-furniture-lifestyle-slider-image-inner { 
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.libimage-furniture-lifestyle-slider-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.libimage-furniture-lifestyle-slider-image { 
+  width: 100%; 
+  max-width: 100%; 
+  height: 100%; 
+  max-height: none; 
+  object-fit: cover; 
+  border-radius: 0; 
+  aspect-ratio: 16/9; 
+}
+
+.libimage-furniture-lifestyle-slider-caption { 
+  position: absolute; 
+  bottom: 24px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  background: rgba(0,0,0,0.5); 
+  color: #fff; 
+  padding: 8px 24px; 
+  border-radius: 8px; 
+  font-size: 1.1rem; 
+}
+
+.libimage-furniture-lifestyle-slider-indicator { 
+  display: flex; 
+  justify-content: center; 
+  gap: 8px; 
+  margin-top: 16px; 
+}
+
+.libimage-furniture-lifestyle-slider-indicator span { 
+  display: block; 
+  width: 12px; 
+  height: 12px; 
+  border-radius: 50%; 
+  background: #ccc; 
+  opacity: 0.5; 
+}
+
+.libimage-furniture-lifestyle-slider-indicator .active { 
+  background: #219653; 
+  opacity: 1; 
+}
+
+.libimage-furniture-lifestyle-slider-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #666;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .libimage-furniture-lifestyle-slider-root { 
+    padding: 0; 
+  }
+  
+  .libimage-furniture-lifestyle-slider-container {
+    padding: 0;
+  }
+  
+  .libimage-furniture-lifestyle-slider-image-wrapper { 
+    height: auto; 
+    max-height: none; 
+    aspect-ratio: 16/9; 
+  }
+  
+  .libimage-furniture-lifestyle-slider-image-inner { 
+    height: 100%; 
+  }
+  
+  .libimage-furniture-lifestyle-slider-image-container {
+    height: 100%; 
+  }
+  
+  .libimage-furniture-lifestyle-slider-image { 
+    height: 100%; 
+    max-height: none; 
+    aspect-ratio: 16/9; 
+  }
+  
+  .libimage-furniture-lifestyle-slider-btn-left { left: 12px; }
+  .libimage-furniture-lifestyle-slider-btn-right { right: 12px; }
+  
+  .libimage-furniture-lifestyle-slider-caption { 
+    bottom: 16px; 
+    padding: 6px 16px; 
+    font-size: 1rem; 
+  }
+}
+
+@media (max-width: 480px) {
+  .libimage-furniture-lifestyle-slider-root { 
+    padding: 0; 
+  }
+  
+  .libimage-furniture-lifestyle-slider-container {
+    padding: 0;
+  }
+  
+  .libimage-furniture-lifestyle-slider-image-wrapper { 
+    height: auto; 
+    max-height: none; 
+    aspect-ratio: 16/9; 
+  }
+  
+  .libimage-furniture-lifestyle-slider-image-inner { 
+    height: 100%; 
+  }
+  
+  .libimage-furniture-lifestyle-slider-image-container {
+    height: 100%; 
+  }
+  
+  .libimage-furniture-lifestyle-slider-image { 
+    height: 100%; 
+    max-height: none; 
+    aspect-ratio: 16/9; 
+  }
+  
+  .libimage-furniture-lifestyle-slider-btn-left { left: 8px; }
+  .libimage-furniture-lifestyle-slider-btn-right { right: 8px; }
+  
+  .libimage-furniture-lifestyle-slider-caption { 
+    bottom: 12px; 
+    padding: 4px 12px; 
+    font-size: 0.9rem; 
+  }
+  
+  .libimage-furniture-lifestyle-slider-indicator { 
+    margin-top: 12px; 
+  }
+  
+  .libimage-furniture-lifestyle-slider-indicator span { 
+    width: 8px; 
+    height: 8px; 
+  }
+}

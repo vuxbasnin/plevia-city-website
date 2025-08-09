@@ -30,7 +30,7 @@ const navItemsConfiguration: NavItemConfig[] = [
       { id: "site-settings", label: "Cài Đặt Website", icon: Settings, href: "/admin/settings/site", isLeaf: true },
       { id: "account-settings", label: "Tài Khoản Admin", icon: UserCog, href: "/admin/settings/account", isLeaf: true },
       // { id: "trial-signups", label: "Quản lý Email", icon: MailCheck, href: "/admin/data/trial-signups", isLeaf: true },
-      { id: "connect-signups", label: "Quản lý Kết nối", icon: MessageCircle, href: "/admin/data/connect-signups", isLeaf: true },
+      { id: "connect-signups", label: "Quản lý Email", icon: MessageCircle, href: "/admin/data/connect-signups", isLeaf: true },
       
       // { id: "tour-bookings", label: "Lịch Tham Quan", icon: CalendarClock, href: "/admin/data/tour-bookings", isLeaf: true }, // Ẩn mục này
     ],
@@ -54,6 +54,15 @@ const navItemsConfiguration: NavItemConfig[] = [
       { id: "gallery-list", label: "Danh Sách Mẫu Nhà", icon: ImageIcon, href: "/admin/gallery", isLeaf: true },
       // Nếu muốn tách trang upload riêng:
       // { id: "gallery-upload", label: "Upload Ảnh Mới", icon: Plus, href: "/admin/gallery/upload", isLeaf: true },
+    ],
+  },
+  {
+    id: "group-furniture-management",
+    label: "Quản Lý Nội Thất",
+    icon: Sofa,
+    isLeaf: false,
+    children: [
+      { id: "furniture-list", label: "Danh Sách Mẫu Nội Thất", icon: Sofa, href: "/admin/furniture", isLeaf: true },
     ],
   },
   // {

@@ -55,7 +55,11 @@ const TabNew: React.FC<TabNewProps> = ({ title, tabs, reverse = false }) => {
     };
 
     const handleExploreClick = () => {
-        router.push('/lifestyle');
+        if (activeIndex === 0) {
+            router.push('/iot');
+        } else {
+            router.push('/lifestyle');
+        }
     };
 
     // Swipe handlers for mobile with infinite scroll

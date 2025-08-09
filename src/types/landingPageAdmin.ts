@@ -712,6 +712,45 @@ export const defaultFinalCtaSectionData: FinalCtaSectionData = {
   cta2Link: "#",
 };
 
+// Furniture Section (Các mẫu Nội thất)
+export const furnitureItemSchema = z.object({
+  id: z.string(),
+  title: z
+    .string()
+    .min(1, "Tên mẫu nội thất không được để trống.")
+    .max(100, "Tên mẫu nội thất không quá 100 ký tự."),
+  description: z
+    .string()
+    .min(1, "Mô tả không được để trống.")
+    .max(300, "Mô tả không quá 300 ký tự."),
+  category: z
+    .string()
+    .min(1, "Danh mục không được để trống.")
+    .max(50, "Danh mục không quá 50 ký tự."),
+  imageUrl: z
+    .string()
+    .refine(httpsUrlOrEmptyOrBlobRefinement, {
+      message: httpsUrlOrEmptyOrBlobMessage,
+    })
+    .optional()
+    .default(""),
+  price: z
+    .string()
+    .max(50, "Giá không quá 50 ký tự.")
+    .optional()
+    .default(""),
+  dimensions: z
+    .string()
+    .max(100, "Kích thước không quá 100 ký tự.")
+    .optional()
+    .default(""),
+});
+export type FurnitureItem = z.infer<typeof furnitureItemSchema>;
+
+export interface FurnitureSectionData {
+  items: FurnitureItem[];
+}
+
 // Helper type for Section Keys
 export type SectionKey =
   | "hero"
@@ -721,7 +760,8 @@ export type SectionKey =
   | "culture"
   | "finalCta"
   | "siteSettings"
-  | "memberBenefitsPage";
+  | "memberBenefitsPage"
+  | "furniture";
 
 // Function to get default data for a section key
 export function getDefaultData(sectionKey: SectionKey): any {
@@ -777,6 +817,8 @@ export function getDefaultData(sectionKey: SectionKey): any {
           })),
         ],
       };
+    case "furniture":
+      return { items: [] };
     default:
       const _exhaustiveCheck: never = sectionKey;
       console.warn(
