@@ -100,28 +100,42 @@ const FormInfo: React.FC = () => {
               />
             </div>
             <div className="form-field">
-              <label className="form-label">Số điện thoại *</label>
+              <label className="form-label"> Số điện thoại *</label>
               <input
-                type="email"
-                name="email"
-                value={formData.email}
+                type="text"
+                name="content"
+                value={formData.content}
                 onChange={handleInputChange}
                 className="form-input"
                 required
               />
             </div>
           </div>
-          
-          <div className="form-field full-width">
-            <label className="form-label">Email *</label>
-            <textarea
-              name="content"
-              value={formData.content}
-              onChange={handleInputChange}
-              className="form-textarea"
-              required
-            />
+
+          <div className="form-row">
+            <div className="form-field">
+              <label className="form-label">Email *</label>
+              <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="form-input"
+                  required
+              />
+            </div>
           </div>
+          
+          {/*<div className="form-field full-width">*/}
+          {/*  <label className="form-label">Nội dung *</label>*/}
+          {/*  <textarea*/}
+          {/*    name="content"*/}
+          {/*    value={formData.content}*/}
+          {/*    onChange={handleInputChange}*/}
+          {/*    className="form-textarea"*/}
+          {/*    required*/}
+          {/*  />*/}
+          {/*</div>*/}
           
           <button type="submit" className="form-submit" disabled={isSubmitting}>
             {isSubmitting ? (

@@ -181,7 +181,7 @@ export default function ManageConnectSignupsAdmin() {
       <Card className="shadow-lg rounded-xl">
         <CardHeader>
           <CardTitle className="text-2xl font-headline text-primary flex items-center">
-            <MessageCircle className="w-6 h-6 mr-2" /> Quản Lý Kết Nối
+            <MessageCircle className="w-6 h-6 mr-2" /> Quản Lý Email
           </CardTitle>
           <CardDescription>Xem và quản lý các yêu cầu kết nối từ người dùng.</CardDescription>
         </CardHeader>
@@ -197,7 +197,7 @@ export default function ManageConnectSignupsAdmin() {
     <Card className="shadow-lg rounded-xl">
       <CardHeader className="py-3">
         <CardTitle className="text-2xl font-headline text-primary flex items-center">
-          <MessageCircle className="w-7 h-7 mr-2" /> Quản Lý Kết Nối
+          <MessageCircle className="w-7 h-7 mr-2" /> Quản Lý Email
         </CardTitle>
         <CardDescription>Xem, lọc và cập nhật trạng thái các yêu cầu kết nối từ người dùng.</CardDescription>
       </CardHeader>
