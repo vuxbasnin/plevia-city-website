@@ -126,10 +126,13 @@
     }
 }
 
-.navbar-logo:hover {
-    opacity: 1;
-    transform: scale(1.05);
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+/* Logo hover effects only on desktop */
+@media (min-width: 1024px) {
+    .navbar-logo:hover {
+        opacity: 1;
+        transform: scale(1.05);
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+    }
 }
 
 @media (min-width: 1024px) {
@@ -207,15 +210,18 @@
     cursor: pointer;
 }
 
-.navbar-logo-img:hover {
-    transform: scale(1.12) rotate(2deg);
-    filter: drop-shadow(0 8px 20px rgba(34, 197, 94, 0.4));
-    animation: logoGlow 2s ease-in-out infinite alternate;
-}
+/* Logo hover effects disabled on mobile */
+@media (min-width: 1024px) {
+    .navbar-logo-img:hover {
+        transform: scale(1.12) rotate(2deg);
+        filter: drop-shadow(0 8px 20px rgba(34, 197, 94, 0.4));
+        animation: logoGlow 2s ease-in-out infinite alternate;
+    }
 
-@keyframes logoGlow {
-    0% { filter: drop-shadow(0 8px 20px rgba(34, 197, 94, 0.4)); }
-    100% { filter: drop-shadow(0 12px 30px rgba(34, 197, 94, 0.6)); }
+    @keyframes logoGlow {
+        0% { filter: drop-shadow(0 8px 20px rgba(34, 197, 94, 0.4)); }
+        100% { filter: drop-shadow(0 12px 30px rgba(34, 197, 94, 0.6)); }
+    }
 }
 
 .navbar-nav-first {
@@ -653,21 +659,11 @@
 }
 
 .navbar-mobile-button:hover {
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(187, 247, 208, 0.2));
-    transform: scale(1.15) rotate(5deg);
-    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
-    animation: buttonPulse 1.5s ease-in-out infinite;
+    background: rgba(34, 197, 94, 0.1);
 }
 
 .navbar-mobile-button:active {
-    transform: scale(0.9) rotate(0deg);
-    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
-}
-
-@keyframes buttonPulse {
-    0% { box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); }
-    50% { box-shadow: 0 6px 20px rgba(34, 197, 94, 0.6); }
-    100% { box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); }
+    background: rgba(34, 197, 94, 0.2);
 }
 
 .navbar-mobile-icon {
@@ -733,79 +729,38 @@
     padding: 1rem 1.5rem;
     text-align: center;
     font-weight: 500;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-bottom: 1px solid rgba(34, 197, 94, 0.2);
     position: relative;
     overflow: hidden;
     border-radius: 0;
+    cursor: pointer;
 }
 
 .navbar-mobile-link:last-child {
     border-bottom: none;
 }
 
-.navbar-mobile-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(187, 247, 208, 0.15));
-    transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    z-index: -1;
-}
 
-.navbar-mobile-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #22c55e, #bbf7d0);
-    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transform: translateY(-50%);
-    border-radius: 1px;
-}
 
 .navbar-mobile-link:hover {
     color: #bbf7d0;
     background: rgba(34, 197, 94, 0.15);
-    transform: translateX(12px) scale(1.02);
-    box-shadow: inset 6px 0 0 #22c55e, 0 4px 15px rgba(34, 197, 94, 0.2);
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.navbar-mobile-link:hover::before {
-    left: 100%;
-}
-
-.navbar-mobile-link:hover::after {
-    width: 100%;
 }
 
 .navbar-mobile-link-active {
     position: relative;
+    background: rgba(34, 197, 94, 0.15);
+    color: #bbf7d0;
+    font-weight: 600;
 }
 
-.navbar-mobile-link-active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, #22c55e, #bbf7d0, #22c55e);
-    border-radius: 0;
-    box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
-    animation: mobileActiveGlow 2s ease-in-out infinite alternate;
-}
 
-@keyframes mobileActiveGlow {
-    0% { box-shadow: 0 0 10px rgba(34, 197, 94, 0.5); }
-    100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.8); }
-}
 
 .navbar-mobile-cta {
     padding-top: 0.5rem;
@@ -983,28 +938,39 @@
 
 /* Mobile dropdown styles */
 .navbar-mobile-dropdown {
-    margin-left: 1rem;
-    margin-top: 0.5rem;
-    border-left: 2px solid rgba(34, 197, 94, 0.3);
-    padding-left: 1rem;
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, rgba(34, 197, 94, 0.02) 100%);
-    border-radius: 0.5rem;
-    margin-right: 1rem;
+    margin: 0.5rem 0 0 0;
+    border: none;
+    padding: 0;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.08) 100%);
+    border-radius: 0.75rem;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    overflow: hidden;
 }
 
 .navbar-mobile-dropdown-item {
     display: block;
-    padding: 0.75rem 1rem;
-    color: #6b7280;
+    padding: 1rem 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    font-size: 0.875rem;
-    font-weight: 400;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.95rem;
+    font-weight: 500;
     cursor: pointer;
-    border-radius: 0.375rem;
-    margin-bottom: 0.25rem;
+    border-radius: 0;
+    margin: 0;
     position: relative;
     overflow: hidden;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.navbar-mobile-dropdown-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
 }
 
 .navbar-mobile-dropdown-item::before {
@@ -1014,8 +980,9 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
     transition: left 0.5s ease;
+    z-index: 0;
 }
 
 .navbar-mobile-dropdown-item:hover::before {
@@ -1023,13 +990,34 @@
 }
 
 .navbar-mobile-dropdown-item:hover {
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.1) 100%);
-    color: #1f2937;
-    transform: translateX(4px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+    color: #ffffff;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-mobile-dropdown-item-active {
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.15) 100%);
-    color: #1f2937;
-    font-weight: 500;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+    color: #ffffff;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
 }
+
+/* Mobile dropdown icon styles */
+.navbar-mobile-dropdown-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+    opacity: 0.8;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.navbar-mobile-dropdown-icon-rotated {
+    transform: rotate(180deg);
+}
+
+

@@ -58,6 +58,7 @@ const navLinks: Array<{
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
   const { siteSettings, isLoading: isLoadingSettings } = useSiteSettings();
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -107,6 +108,20 @@ export default function Navbar() {
   const handleLinkClick = () => {
     if (isMobileMenuOpen) {
       toggleMobileMenu();
+    }
+    // Reset dropdown state when closing mobile menu
+    setMobileDropdownOpen(null);
+  };
+
+  const handleMobileDropdownToggle = (linkHref: string) => {
+    if (mobileDropdownOpen === linkHref) {
+      // Nếu dropdown đang mở, navigate đến page và đóng menu
+      setMobileDropdownOpen(null);
+      handleLinkClick();
+      router.push(linkHref);
+    } else {
+      // Nếu dropdown đang đóng, mở dropdown
+      setMobileDropdownOpen(linkHref);
     }
   };
 
@@ -213,6 +228,7 @@ export default function Navbar() {
             <div className="navbar-mobile-container">
               {navLinks.map((link, index) => {
                 const isActive = pathname === link.href;
+                const isDropdownOpen = mobileDropdownOpen === link.href;
                 return (
                   <motion.div
                     key={link.href}
@@ -233,7 +249,25 @@ export default function Navbar() {
                       >
                         {link.label}
                       </a>
+                    ) : link.hasDropdown ? (
+                      // Dropdown link - only toggle dropdown, don't navigate
+                      <span
+                        className={cn(
+                          "navbar-mobile-link",
+                          isActive && "navbar-mobile-link-active"
+                        )}
+                        onClick={() => handleMobileDropdownToggle(link.href)}
+                      >
+                        {link.label}
+                        <ChevronDown 
+                          className={cn(
+                            "navbar-mobile-dropdown-icon",
+                            isDropdownOpen && "navbar-mobile-dropdown-icon-rotated"
+                          )} 
+                        />
+                      </span>
                     ) : (
+                      // Regular link - navigate and close menu
                       <Link href={link.href} passHref>
                         <span
                           className={cn(
@@ -247,48 +281,56 @@ export default function Navbar() {
                       </Link>
                     )}
 
-                    {/* Mobile dropdown items */}
-                    {link.hasDropdown && link.dropdownItems && (
-                      <div className="navbar-mobile-dropdown">
-                        {link.dropdownItems.map((dropdownItem, dropdownIndex) => {
-                          const isDropdownActive = pathname === dropdownItem.href;
-                          return (
-                            <motion.div
-                              key={dropdownItem.href}
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: (index * 0.1) + (dropdownIndex * 0.05), duration: 0.3 }}
-                            >
-                              <span
-                                className={cn(
-                                  "navbar-mobile-dropdown-item",
-                                  isDropdownActive && "navbar-mobile-dropdown-item-active"
-                                )}
-                                onClick={() => {
-                                  handleLinkClick();
-                                  // Handle scroll for mobile
-                                  if (dropdownItem.href.includes('#')) {
-                                    const [path, sectionId] = dropdownItem.href.split('#');
-                                    if (pathname === '/lifestyle' && sectionId) {
-                                      const element = document.getElementById(sectionId);
-                                      if (element) {
-                                        element.scrollIntoView({
-                                          behavior: 'smooth',
-                                          block: 'start'
-                                        });
-                                      }
-                                    } else if (pathname !== '/lifestyle' && path === '/lifestyle') {
-                                      router.push(dropdownItem.href);
-                                    }
-                                  }
-                                }}
+                    {/* Mobile dropdown items - only show when dropdown is open */}
+                    {link.hasDropdown && link.dropdownItems && isDropdownOpen && (
+                      <AnimatePresence>
+                        <motion.div 
+                          className="navbar-mobile-dropdown"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        >
+                          {link.dropdownItems.map((dropdownItem, dropdownIndex) => {
+                            const isDropdownActive = pathname === dropdownItem.href;
+                            return (
+                              <motion.div
+                                key={dropdownItem.href}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: dropdownIndex * 0.05, duration: 0.3 }}
                               >
-                                {dropdownItem.label}
-                              </span>
-                            </motion.div>
-                          );
-                        })}
-                      </div>
+                                <span
+                                  className={cn(
+                                    "navbar-mobile-dropdown-item",
+                                    isDropdownActive && "navbar-mobile-dropdown-item-active"
+                                  )}
+                                  onClick={() => {
+                                    handleLinkClick();
+                                    // Handle scroll for mobile
+                                    if (dropdownItem.href.includes('#')) {
+                                      const [path, sectionId] = dropdownItem.href.split('#');
+                                      if (pathname === '/lifestyle' && sectionId) {
+                                        const element = document.getElementById(sectionId);
+                                        if (element) {
+                                          element.scrollIntoView({
+                                            behavior: 'smooth',
+                                            block: 'start'
+                                          });
+                                        }
+                                      } else if (pathname !== '/lifestyle' && path === '/lifestyle') {
+                                        router.push(dropdownItem.href);
+                                      }
+                                    }
+                                  }}
+                                >
+                                  {dropdownItem.label}
+                                </span>
+                              </motion.div>
+                            );
+                          })}
+                        </motion.div>
+                      </AnimatePresence>
                     )}
                   </motion.div>
                 );
