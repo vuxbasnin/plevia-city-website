@@ -17,6 +17,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Optimization for memory usage
+  experimental: {
+    // Giảm memory usage khi build
+    memoryBasedWorkersCount: true,
+    workerThreads: false,
+  },
   // SEO optimizations
   poweredByHeader: false,
   compress: true,
