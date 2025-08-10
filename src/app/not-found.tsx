@@ -1,58 +1,26 @@
 "use client";
 
 import Link from 'next/link';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Không tìm thấy trang - Plevia City',
-  description: 'Trang bạn đang tìm kiếm không tồn tại. Quay lại trang chủ Plevia City để khám phá dự án bất động sản cao cấp tại Gia Lai.',
-  robots: {
-    index: false,
-    follow: true,
-  },
-};
+import PageLayout from '@/components/layout/PageLayout';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-blue-50">
-      <div className="text-center px-6 py-12">
-        <div className="mb-8">
-          <h1 className="text-9xl font-bold text-green-600 mb-4">404</h1>
-          <h2 className="text-3xl font-semibold text-gray-800 mb-4">
-            Không tìm thấy trang
-          </h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-md mx-auto">
+    <PageLayout showFloatingButtons={false}>
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-6xl font-bold text-gray-900 mb-4">404</h1>
+          <h2 className="text-2xl font-semibold text-gray-700 mb-4">Trang không tìm thấy</h2>
+          <p className="text-gray-600 mb-8">
             Trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển.
           </p>
-        </div>
-        
-        <div className="space-y-4">
           <Link 
-            href="/"
-            className="inline-block bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors duration-200 font-medium"
+            href="/" 
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Về trang chủ
           </Link>
-          
-          <div className="text-sm text-gray-500">
-            <p>Hoặc truy cập các trang chính:</p>
-            <div className="flex justify-center space-x-4 mt-2">
-              <Link href="/lifestyle" className="text-green-600 hover:underline">
-                Lifestyle
-              </Link>
-              <Link href="/location" className="text-green-600 hover:underline">
-                Vị trí
-              </Link>
-              <Link href="/storyline" className="text-green-600 hover:underline">
-                Câu chuyện
-              </Link>
-              <Link href="/news" className="text-green-600 hover:underline">
-                Tin tức
-              </Link>
-            </div>
-          </div>
         </div>
       </div>
-    </div>
+    </PageLayout>
   );
 } 
