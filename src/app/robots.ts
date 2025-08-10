@@ -1,7 +1,5 @@
 import { MetadataRoute } from 'next';
 
-console.log("");
-
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -13,6 +11,7 @@ export default function robots(): MetadataRoute.Robots {
           '/api/',
           '/_next/',
           '/private/',
+          '/test/',
         ],
       },
       {
@@ -23,6 +22,22 @@ export default function robots(): MetadataRoute.Robots {
           '/api/',
           '/_next/',
           '/private/',
+          '/test/',
+        ],
+        crawlDelay: 1,
+      },
+      {
+        userAgent: 'Googlebot-Image',
+        allow: [
+          '/assets/',
+          '/public/',
+          '/Logo_',
+          '/background/',
+        ],
+        disallow: [
+          '/admin/',
+          '/api/',
+          '/_next/',
         ],
       },
     ],
