@@ -1,7 +1,7 @@
 {
-  "name": "Plevia City - Dự án bất động sản cao cấp tại Gia Lai",
+  "name": "Plevia City - Tổ Hợp Liền Kề & Shophouse Đẳng Cấp",
   "short_name": "Plevia City",
-  "description": "Dự án bất động sản cao cấp tại Gia Lai với vị trí đắc địa, thiết kế hiện đại và tiện ích đẳng cấp",
+  "description": "Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.",
   "start_url": "https://pleviacity.vn/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -9,7 +9,7 @@
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "vi",
-  "categories": ["business", "real estate"],
+  "categories": ["business", "real estate", "lifestyle", "technology"],
   "icons": [
     {
       "src": "/Logo_green_3.png",
@@ -26,16 +26,20 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshot-desktop.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
+      "src": "/assets/home/plevia_city.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Plevia City - Khu đô thị thông minh"
     },
     {
-      "src": "/screenshot-mobile.png",
-      "sizes": "390x844",
+      "src": "/assets/home/banner_home.png",
+      "sizes": "1200x630",
       "type": "image/png",
-      "form_factor": "narrow"
+      "form_factor": "wide",
+      "label": "Banner Plevia City"
     }
-  ]
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 } 
