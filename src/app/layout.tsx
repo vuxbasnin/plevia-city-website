@@ -7,7 +7,6 @@ import { SiteSettingsProvider } from '@/context/SiteSettingsContext';
 import ClientOnly from '@/components/shared/ClientOnly';
 import { getSiteSettingsData } from '@/lib/firestoreService'; 
 import { defaultSiteSettingsData, type SiteSettingsData } from '@/types/landingPageAdmin'; 
-import { generateMetadata as generateSiteMetadata } from '@/lib/metadata';
 
 // Function to generate dynamic metadata
 export async function generateMetadata(): Promise<Metadata> {
@@ -20,9 +19,94 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const faviconUrlToUse = siteSettings?.faviconUrl ? siteSettings.faviconUrl : undefined;
   
-  // Sử dụng metadata từ file tập trung
-  const metadataResult = generateSiteMetadata();
-  
+  // Sử dụng title và description cố định để đảm bảo SEO
+  const title = 'Plevia City';
+  const description = 'Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.';
+
+  const metadataResult: Metadata = {
+    title: title,
+    description: description,
+    keywords: [
+      'Plevia City', 
+      'pleviacity', 
+      'khu đô thị thông minh Gia Lai', 
+      'dự án bất động sản Pleiku', 
+      'căn hộ Gia Lai', 
+      'biệt thự Pleiku', 
+      'shophouse Gia Lai', 
+      'đô thị thông minh', 
+      'AI Gia Lai', 
+      'bất động sản cao cấp',
+      'pleviacity.vn',
+      'dự án Plevia',
+      'đầu tư bất động sản Gia Lai'
+    ],
+    authors: [{ name: 'Plevia City' }],
+    creator: 'Plevia City',
+    publisher: 'Plevia City',
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    metadataBase: new URL('https://pleviacity.vn'),
+    alternates: {
+      canonical: 'https://pleviacity.vn',
+    },
+    openGraph: {
+      title: 'Plevia City',
+      description: 'Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.',
+      url: 'https://pleviacity.vn',
+      siteName: 'Plevia City',
+      locale: 'vi_VN',
+      type: 'website',
+      images: [
+        {
+          url: 'https://pleviacity.vn/social_media.png',
+          width: 1200,
+          height: 630,
+          alt: 'Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai',
+          type: 'image/png',
+        },
+      ],
+      countryName: 'Vietnam',
+      emails: ['info@pleviacity.vn'],
+      phoneNumbers: ['+84 123 456 789'],
+      faxNumbers: ['+84 123 456 790'],
+      determiner: 'the',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Plevia City',
+      description: 'Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.',
+      images: ['https://pleviacity.vn/social_media.png'],
+      creator: '@pleviacity',
+      site: '@pleviacity',
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    verification: {
+      google: 'YOUR_GOOGLE_VERIFICATION_CODE',
+      yandex: 'YOUR_YANDEX_VERIFICATION_CODE',
+      yahoo: 'YOUR_YAHOO_VERIFICATION_CODE',
+    },
+    manifest: 'https://pleviacity.vn/manifest.json',
+    icons: {
+      icon: 'https://pleviacity.vn/Logo_green_3.png',
+      shortcut: 'https://pleviacity.vn/Logo_green_3.png',
+      apple: 'https://pleviacity.vn/Logo_green_3.png',
+    },
+  };
+
   // Không cho phép Firebase ghi đè icons
   // if (faviconUrlToUse) {
   //   metadataResult.icons = { icon: faviconUrlToUse };
@@ -55,8 +139,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Plevia City" />
         
         {/* Additional SEO Meta Tags */}
-        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
         <meta name="google" content="notranslate" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="author" content="Plevia City" />
@@ -65,11 +149,6 @@ export default function RootLayout({
         <meta name="distribution" content="Global" />
         <meta name="rating" content="General" />
         <meta name="revisit-after" content="7 days" />
-        <meta name="language" content="Vietnamese" />
-        <meta name="geo.region" content="VN" />
-        <meta name="geo.placename" content="Gia Lai, Vietnam" />
-        <meta name="geo.position" content="13.9833;108.0000" />
-        <meta name="ICBM" content="13.9833, 108.0000" />
         <link rel="canonical" href="https://pleviacity.vn" />
         
         {/* Facebook App ID */}

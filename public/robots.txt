@@ -1,26 +1,19 @@
 User-agent: *
 Allow: /
 
-# Disallow admin and private areas
-Disallow: /admin/
-Disallow: /api/
-Disallow: /_next/
-Disallow: /private/
-Disallow: /test/
-
-# Allow important pages
-Allow: /lifestyle/
-Allow: /location/
-Allow: /storyline/
-Allow: /news/
-Allow: /member-benefits/
-Allow: /furniture-demo/
-
 # Sitemap
 Sitemap: https://pleviacity.vn/sitemap.xml
 
-# Host
-Host: https://pleviacity.vn
+# Disallow admin and API
+Disallow: /admin/
+Disallow: /api/
 
-# Crawl delay (optional)
+# Allow all other pages
+Allow: /lifestyle/
+Allow: /location/
+Allow: /storyline/
+Allow: /member-benefits/
+Allow: /news/
+
+# Crawl delay
 Crawl-delay: 1 
