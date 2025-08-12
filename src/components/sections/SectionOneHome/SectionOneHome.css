@@ -11,7 +11,6 @@
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
     background-position: top right, left center, right bottom 30%, bottom right;
     background-size: 50% auto, 25% auto, 15% auto, 50% auto;
-    min-height: 100vh;
 }
 
 .section-one-home-no-bg {
