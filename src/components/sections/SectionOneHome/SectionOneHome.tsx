@@ -1,6 +1,7 @@
 import React from 'react';
 import ParaLeftDesRight from '../ParaLeftDesRight/ParaLeftDesRight';
 import './SectionOneHome.css';
+import Title from '@/components/ui/Title/Title';
 
 // Interface cho props
 interface SectionData {
@@ -24,22 +25,31 @@ interface SectionOneHomeProps {
     contentSections: ParaLeftDesRightData[];
     isStoryLine?: boolean;
     sectionType?: string;
+    isShowTitle?: boolean;
 }
 
-const SectionOneHome: React.FC<SectionOneHomeProps> = ({ 
-    mainTitle, 
-    subtitle, 
+const SectionOneHome: React.FC<SectionOneHomeProps> = ({
+    mainTitle,
+    subtitle,
     contentSections,
     isStoryLine = false,
-    sectionType = ""
+    sectionType = "",
+    isShowTitle = false
 }) => {
-    const sectionClass = isStoryLine 
-        ? `section-one-home-no-bg ${sectionType}` 
+    const sectionClass = isStoryLine
+        ? `section-one-home-no-bg ${sectionType}`
         : "section-one-home";
-    
+
     return (
         <section className={sectionClass}>
             <div className="container">
+                {isShowTitle && (
+                    <div className="map-extension-header" style={{ marginTop: 24, marginBottom: -24 }}>
+                        <Title variant="large" align="center">
+                            Pleviacity
+                        </Title>
+                    </div>
+                )}
                 <h1 className="section-title">{mainTitle}</h1>
                 <h1 className="section-title">{subtitle}</h1>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import SectionOneHome from './SectionOneHome';
+import Title from '@/components/ui/Title/Title';
 
 // Example data structure for SectionOneHome props
 const sectionOneHomeData = {
@@ -40,6 +41,7 @@ const SectionOneHomeExample: React.FC = () => {
                 subtitle={sectionOneHomeData.subtitle}
                 contentSections={sectionOneHomeData.contentSections}
                 isStoryLine={false}
+                isShowTitle={true}
             />
             
             {/*/!* Sử dụng không có background (cho storyline) *!/*/}
