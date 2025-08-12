@@ -73,25 +73,25 @@ export default function HomePage() {
                     <TabExample/>
                 </ScrollReveal>
 
-                <ScrollReveal>
-                    <ParaManyImage
-                        title="TIẾN ĐỘ XÂY DỰNG DỰ ÁN"
-                        paragraph="Đang cập nhật"
-                        // bullets={[
-                        //   "Hạ tầng dự án đã hoàn thiện.",
-                        //   "Chủ đầu tư đang trồng và chăm sóc cây xanh của dự án.",
-                        //   "Đã hoàn thiện nhà Mẫu và nhà điều hành",
-                        //   "Biệt thự Đơn Lập, Song Lập Tứ Lập, Nhà phố liên kế đang hoàn thiện",
-                        //   "Tiện ích, nhà điều hành, công viên hàng hoàn thiện"
-                        // ]}
-                        // footer="Chủ đầu tư Khang Điền – Keppel Land dự kiến hoàn thiện tiện ích, nhà mẫu và sản phẩm vào Quý 3/2025."
-                        images={[
-                            "/assets/home/tien_do_1.png",
-                            "/assets/home/tien_do_2.png",
-                            "/assets/home/tien_do_3.png",
-                        ]}
-                    />
-                </ScrollReveal>
+                {/*<ScrollReveal>*/}
+                {/*    <ParaManyImage*/}
+                {/*        title="TIẾN ĐỘ XÂY DỰNG DỰ ÁN"*/}
+                {/*        paragraph="Đang cập nhật"*/}
+                {/*        // bullets={[*/}
+                {/*        //   "Hạ tầng dự án đã hoàn thiện.",*/}
+                {/*        //   "Chủ đầu tư đang trồng và chăm sóc cây xanh của dự án.",*/}
+                {/*        //   "Đã hoàn thiện nhà Mẫu và nhà điều hành",*/}
+                {/*        //   "Biệt thự Đơn Lập, Song Lập Tứ Lập, Nhà phố liên kế đang hoàn thiện",*/}
+                {/*        //   "Tiện ích, nhà điều hành, công viên hàng hoàn thiện"*/}
+                {/*        // ]}*/}
+                {/*        // footer="Chủ đầu tư Khang Điền – Keppel Land dự kiến hoàn thiện tiện ích, nhà mẫu và sản phẩm vào Quý 3/2025."*/}
+                {/*        images={[*/}
+                {/*            "/assets/home/tien_do_1.png",*/}
+                {/*            "/assets/home/tien_do_2.png",*/}
+                {/*            "/assets/home/tien_do_3.png",*/}
+                {/*        ]}*/}
+                {/*    />*/}
+                {/*</ScrollReveal>*/}
                 <ScrollReveal>
                     <NewsSectionExample/>
                 </ScrollReveal>
