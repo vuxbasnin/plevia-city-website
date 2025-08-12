@@ -3,6 +3,7 @@
 import PageLayout from '@/components/layout/PageLayout';
 import ImageHeader from '@/components/sections/ImageHeader';
 import SectionTwoHomeExample from '@/components/sections/SectionOneHome/SectionTwoHomeExample';
+import Title from '@/components/ui/Title/Title';
 import dynamic from 'next/dynamic';
 import React from "react";
 
