@@ -101,6 +101,40 @@
   opacity: 0.8;
 }
 
+/* Page links styling */
+.footer-page-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-page-links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-page-link {
+  color: white;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+  display: block;
+  line-height: 1.4;
+}
+
+.footer-page-link:hover {
+  color: #bbf7d0;
+}
+
+/* Move second column to the right */
+.footer-column:nth-child(2) {
+  margin-left: 6rem;
+}
+
+/* Move fourth column to the right */
+.footer-column:nth-child(4) {
+  margin-left: 6rem;
+}
+
 .footer-text {
   font-family: 'Chillax-Light', serif;
   color: white;
@@ -241,6 +275,7 @@
   
   .footer-column {
     max-width: 100%;
+    min-height: auto;
   }
   
   .bim-logo-image {
@@ -269,6 +304,20 @@
     padding-right: 1rem;
   }
   
+  .footer-column {
+    min-height: auto;
+  }
+  
+  /* Reset second column margin on mobile */
+  .footer-column:nth-child(2) {
+    margin-left: 0;
+  }
+  
+  /* Reset fourth column margin on mobile */
+  .footer-column:nth-child(4) {
+    margin-left: 0;
+  }
+  
   .bim-logo-image {
     width: 100px !important;
     height: 33px !important;
@@ -277,6 +326,26 @@
   
   .bim-logo-main {
     font-size: 1rem;
+  }
+  
+  .footer-page-links li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-page-link {
+    font-size: 0.875rem;
+  }
+  
+  .footer-text {
+    font-size: 0.875rem;
+  }
+  
+  .footer-contact-info {
+    font-size: 0.875rem;
+  }
+  
+  .footer-hotline-number {
+    font-size: 0.875rem;
   }
 }
 
@@ -290,6 +359,10 @@
     padding-right: 0.75rem;
   }
   
+  .footer-column {
+    min-height: auto;
+  }
+  
   .bim-logo-image {
     width: 110px !important;
     height: 110px !important;
@@ -298,5 +371,25 @@
   
   .bim-logo-main {
     font-size: 1rem;
+  }
+  
+  .footer-page-links li {
+    margin-bottom: 0.4rem;
+  }
+  
+  .footer-page-link {
+    font-size: 0.875rem;
+  }
+  
+  .footer-text {
+    font-size: 0.875rem;
+  }
+  
+  .footer-contact-info {
+    font-size: 0.875rem;
+  }
+  
+  .footer-hotline-number {
+    font-size: 0.875rem;
   }
 }
