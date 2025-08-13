@@ -77,6 +77,7 @@ export default function ClientHomePage() {
         <TabProject />
         <LibImageHome />
 
+        
         {/* Khoảng cách giữa 2 section */}
         <div className="py-8 bg-transparent"></div>
 
