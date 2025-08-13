@@ -32,7 +32,7 @@ export default function Footer() {
               />
               <span className="bim-logo-main">Công ty Cổ phần Tập đoàn Đầu tư Bắc Hải</span>
             </div>
-            <ul className="footer-links">
+            <ul className="footer-text">
               <li>
                 <p>Trụ sở: Tầng 04, tòa nhà Thương mại và dịch vụ B-CC, Dự án khu nhà ở Ngân Hà Vạn Phúc, Phố Tố Hữu, Phường Hà Đông, Thành phố Hà Nội, Việt Nam</p>
               </li>
