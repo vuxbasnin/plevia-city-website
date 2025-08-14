@@ -188,6 +188,7 @@
 .footer-hotline {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .footer-hotline-number {
@@ -216,6 +217,38 @@
   width: 1.25rem;
   height: 1.25rem;
   color: white;
+}
+
+/* Social Media Buttons */
+.footer-social-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.footer-social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-social-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-social-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .footer-bottom {
@@ -347,6 +380,22 @@
   .footer-hotline-number {
     font-size: 0.875rem;
   }
+  
+  /* Mobile social buttons */
+  .footer-social-buttons {
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  
+  .footer-social-button {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .footer-social-button svg {
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -391,5 +440,21 @@
   
   .footer-hotline-number {
     font-size: 0.875rem;
+  }
+  
+  /* Small mobile social buttons */
+  .footer-social-buttons {
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+  
+  .footer-social-button {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  
+  .footer-social-button svg {
+    width: 0.875rem;
+    height: 0.875rem;
   }
 }
