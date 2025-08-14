@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://pleviacity.vn/sitemap.xml
+# Sitemaps
+Sitemap: /sitemap.xml
+Sitemap: /sitemap-images.xml
 
 # Disallow admin and API
 Disallow: /admin/

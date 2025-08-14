@@ -49,31 +49,31 @@ export async function generateMetadata(): Promise<Metadata> {
       address: false,
       telephone: false,
     },
-    metadataBase: new URL('https://pleviacity.vn'),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://pleviacity.vn'),
     alternates: {
-      canonical: 'https://pleviacity.vn',
+      canonical: '/',
     },
     openGraph: {
       title: 'Plevia City - Tổ Hợp Liền Kề & Shophouse Đẳng Cấp',
       description: 'Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.',
-      url: 'https://pleviacity.vn',
+      url: '/',
       siteName: 'Plevia City',
       locale: 'vi_VN',
       type: 'website',
       images: [
         {
-          url: 'https://pleviacity.vn/assets/home/plevia_city.jpg',
+          url: '/logo_seo_home_page.png',
+          width: 1200,
+          height: 630,
+          alt: 'Plevia City - Logo chính thức',
+          type: 'image/png',
+        },
+        {
+          url: '/assets/home/plevia_city.jpg',
           width: 1200,
           height: 630,
           alt: 'Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai',
           type: 'image/jpeg',
-        },
-        {
-          url: 'https://pleviacity.vn/assets/home/banner_home.png',
-          width: 1200,
-          height: 630,
-          alt: 'Banner Plevia City - Dự án bất động sản cao cấp',
-          type: 'image/png',
         },
       ],
       countryName: 'Vietnam',
@@ -87,8 +87,8 @@ export async function generateMetadata(): Promise<Metadata> {
       title: 'Plevia City - Tổ Hợp Liền Kề & Shophouse Đẳng Cấp',
       description: 'Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.',
       images: [
-        'https://pleviacity.vn/assets/home/plevia_city.jpg',
-        'https://pleviacity.vn/assets/home/banner_home.png'
+        '/logo_seo_home_page.png',
+        '/assets/home/plevia_city.jpg'
       ],
       creator: '@pleviacity',
       site: '@pleviacity',
@@ -109,11 +109,11 @@ export async function generateMetadata(): Promise<Metadata> {
       yandex: 'YOUR_YANDEX_VERIFICATION_CODE',
       yahoo: 'YOUR_YAHOO_VERIFICATION_CODE',
     },
-    manifest: 'https://pleviacity.vn/manifest.json',
+    manifest: '/manifest.json',
     icons: {
-      icon: 'https://pleviacity.vn/Logo_green_3.png',
-      shortcut: 'https://pleviacity.vn/Logo_green_3.png',
-      apple: 'https://pleviacity.vn/Logo_green_3.png',
+      icon: '/logo_seo_home_page.png',
+      shortcut: '/logo_seo_home_page.png',
+      apple: '/logo_seo_home_page.png',
     },
   };
 
@@ -159,7 +159,13 @@ export default function RootLayout({
         <meta name="distribution" content="Global" />
         <meta name="rating" content="General" />
         <meta name="revisit-after" content="7 days" />
-        <link rel="canonical" href="https://pleviacity.vn" />
+        <link rel="canonical" href="/" />
+        
+        {/* Logo and Brand Meta Tags */}
+        <meta name="image" content="/logo_seo_home_page.png" />
+        <meta name="logo" content="/logo_seo_home_page.png" />
+        <meta property="og:image:alt" content="Plevia City - Logo chính thức" />
+        <meta property="twitter:image:alt" content="Plevia City - Logo chính thức" />
         
         {/* Facebook App ID */}
         <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
@@ -189,9 +195,9 @@ export default function RootLayout({
               "name": "Plevia City",
               "alternateName": "PleviaCity",
               "description": "Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.",
-              "url": "https://pleviacity.vn",
-              "logo": "https://pleviacity.vn/Logo_green_3.png",
-              "image": "https://pleviacity.vn/social_media.png",
+              "url": "/",
+              "logo": "/logo_seo_home_page.png",
+              "image": "/logo_seo_home_page.png",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Phường Hội Phú",

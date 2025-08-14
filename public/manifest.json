@@ -2,7 +2,7 @@
   "name": "Plevia City - Tổ Hợp Liền Kề & Shophouse Đẳng Cấp",
   "short_name": "Plevia City",
   "description": "Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.",
-  "start_url": "https://pleviacity.vn/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1A7A57",
@@ -12,13 +12,13 @@
   "categories": ["business", "real estate", "lifestyle", "technology"],
   "icons": [
     {
-      "src": "/Logo_green_3.png",
+      "src": "/logo_seo_home_page.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/Logo_green_3.png",
+      "src": "/logo_seo_home_page.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
