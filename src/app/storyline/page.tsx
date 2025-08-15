@@ -1,15 +1,6 @@
 import type { Metadata } from 'next';
 import PageLayout from "@/components/layout/PageLayout";
-import ImageHeader from "@/components/sections/ImageHeader";
-import ScrollReveal from "@/components/shared/ScrollReveal";
-import "./page.css"
-import SectionOneStoryLine from "@/components/sections/SectionOneHome/SectionOneStoryLine";
-import SectionTwoStoryLine from "@/components/sections/SectionOneHome/SectionTwoStoryLine";
-import SectionThreeStoryLine from "@/components/sections/SectionOneHome/SectionThreeStoryLine";
-import SectionFourStoryLine from "@/components/sections/SectionOneHome/SectionFourStoryLine";
-import SectionFiveStoryLine from "@/components/sections/SectionOneHome/SectionFiveStoryLine";
-import FormInfo from "@/components/sections/FormInfo/FormInfo";
-import { storylineBanner } from '@/data/storyline';
+import StorylineContent from './StorylineContent';
 
 export async function generateMetadata(): Promise<Metadata> {
   const title = 'Plevia City - Câu chuyện kiến tạo';
@@ -46,37 +37,10 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function ProjectPage() {
+export default function StorylinePage() {
   return (
     <PageLayout>
-      <div className="fullWidth">
-        <ScrollReveal>
-          <ImageHeader imageUrl={storylineBanner}/>
-        </ScrollReveal>
-      </div>
-
-      <div className={"wrapper"}>
-        <div className={"content"}>
-          <ScrollReveal>
-            <SectionOneStoryLine />
-          </ScrollReveal>
-          <ScrollReveal>
-            <SectionTwoStoryLine />
-          </ScrollReveal>
-          <ScrollReveal>
-            <SectionThreeStoryLine />
-          </ScrollReveal>
-          <ScrollReveal>
-            <SectionFourStoryLine />
-          </ScrollReveal>
-          <ScrollReveal>
-            <SectionFiveStoryLine />
-          </ScrollReveal>
-          <ScrollReveal>
-            <FormInfo />
-          </ScrollReveal>
-        </div>
-      </div>
+      <StorylineContent />
     </PageLayout>
   );
 }

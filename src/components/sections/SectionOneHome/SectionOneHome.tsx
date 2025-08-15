@@ -5,7 +5,7 @@ import Title from '@/components/ui/Title/Title';
 
 // Interface cho props
 interface SectionData {
-    level: number;
+    level: 1 | 2;
     subtitle: string;
     subdescription: string;
 }
