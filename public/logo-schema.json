@@ -1,0 +1,43 @@
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Plevia City",
+    "alternateName": "PleviaCity",
+    "url": "/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/logo_seo_home_page.png",
+      "width": 1200,
+      "height": 630,
+      "caption": "Plevia City - Logo chính thức",
+      "description": "Logo chính thức của Plevia City - Khu đô thị thông minh đầu tiên tại Gia Lai"
+    },
+    "image": "/logo_seo_home_page.png",
+    "description": "Plevia City là khu đô thị thông minh đầu tiên có ứng dụng Trí tuệ nhân tạo được phát triển tại Gia Lai. Dự án đánh dấu bước chuyển mình của khu vực với mô hình đô thị hiện đại, tích hợp công nghệ vận hành 4.0 và môi trường sống xanh đa lớp.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Phường Hội Phú",
+      "addressLocality": "Pleiku",
+      "addressRegion": "Gia Lai",
+      "addressCountry": "VN",
+      "postalCode": "60000"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": "Vietnamese",
+      "areaServed": "VN"
+    },
+    "sameAs": [
+      "https://facebook.com/pleviacity",
+      "https://instagram.com/pleviacity",
+      "https://youtube.com/@pleviacity"
+    ],
+    "foundingDate": "2024",
+    "areaServed": {
+      "@type": "City",
+      "name": "Pleiku"
+    },
+    "serviceType": "Real Estate Development",
+    "keywords": "Plevia City, pleviacity, khu đô thị thông minh Gia Lai, dự án bất động sản Pleiku, căn hộ Gia Lai, biệt thự Pleiku, shophouse Gia Lai, đô thị thông minh, AI Gia Lai, bất động sản cao cấp"
+  }
