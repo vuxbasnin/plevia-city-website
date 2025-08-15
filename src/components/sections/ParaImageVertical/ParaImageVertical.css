@@ -79,14 +79,14 @@ font-family: 'Opaline', 'Times New Roman', serif;
   margin: 0 auto 32px auto;
   padding-left: 24px;
   color: #000000;
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-align: justify;
   font-family: 'Chillax-Light', sans-serif;
 }
 
 .piv-bullets li {
   margin-bottom: 12px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-align: justify;
 }
 

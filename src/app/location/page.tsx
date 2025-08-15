@@ -27,10 +27,10 @@ Từ Plevia City, bạn dễ dàng tiếp cận mọi nhu cầu sống, từ y t
             <ScrollReveal>
                 <div style={{ marginBottom: '1rem' }}>
                 <TextBlock
-                    content="Phía Bắc: kết nối trực tiếp Quốc lộ 14, thuận lợi giao thương liên tỉnh.<br />
-                Phía Nam: giáp khu dân cư sầm uất, sẵn tiềm năng kinh doanh.<br />
-                Phía Đông: gần bệnh viện, trường học, khu mua sắm.<br />
-                Phía Tây: liền kề khu du lịch và không gian xanh."/>
+                    content="- Phía Bắc: kết nối trực tiếp Quốc lộ 14, thuận lợi giao thương liên tỉnh.<br />
+                - Phía Nam: giáp khu dân cư sầm uất, sẵn tiềm năng kinh doanh.<br />
+                - Phía Đông: gần bệnh viện, trường học, khu mua sắm.<br />
+                - Phía Tây: liền kề khu du lịch và không gian xanh."/>
                 </div>
             </ScrollReveal>
 
