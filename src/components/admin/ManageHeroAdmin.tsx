@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { getHeroSectionData, updateHeroSection } from "@/lib/firestoreService";
@@ -106,6 +105,7 @@ export default function ManageHeroAdmin() {
 
   // Hàm submit form, lưu dữ liệu banner và upload ảnh nếu có.
   const onSubmit: SubmitHandler<HeroSectionData> = async (formData) => {
+    console.log("Form submitted with data:", formData);
     setIsSaving(true);
     let dataToSave = { ...formData };
 
@@ -132,11 +132,13 @@ export default function ManageHeroAdmin() {
       setIsUploading(false);
     }
 
+    console.log("Saving data to Firestore:", dataToSave);
     const success = await updateHeroSection(dataToSave);
+    console.log("Save result:", success);
     if (success) {
       toast({
         title: "Đã lưu thành công!",
-        description: "Nội dung Banner giới thiệu đã được cập nhật.",
+        description: "Hình ảnh Banner đã được cập nhật.",
         variant: "default",
       });
       form.reset(dataToSave); 
@@ -144,7 +146,7 @@ export default function ManageHeroAdmin() {
     } else {
       toast({
         title: "Lỗi!",
-        description: "Không thể lưu nội dung. Vui lòng thử lại.",
+        description: "Không thể lưu hình ảnh. Vui lòng thử lại.",
         variant: "destructive",
       });
     }
@@ -170,31 +172,7 @@ export default function ManageHeroAdmin() {
       </CardHeader>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <Label htmlFor="headline" className="font-semibold">Tiêu đề chính (Headline)</Label>
-              <Input id="headline" {...form.register("headline")} placeholder="Không Gian Làm Việc Lý Tưởng Của Bạn" />
-              {form.formState.errors.headline && <p className="text-sm text-destructive">{form.formState.errors.headline.message}</p>}
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="subheadline" className="font-semibold">Mô tả phụ (Subheadline)</Label>
-              <Textarea id="subheadline" {...form.register("subheadline")} placeholder="Khám phá môi trường làm việc chung đầy cảm hứng..." />
-              {form.formState.errors.subheadline && <p className="text-sm text-destructive">{form.formState.errors.subheadline.message}</p>}
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <Label htmlFor="ctaText" className="font-semibold">Chữ trên nút CTA</Label>
-              <Input id="ctaText" {...form.register("ctaText")} placeholder="Tìm Hiểu Ngay" />
-              {form.formState.errors.ctaText && <p className="text-sm text-destructive">{form.formState.errors.ctaText.message}</p>}
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="ctaLink" className="font-semibold">Link cho nút CTA</Label>
-              <Input id="ctaLink" {...form.register("ctaLink")} placeholder="https://example.com/more-info" type="url" />
-              {form.formState.errors.ctaLink && <p className="text-sm text-destructive">{form.formState.errors.ctaLink.message}</p>}
-            </div>
-          </div>
 
           <div className="space-y-4 border p-4 rounded-md shadow-sm bg-secondary/20">
             <Label className="font-semibold text-lg text-foreground block mb-2">Quản Lý Hình Ảnh Banner</Label>

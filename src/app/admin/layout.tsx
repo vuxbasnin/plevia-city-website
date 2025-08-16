@@ -83,28 +83,19 @@ const navItemsConfiguration: NavItemConfig[] = [
   //       { id: "shared-benefits", label: "Danh Sách Quyền Lợi", icon: Package, href: "/admin/content/common/benefits", isLeaf: true },
   //   ]
   // },
-  // {
-  //   id: "group-homepage-content",
-  //   label: "Quản Lý Trang Chủ",
-  //   icon: Home,
-  //   isLeaf: false,
-  //   children: [
-  //     { id: "homepage-hero", label: "Banner Giới Thiệu", icon: ImageIcon, href: "/admin/content/homepage/hero", isLeaf: true },
-  //     // { id: "homepage-seating", label: "Vị Trí Ngồi", icon: Sofa, href: "/admin/content/homepage/seating", isLeaf: true }, // Ẩn mục này
-  //     // { id: "homepage-amenities", label: "Dịch Vụ & Tiện Ích", icon: Sparkles, href: "/admin/content/homepage/amenities", isLeaf: true }, // Ẩn mục này
-  //     // { id: "homepage-culture", label: "Văn Hóa Cộng Đồng", icon: Users, href: "/admin/content/homepage/culture", isLeaf: true }, // Ẩn mục này
-  //     { id: "homepage-finalCta", label: "CTA Cuối Trang", icon: Send, href: "/admin/content/homepage/final-cta", isLeaf: true },
-  //   ],
-  // },
-  // {
-  //   id: "group-member-benefits-page-settings",
-  //   label: "Cài Đặt Trang Quyền Lợi",
-  //   icon: Newspaper,
-  //   isLeaf: false,
-  //   children: [
-  //     { id: "member-benefits-page-static-content", label: "Nội Dung Tĩnh", icon: FileText, href: "/admin/content/member-benefits-page/static", isLeaf: true },
-  //   ],
-  // },
+  {
+    id: "group-homepage-content",
+    label: "Quản Lý Trang Chủ",
+    icon: Home,
+    isLeaf: false,
+    children: [
+      { id: "homepage-hero", label: "Banner Home", icon: ImageIcon, href: "/admin/content/homepage/hero", isLeaf: true },
+      // { id: "homepage-seating", label: "Vị Trí Ngồi", icon: Sofa, href: "/admin/content/homepage/seating", isLeaf: true }, // Ẩn mục này
+      // { id: "homepage-amenities", label: "Dịch Vụ & Tiện Ích", icon: Sparkles, href: "/admin/content/homepage/amenities", isLeaf: true }, // Ẩn mục này
+      // { id: "homepage-culture", label: "Văn Hóa Cộng Đồng", icon: Users, href: "/admin/content/homepage/culture", isLeaf: true }, // Ẩn mục này
+      // { id: "homepage-finalCta", label: "CTA Cuối Trang", icon: Send, href: "/admin/content/homepage/final-cta", isLeaf: true },
+    ],
+  },
 ];
 
 export default function AdminLayout({ children }: { children: ReactNode }) {

@@ -89,19 +89,6 @@ export type SiteSettingsData = z.infer<typeof siteSettingsFormSchema>;
 
 // Hero Section (Main Page)
 export const heroFormSchema = z.object({
-  headline: z
-    .string()
-    .min(1, "Tiêu đề không được để trống.")
-    .max(100, "Tiêu đề không quá 100 ký tự."),
-  subheadline: z
-    .string()
-    .min(1, "Mô tả phụ không được để trống.")
-    .max(200, "Mô tả phụ không quá 200 ký tự."),
-  ctaText: z
-    .string()
-    .min(1, "Nút CTA không được để trống.")
-    .max(30, "Nút CTA không quá 30 ký tự."),
-  ctaLink: z.string().url("Link CTA không hợp lệ."),
   imageUrl: z
     .string()
     .refine(httpsUrlOrEmptyOrBlobRefinement, {
@@ -533,11 +520,6 @@ export const defaultSiteSettingsData: SiteSettingsData = {
 };
 
 export const defaultHeroSectionData: HeroSectionData = {
-  headline: "Không Gian Làm Việc Lý Tưởng Của Bạn",
-  subheadline:
-    "Khám phá môi trường làm việc chung đầy cảm hứng, kết nối và sáng tạo được thiết kế dành riêng cho bạn.",
-  ctaText: "Tìm Hiểu Ngay",
-  ctaLink: "#seating-options",
   imageUrl: "https://placehold.co/1200x800.png?text=Hero+Image",
 };
 
