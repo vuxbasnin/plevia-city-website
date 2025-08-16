@@ -1,8 +1,15 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://pleviacity.vn/sitemap.xml
+# Sitemaps
+Sitemap: /sitemap.xml
+Sitemap: /sitemap-images.xml
+Sitemap: /sitemap-news.xml
+
+# Allow access to logo and important images
+Allow: /logo_seo_home_page.png
+Allow: /assets/
+Allow: /background/
 
 # Disallow admin and API
 Disallow: /admin/
@@ -16,4 +23,11 @@ Allow: /member-benefits/
 Allow: /news/
 
 # Crawl delay
-Crawl-delay: 1 
+Crawl-delay: 1
+
+# Additional directives for better image indexing
+User-agent: Googlebot-Image
+Allow: /
+Allow: /logo_seo_home_page.png
+Allow: /assets/
+Allow: /background/ 

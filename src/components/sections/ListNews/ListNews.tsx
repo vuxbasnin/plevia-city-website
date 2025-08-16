@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ItemNewsLarge from '@/components/ui/ItemNewsLarge/ItemNewsLarge';
