@@ -108,14 +108,14 @@ export async function updateSiteSettings(
   return updateSectionData("siteSettings", data);
 }
 
-// Hero Section (Main Page)
+// Home Banner Section
 export async function getHeroSectionData(): Promise<HeroSectionData> {
-  return getSectionData<HeroSectionData>("hero");
+  return getSectionData<HeroSectionData>("banner_home");
 }
 export async function updateHeroSection(
   data: HeroSectionData
 ): Promise<boolean> {
-  return updateSectionData("hero", data);
+  return updateSectionData("banner_home", data);
 }
 
 // Seating Section

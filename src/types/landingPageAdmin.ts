@@ -87,7 +87,7 @@ export const siteSettingsFormSchema = z.object({
 });
 export type SiteSettingsData = z.infer<typeof siteSettingsFormSchema>;
 
-// Hero Section (Main Page)
+// Home Banner Section
 export const heroFormSchema = z.object({
   imageUrl: z
     .string()
@@ -520,7 +520,7 @@ export const defaultSiteSettingsData: SiteSettingsData = {
 };
 
 export const defaultHeroSectionData: HeroSectionData = {
-  imageUrl: "https://placehold.co/1200x800.png?text=Hero+Image",
+  imageUrl: "https://placehold.co/1200x800.png?text=Home+Banner",
 };
 
 export const defaultSeatingSectionData: SeatingSectionData = {
@@ -735,7 +735,11 @@ export interface FurnitureSectionData {
 
 // Helper type for Section Keys
 export type SectionKey =
-  | "hero"
+  | "banner_home"
+  | "banner_storyline"
+  | "banner_lifestyle"
+  | "banner_location"
+  | "banner_news"
   | "seating"
   | "amenities"
   | "benefits"
@@ -748,8 +752,16 @@ export type SectionKey =
 // Function to get default data for a section key
 export function getDefaultData(sectionKey: SectionKey): any {
   switch (sectionKey) {
-    case "hero":
+    case "banner_home":
       return { ...defaultHeroSectionData };
+    case "banner_storyline":
+      return { imageUrl: "https://placehold.co/1200x800.png?text=Storyline+Banner" };
+    case "banner_lifestyle":
+      return { imageUrl: "https://placehold.co/1200x800.png?text=Lifestyle+Banner" };
+    case "banner_location":
+      return { imageUrl: "https://placehold.co/1200x800.png?text=Location+Banner" };
+    case "banner_news":
+      return { imageUrl: "https://placehold.co/1200x800.png?text=News+Banner" };
     case "seating":
       return {
         ...defaultSeatingSectionData,
