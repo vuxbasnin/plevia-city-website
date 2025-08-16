@@ -4,7 +4,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import NextImage from 'next/image';
-import { Mail, Phone, MapPin, Facebook, Youtube, RotateCcw, MapPin as MapPinIcon } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Youtube, RotateCcw, MapPin as MapPinIcon, MessageSquare } from 'lucide-react';
 import { useSiteSettings } from '@/context/SiteSettingsContext';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
@@ -13,6 +13,31 @@ import './Footer.css';
 
 export default function Footer() {
   const { siteSettings, isLoading: isLoadingSettings } = useSiteSettings();
+
+  // Social links data
+  const socialLinks = [
+    {
+      id: 'facebook',
+      platformName: 'Facebook',
+      iconName: 'Facebook',
+      url: 'https://www.facebook.com/pleviacity',
+      color: 'bg-blue-600 hover:bg-blue-700'
+    },
+    {
+      id: 'zalo',
+      platformName: 'Zalo',
+      iconName: 'MessageSquare',
+      url: 'https://zalo.me/1501497019270466512',
+      color: 'bg-green-500 hover:bg-green-600'
+    },
+    {
+      id: 'youtube',
+      platformName: 'YouTube',
+      iconName: 'Youtube',
+      url: 'https://www.youtube.com/@pleviacity',
+      color: 'bg-red-600 hover:bg-red-700'
+    }
+  ];
 
   return (
     <footer className="footer">
@@ -34,20 +59,19 @@ export default function Footer() {
             </div>
             <ul className="footer-text">
               <li>
-                <p>Trụ sở: Tầng 04, tòa nhà Thương mại và dịch vụ B-CC, Dự án khu nhà ở Ngân Hà Vạn Phúc, Phố Tố Hữu, Phường Hà Đông, Thành phố Hà Nội, Việt Nam</p>
+                <p>Trụ sở: Tầng 04, tòa nhà Thương mại và dịch vụ B-CC, Dự án khu nhà ở Ngân Hà Vạn Phúc, Phố Tố Hữu, Phường Hà Đông, Thành phố Hà Nội</p>
               </li>
             </ul>
           </div>
 
           {/* Column 2: CÁC PAGE CON */}
           <div className="footer-column">
-            <h5 className="footer-title-bold">Trang chủ</h5>
+            <h5 className="footer-title-bold">
+              <Link href="/" className="footer-page-link">
+                Trang chủ
+              </Link>
+            </h5>
             <ul className="footer-page-links">
-              <li>
-                <Link href="/" className="footer-page-link">
-                  Homepage
-                </Link>
-              </li>
               <li>
                 <Link href="/storyline" className="footer-page-link">
                   Câu chuyện kiến tạo
@@ -83,12 +107,34 @@ export default function Footer() {
           <div className="footer-column">
             <h5 className="footer-title-bold">Liên hệ</h5>
             <div className="footer-contact-info">
-              <p>hotro@tapdoanbachai.vn</p>
+              <p>Email: hotro@tapdoanbachai.vn</p>
               <p>
               </p>
               <div className="footer-hotline">
                 <span>Hotline: </span>
                 <span className="footer-hotline-number">07.67.67.67.72</span>
+              </div>
+              
+              {/* Social Media Buttons */}
+              <div className="footer-social-buttons">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.id}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      "footer-social-button",
+                      social.color
+                    )}
+                    aria-label={social.platformName}
+                    title={social.platformName}
+                  >
+                    {social.iconName === 'Facebook' && <Facebook className="h-4 w-4" />}
+                    {social.iconName === 'MessageSquare' && <MessageSquare className="h-4 w-4" />}
+                    {social.iconName === 'Youtube' && <Youtube className="h-4 w-4" />}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
