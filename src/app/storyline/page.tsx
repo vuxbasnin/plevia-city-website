@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import PageLayout from "@/components/layout/PageLayout";
-import StorylineContent from './StorylineContent';
-import './page.css';
+import StorylineContent from '@/components/pages/StorylinePage/StorylineContent';
 
 // Static data for SEO optimization
 const STATIC_SEO_DATA = {

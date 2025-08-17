@@ -2,7 +2,6 @@
 
 import ImageHeader from "@/components/sections/ImageHeader";
 import ScrollReveal from "@/components/shared/ScrollReveal";
-import "./page.css"
 import SectionOneStoryLine from "@/components/sections/SectionOneHome/SectionOneStoryLine";
 import SectionTwoStoryLine from "@/components/sections/SectionOneHome/SectionTwoStoryLine";
 import SectionThreeStoryLine from "@/components/sections/SectionOneHome/SectionThreeStoryLine";
@@ -10,6 +9,7 @@ import SectionFourStoryLine from "@/components/sections/SectionOneHome/SectionFo
 import SectionFiveStoryLine from "@/components/sections/SectionOneHome/SectionFiveStoryLine";
 import FormInfo from "@/components/sections/FormInfo/FormInfo";
 import { storylineBanner } from '@/data/storyline';
+import './StorylinePage.module.css'
 
 export default function StorylineContent() {
   return (
