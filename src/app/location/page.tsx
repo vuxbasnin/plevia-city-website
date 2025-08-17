@@ -1,6 +1,7 @@
 "use client";
 
 import PageLayout from '@/components/layout/PageLayout';
+import ClientImageBannerLocation from '@/components/shared/ClientImageBannerLocation';
 import Map from '@/components/sections/Map/Map';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import ImageHeaderStatic from "@/components/sections/ImageHeaderStatic";
@@ -12,7 +13,7 @@ import React from "react";
 export default function LocationPage() {
     return (<PageLayout>
             <ScrollReveal>
-                <Map/>
+                <ClientImageBannerLocation />
             </ScrollReveal>
             <ScrollReveal>
                 <TitleLifestyle title="Tâm điểm giao thương – Một chạm ngàn tiện ích"/>
