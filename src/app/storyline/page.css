@@ -70,3 +70,139 @@
   width: 100vw;
   margin-left: calc(-1 * ((100vw - 100%) / 2)); /* căn sát mép trái */
 }
+
+/* SEO Content Styling - Hidden from users but accessible to search engines */
+
+.seo-content {
+  /* Hide from visual users but keep accessible to screen readers and search engines */
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  
+  /* Ensure content is still readable by search engines */
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: -9999 !important;
+}
+
+/* Additional SEO content sections */
+.seo-content section {
+  margin-bottom: 1rem;
+}
+
+.seo-content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.seo-content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  color: #444;
+}
+
+.seo-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  color: #555;
+}
+
+.seo-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem 0;
+}
+
+/* Ensure SEO content is properly structured for search engines */
+.seo-content * {
+  /* Maintain semantic structure */
+  display: block;
+}
+
+.seo-content h1,
+.seo-content h2,
+.seo-content h3,
+.seo-content h4,
+.seo-content h5,
+.seo-content h6 {
+  display: block;
+  font-weight: bold;
+}
+
+.seo-content p,
+.seo-content div,
+.seo-content section {
+  display: block;
+}
+
+.seo-content span,
+.seo-content strong,
+.seo-content em {
+  display: inline;
+}
+
+/* Print styles - show SEO content when printing for better accessibility */
+@media print {
+  .seo-content {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+    border: none !important;
+    z-index: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+  }
+}
+
+/* Screen reader only content - alternative approach */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Focus styles for accessibility */
+.seo-content:focus-within {
+  /* Show content when focused for accessibility */
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+  border: 2px solid #007bff !important;
+  z-index: 9999 !important;
+  background: white !important;
+  padding: 1rem !important;
+  margin: 1rem 0 !important;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3) !important;
+}
