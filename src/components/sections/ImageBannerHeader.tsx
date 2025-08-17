@@ -3,13 +3,26 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
 import Image from 'next/image';
-import { getHeroSectionData } from '@/lib/firestoreService';
+import { getSectionData } from '@/lib/firestoreService';
 import type { HeroSectionData } from '@/types/landingPageAdmin';
 import { defaultHeroSectionData } from '@/types/landingPageAdmin';
 import { Skeleton } from '@/components/ui/skeleton';
 import './ImageHeader.css';
 
-export default function ImageBannerHeader() {
+// Định nghĩa các loại banner có sẵn
+export type BannerType = 'banner_home' | 'banner_storyline' | 'banner_location' | 'banner_lifestyle' | 'banner_news';
+
+interface ImageBannerHeaderProps {
+  bannerType?: BannerType;
+  fallbackImageUrl?: string;
+  className?: string;
+}
+
+export default function ImageBannerHeader({ 
+  bannerType = 'banner_home', 
+  fallbackImageUrl = "/assets/home/banner_home.png",
+  className = ""
+}: ImageBannerHeaderProps) {
   const [heroData, setHeroData] = useState<HeroSectionData>(defaultHeroSectionData);
   const [isLoading, setIsLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
@@ -25,16 +38,17 @@ export default function ImageBannerHeader() {
       setIsLoading(true);
       setImageError(false);
       try {
-        const data = await getHeroSectionData();
+        // Sử dụng bannerType để fetch data tương ứng
+        const data = await getSectionData<HeroSectionData>(bannerType);
         setHeroData(data || defaultHeroSectionData);
       } catch (error) {
-        console.error("Error loading hero section data:", error);
+        console.error(`Error loading ${bannerType} data:`, error);
         setHeroData(defaultHeroSectionData);
       }
       setIsLoading(false);
     }
     loadData();
-  }, []);
+  }, [bannerType]);
 
   // Detect scroll direction and trigger animation
   useEffect(() => {
@@ -66,14 +80,13 @@ export default function ImageBannerHeader() {
   }, [isLoading, imageLoading, hasAnimated]);
 
   // Sử dụng imageUrl từ Firestore thay vì prop
-  const fallbackImageUrl = "/assets/home/banner_home.png";
   const currentImageUrl = imageError
-    ? `https://placehold.co/1200x800.png?text=${encodeURIComponent(heroData.headline || 'Hero+Image+Error')}`
+    ? `https://placehold.co/1200x800.png?text=Hero+Image+Error`
     : heroData.imageUrl || fallbackImageUrl;
 
   if (isLoading) {
     return (
-      <section className="relative h-[50vh] flex items-center justify-center bg-background px-6 overflow-hidden">
+      <section className={`relative h-[50vh] flex items-center justify-center bg-background px-6 overflow-hidden ${className}`}>
         <Skeleton className="absolute inset-0 z-0" />
       </section>
     );
@@ -83,7 +96,7 @@ export default function ImageBannerHeader() {
     <section
       ref={ref}
       id="hero"
-      className="relative h-[50vh] flex items-center justify-center px-6 sm:px-10 overflow-hidden"
+      className={`relative h-[50vh] flex items-center justify-center px-6 sm:px-10 overflow-hidden ${className}`}
     >
       <motion.div
         className="absolute inset-0 z-0"
@@ -102,7 +115,7 @@ export default function ImageBannerHeader() {
         
         <Image
           src={currentImageUrl}
-          alt={heroData.headline || "Hero Image"}
+          alt="Hero Image"
           fill
           className="object-cover object-center"
           priority
