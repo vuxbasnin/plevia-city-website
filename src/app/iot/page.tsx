@@ -97,7 +97,82 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function IoTPageComponent() {
   return (
     <>
-      
+      {/* Main Content - Keep existing dynamic content */}
+      <PageLayout>
+        <IoTPage />
+      </PageLayout>
+
+      {/* Static HTML SEO Content - Will be preserved during build */}
+      <div 
+        className="seo-visible-content"
+        dangerouslySetInnerHTML={{
+          __html: `
+            <div class="container mx-auto px-4 py-8">
+              <div class="max-w-4xl mx-auto">
+                <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center">
+                  Công Nghệ IoT & AI Vận Hành Plevia City
+                </h1>
+                <p class="text-lg text-gray-700 mb-8 text-center leading-relaxed">
+                  Plevia City là khu đô thị thông minh đầu tiên tại Gia Lai tích hợp công nghệ IoT và AI tiên tiến để tạo nên không gian sống hiện đại, an toàn và tiện nghi.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                  <div>
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+                      Hệ Thống IoT & AI Tại Plevia City Gia Lai
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed">
+                      Plevia City áp dụng công nghệ IoT và AI tiên tiến nhất để tạo nên khu đô thị thông minh hàng đầu tại Tây Nguyên. Hệ thống này không chỉ quản lý từng căn nhà mà còn kết nối toàn bộ hệ sinh thái đô thị.
+                    </p>
+                  </div>
+                  <div>
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+                      Tính Năng Công Nghệ Thông Minh
+                    </h2>
+                    <ul class="space-y-2">
+                      <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span>
+                        <span class="text-gray-600">Hệ thống quản lý thông minh toàn diện</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span>
+                        <span class="text-gray-600">Tự động hóa các tiện ích đô thị</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span>
+                        <span class="text-gray-600">Kết nối vạn vật (IoT) tích hợp</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span>
+                        <span class="text-gray-600">AI phân tích và dự đoán</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span>
+                        <span class="text-gray-600">Bảo mật và an ninh thông minh</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span>
+                        <span class="text-gray-600">Tiết kiệm năng lượng tối ưu</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg">
+                  <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+                    Lợi Ích Của Công Nghệ IoT & AI
+                  </h2>
+                  <p class="text-gray-600 leading-relaxed">
+                    Với việc tích hợp công nghệ IoT và AI, Plevia City mang đến cho cư dân trải nghiệm sống hiện đại, an toàn và tiện nghi. Hệ thống tự động hóa giúp tiết kiệm năng lượng, tăng cường an ninh và tối ưu hóa quản lý đô thị.
+                  </p>
+                </div>
+              </div>
+            </div>
+          `
+        }}
+      />
+
+      {/* Structured Data for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -166,60 +241,6 @@ export default function IoTPageComponent() {
           }),
         }}
       />
-
-      {/* Main Content - Keep existing dynamic content */}
-      <PageLayout>
-        <IoTPage />
-      </PageLayout>
-
-      {/* Visible SEO Content for better Vercel compatibility */}
-      <div className="seo-visible-content">
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-              {IOT_SEO_DATA.content.heading}
-            </h1>
-            <p className="text-lg text-gray-700 mb-8 text-center leading-relaxed">
-              {IOT_SEO_DATA.content.intro}
-            </p>
-            
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
-              <div>
-                <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-                  Hệ Thống IoT & AI Tại Plevia City Gia Lai
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  Plevia City áp dụng công nghệ IoT và AI tiên tiến nhất để tạo nên khu đô thị thông minh hàng đầu tại Tây Nguyên. Hệ thống này không chỉ quản lý từng căn nhà mà còn kết nối toàn bộ hệ sinh thái đô thị.
-                </p>
-              </div>
-              <div>
-                <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-                  Tính Năng Công Nghệ Thông Minh
-                </h2>
-                <ul className="space-y-2">
-                  {IOT_SEO_DATA.content.features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <span className="text-green-500 mr-2">✓</span>
-                      <span className="text-gray-600">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-                Lợi Ích Của Công Nghệ IoT & AI
-              </h2>
-              <p className="text-gray-600 leading-relaxed">
-                Với việc tích hợp công nghệ IoT và AI, Plevia City mang đến cho cư dân trải nghiệm sống hiện đại, an toàn và tiện nghi. Hệ thống tự động hóa giúp tiết kiệm năng lượng, tăng cường an ninh và tối ưu hóa quản lý đô thị.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Structured Data for SEO */}
     </>
   );
 }
