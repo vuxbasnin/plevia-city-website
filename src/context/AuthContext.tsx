@@ -5,7 +5,7 @@ import type { User } from "firebase/auth";
 import { createContext, useState, useEffect, type ReactNode } from "react";
 import { auth } from "@/lib/firebase";
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut as firebaseSignOut } from "firebase/auth";
-import type { LoginFormData } from "@/app/admin/login/page";
+import type { LoginFormData } from "@/app/(admin-router)/admin/login/page";
 import { useRouter } from "next/navigation";
 
 interface AuthContextType {

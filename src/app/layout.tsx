@@ -181,7 +181,6 @@ export default function RootLayout({
         <meta name="distribution" content="Global" />
         <meta name="rating" content="General" />
         <meta name="revisit-after" content="7 days" />
-        <link rel="canonical" href="/" />
         
         {/* Logo and Brand Meta Tags */}
         <meta name="image" content="/logo_seo_home_page.png" />
@@ -304,13 +303,15 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <ClientOnly>
+        {/* <ClientOnly>
           <AuthProvider>
-            <SiteSettingsProvider>
+            <SiteSettingsProvider> */}
               {children}
-              <Toaster />
-            </SiteSettingsProvider>
+            {/* </SiteSettingsProvider>
           </AuthProvider>
+        </ClientOnly> */}
+        <ClientOnly>
+          <Toaster />
         </ClientOnly>
       </body>
     </html>
