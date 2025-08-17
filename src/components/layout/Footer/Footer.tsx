@@ -1,6 +1,4 @@
 
-"use client";
-
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import NextImage from 'next/image';
@@ -12,7 +10,6 @@ import { Button } from '@/components/ui/button';
 import './Footer.css';
 
 export default function Footer() {
-  const { siteSettings, isLoading: isLoadingSettings } = useSiteSettings();
 
   // Social links data
   const socialLinks = [
