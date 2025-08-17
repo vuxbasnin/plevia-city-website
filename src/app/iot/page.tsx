@@ -2,66 +2,44 @@ import type { Metadata } from "next";
 import PageLayout from "@/components/layout/PageLayout";
 import IoTPage from "./IoT";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const title = "Plevia City - Công Nghệ IoT & AI Đô Thị Thông Minh | Khu Đô Thị Tương Lai Gia Lai";
-  const description =
-    "Khám phá công nghệ IoT và AI tiên tiến tại Plevia City - khu đô thị thông minh đầu tiên tại Gia Lai. Hệ thống AI quản lý toàn diện, an ninh 24/7, nhà thông minh, giao thông thông minh và tiện ích đẳng cấp.";
-  
-  const keywords = [
+// Static SEO data for IoT page
+const IOT_SEO_DATA = {
+  title: 'Plevia City - Công Nghệ IoT & AI Vận Hành Khu Đô Thị Thông Minh Gia Lai',
+  description: 'Khám phá công nghệ IoT và AI tiên tiến tại Plevia City Gia Lai. Hệ thống quản lý thông minh, tự động hóa toàn diện, và kết nối vạn vật cho khu đô thị hiện đại nhất Tây Nguyên.',
+  keywords: [
     'Plevia City IoT',
-    'pleviacity IoT',
-    'công nghệ IoT Gia Lai',
-    'AI đô thị thông minh',
-    'nhà thông minh Pleiku',
-    'hệ thống AI Plevia',
-    'đô thị thông minh Gia Lai',
-    'công nghệ 4.0 Plevia',
-    'IoT Plevia City',
-    'AI Plevia City',
-    'smart home Gia Lai',
-    'an ninh AI 24/7',
-    'giao thông thông minh',
-    'nhà thông minh IoT',
-    'hệ sinh thái IoT',
-    'công nghệ tương lai',
+    'khu đô thị thông minh Gia Lai',
+    'công nghệ AI Gia Lai',
+    'IoT đô thị thông minh',
+    'hệ thống quản lý thông minh',
+    'tự động hóa đô thị',
+    'kết nối vạn vật Gia Lai',
+    'công nghệ 4.0 Tây Nguyên',
     'đô thị số hóa',
-    'Plevia City công nghệ',
-    'pleviacity.vn IoT',
-    'dự án IoT Gia Lai'
-  ];
+    'smart city Gia Lai',
+    'AI quản lý đô thị',
+    'hạ tầng thông minh'
+  ],
+  content: {
+    heading: 'Công Nghệ IoT & AI Vận Hành Plevia City',
+    intro: 'Plevia City là khu đô thị thông minh đầu tiên tại Gia Lai tích hợp công nghệ IoT và AI tiên tiến để tạo nên không gian sống hiện đại, an toàn và tiện nghi.',
+    features: [
+      'Hệ thống quản lý thông minh toàn diện',
+      'Tự động hóa các tiện ích đô thị',
+      'Kết nối vạn vật (IoT) tích hợp',
+      'AI phân tích và dự đoán',
+      'Bảo mật và an ninh thông minh',
+      'Tiết kiệm năng lượng tối ưu'
+    ]
+  }
+};
 
+export async function generateMetadata(): Promise<Metadata> {
   return {
-    title,
-    description,
-    keywords,
+    title: IOT_SEO_DATA.title,
+    description: IOT_SEO_DATA.description,
+    keywords: IOT_SEO_DATA.keywords,
     alternates: { canonical: "/iot" },
-    openGraph: {
-      title,
-      description,
-      url: "/iot",
-      type: "website",
-      siteName: "Plevia City",
-      locale: "vi_VN",
-      images: [
-        {
-          url: "/assets/home/plevia_city.jpg",
-          width: 1200,
-          height: 630,
-          alt: "Plevia City - Công nghệ IoT & AI đô thị thông minh",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [
-        {
-          url: "/assets/home/plevia_city.jpg",
-          alt: "Plevia City - Công nghệ IoT & AI đô thị thông minh",
-        },
-      ],
-    },
     robots: {
       index: true,
       follow: true,
@@ -73,13 +51,52 @@ export async function generateMetadata(): Promise<Metadata> {
         'max-snippet': -1,
       },
     },
+    openGraph: {
+      title: IOT_SEO_DATA.title,
+      description: IOT_SEO_DATA.description,
+      url: "/iot",
+      type: "website",
+      locale: 'vi_VN',
+      siteName: 'Plevia City',
+      images: [
+        {
+          url: "/assets/home/plevia_city.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Plevia City - Công nghệ IoT & AI vận hành",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: IOT_SEO_DATA.title,
+      description: IOT_SEO_DATA.description,
+      images: [
+        {
+          url: "/assets/home/plevia_city.jpg",
+          alt: "Plevia City - Công nghệ IoT & AI vận hành",
+        },
+      ],
+    },
+    authors: [{ name: 'Plevia City' }],
+    creator: 'Plevia City',
+    publisher: 'Plevia City',
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    metadataBase: new URL('https://pleviacity.com'),
+    other: {
+      'google-site-verification': 'your-verification-code',
+      'googlebot-news': 'nosnippet',
+    },
   };
 }
 
 export default function IoTPageComponent() {
   return (
     <PageLayout>
-      {/* SEO Content - Hidden for better search engine optimization */}
       <div className="sr-only" aria-hidden="true">
         <article>
           <header>

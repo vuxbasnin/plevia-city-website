@@ -384,3 +384,353 @@ body {
         -webkit-line-clamp: 3;
     }
 }
+
+/* SEO Content Styling - Visible content for better Vercel compatibility */
+
+.seo-visible-content {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 2rem;
+  /* Ensure content is always visible */
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Style static HTML content */
+.seo-visible-content h1 {
+  color: #1e293b !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 1.875rem !important;
+  line-height: 2.25rem !important;
+  margin-bottom: 1.5rem !important;
+  text-align: center !important;
+}
+
+.seo-visible-content h2 {
+  color: #334155 !important;
+  font-weight: 600 !important;
+  border-left: 4px solid #3b82f6 !important;
+  padding-left: 1rem !important;
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.seo-visible-content p {
+  color: #475569 !important;
+  line-height: 1.7 !important;
+  font-size: 1.125rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.seo-visible-content ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.seo-visible-content li {
+  color: #475569 !important;
+  padding: 0.5rem 0 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+}
+
+.seo-visible-content li:last-child {
+  border-bottom: none !important;
+}
+
+.seo-visible-content .container {
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 0 1rem !important;
+}
+
+.seo-visible-content .max-w-4xl {
+  max-width: 56rem !important;
+}
+
+.seo-visible-content .px-4 {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.seo-visible-content .py-8 {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+.seo-visible-content .mb-6 {
+  margin-bottom: 1.5rem !important;
+}
+
+.seo-visible-content .mb-8 {
+  margin-bottom: 2rem !important;
+}
+
+.seo-visible-content .mb-4 {
+  margin-bottom: 1rem !important;
+}
+
+.seo-visible-content .mr-2 {
+  margin-right: 0.5rem !important;
+}
+
+.seo-visible-content .gap-8 {
+  gap: 2rem !important;
+}
+
+.seo-visible-content .space-y-2 > * + * {
+  margin-top: 0.5rem !important;
+}
+
+.seo-visible-content .bg-gray-50 {
+  background-color: #f9fafb !important;
+}
+
+.seo-visible-content .p-6 {
+  padding: 1.5rem !important;
+}
+
+.seo-visible-content .rounded-lg {
+  border-radius: 0.5rem !important;
+}
+
+.seo-visible-content .text-3xl {
+  font-size: 1.875rem !important;
+  line-height: 2.25rem !important;
+}
+
+.seo-visible-content .text-2xl {
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+}
+
+.seo-visible-content .text-lg {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+}
+
+.seo-visible-content .text-gray-900 {
+  color: #111827 !important;
+}
+
+.seo-visible-content .text-gray-800 {
+  color: #1f2937 !important;
+}
+
+.seo-visible-content .text-gray-700 {
+  color: #374151 !important;
+}
+
+.seo-visible-content .text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.seo-visible-content .text-green-500 {
+  color: #10b981 !important;
+}
+
+.seo-visible-content .font-bold {
+  font-weight: 700 !important;
+}
+
+.seo-visible-content .font-semibold {
+  font-weight: 600 !important;
+}
+
+.seo-visible-content .text-center {
+  text-align: center !important;
+}
+
+.seo-visible-content .leading-relaxed {
+  line-height: 1.625 !important;
+}
+
+/* Grid layout for static HTML */
+.seo-visible-content .grid {
+  display: grid !important;
+}
+
+.seo-visible-content .md\:grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+/* Responsive design for SEO content */
+@media (max-width: 768px) {
+  .seo-visible-content {
+    padding: 1rem !important;
+  }
+  
+  .seo-visible-content h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  .seo-visible-content h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  .seo-visible-content .md\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* SEO Content Styling - Hidden from users but accessible to search engines (Legacy) */
+
+.seo-content {
+  /* Hide from visual users but keep accessible to screen readers and search engines */
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  
+  /* Ensure content is still readable by search engines */
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: -9999 !important;
+}
+
+/* Additional SEO content sections */
+.seo-content section {
+  margin-bottom: 1rem;
+}
+
+.seo-content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.seo-content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  color: #444;
+}
+
+.seo-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  color: #555;
+}
+
+.seo-content ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.seo-content li {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.seo-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem 0;
+}
+
+/* Ensure SEO content is properly structured for search engines */
+.seo-content * {
+  /* Maintain semantic structure */
+  display: block;
+}
+
+.seo-content h1,
+.seo-content h2,
+.seo-content h3,
+.seo-content h4,
+.seo-content h5,
+.seo-content h6 {
+  display: block;
+  font-weight: bold;
+}
+
+.seo-content p,
+.seo-content div,
+.seo-content section {
+  display: block;
+}
+
+.seo-content span,
+.seo-content strong,
+.seo-content em {
+  display: inline;
+}
+
+.seo-content ul,
+.seo-content ol {
+  display: block;
+}
+
+.seo-content li {
+  display: list-item;
+}
+
+/* Print styles - show SEO content when printing for better accessibility */
+@media print {
+  .seo-content {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+    border: none !important;
+    z-index: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+  }
+}
+
+/* Screen reader only content - alternative approach */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Focus styles for accessibility */
+.seo-content:focus-within {
+  /* Show content when focused for accessibility */
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+  border: 2px solid #007bff !important;
+  z-index: 9999 !important;
+  background: white !important;
+  padding: 1rem !important;
+  margin: 1rem 0 !important;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3) !important;
+}

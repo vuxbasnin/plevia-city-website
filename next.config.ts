@@ -8,6 +8,21 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // Ensure static content is preserved during build
+  output: 'standalone',
+  // Optimize for static generation
+  experimental: {
+    // Preserve static content
+    // preserveStaticContent: true,
+    // Optimize static pages
+    // optimizeStaticPages: true,
+    // Memory optimizations
+    memoryBasedWorkersCount: true,
+    workerThreads: false,
+    cpus: 1,
+    // SEO optimizations
+    optimizePackageImports: ['@radix-ui/react-icons', 'lucide-react'],
+  },
   images: {
     remotePatterns: [
       {
@@ -19,16 +34,6 @@ const nextConfig: NextConfig = {
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-  },
-  // Optimization for memory usage
-  experimental: {
-    // Giảm memory usage khi build
-    memoryBasedWorkersCount: true,
-    workerThreads: false,
-    // Tối ưu cho VPS với RAM thấp
-    cpus: 1, // Chỉ dùng 1 CPU core
-    // SEO optimizations
-    optimizePackageImports: ['@radix-ui/react-icons', 'lucide-react'],
   },
   // Turbopack configuration (stable in Next.js 15)
   turbopack: {
@@ -42,7 +47,7 @@ const nextConfig: NextConfig = {
   // Webpack optimizations cho low memory
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
-      // Giảm memory usage cho production build
+      // Ensure SEO content is not stripped during build
       config.optimization.splitChunks = {
         chunks: 'all',
         cacheGroups: {
@@ -60,6 +65,14 @@ const nextConfig: NextConfig = {
             chunks: 'all',
             priority: 10,
             reuseExistingChunk: true,
+            enforce: true
+          },
+          // Preserve SEO content
+          seo: {
+            name: 'seo',
+            chunks: 'all',
+            test: /seo-visible-content/,
+            priority: 30,
             enforce: true
           }
         }
