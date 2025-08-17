@@ -2,10 +2,6 @@ import type { Metadata } from 'next';
 import PageLayout from "@/components/layout/PageLayout";
 import StorylineContent from '@/components/pages/StorylinePage/StorylineContent';
 
-// Force dynamic rendering for high CSR page
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-
 // Static SEO data for Storyline page
 const STORYLINE_SEO_DATA = {
   title: 'Plevia City - Câu Chuyện Kiến Tạo Khu Đô Thị Thông Minh Gia Lai',
@@ -103,53 +99,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function StorylinePage() {
   return (
     <>
-      {/* Static SEO Content for Googlebot */}
-      <div className="seo-content" style={{ position: 'absolute', left: '-9999px', visibility: 'hidden' }}>
-        <h1>{STORYLINE_SEO_DATA.content.heading}</h1>
-        <p>{STORYLINE_SEO_DATA.content.intro}</p>
-        
-        <section>
-          <h2>Plevia City - Dự Án Đô Thị Thông Minh Tại Gia Lai</h2>
-          <p>Plevia City là dự án khu đô thị thông minh đầu tiên tại Gia Lai, được thiết kế với tầm nhìn trở thành không gian sống hiện đại, văn minh và thông minh. Dự án mang đến giải pháp toàn diện cho nhu cầu nhà ở và phát triển cộng đồng tại khu vực Tây Nguyên.</p>
-        </section>
-        
-        <section>
-          <h2>Tầm Nhìn Phát Triển Plevia City</h2>
-          <p>Với định hướng phát triển bền vững, Plevia City tích hợp công nghệ thông minh, tiện ích đô thị hiện đại và không gian xanh để tạo nên môi trường sống lý tưởng cho cư dân. Dự án không chỉ đáp ứng nhu cầu nhà ở mà còn thúc đẩy sự phát triển kinh tế - xã hội của tỉnh Gia Lai.</p>
-        </section>
-        
-        <section>
-          <h2>Vị Trí Chiến Lược Tại Gia Lai</h2>
-          <p>Plevia City được xây dựng tại vị trí đắc địa của tỉnh Gia Lai, thuận tiện kết nối với các trung tâm kinh tế, văn hóa và giao thông chính. Vị trí này mang lại lợi thế về giao thông thuận tiện, tiện ích xung quanh và tiềm năng phát triển trong tương lai.</p>
-        </section>
-        
-        <section>
-          <h2>Tiện Ích Đô Thị Hiện Đại</h2>
-          <p>Dự án Plevia City được thiết kế với hệ thống tiện ích đô thị hiện đại bao gồm: trung tâm thương mại, trường học, bệnh viện, công viên, khu vui chơi giải trí và các dịch vụ tiện ích khác. Tất cả được bố trí hợp lý để phục vụ nhu cầu sinh hoạt hàng ngày của cư dân.</p>
-        </section>
-        
-        <section>
-          <h2>Công Nghệ Thông Minh Tích Hợp</h2>
-          <p>Plevia City áp dụng công nghệ thông minh trong quản lý và vận hành, bao gồm hệ thống an ninh thông minh, quản lý năng lượng hiệu quả, và các giải pháp công nghệ tiên tiến khác để mang đến trải nghiệm sống hiện đại và tiện nghi cho cư dân.</p>
-        </section>
-        
-        <section>
-          <h2>Cộng Đồng Văn Minh Và Thân Thiện</h2>
-          <p>Plevia City không chỉ là nơi để ở mà còn là cộng đồng văn minh, thân thiện nơi mọi người có thể kết nối, chia sẻ và phát triển cùng nhau. Văn hóa sống cao cấp được thể hiện qua từng chi tiết thiết kế và quản lý.</p>
-        </section>
-        
-        <section>
-          <h2>Môi Trường Xanh Và Bền Vững</h2>
-          <p>Với tầm nhìn bền vững, Plevia City tích hợp không gian xanh và các giải pháp thân thiện môi trường. Không gian sống không chỉ hiện đại mà còn gần gũi với thiên nhiên, tạo nên môi trường sống lý tưởng cho cư dân.</p>
-        </section>
-        
-        <section>
-          <h2>Tương Lai Của Đô Thị Thông Minh</h2>
-          <p>Plevia City không chỉ là dự án hiện tại mà còn là tầm nhìn về tương lai của đô thị thông minh tại Việt Nam. Với công nghệ thông minh và thiết kế đô thị tiên tiến, chúng tôi đang kiến tạo nên không gian sống của tương lai ngay tại Gia Lai.</p>
-        </section>
-      </div>
-
-      {/* Structured Data for SEO */}
+      
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -223,6 +173,50 @@ export default function StorylinePage() {
       <PageLayout>
         <StorylineContent />
       </PageLayout>
+
+      {/* Visible SEO Content for better Vercel compatibility */}
+      <div className="seo-visible-content">
+        <div className="container mx-auto px-4 py-8">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+              {STORYLINE_SEO_DATA.content.heading}
+            </h1>
+            <p className="text-lg text-gray-700 mb-8 text-center leading-relaxed">
+              {STORYLINE_SEO_DATA.content.intro}
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                  Plevia City - Dự Án Đô Thị Thông Minh Tại Gia Lai
+                </h2>
+                <p className="text-gray-600 leading-relaxed">
+                  Plevia City là dự án khu đô thị thông minh đầu tiên tại Gia Lai, được thiết kế với tầm nhìn trở thành không gian sống hiện đại, văn minh và thông minh. Dự án mang đến giải pháp toàn diện cho nhu cầu nhà ở và phát triển cộng đồng tại khu vực Tây Nguyên.
+                </p>
+              </div>
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                  Tầm Nhìn Phát Triển Plevia City
+                </h2>
+                <p className="text-gray-600 leading-relaxed">
+                  Với định hướng phát triển bền vững, Plevia City tích hợp công nghệ thông minh, tiện ích đô thị hiện đại và không gian xanh để tạo nên môi trường sống lý tưởng cho cư dân. Dự án không chỉ đáp ứng nhu cầu nhà ở mà còn thúc đẩy sự phát triển kinh tế - xã hội của tỉnh Gia Lai.
+                </p>
+              </div>
+            </div>
+            
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                Vị Trí Chiến Lược Và Tiện Ích Đô Thị
+              </h2>
+              <p className="text-gray-600 leading-relaxed">
+                Plevia City được xây dựng tại vị trí đắc địa của tỉnh Gia Lai, thuận tiện kết nối với các trung tâm kinh tế, văn hóa và giao thông chính. Dự án được thiết kế với hệ thống tiện ích đô thị hiện đại bao gồm trung tâm thương mại, trường học, bệnh viện, công viên và các dịch vụ tiện ích khác.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Structured Data for SEO */}
     </>
   );
 }

@@ -104,43 +104,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function LocationPage() {
     return (
         <>
-            {/* Static SEO Content for Googlebot */}
-            <div className="seo-content" style={{ position: 'absolute', left: '-9999px', visibility: 'hidden' }}>
-                <h1>{LOCATION_SEO_DATA.content.heading}</h1>
-                <p>{LOCATION_SEO_DATA.content.intro}</p>
-                
-                <section>
-                    <h2>Vị Trí Đắc Địa Tại Trung Tâm Pleiku Gia Lai</h2>
-                    <p>Plevia City được xây dựng tại vị trí đắc địa ngay cửa ngõ trung tâm Pleiku, tỉnh Gia Lai. Vị trí này mang lại lợi thế vượt trội về giao thông, tiện ích và tiềm năng phát triển trong tương lai.</p>
-                </section>
-                
-                <section>
-                    <h2>Giao Điểm Chiến Lược Giao Thông</h2>
-                    <p>Dự án tọa lạc tại giao điểm chiến lược giữa đường Lý Nam Đế và Quốc lộ 14 - hai trục giao thông quan trọng nhất của khu vực Tây Nguyên. Vị trí này đảm bảo sự kết nối thuận tiện với mọi điểm đến.</p>
-                </section>
-                
-                <section>
-                    <h2>Liền Kề Các Trục Huyết Mạch</h2>
-                    <p>Plevia City liền kề hàng loạt trục huyết mạch như Lê Duẩn, Hùng Vương, Hàn Mặc Tử, giúp cư dân di chuyển nhanh chóng và thuận tiện đến mọi nơi trong thành phố Pleiku.</p>
-                </section>
-                
-                <section>
-                    <h2>Tiện Ích Xung Quanh Chỉ 1-10 Phút</h2>
-                    <p>Từ Plevia City, bạn dễ dàng tiếp cận mọi nhu cầu sống chỉ trong vài phút di chuyển. Bệnh viện, trường học, trung tâm thương mại, khu du lịch và các tiện ích hiện hữu đều rất gần gũi.</p>
-                </section>
-                
-                <section>
-                    <h2>Tiềm Năng Phát Triển Và Đầu Tư</h2>
-                    <p>Với hạ tầng đô thị đang phát triển mạnh mẽ tại Gia Lai, đặc biệt khu vực phía Đông, vị trí của Plevia City không chỉ mang lại trải nghiệm sống tiện nghi mà còn mở ra cơ hội đầu tư sinh lời bền vững theo thời gian.</p>
-                </section>
-                
-                <section>
-                    <h2>Kết Nối Vùng Và Liên Tỉnh</h2>
-                    <p>Vị trí chiến lược của Plevia City tạo điều kiện thuận lợi cho việc kết nối với các tỉnh lân cận trong khu vực Tây Nguyên, mở ra cơ hội phát triển kinh tế và văn hóa đa dạng.</p>
-                </section>
-            </div>
-
-            {/* Structured Data for SEO */}
+            
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
@@ -245,6 +209,50 @@ export default function LocationPage() {
                     <FormInfo/>
                 </ScrollReveal>
             </PageLayout>
+
+            {/* Visible SEO Content for better Vercel compatibility */}
+            <div className="seo-visible-content">
+                <div className="container mx-auto px-4 py-8">
+                    <div className="max-w-4xl mx-auto">
+                        <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+                            {LOCATION_SEO_DATA.content.heading}
+                        </h1>
+                        <p className="text-lg text-gray-700 mb-8 text-center leading-relaxed">
+                            {LOCATION_SEO_DATA.content.intro}
+                        </p>
+                        
+                        <div className="grid md:grid-cols-2 gap-8 mb-8">
+                            <div>
+                                <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                                    Vị Trí Đắc Địa Tại Trung Tâm Pleiku Gia Lai
+                                </h2>
+                                <p className="text-gray-600 leading-relaxed">
+                                    Plevia City được xây dựng tại vị trí đắc địa ngay cửa ngõ trung tâm Pleiku, tỉnh Gia Lai. Vị trí này mang lại lợi thế vượt trội về giao thông, tiện ích và tiềm năng phát triển trong tương lai.
+                                </p>
+                            </div>
+                            <div>
+                                <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                                    Giao Điểm Chiến Lược Giao Thông
+                                </h2>
+                                <p className="text-gray-600 leading-relaxed">
+                                    Dự án tọa lạc tại giao điểm chiến lược giữa đường Lý Nam Đế và Quốc lộ 14 - hai trục giao thông quan trọng nhất của khu vực Tây Nguyên. Vị trí này đảm bảo sự kết nối thuận tiện với mọi điểm đến.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div className="bg-gray-50 p-6 rounded-lg">
+                            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                                Tiện Ích Xung Quanh Chỉ 1-10 Phút
+                            </h2>
+                            <p className="text-gray-600 leading-relaxed">
+                                Từ Plevia City, bạn dễ dàng tiếp cận mọi nhu cầu sống chỉ trong vài phút di chuyển. Bệnh viện, trường học, trung tâm thương mại, khu du lịch và các tiện ích hiện hữu đều rất gần gũi.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Structured Data for SEO */}
         </>
     );
 } 

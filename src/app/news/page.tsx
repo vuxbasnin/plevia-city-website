@@ -141,57 +141,7 @@ export default async function NewsPage() {
 
   return (
     <>
-      {/* Static SEO Content for Googlebot */}
-      <div className="seo-content" style={{ position: 'absolute', left: '-9999px', visibility: 'hidden' }}>
-        <h1>{NEWS_SEO_DATA.content.heading}</h1>
-        <p>{NEWS_SEO_DATA.content.intro}</p>
-        
-        <section>
-          <h2>Tin Tức Mới Nhất Về Dự Án Plevia City Gia Lai</h2>
-          <p>Plevia City là dự án khu đô thị thông minh hàng đầu tại Tây Nguyên, được theo dõi và quan tâm bởi cộng đồng đầu tư và cư dân trong khu vực. Trang tin tức này cập nhật mọi thông tin quan trọng về dự án.</p>
-        </section>
-        
-        <section>
-          <h2>Nội Dung Tin Tức Chính</h2>
-          <ul>
-            {NEWS_SEO_DATA.content.features.map((feature, index) => (
-              <li key={index}>{feature}</li>
-            ))}
-          </ul>
-        </section>
-        
-        <section>
-          <h2>Tiến Độ Xây Dựng Dự Án</h2>
-          <p>Theo dõi tiến độ xây dựng của Plevia City từ giai đoạn khởi công đến hoàn thành. Cập nhật thường xuyên về các hạng mục công trình, tiện ích đô thị và kế hoạch phát triển trong tương lai.</p>
-        </section>
-        
-        <section>
-          <h2>Tiện Ích Đô Thị Mới</h2>
-          <p>Khám phá các tiện ích đô thị mới được bổ sung vào dự án Plevia City. Từ trung tâm thương mại, trường học, bệnh viện đến công viên và khu vui chơi giải trí, mọi thông tin đều được cập nhật chi tiết.</p>
-        </section>
-        
-        <section>
-          <h2>Sự Kiện Và Hoạt Động Quan Trọng</h2>
-          <p>Tham gia các sự kiện và hoạt động quan trọng của Plevia City. Từ lễ khởi công, lễ khánh thành đến các sự kiện cộng đồng, tất cả đều được thông báo và mời gọi sự tham gia của cư dân.</p>
-        </section>
-        
-        <section>
-          <h2>Thông Tin Đầu Tư Và Phát Triển</h2>
-          <p>Cập nhật thông tin về cơ hội đầu tư và tiềm năng phát triển của dự án Plevia City. Với vị trí chiến lược tại Gia Lai, dự án mang lại nhiều cơ hội đầu tư sinh lời bền vững.</p>
-        </section>
-        
-        <section>
-          <h2>Cộng Đồng Cư Dân Plevia City</h2>
-          <p>Xây dựng cộng đồng cư dân văn minh và thân thiện tại Plevia City. Tin tức về các hoạt động cộng đồng, sự kiện văn hóa và các hoạt động kết nối giữa cư dân.</p>
-        </section>
-        
-        <section>
-          <h2>Công Nghệ Thông Minh Tích Hợp</h2>
-          <p>Cập nhật về các công nghệ thông minh mới được tích hợp vào dự án Plevia City. Từ hệ thống IoT, AI quản lý đến các giải pháp công nghệ tiên tiến khác.</p>
-        </section>
-      </div>
-
-      {/* Structured Data for SEO */}
+      
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -273,6 +223,54 @@ export default async function NewsPage() {
           <FormInfo />
         </ScrollReveal>
       </PageLayout>
+      {/* Visible SEO Content for better Vercel compatibility */}
+      <div className="seo-visible-content">
+        <div className="container mx-auto px-4 py-8">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+              {NEWS_SEO_DATA.content.heading}
+            </h1>
+            <p className="text-lg text-gray-700 mb-8 text-center leading-relaxed">
+              {NEWS_SEO_DATA.content.intro}
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                  Tin Tức Mới Nhất Về Dự Án Plevia City Gia Lai
+                </h2>
+                <p className="text-gray-600 leading-relaxed">
+                  Plevia City là dự án khu đô thị thông minh hàng đầu tại Tây Nguyên, được theo dõi và quan tâm bởi cộng đồng đầu tư và cư dân trong khu vực. Trang tin tức này cập nhật mọi thông tin quan trọng về dự án.
+                </p>
+              </div>
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                  Nội Dung Tin Tức Chính
+                </h2>
+                <ul className="space-y-2">
+                  {NEWS_SEO_DATA.content.features.map((feature, index) => (
+                    <li key={index} className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span className="text-gray-600">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                Tiến Độ Xây Dựng Và Tiện Ích Mới
+              </h2>
+              <p className="text-gray-600 leading-relaxed">
+                Theo dõi tiến độ xây dựng của Plevia City từ giai đoạn khởi công đến hoàn thành. Khám phá các tiện ích đô thị mới được bổ sung vào dự án, từ trung tâm thương mại, trường học, bệnh viện đến công viên và khu vui chơi giải trí.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Structured Data for SEO */}
     </>
   );
 }

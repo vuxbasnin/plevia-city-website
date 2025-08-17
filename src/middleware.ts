@@ -1,14 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Pages with high CSR that need middleware intervention
-const HIGH_CSR_PAGES = [
+// Pages that need special handling
+const SPECIAL_PAGES = [
   '/iot',
   '/storyline',
-  '/lifestyle'
-];
-
-// Pages with low CSR that can be SEO'd directly
-const LOW_CSR_PAGES = [
+  '/lifestyle',
   '/location',
   '/news'
 ];
@@ -17,49 +13,36 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const userAgent = request.headers.get('user-agent') || '';
   
-  // Detect Googlebot and other search engine crawlers
+  // Only process special pages
+  if (!SPECIAL_PAGES.includes(pathname)) {
+    return NextResponse.next();
+  }
+  
+  // Detect search engine crawlers
   const isSearchBot = /bot|googlebot|bingbot|yandex|baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora|slackbot|vkshare|w3c_validator/i.test(userAgent);
   const isGooglebot = /googlebot|google-bot|googlebot-image|googlebot-news|googlebot-video|adsbot-google|adsbot-google-mobile|apis-google|mediapartners-google/i.test(userAgent);
   
-  // Check if this is a high CSR page that needs middleware intervention
-  if (HIGH_CSR_PAGES.includes(pathname)) {
-    if (isSearchBot || isGooglebot) {
-      // For search bots on high CSR pages, force dynamic rendering
-      const response = NextResponse.next();
-      
-      response.headers.set('X-Robots-Tag', 'index, follow');
-      response.headers.set('X-Dynamic-Rendering', 'true');
-      response.headers.set('X-Page-Type', 'high-csr');
-      response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
-      
-      if (isGooglebot) {
-        response.headers.set('X-Googlebot-Detected', 'true');
-        response.headers.set('X-Googlebot-Indexing', 'enabled');
-      }
-      
-      return response;
+  const response = NextResponse.next();
+  
+  // Set SEO-friendly headers for all special pages
+  response.headers.set('X-Page-Type', 'seo-optimized');
+  response.headers.set('X-SEO-Strategy', 'visible-content');
+  
+  if (isSearchBot) {
+    // For search bots, ensure proper indexing
+    response.headers.set('X-Robots-Tag', 'index, follow');
+    response.headers.set('X-Search-Bot-Detected', 'true');
+    
+    if (isGooglebot) {
+      response.headers.set('X-Googlebot-Detected', 'true');
+      response.headers.set('X-Googlebot-Indexing', 'enabled');
     }
-    
-    // For regular users on high CSR pages, allow normal rendering
-    const response = NextResponse.next();
-    response.headers.set('X-Dynamic-Rendering', 'false');
-    response.headers.set('X-Page-Type', 'high-csr');
-    response.headers.set('Cache-Control', 'public, max-age=3600, s-maxage=86400');
-    
-    return response;
   }
   
-  // For low CSR pages, let them handle SEO directly
-  if (LOW_CSR_PAGES.includes(pathname)) {
-    const response = NextResponse.next();
-    response.headers.set('X-Page-Type', 'low-csr');
-    response.headers.set('X-SEO-Strategy', 'direct-html');
-    
-    return response;
-  }
+  // Allow caching for better performance
+  response.headers.set('Cache-Control', 'public, max-age=3600, s-maxage=86400');
   
-  // For other routes, continue normally
-  return NextResponse.next();
+  return response;
 }
 
 export const config = {

@@ -2,10 +2,6 @@ import type { Metadata } from 'next';
 import PageLayout from '@/components/layout/PageLayout';
 import LifestyleContent from './LifestyleContent';
 
-// Force dynamic rendering for high CSR page
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-
 // Static SEO data for Lifestyle page
 const LIFESTYLE_SEO_DATA = {
   title: 'Plevia City - Phong Cách Sống Hiện Đại & Thông Minh Tại Khu Đô Thị Gia Lai',
@@ -101,52 +97,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function LifeStylePage() {
   return (
     <>
-      {/* Static SEO Content for Googlebot */}
-      <div className="seo-content" style={{ position: 'absolute', left: '-9999px', visibility: 'hidden' }}>
-        <h1>{LIFESTYLE_SEO_DATA.content.heading}</h1>
-        <p>{LIFESTYLE_SEO_DATA.content.intro}</p>
-        
-        <section>
-          <h2>Phong Cách Sống Hiện Đại Tại Plevia City Gia Lai</h2>
-          <p>Plevia City mang đến phong cách sống hiện đại và thông minh cho cư dân tại Gia Lai. Với thiết kế đô thị tiên tiến và công nghệ thông minh tích hợp, chúng tôi tạo nên không gian sống chuẩn mực của thời đại số.</p>
-        </section>
-        
-        <section>
-          <h2>Đặc Điểm Nổi Bật Của Phong Cách Sống</h2>
-          <ul>
-            {LIFESTYLE_SEO_DATA.content.features.map((feature, index) => (
-              <li key={index}>{feature}</li>
-            ))}
-          </ul>
-        </section>
-        
-        <section>
-          <h2>Tiện Ích Đô Thị Hoàn Hảo</h2>
-          <p>Tại Plevia City, mọi tiện ích đô thị đều được thiết kế để phục vụ cuộc sống hiện đại. Từ trung tâm thương mại, trường học, bệnh viện đến công viên và khu vui chơi giải trí, tất cả đều được bố trí hợp lý và dễ tiếp cận.</p>
-        </section>
-        
-        <section>
-          <h2>Cộng Đồng Văn Minh Và Thân Thiện</h2>
-          <p>Plevia City không chỉ là nơi để ở mà còn là cộng đồng văn minh, thân thiện nơi mọi người có thể kết nối, chia sẻ và phát triển cùng nhau. Văn hóa sống cao cấp được thể hiện qua từng chi tiết thiết kế và quản lý.</p>
-        </section>
-        
-        <section>
-          <h2>Công Nghệ Thông Minh Tích Hợp</h2>
-          <p>Với việc tích hợp công nghệ thông minh vào mọi khía cạnh của cuộc sống, Plevia City mang đến trải nghiệm sống tiện nghi và hiện đại. Từ hệ thống an ninh thông minh đến quản lý năng lượng hiệu quả, mọi thứ đều được tối ưu hóa.</p>
-        </section>
-        
-        <section>
-          <h2>Môi Trường Xanh Và Bền Vững</h2>
-          <p>Plevia City được thiết kế với tầm nhìn bền vững, tích hợp không gian xanh và các giải pháp thân thiện môi trường. Không gian sống không chỉ hiện đại mà còn gần gũi với thiên nhiên, tạo nên môi trường sống lý tưởng cho cư dân.</p>
-        </section>
-        
-        <section>
-          <h2>Vị Trí Chiến Lược Tại Gia Lai</h2>
-          <p>Được xây dựng tại vị trí đắc địa của tỉnh Gia Lai, Plevia City mang đến sự thuận tiện tối đa cho cuộc sống hiện đại. Vị trí này không chỉ mang lại tiện ích xung quanh mà còn mở ra cơ hội phát triển và đầu tư trong tương lai.</p>
-        </section>
-      </div>
-
-      {/* Structured Data for SEO */}
+      
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -220,6 +171,55 @@ export default function LifeStylePage() {
       <PageLayout>
         <LifestyleContent />
       </PageLayout>
+
+      {/* Visible SEO Content for better Vercel compatibility */}
+      <div className="seo-visible-content">
+        <div className="container mx-auto px-4 py-8">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+              {LIFESTYLE_SEO_DATA.content.heading}
+            </h1>
+            <p className="text-lg text-gray-700 mb-8 text-center leading-relaxed">
+              {LIFESTYLE_SEO_DATA.content.intro}
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                  Phong Cách Sống Hiện Đại Tại Plevia City Gia Lai
+                </h2>
+                <p className="text-gray-600 leading-relaxed">
+                  Plevia City mang đến phong cách sống hiện đại và thông minh cho cư dân tại Gia Lai. Với thiết kế đô thị tiên tiến và công nghệ thông minh tích hợp, chúng tôi tạo nên không gian sống chuẩn mực của thời đại số.
+                </p>
+              </div>
+              <div>
+                <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                  Đặc Điểm Nổi Bật Của Phong Cách Sống
+                </h2>
+                <ul className="space-y-2">
+                  {LIFESTYLE_SEO_DATA.content.features.map((feature, index) => (
+                    <li key={index} className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span className="text-gray-600">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                Tiện Ích Đô Thị Hoàn Hảo
+              </h2>
+              <p className="text-gray-600 leading-relaxed">
+                Tại Plevia City, mọi tiện ích đô thị đều được thiết kế để phục vụ cuộc sống hiện đại. Từ trung tâm thương mại, trường học, bệnh viện đến công viên và khu vui chơi giải trí, tất cả đều được bố trí hợp lý và dễ tiếp cận.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Structured Data for SEO */}
     </>
   );
 } 
