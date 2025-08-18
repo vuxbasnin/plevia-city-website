@@ -20,11 +20,6 @@ const sectionOneHomeData = {
                     level: 2,
                     subtitle: "",
                     subdescription: `Plevia City được phát triển với tầm nhìn trở thành khu đô thị kiểu mẫu thời đại số – nơi công nghệ không chỉ là nền tảng vận hành, mà còn là động lực kiến tạo một môi trường sống văn minh, tiện nghi và an toàn. Với việc ứng dụng đồng bộ trí tuệ nhân tạo, hạ tầng số và tiện ích thông minh, Plevia City hướng đến hình mẫu đô thị tiên phong tại Tây Nguyên – mở ra chuẩn sống mới cho thế hệ cư dân thời hiện đại.`
-                },
-                {
-                    level: 1,
-                    subtitle: "",
-                    subdescription: `Được quy hoạch bài bản theo định hướng "hiện đại – thông minh – bền vững", Plevia City không chỉ mở ra tiềm năng lớn cho các nhà đầu tư mà còn kiến tạo nên một phong cách sống mới tại phố núi – nơi thiên nhiên, công nghệ và con người cùng vận hành hài hòa.`
                 }
             ],
             imageUrl: "/assets/home/song_tinh_hoa.png"

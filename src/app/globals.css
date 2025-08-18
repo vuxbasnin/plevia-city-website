@@ -356,10 +356,10 @@ body {
 
     /* Custom background for location page */
     .bg-custom-location {
-        background-image: url('/background/bg_bottom_left.svg');
+        /* background-image: url('/background/bg_bottom_left.svg');
         background-repeat: no-repeat;
         background-position: left bottom;
-        background-size: 15% auto;
+        background-size: 15% auto; */
     }
 
     /* Line clamp utilities */

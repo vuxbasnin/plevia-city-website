@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import './Footer.css';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
 
   // Social links data
   const socialLinks = [
@@ -56,9 +57,18 @@ export default function Footer() {
             </div>
             <ul className="footer-text">
               <li>
-                <p>Trụ sở: Tầng 04, tòa nhà Thương mại và dịch vụ B-CC, Dự án khu nhà ở Ngân Hà Vạn Phúc, Phố Tố Hữu, Phường Hà Đông, Thành phố Hà Nội</p>
+                <p>Trụ sở chính: Tòa nhà TM & DV Galaxy, Tố Hữu, Vạn Phúc, Hà Ðông, Hà Nội</p>
               </li>
             </ul>
+          </div>
+
+
+          {/* Column 3: Tham quan Sales Gallery */}
+          <div className="footer-column">
+            <h5 className="footer-title-bold">Tham quan dự án</h5>
+            <div className="footer-text">
+              <p>Văn phòng tư vấn dự án Plevia City: 63 Lý Nam Đế, phường Hội Phú, tỉnh Gia Lai</p>
+            </div>
           </div>
 
           {/* Column 2: CÁC PAGE CON */}
@@ -90,14 +100,6 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
-
-          {/* Column 3: Tham quan Sales Gallery */}
-          <div className="footer-column">
-            <h5 className="footer-title-bold">Tham quan dự án</h5>
-            <div className="footer-text">
-              <p>Khu đô thị Plevia City: 63–65 Lý Nam Đế, phường Hội Phú, tỉnh Gia Lai</p>
-            </div>
           </div>
 
           {/* Column 4: Liên hệ */}
@@ -139,7 +141,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <div className="footer-copyright">
-            &copy; {new Date().getFullYear()} BẮC HẢI. Đã đăng ký Bản quyền.
+            &copy; {currentYear} BẮC HẢI. Đã đăng ký Bản quyền.
           </div>
         </div>
       </div>

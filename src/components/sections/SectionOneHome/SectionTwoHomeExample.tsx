@@ -28,33 +28,34 @@ const sectionOneHomeData = {
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `- Diện tích: 7,04 ha`
+                    subdescription: `- Đơn vị thiết kế: Công ty Kiến Trúc Việt`
                 },
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `- Quy mô: 368 căn nhà phố & shophouse`
-                },
-                {
-                    level: 1,
-                    subtitle: "",
-                    subdescription: `- Diện tích sản phẩm: 110 m² đến 120 m²`
-                },
-                {
-                    level: 1,
-                    subtitle: "",
-                    subdescription: `- Thiết kế: Công ty Kiến Trúc Việt`
+                    subdescription: `- Diện tích: 7,014 ha`
                 },
                 {
                     level: 1,
                     subtitle: "",
                     subdescription: `- Pháp lý: Sổ từng nền – Quy hoạch 1/500`
-                },
-                {
-                    level: 1,
-                    subtitle: "",
-                    subdescription: `- Tiện ích nội khu: Công viên, gym, spa, sân thể thao, trường mầm non…`
                 }
+                // ,
+                // {
+                //     level: 1,
+                //     subtitle: "",
+                //     subdescription: `- Quy mô: 368 căn nhà phố & shophouse`
+                // },
+                // {
+                //     level: 1,
+                //     subtitle: "",
+                //     subdescription: `- Diện tích sản phẩm: 110 m² đến 120 m²`
+                // },
+                // {
+                //     level: 1,
+                //     subtitle: "",
+                //     subdescription: `- Tiện ích nội khu: Công viên, gym, spa, sân thể thao, trường mầm non…`
+                // }
             ],
             imageUrl: "https://res.cloudinary.com/dytm93eoj/image/upload/v1753845504/home-assets/tn1twcf3bwszo20sv5de.jpg",
             reverse: true,
