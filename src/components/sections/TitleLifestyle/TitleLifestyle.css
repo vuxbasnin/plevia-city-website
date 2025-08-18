@@ -3,10 +3,10 @@
     text-align: center;
     margin: 0 auto;
     padding: 40px 20px;
-    background-image: url('/background/bg_top.png');
+    /* background-image: url('/background/bg_top.png');
     background-repeat: no-repeat;
     background-position: top right;
-    background-size: 20% auto;
+    background-size: 20% auto; */
 }
 
 .title-lifestyle__main-title {

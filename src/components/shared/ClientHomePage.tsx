@@ -69,10 +69,10 @@ export default function ClientHomePage() {
         <ScrollReveal>
           <ClientParaImageVertical
             title="Tâm điểm giao thương – Một chạm ngàn tiện ích"
-            description1={`Plevia City sở hữu vị trí đắc địa khi nằm trên trục đường chính nội đô phường Hội Phú cách trung tâm hành chính thành phố chưa đầy 2km. Trong bối cảnh quy hoạch đến năm 2030 chỉ khoảng 7% diện tích đô thị là đất bằng phẳng thuận lợi cho việc phát triển khu đô thị cao cấp, việc Plevia City phát triển trên vùng đất phẳng rộng lớn là một lợi thế cực kỳ hiếm có, lý tưởng để hình thành một đô thị hiện đại và đồng bộ.`}
-            description2={`Về lâu dài, Plevia City sẽ được hưởng lợi trực tiếp từ các dự án hạ tầng quy hoạch trọng điểm của tỉnh trong vài năm tới, cụ thể:`}
-            bullets={["- Sân bay Pleiku đang khai thác và có kế hoạch mở thêm đường bay quốc tế", "- Sân bay dự phòng đang nghiên cứu phương án dân dụng", "- Cao tốc Pleiku – Quy Nhơn đang đẩy mạnh đầu tư, kết hợp các tuyến QL 14, QL 19 tạo thành mạng giao thông liên kết xuyên vùng", "- Phát triển khu công nghiệp Nam Pleiku ",]}
-            subDescription="Gladia by the Waters dễ dàng tiếp cận đến các cơ sở Giáo dục, Giải trí, Mua sắm và Y tế chất lượng cao như: Trường American School, Trường Quốc tế Việt Úc (VAS), Bệnh viện Quốc tế Mỹ (AIH), Bệnh viện FV, Esttela Heights, Thiso Mall, Vietnam Country Gofl Club"
+            description1={`Sở hữu vị trí đắc địa ngay cửa ngõ trung tâm Pleiku, Plevia City là biểu tượng mới của phong cách sống thịnh vượng, kết nối toàn diện. Tọa lạc tại giao điểm chiến lược đường Lý Nam Đế – Quốc lộ 14, dự án liền kề hàng loạt trục huyết mạch như Lê Duẩn, Hùng Vương, Hàn Mặc Tử… giúp cư dân di chuyển nhanh chóng tới bệnh viện, trường học, trung tâm thương mại, khu du lịch và các tiện ích hiện hữu chỉ trong vài phút. Từ Plevia City, bạn dễ dàng tiếp cận mọi nhu cầu sống, từ y tế, giáo dục, vui chơi giải trí đến mua sắm và thương mại. Tất cả chỉ cách 1–10 phút di chuyển.`}
+            description2={``}
+            bullets={[]}
+            subDescription=""
             imageUrl="https://res.cloudinary.com/dytm93eoj/image/upload/v1753845487/home-assets/gn3glzslmrkope10iufp.png"
             imageAlt="Vị trí dự án Plevia City"
           >

@@ -25,11 +25,11 @@
   width: 200px;
   height: 200px;
   opacity: 0.1;
-  background-image: 
+  /* background-image: 
     radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.3) 2px, transparent 2px),
     radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
     radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.3) 1.5px, transparent 1.5px);
-  background-size: 50px 50px, 30px 30px, 40px 40px;
+  background-size: 50px 50px, 30px 30px, 40px 40px; */
   animation: leafFloat 20s ease-in-out infinite;
 }
 

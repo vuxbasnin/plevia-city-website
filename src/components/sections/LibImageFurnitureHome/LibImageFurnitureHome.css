@@ -17,9 +17,9 @@
     margin: 0 auto;
     padding: 0 0;
     /*background-image: url('/background/bg_lib_image_home.png');*/
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat;
     background-position: right center;
-    background-size: 15% auto;
+    background-size: 15% auto; */
     display: flex;
     justify-content: center;
     align-items: center;
