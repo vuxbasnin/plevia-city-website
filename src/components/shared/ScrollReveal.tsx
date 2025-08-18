@@ -18,7 +18,6 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
 }) => {
   return (
     <motion.div
-      className="w-full max-w-full overflow-x-hidden"
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration, ease: 'easeOut', delay }}
