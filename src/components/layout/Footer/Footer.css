@@ -127,6 +127,10 @@
 
 /* Move second column to the right */
 .footer-column:nth-child(2) {
+  margin-left: 4rem;
+}
+
+.footer-column:nth-child(3) {
   margin-left: 6rem;
 }
 

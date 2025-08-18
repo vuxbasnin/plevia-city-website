@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface StructuredDataProps {
-  type: 'home' | 'lifestyle' | 'location' | 'storyline' | 'member-benefits' | 'news';
+  type: 'home' | 'lifestyle' | 'location' | 'storyline' | 'member-benefits' | 'news' | 'iot';
 }
 
 export default function StructuredData({ type }: StructuredDataProps) {
@@ -127,6 +127,43 @@ export default function StructuredData({ type }: StructuredDataProps) {
               { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Tiện ích xung quanh" } }
             ]
           }
+        };
+      case 'iot':
+        return {
+          ...baseData,
+          "@type": "TechArticle",
+          "headline": "Plevia City - Công Nghệ IoT & AI Vận Hành Khu Đô Thị Thông Minh Gia Lai",
+          "description": "Khám phá công nghệ IoT và AI tiên tiến tại Plevia City Gia Lai. Hệ thống quản lý thông minh, tự động hóa toàn diện, và kết nối vạn vật cho khu đô thị hiện đại nhất Tây Nguyên.",
+          "keywords": "Plevia City IoT, khu đô thị thông minh Gia Lai, công nghệ AI Gia Lai, IoT đô thị thông minh, hệ thống quản lý thông minh, tự động hóa đô thị, kết nối vạn vật Gia Lai, công nghệ 4.0 Tây Nguyên, đô thị số hóa, smart city Gia Lai, AI quản lý đô thị, hạ tầng thông minh",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Công nghệ IoT & AI Plevia City",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Hệ thống AI quản lý toàn diện" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Nhà thông minh IoT" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "An ninh AI 24/7" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Giao thông thông minh" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Tiện ích đẳng cấp" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Thời tiết thông minh" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Thẻ cư dân thông minh" } }
+            ]
+          },
+          "author": {
+            "@type": "Organization",
+            "name": "Plevia City"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Plevia City"
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://pleviacity.vn/iot"
+          },
+          "image": [
+            "https://pleviacity.vn/assets/home/plevia_city.jpg",
+            "https://pleviacity.vn/assets/home/banner_home.png"
+          ]
         };
       default:
         return baseData;

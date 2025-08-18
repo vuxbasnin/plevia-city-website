@@ -1,4 +1,6 @@
-import { motion } from 'framer-motion';
+'use client';
+
+import dynamic from 'next/dynamic';
 import React from 'react';
 
 interface ScrollRevealProps {
@@ -9,6 +11,11 @@ interface ScrollRevealProps {
   once?: boolean;
 }
 
+// Dynamic import để tránh vấn đề SSR
+const MotionDiv = dynamic(() => import('framer-motion').then(mod => ({ default: mod.motion.div })), {
+  ssr: false,
+});
+
 const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children,
   delay = 0,
@@ -17,14 +24,14 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   once = true,
 }) => {
   return (
-    <motion.div
+    <MotionDiv
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration, ease: 'easeOut', delay }}
       viewport={{ once, amount: 0.2 }}
     >
       {children}
-    </motion.div>
+    </MotionDiv>
   );
 };
 

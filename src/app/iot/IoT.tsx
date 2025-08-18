@@ -1,35 +1,37 @@
+"use client";
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import AutoplayVideo from './AutoplayVideo';
 
 // Image URLs
-const img1 = 'https://pleviacity.com.vn/demo/1.png';
-const img2 = 'https://pleviacity.com.vn/demo/2.png';
-const img3 = 'https://pleviacity.com.vn/demo/3.png';
-const img4 = 'https://pleviacity.com.vn/demo/4.png';
-const img6 = 'https://pleviacity.com.vn/demo/5.png';
-const img7 = 'https://pleviacity.com.vn/demo/6.png';
-const img8 = 'https://pleviacity.com.vn/demo/7.png';
-const img9 = 'https://pleviacity.com.vn/demo/8.png';
-const img10 = 'https://pleviacity.com.vn/demo/9.png';
-const img11 = 'https://pleviacity.com.vn/demo/10.png';
-const img12 = 'https://pleviacity.com.vn/demo/11.png';
+const img1 = 'https://pleviacity.vn/demo/1.png';
+const img2 = 'https://pleviacity.vn/demo/2.png';
+const img3 = 'https://pleviacity.vn/demo/3.png';
+const img4 = 'https://pleviacity.vn/demo/4.png';
+const img6 = 'https://pleviacity.vn/demo/5.png';
+const img7 = 'https://pleviacity.vn/demo/6.png';
+const img8 = 'https://pleviacity.vn/demo/7.png';
+const img9 = 'https://pleviacity.vn/demo/8.png';
+const img10 = 'https://pleviacity.vn/demo/9.png';
+const img11 = 'https://pleviacity.vn/demo/10.png';
+const img12 = 'https://pleviacity.vn/demo/11.png';
 
 console.log('b');
 
 
 // Video URLs
-const video1 = 'https://pleviacity.com.vn/demo/1.mp4';
-const video2 = 'https://pleviacity.com.vn/demo/2.mp4';
-const video3 = 'https://pleviacity.com.vn/demo/3.mp4';
-const video4 = 'https://pleviacity.com.vn/demo/4.mp4';
-const video6 = 'https://pleviacity.com.vn/demo/5.mp4';
-const video7 = 'https://pleviacity.com.vn/demo/6.mp4';
-const video8 = 'https://pleviacity.com.vn/demo/7.mp4';
-const video9 = 'https://pleviacity.com.vn/demo/8.mp4';
-const video10 = 'https://pleviacity.com.vn/demo/9.mp4';
-const video11 = 'https://pleviacity.com.vn/demo/10.mp4';
-const video12 = 'https://pleviacity.com.vn/demo/11.mp4';
+const video1 = 'https://pleviacity.vn/demo/1.mp4';
+const video2 = 'https://pleviacity.vn/demo/2.mp4';
+const video3 = 'https://pleviacity.vn/demo/3.mp4';
+const video4 = 'https://pleviacity.vn/demo/4.mp4';
+const video6 = 'https://pleviacity.vn/demo/5.mp4';
+const video7 = 'https://pleviacity.vn/demo/6.mp4';
+const video8 = 'https://pleviacity.vn/demo/7.mp4';
+const video9 = 'https://pleviacity.vn/demo/8.mp4';
+const video10 = 'https://pleviacity.vn/demo/9.mp4';
+const video11 = 'https://pleviacity.vn/demo/10.mp4';
+const video12 = 'https://pleviacity.vn/demo/11.mp4';
 import TouchOverlay from './TouchOverlay';
 
 const IoTPage = () => {

@@ -6,3 +6,5 @@ export default function BannerLocationAdminPage() {
   return <ManageBannerLocationAdmin />;
 }
 
+
+
