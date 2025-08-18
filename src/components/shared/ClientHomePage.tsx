@@ -7,6 +7,7 @@ import ClientImageHeader from '@/components/shared/ClientImageHeader';
 import ClientImageHeaderStatic from '@/components/shared/ClientImageHeaderStatic';
 import ClientParaImageVertical from '@/components/shared/ClientParaImageVertical';
 import ScrollReveal from './ScrollReveal';
+import ClientImageBannerHeader from "@/components/shared/ClientImageBannerHeader";
 
 // Lazy load components để giảm memory usage
 const TabExample = dynamic(() => import('@/components/ui/Tab/TabExample'), {
@@ -59,6 +60,7 @@ export default function ClientHomePage() {
         <ScrollReveal>
           <ClientImageHeader
             imageUrl="https://res.cloudinary.com/dytm93eoj/image/upload/v1753845485/home-assets/ssknbjvtcnhrl9woana1.jpg" />
+          <ClientImageBannerHeader/>
         </ScrollReveal>
         <ScrollReveal>
           <SectionOneHomeExample />

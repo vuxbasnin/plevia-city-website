@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import PageLayout from '@/components/layout/PageLayout';
+import ClientImageBannerLocation from '@/components/shared/ClientImageBannerLocation';
 import Map from '@/components/sections/Map/Map';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import ImageHeaderStatic from "@/components/sections/ImageHeaderStatic";
@@ -47,7 +48,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function LocationPage() {
     return (<PageLayout>
             <ScrollReveal>
-                <Map/>
+                <ClientImageBannerLocation />
             </ScrollReveal>
             <ScrollReveal>
                 <TitleLifestyle title={locationHeroTitle}/>

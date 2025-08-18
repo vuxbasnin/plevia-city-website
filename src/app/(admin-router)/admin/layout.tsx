@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import PrivateRoute from "@/components/auth/PrivateRoute";
 import { useAuth } from "@/hooks/useAuth";
-import { LogOut, LayoutDashboard, Settings, MailCheck, CalendarClock, FileText, Home, Settings2, Newspaper, Package, ImageIcon, Sofa, Sparkles, Users, Send, Palette, Layers, UserCog, FileText as FileTextIcon, Plus, Edit, MessageCircle } from "lucide-react";
+import { LogOut, LayoutDashboard, Settings, MailCheck, CalendarClock, FileText, Home, Settings2, Newspaper, Package, ImageIcon, Sofa, Sparkles, Users, Send, Palette, Layers, UserCog, FileText as FileTextIcon, Plus, Edit, MessageCircle, MapPin, Heart } from "lucide-react";
 import { SidebarProvider, Sidebar, SidebarHeader, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarInset, SidebarTrigger, SidebarFooter, SidebarGroup, SidebarGroupLabel, SidebarGroupContent } from "@/components/ui/sidebar";
 
 interface NavItemConfig {
@@ -83,28 +83,31 @@ const navItemsConfiguration: NavItemConfig[] = [
   //       { id: "shared-benefits", label: "Danh Sách Quyền Lợi", icon: Package, href: "/admin/content/common/benefits", isLeaf: true },
   //   ]
   // },
-  // {
-  //   id: "group-homepage-content",
-  //   label: "Quản Lý Trang Chủ",
-  //   icon: Home,
-  //   isLeaf: false,
-  //   children: [
-  //     { id: "homepage-hero", label: "Banner Giới Thiệu", icon: ImageIcon, href: "/admin/content/homepage/hero", isLeaf: true },
-  //     // { id: "homepage-seating", label: "Vị Trí Ngồi", icon: Sofa, href: "/admin/content/homepage/seating", isLeaf: true }, // Ẩn mục này
-  //     // { id: "homepage-amenities", label: "Dịch Vụ & Tiện Ích", icon: Sparkles, href: "/admin/content/homepage/amenities", isLeaf: true }, // Ẩn mục này
-  //     // { id: "homepage-culture", label: "Văn Hóa Cộng Đồng", icon: Users, href: "/admin/content/homepage/culture", isLeaf: true }, // Ẩn mục này
-  //     { id: "homepage-finalCta", label: "CTA Cuối Trang", icon: Send, href: "/admin/content/homepage/final-cta", isLeaf: true },
-  //   ],
-  // },
-  // {
-  //   id: "group-member-benefits-page-settings",
-  //   label: "Cài Đặt Trang Quyền Lợi",
-  //   icon: Newspaper,
-  //   isLeaf: false,
-  //   children: [
-  //     { id: "member-benefits-page-static-content", label: "Nội Dung Tĩnh", icon: FileText, href: "/admin/content/member-benefits-page/static", isLeaf: true },
-  //   ],
-  // },
+  {
+    id: "group-homepage-content",
+    label: "Quản Lý Trang Chủ",
+    icon: Home,
+    isLeaf: false,
+    children: [
+      { id: "homepage-hero", label: "Banner Home", icon: ImageIcon, href: "/admin/content/homepage/hero", isLeaf: true },
+      // { id: "homepage-seating", label: "Vị Trí Ngồi", icon: Sofa, href: "/admin/content/homepage/seating", isLeaf: true }, // Ẩn mục này
+      // { id: "homepage-amenities", label: "Dịch Vụ & Tiện Ích", icon: Sparkles, href: "/admin/content/homepage/amenities", isLeaf: true }, // Ẩn mục này
+      // { id: "homepage-culture", label: "Văn Hóa Cộng Đồng", icon: Users, href: "/admin/content/homepage/culture", isLeaf: true }, // Ẩn mục này
+      // { id: "homepage-finalCta", label: "CTA Cuối Trang", icon: Send, href: "/admin/content/homepage/final-cta", isLeaf: true },
+    ],
+  },
+  {
+    id: "group-banner-management",
+    label: "Quản Lý Banner",
+    icon: ImageIcon,
+    isLeaf: false,
+    children: [
+      { id: "banner-storyline", label: "Banner Storyline", icon: FileText, href: "/admin/content/banner/storyline", isLeaf: true },
+      { id: "banner-location", label: "Banner Location", icon: MapPin, href: "/admin/content/banner/location", isLeaf: true },
+      { id: "banner-lifestyle", label: "Banner Lifestyle", icon: Heart, href: "/admin/content/banner/lifestyle", isLeaf: true },
+      { id: "banner-news", label: "Banner News", icon: Newspaper, href: "/admin/content/banner/news", isLeaf: true },
+    ],
+  },
 ];
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
