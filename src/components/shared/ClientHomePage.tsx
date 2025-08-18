@@ -58,8 +58,6 @@ export default function ClientHomePage() {
       <StructuredData type="home" />
       <PageLayout>
         <ScrollReveal>
-          <ClientImageHeader
-            imageUrl="https://res.cloudinary.com/dytm93eoj/image/upload/v1753845485/home-assets/ssknbjvtcnhrl9woana1.jpg" />
           <ClientImageBannerHeader/>
         </ScrollReveal>
         <ScrollReveal>
