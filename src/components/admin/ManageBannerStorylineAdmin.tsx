@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState, type ChangeEvent, useRef } from "react";
@@ -9,59 +8,59 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { getHeroSectionData, updateHeroSection } from "@/lib/firestoreService";
+import { getSectionData, updateSectionData } from "@/lib/firestoreService";
 import { type HeroSectionData, heroFormSchema, defaultHeroSectionData } from "@/types/landingPageAdmin";
 import { Loader2, Save, Image as ImageIcon, XCircle } from "lucide-react";
 import NextImage from "next/image";
 import { uploadFileViaAPI } from "@/lib/uploadHelper";
 import { CLOUDINARY } from "@/lib/cloudinary";
 
-export default function ManageHeroAdmin() {
+export default function ManageBannerStorylineAdmin() {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
 
-           const [pendingImageFile, setPendingImageFile] = useState<File | null>(null);
-         const [currentPreviewUrl, setCurrentPreviewUrl] = useState<string | null>(null);
-         const [originalImageUrl, setOriginalImageUrl] = useState<string>("");
-         const heroImageInputRef = useRef<HTMLInputElement>(null);
+  const [pendingImageFile, setPendingImageFile] = useState<File | null>(null);
+  const [currentPreviewUrl, setCurrentPreviewUrl] = useState<string | null>(null);
+  const [originalImageUrl, setOriginalImageUrl] = useState<string>("");
+  const heroImageInputRef = useRef<HTMLInputElement>(null);
 
   const form = useForm<HeroSectionData>({
     resolver: zodResolver(heroFormSchema),
     defaultValues: defaultHeroSectionData,
   });
 
-           // Hàm tải dữ liệu banner từ Firestore và cập nhật state.
-         useEffect(() => {
-           async function loadHeroData() {
-             setIsLoading(true);
-             try {
-               const data = await getHeroSectionData();
-               if (data) {
-                 form.reset(data);
-                 setCurrentPreviewUrl(data.imageUrl);
-                 setOriginalImageUrl(data.imageUrl);
-               } else {
-                 form.reset(defaultHeroSectionData);
-                 setCurrentPreviewUrl(defaultHeroSectionData.imageUrl);
-                 setOriginalImageUrl(defaultHeroSectionData.imageUrl);
-               }
-             } catch (error) {
-               console.error("Error loading hero data:", error);
-               toast({
-                 title: "Lỗi tải dữ liệu",
-                 description: "Không thể tải dữ liệu banner. Sử dụng dữ liệu mặc định.",
-                 variant: "destructive",
-               });
-               form.reset(defaultHeroSectionData);
-               setCurrentPreviewUrl(defaultHeroSectionData.imageUrl);
-               setOriginalImageUrl(defaultHeroSectionData.imageUrl);
-             }
-             setIsLoading(false);
-           }
-           loadHeroData();
-         }, [form, toast]);
+  // Hàm tải dữ liệu banner từ Firestore và cập nhật state.
+  useEffect(() => {
+    async function loadBannerData() {
+      setIsLoading(true);
+      try {
+        const data = await getSectionData<HeroSectionData>("banner_storyline");
+        if (data) {
+          form.reset(data);
+          setCurrentPreviewUrl(data.imageUrl);
+          setOriginalImageUrl(data.imageUrl);
+        } else {
+          form.reset(defaultHeroSectionData);
+          setCurrentPreviewUrl(defaultHeroSectionData.imageUrl);
+          setOriginalImageUrl(defaultHeroSectionData.imageUrl);
+        }
+      } catch (error) {
+        console.error("Error loading storyline banner data:", error);
+        toast({
+          title: "Lỗi tải dữ liệu",
+          description: "Không thể tải dữ liệu banner Storyline. Sử dụng dữ liệu mặc định.",
+          variant: "destructive",
+        });
+        form.reset(defaultHeroSectionData);
+        setCurrentPreviewUrl(defaultHeroSectionData.imageUrl);
+        setOriginalImageUrl(defaultHeroSectionData.imageUrl);
+      }
+      setIsLoading(false);
+    }
+    loadBannerData();
+  }, [form, toast]);
 
   // Hàm xử lý khi chọn file ảnh mới cho banner.
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -72,9 +71,7 @@ export default function ManageHeroAdmin() {
       setCurrentPreviewUrl(localPreview);
       form.setValue("imageUrl", ""); 
     } else {
-      // This case might not be hit often if a file is selected then dialog cancelled
-      // but good for completeness.
-      if (!pendingImageFile) { // only revert if no file is currently pending
+      if (!pendingImageFile) {
           setCurrentPreviewUrl(form.getValues("imageUrl") || defaultHeroSectionData.imageUrl);
       }
     }
@@ -84,51 +81,50 @@ export default function ManageHeroAdmin() {
   const clearPendingImage = () => {
     setPendingImageFile(null);
     if (heroImageInputRef.current) {
-      heroImageInputRef.current.value = ""; // Reset the file input
+      heroImageInputRef.current.value = "";
     }
-    // Revert preview to the URL in the form (if any) or default
     setCurrentPreviewUrl(form.getValues("imageUrl") || defaultHeroSectionData.imageUrl);
   };
 
-           // Hàm xử lý khi nhập/chỉnh sửa URL ảnh thủ công.
-         const handleManualImageUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-           const newUrl = event.target.value;
-           form.setValue("imageUrl", newUrl);
-           if (pendingImageFile) { // If user types a URL, clear any pending file
-               setPendingImageFile(null);
-               if (heroImageInputRef.current) {
-                 heroImageInputRef.current.value = "";
-               }
-           }
-           if (heroFormSchema.shape.imageUrl.safeParse(newUrl).success || newUrl === "") {
-             setCurrentPreviewUrl(newUrl);
-           } else {
-             setCurrentPreviewUrl(null); 
-           }
-         };
+  // Hàm xử lý khi nhập/chỉnh sửa URL ảnh thủ công.
+  const handleManualImageUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newUrl = event.target.value;
+    form.setValue("imageUrl", newUrl);
+    if (pendingImageFile) {
+        setPendingImageFile(null);
+        if (heroImageInputRef.current) {
+          heroImageInputRef.current.value = "";
+        }
+    }
+    if (heroFormSchema.shape.imageUrl.safeParse(newUrl).success || newUrl === "") {
+      setCurrentPreviewUrl(newUrl);
+    } else {
+      setCurrentPreviewUrl(null); 
+    }
+  };
 
-         // Kiểm tra xem có thay đổi nào không
-         const hasChanges = () => {
-           const currentImageUrl = form.getValues("imageUrl");
-           return pendingImageFile !== null || currentImageUrl !== originalImageUrl;
-         };
+  // Kiểm tra xem có thay đổi nào không
+  const hasChanges = () => {
+    const currentImageUrl = form.getValues("imageUrl");
+    return pendingImageFile !== null || currentImageUrl !== originalImageUrl;
+  };
 
-           // Hàm submit form, lưu dữ liệu banner và upload ảnh nếu có.
-         const onSubmit: SubmitHandler<HeroSectionData> = async (formData) => {
-           console.log("Form submitted with data:", formData);
-           
-           // Kiểm tra xem có thay đổi nào không
-           if (!hasChanges()) {
-             toast({
-               title: "Không có thay đổi",
-               description: "Vui lòng thay đổi ảnh banner trước khi lưu.",
-               variant: "destructive",
-             });
-             return;
-           }
-           
-           setIsSaving(true);
-           let dataToSave = { ...formData };
+  // Hàm submit form, lưu dữ liệu banner và upload ảnh nếu có.
+  const onSubmit: SubmitHandler<HeroSectionData> = async (formData) => {
+    console.log("Form submitted with data:", formData);
+    
+    // Kiểm tra xem có thay đổi nào không
+    if (!hasChanges()) {
+      toast({
+        title: "Không có thay đổi",
+        description: "Vui lòng thay đổi ảnh banner trước khi lưu.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    setIsSaving(true);
+    let dataToSave = { ...formData };
 
     if (pendingImageFile) {
       if (!CLOUDINARY.CLOUD_NAME || CLOUDINARY.CLOUD_NAME === "YOUR_CLOUD_NAME_HERE_FROM_DOT_ENV" || !CLOUDINARY.UPLOAD_PRESET || CLOUDINARY.UPLOAD_PRESET === "YOUR_UPLOAD_PRESET_HERE_FROM_DOT_ENV") {
@@ -138,7 +134,7 @@ export default function ManageHeroAdmin() {
       }
       setIsUploading(true);
       try {
-        const uploadedUrl = await uploadFileViaAPI(pendingImageFile, "landingpage_images/hero");
+        const uploadedUrl = await uploadFileViaAPI(pendingImageFile, "landingpage_images/storyline");
         dataToSave.imageUrl = uploadedUrl;
         setPendingImageFile(null);
         if (heroImageInputRef.current) {
@@ -154,18 +150,18 @@ export default function ManageHeroAdmin() {
     }
 
     console.log("Saving data to Firestore:", dataToSave);
-    const success = await updateHeroSection(dataToSave);
+    const success = await updateSectionData("banner_storyline", dataToSave);
     console.log("Save result:", success);
-               if (success) {
-             toast({
-               title: "Đã lưu thành công!",
-               description: "Hình ảnh Banner đã được cập nhật.",
-               variant: "default",
-             });
-             form.reset(dataToSave);
-             setCurrentPreviewUrl(dataToSave.imageUrl);
-             setOriginalImageUrl(dataToSave.imageUrl); // Cập nhật original URL sau khi lưu thành công
-           } else {
+    if (success) {
+      toast({
+        title: "Đã lưu thành công!",
+        description: "Hình ảnh Banner Storyline đã được cập nhật.",
+        variant: "default",
+      });
+      form.reset(dataToSave);
+      setCurrentPreviewUrl(dataToSave.imageUrl);
+      setOriginalImageUrl(dataToSave.imageUrl);
+    } else {
       toast({
         title: "Lỗi!",
         description: "Không thể lưu hình ảnh. Vui lòng thử lại.",
@@ -188,21 +184,19 @@ export default function ManageHeroAdmin() {
     <Card className="shadow-lg rounded-xl">
       <CardHeader>
         <CardTitle className="text-2xl font-headline text-primary flex items-center">
-          <ImageIcon className="w-6 h-6 mr-2" /> Quản Lý Banner Home
+          <ImageIcon className="w-6 h-6 mr-2" /> Quản Lý Banner Storyline
         </CardTitle>
-        <CardDescription>Chỉnh sửa nội dung cho section banner Home. Hình ảnh sẽ được upload khi bạn nhấn "Lưu Tất Cả Thay Đổi".</CardDescription>
+        <CardDescription>Chỉnh sửa hình ảnh cho section banner Storyline. Hình ảnh sẽ được upload khi bạn nhấn "Lưu Thay Đổi".</CardDescription>
       </CardHeader>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <CardContent className="space-y-6">
-
-
           <div className="space-y-4 border p-4 rounded-md shadow-sm bg-secondary/20">
             <Label className="font-semibold text-lg text-foreground block mb-2">Quản Lý Hình Ảnh Banner</Label>
             <div className="space-y-2">
-              <Label htmlFor="imageFileHero">Chọn ảnh mới (nếu muốn thay đổi)</Label>
+              <Label htmlFor="imageFileStoryline">Chọn ảnh mới (nếu muốn thay đổi)</Label>
               <div className="flex items-center gap-2">
                 <Input
-                  id="imageFileHero"
+                  id="imageFileStoryline"
                   type="file"
                   accept="image/png, image/jpeg, image/gif, image/webp"
                   onChange={handleFileChange}
@@ -244,11 +238,11 @@ export default function ManageHeroAdmin() {
               <div className="border rounded-md p-2 bg-muted/30 max-w-md mx-auto">
                 <NextImage
                   src={currentPreviewUrl || defaultHeroSectionData.imageUrl}
-                  alt="Xem trước hình ảnh banner"
+                  alt="Xem trước hình ảnh banner Storyline"
                   width={600}
                   height={300}
                   className="rounded-md object-contain max-h-[300px] w-auto mx-auto"
-                  data-ai-hint="hero banner office"
+                  data-ai-hint="storyline banner"
                   onError={() => {
                     setCurrentPreviewUrl(defaultHeroSectionData.imageUrl + "?text=Lỗi+tải+ảnh");
                   }}
@@ -257,24 +251,23 @@ export default function ManageHeroAdmin() {
             </div>
           )}
         </CardContent>
-                       <CardFooter>
-                 <Button 
-                   type="submit" 
-                   disabled={isSaving || isLoading || isUploading || !hasChanges()} 
-                   className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                 >
-                   {isSaving || isUploading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Save className="mr-2 h-4 w-4" />}
-                   {isSaving ? (isUploading ? "Đang upload & lưu..." : "Đang lưu...") : "Lưu Thay Đổi"}
-                 </Button>
-                 {!hasChanges() && (
-                   <p className="text-sm text-muted-foreground ml-4">
-                     Vui lòng thay đổi ảnh banner để có thể lưu
-                   </p>
-                 )}
-               </CardFooter>
+        <CardFooter>
+          <Button 
+            type="submit" 
+            disabled={isSaving || isLoading || isUploading || !hasChanges()} 
+            className="bg-primary hover:bg-primary/90 text-primary-foreground"
+          >
+            {isSaving || isUploading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Save className="mr-2 h-4 w-4" />}
+            {isSaving ? (isUploading ? "Đang upload & lưu..." : "Đang lưu...") : "Lưu Thay Đổi"}
+          </Button>
+          {!hasChanges() && (
+            <p className="text-sm text-muted-foreground ml-4">
+              Vui lòng thay đổi ảnh banner để có thể lưu
+            </p>
+          )}
+        </CardFooter>
       </form>
     </Card>
   );
 }
 
-    

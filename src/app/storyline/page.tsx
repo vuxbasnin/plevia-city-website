@@ -1,7 +1,7 @@
 "use client";
 
 import PageLayout from "@/components/layout/PageLayout";
-import ImageHeader from "@/components/sections/ImageHeader";
+import ClientImageBannerStoryline from "@/components/shared/ClientImageBannerStoryline";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import "./page.css"
 import SectionOneStoryLine from "@/components/sections/SectionOneHome/SectionOneStoryLine";
@@ -16,8 +16,7 @@ export default function ProjectPage() {
     <PageLayout>
       <div className="fullWidth">
         <ScrollReveal>
-          <ImageHeader
-          imageUrl="/assets/storyline/banner_storyline.png"/>
+          <ClientImageBannerStoryline />
         </ScrollReveal>
       </div>
 

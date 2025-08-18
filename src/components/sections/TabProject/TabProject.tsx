@@ -15,7 +15,7 @@ const TabProject = () => {
                         <li>9 phân khu</li>
                         <li>368 căn liền kề & shophouse</li>
                         <li>Diện tích: 110 - 120m2</li>
-                        <li>Số lượng sản phẩm hoàn thiện bên ngoài, xây thô bên trong: 209</li>
+                        {/*<li>Số lượng sản phẩm hoàn thiện bên ngoài, xây thô bên trong: 209</li>*/}
                     </ul>
                 </div>
 
@@ -35,8 +35,8 @@ const TabProject = () => {
                 <div className="tab-desc">
                     <b>Giai đoạn 1</b>
                     <ul>
-                        <li>86 căn liền kề & shophouse</li>
-                        <li>Diện tích: 110 - 120m2</li>
+                        <li>Dự kiến tháng 10/2025</li>
+                        {/*<li>Diện tích: 110 - 120m2</li>*/}
                     </ul>
                     {/*<b>Dự án Plevia City mở rộng</b> – diện tích 7ha*/}
                 </div>

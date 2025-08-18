@@ -1,7 +1,7 @@
 "use client";
 
 import PageLayout from '@/components/layout/PageLayout';
-import ImageHeader from '@/components/sections/ImageHeader';
+import ClientImageBannerLifestyle from '@/components/shared/ClientImageBannerLifestyle';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import LibImage from '@/components/sections/LibImage/LibImage';
 import ParaImageVertical from '@/components/sections/ParaImageVertical/ParaImageVertical';
@@ -16,7 +16,7 @@ import React from "react";
 export default function LifeStylePage() {
     return (<PageLayout>
         <ScrollReveal>
-            <ImageHeader imageUrl="/assets/lifestyle/banner_lifestyle.png"/>
+            <ClientImageBannerLifestyle />
         </ScrollReveal>
         <ScrollReveal>
             <ParaLeftLibImage

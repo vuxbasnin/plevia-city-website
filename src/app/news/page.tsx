@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
-import ImageHeader from '@/components/sections/ImageHeader';
+import ClientImageBannerNews from '@/components/shared/ClientImageBannerNews';
 import ListNews from '@/components/sections/ListNews/ListNews';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import { getNewsArticles } from '@/lib/firestoreService';
@@ -49,7 +49,7 @@ export default function NewsPage() {
     return (
       <PageLayout>
         <ScrollReveal>
-          <ImageHeader/>
+          <ClientImageBannerNews/>
         </ScrollReveal>
         <div className="flex justify-center items-center min-h-[400px]">
           <div className="text-lg">Đang tải tin tức...</div>
@@ -61,7 +61,7 @@ export default function NewsPage() {
   return (
     <PageLayout>
       <ScrollReveal>
-        <ImageHeader/>
+        <ClientImageBannerNews/>
       </ScrollReveal>
       <ScrollReveal>
         <ListNews newsItems={newsItems} />
