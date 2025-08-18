@@ -76,7 +76,7 @@ const TouchOverlay = () => {
 
             {/* Center logo */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <img src={'https://pleviacity.vn/demo/bh.png'} alt="Logo" className="h-20 w-auto" />
+              <img src={'https://pleviacity.com.vn/demo/bh.png'} alt="Logo" className="h-20 w-auto" />
             </div>
 
             {/* Scanning lines */}
@@ -149,7 +149,7 @@ const TouchOverlay = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              src={'https://pleviacity.vn/demo/logo.png'}
+              src={'https://pleviacity.com.vn/demo/logo.png'}
               alt="Logo"
               className="h-32 w-auto filter brightness-0 invert opacity-90"
             />
