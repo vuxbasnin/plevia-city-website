@@ -384,3 +384,114 @@ body {
         -webkit-line-clamp: 3;
     }
 }
+
+/* ===== ZOOM AND LAYOUT CRASH FIXES ===== */
+
+/* Fix horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Fix for all images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix for sections that might overflow */
+section, div {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Fix for viewport width issues */
+*[class*="vw"] {
+  max-width: 100%;
+}
+
+/* Fix for specific problematic components */
+.libimage-home-container,
+.libimage-furniture-home-container,
+.libimage-home-grid,
+.libimage-furniture-home-grid {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/* Fix for zoom levels */
+@media screen and (max-width: 480px) {
+  .libimage-home-grid .lib-image,
+  .libimage-furniture-home-grid .lib-image {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Fix for very small screens */
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Fix for ultra-wide screens */
+@media screen and (min-width: 1920px) {
+  .libimage-home-container,
+  .libimage-furniture-home-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+/* Additional fixes for zoom issues */
+@media screen and (max-width: 768px) {
+  .libimage-home-grid,
+  .libimage-furniture-home-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 16px !important;
+  }
+  
+  .libimage-home-grid .lib-image,
+  .libimage-furniture-home-grid .lib-image {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .libimage-home-grid,
+  .libimage-furniture-home-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 12px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .libimage-home-grid,
+  .libimage-furniture-home-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 8px !important;
+  }
+}
+
+/* Fix for background attachment issues on mobile */
+@media screen and (max-width: 768px) {
+  .libimage-home-container,
+  .libimage-furniture-home-container {
+    background-attachment: scroll !important;
+  }
+}
+
+/* Fix for grid layout issues */
+@media screen and (max-width: 768px) {
+  .libimage-home-grid,
+  .libimage-furniture-home-grid {
+    display: block !important;
+    grid-template-columns: 1fr !important;
+  }
+}

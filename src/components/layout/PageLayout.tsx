@@ -20,11 +20,11 @@ export default function PageLayout({
   className = "relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 overflow-hidden"
 }: PageLayoutProps) {
   return (
-    <div className={className}>
+    <div className={`${className} w-full max-w-full overflow-x-hidden`}>
       {/* Main content wrapper */}
-      <div className="relative z-10 flex flex-col min-h-screen">
+      <div className="relative z-10 flex flex-col min-h-screen w-full max-w-full overflow-x-hidden">
         <Navbar />
-        <main className="flex-grow">
+        <main className="flex-grow w-full max-w-full overflow-x-hidden">
           {children}
         </main>
         <Footer />

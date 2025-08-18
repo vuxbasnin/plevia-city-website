@@ -7,6 +7,7 @@ import ClientImageHeader from '@/components/shared/ClientImageHeader';
 import ClientImageHeaderStatic from '@/components/shared/ClientImageHeaderStatic';
 import ClientParaImageVertical from '@/components/shared/ClientParaImageVertical';
 import ScrollReveal from './ScrollReveal';
+import './ZoomFixes.css';
 
 // Lazy load components để giảm memory usage
 const TabExample = dynamic(() => import('@/components/ui/Tab/TabExample'), {
@@ -53,7 +54,7 @@ const TitleLifestyle = dynamic(() => import("@/components/sections/TitleLifestyl
 
 export default function ClientHomePage() {
   return (
-    <>
+    <div className="w-full max-w-full overflow-x-hidden">
       <StructuredData type="home" />
       <PageLayout>
         <ScrollReveal>
@@ -61,25 +62,33 @@ export default function ClientHomePage() {
             imageUrl="https://res.cloudinary.com/dytm93eoj/image/upload/v1753845485/home-assets/ssknbjvtcnhrl9woana1.jpg" />
         </ScrollReveal>
         <ScrollReveal>
-          <SectionOneHomeExample />
+          <div className="w-full max-w-full px-4 sm:px-6 lg:px-8">
+            <SectionOneHomeExample />
+          </div>
         </ScrollReveal>
         <ScrollReveal>
-          <SectionTwoHomeExample />
+          <div className="w-full max-w-full px-4 sm:px-6 lg:px-8">
+            <SectionTwoHomeExample />
+          </div>
         </ScrollReveal>
         <ScrollReveal>
-          <ClientParaImageVertical
-            title="Tâm điểm giao thương – Một chạm ngàn tiện ích"
-            description1={`Plevia City sở hữu vị trí đắc địa khi nằm trên trục đường chính nội đô phường Hội Phú cách trung tâm hành chính thành phố chưa đầy 2km. Trong bối cảnh quy hoạch đến năm 2030 chỉ khoảng 7% diện tích đô thị là đất bằng phẳng thuận lợi cho việc phát triển khu đô thị cao cấp, việc Plevia City phát triển trên vùng đất phẳng rộng lớn là một lợi thế cực kỳ hiếm có, lý tưởng để hình thành một đô thị hiện đại và đồng bộ.`}
-            description2={`Về lâu dài, Plevia City sẽ được hưởng lợi trực tiếp từ các dự án hạ tầng quy hoạch trọng điểm của tỉnh trong vài năm tới, cụ thể:`}
-            bullets={["- Sân bay Pleiku đang khai thác và có kế hoạch mở thêm đường bay quốc tế", "- Sân bay dự phòng đang nghiên cứu phương án dân dụng", "- Cao tốc Pleiku – Quy Nhơn đang đẩy mạnh đầu tư, kết hợp các tuyến QL 14, QL 19 tạo thành mạng giao thông liên kết xuyên vùng", "- Phát triển khu công nghiệp Nam Pleiku ",]}
-            subDescription="Gladia by the Waters dễ dàng tiếp cận đến các cơ sở Giáo dục, Giải trí, Mua sắm và Y tế chất lượng cao như: Trường American School, Trường Quốc tế Việt Úc (VAS), Bệnh viện Quốc tế Mỹ (AIH), Bệnh viện FV, Esttela Heights, Thiso Mall, Vietnam Country Gofl Club"
-            imageUrl="https://res.cloudinary.com/dytm93eoj/image/upload/v1753845487/home-assets/gn3glzslmrkope10iufp.png"
-            imageAlt="Vị trí dự án Plevia City"
-          >
-          </ClientParaImageVertical>
+          <div className="w-full max-w-full px-4 sm:px-6 lg:px-8">
+            <ClientParaImageVertical
+              title="Tâm điểm giao thương – Một chạm ngàn tiện ích"
+              description1={`Plevia City sở hữu vị trí đắc địa khi nằm trên trục đường chính nội đô phường Hội Phú cách trung tâm hành chính thành phố chưa đầy 2km. Trong bối cảnh quy hoạch đến năm 2030 chỉ khoảng 7% diện tích đô thị là đất bằng phẳng thuận lợi cho việc phát triển khu đô thị cao cấp, việc Plevia City phát triển trên vùng đất phẳng rộng lớn là một lợi thế cực kỳ hiếm có, lý tưởng để hình thành một đô thị hiện đại và đồng bộ.`}
+              description2={`Về lâu dài, Plevia City sẽ được hưởng lợi trực tiếp từ các dự án hạ tầng quy hoạch trọng điểm của tỉnh trong vài năm tới, cụ thể:`}
+              bullets={["- Sân bay Pleiku đang khai thác và có kế hoạch mở thêm đường bay quốc tế", "- Sân bay dự phòng đang nghiên cứu phương án dân dụng", "- Cao tốc Pleiku – Quy Nhơn đang đẩy mạnh đầu tư, kết hợp các tuyến QL 14, QL 19 tạo thành mạng giao thông liên kết xuyên vùng", "- Phát triển khu công nghiệp Nam Pleiku ",]}
+              subDescription="Gladia by the Waters dễ dàng tiếp cận đến các cơ sở Giáo dục, Giải trí, Mua sắm và Y tế chất lượng cao như: Trường American School, Trường Quốc tế Việt Úc (VAS), Bệnh viện Quốc tế Mỹ (AIH), Bệnh viện FV, Esttela Heights, Thiso Mall, Vietnam Country Gofl Club"
+              imageUrl="https://res.cloudinary.com/dytm93eoj/image/upload/v1753845487/home-assets/gn3glzslmrkope10iufp.png"
+              imageAlt="Vị trí dự án Plevia City"
+            >
+            </ClientParaImageVertical>
+          </div>
         </ScrollReveal>
         <ScrollReveal>
-          <TitleLifestyle title="Mặt bằng dự án" />
+          <div className="w-full max-w-full px-4 sm:px-6 lg:px-8">
+            <TitleLifestyle title="Mặt bằng dự án" />
+          </div>
         </ScrollReveal>
         <ScrollReveal>
           <ClientImageHeaderStatic
@@ -87,20 +96,28 @@ export default function ClientHomePage() {
             fullImage={true} />
         </ScrollReveal>
         <ScrollReveal>
-          <TabProject />
+          <div className="w-full max-w-full px-4 sm:px-6 lg:px-8">
+            <TabProject />
+          </div>
         </ScrollReveal>
         <ScrollReveal>
-          <LibImageHome />
+          <div className="w-full max-w-full px-4 sm:px-6 lg:px-8">
+            <LibImageHome />
+          </div>
         </ScrollReveal>
 
         {/* Khoảng cách giữa 2 section */}
         <div className="py-8 bg-transparent"></div>
 
         <ScrollReveal>
-          <LibImageFurnitureHome />
+          <div className="w-full max-w-full px-4 sm:px-6 lg:px-8">
+            <LibImageFurnitureHome />
+          </div>
         </ScrollReveal>
         <ScrollReveal>
-          <TabExample />
+          <div className="w-full max-w-full px-4 sm:px-6 lg:px-8">
+            <TabExample />
+          </div>
         </ScrollReveal>
         {/*<ScrollReveal>*/}
         {/*    <ParaManyImage*/}
@@ -122,12 +139,16 @@ export default function ClientHomePage() {
         {/*    />*/}
         {/*</ScrollReveal>*/}
         <ScrollReveal>
-          <NewsSectionExample />
+          <div className="w-full max-w-full px-4 sm:px-6 lg:px-8">
+            <NewsSectionExample />
+          </div>
         </ScrollReveal>
         <ScrollReveal>
-          <FormInfo />
+          <div className="w-full max-w-full px-4 sm:px-6 lg:px-8">
+            <FormInfo />
+          </div>
         </ScrollReveal>
       </PageLayout>
-    </>
+    </div>
   );
 }

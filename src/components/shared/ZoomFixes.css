@@ -1,0 +1,56 @@
+/* ===== SIMPLE ZOOM FIXES ===== */
+
+/* Fix for viewport width components */
+.libimage-home-container,
+.libimage-furniture-home-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+.libimage-home-grid,
+.libimage-furniture-home-grid {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/* Fix for images inside these components */
+.libimage-home-grid .lib-image,
+.libimage-furniture-home-grid .lib-image {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Fix for mobile devices */
+@media screen and (max-width: 768px) {
+  .libimage-home-grid,
+  .libimage-furniture-home-grid {
+    padding: 0 16px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .libimage-home-grid,
+  .libimage-furniture-home-grid {
+    padding: 0 8px !important;
+  }
+}
+
+/* Fix for very small screens */
+@media screen and (max-width: 320px) {
+  .libimage-home-grid,
+  .libimage-furniture-home-grid {
+    padding: 0 4px !important;
+  }
+}
+
+/* Fix for ultra-wide screens */
+@media screen and (min-width: 1920px) {
+  .libimage-home-container,
+  .libimage-furniture-home-container {
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+  }
+}
