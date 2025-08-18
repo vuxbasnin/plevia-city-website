@@ -42,7 +42,7 @@ export default function Footer() {
         <div className="footer-grid">
           {/* Column 1: ĐƠN VỊ PHÁT TRIỂN */}
           <div className="footer-column">
-            <h5 className="footer-title">Đơn vị phát triển</h5>
+            <h5 className="footer-title">Chủ đầu tư</h5>
             <div className="bim-logo">
               <NextImage
                 src="/assets/logo_bachai_golden.png"

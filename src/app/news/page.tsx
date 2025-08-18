@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import PageLayout from '@/components/layout/PageLayout';
-import ImageHeader from '@/components/sections/ImageHeader';
+import ClientImageBannerNews from '@/components/shared/ClientImageBannerNews';
 import ListNews from '@/components/sections/ListNews/ListNews';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import { getPublishedNewsArticles } from '@/lib/firestoreService';
@@ -71,7 +71,7 @@ export default async function NewsPage() {
   return (
     <PageLayout>
       <ScrollReveal>
-        <ImageHeader/>
+          <ClientImageBannerNews/>
       </ScrollReveal>
       <ScrollReveal>
         <ListNews newsItems={newsItems} />
