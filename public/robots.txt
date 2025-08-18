@@ -21,6 +21,7 @@ Allow: /location/
 Allow: /storyline/
 Allow: /member-benefits/
 Allow: /news/
+Allow: /iot/
 
 # Crawl delay
 Crawl-delay: 1
