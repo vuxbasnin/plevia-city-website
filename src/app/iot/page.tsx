@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageLayout from "@/components/layout/PageLayout";
 import IoTPage from "./IoT";
+import StructuredData from "@/components/shared/StructuredData";
 
 // Static SEO data for IoT page
 const IOT_SEO_DATA = {
@@ -39,28 +40,30 @@ export async function generateMetadata(): Promise<Metadata> {
     title: IOT_SEO_DATA.title,
     description: IOT_SEO_DATA.description,
     keywords: IOT_SEO_DATA.keywords,
-    alternates: { canonical: "/iot" },
+    alternates: { canonical: "https://pleviacity.vn/iot" },
     robots: {
       index: true,
       follow: true,
+      nocache: false,
       googleBot: {
         index: true,
         follow: true,
         'max-video-preview': -1,
         'max-image-preview': 'large',
         'max-snippet': -1,
+        'noimageindex': false,
       },
     },
     openGraph: {
       title: IOT_SEO_DATA.title,
       description: IOT_SEO_DATA.description,
-      url: "/iot",
+      url: "https://pleviacity.vn/iot",
       type: "website",
       locale: 'vi_VN',
       siteName: 'Plevia City',
       images: [
         {
-          url: "/assets/home/plevia_city.jpg",
+          url: "https://pleviacity.vn/assets/home/plevia_city.jpg",
           width: 1200,
           height: 630,
           alt: "Plevia City - Công nghệ IoT & AI vận hành",
@@ -73,7 +76,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: IOT_SEO_DATA.description,
       images: [
         {
-          url: "/assets/home/plevia_city.jpg",
+          url: "https://pleviacity.vn/assets/home/plevia_city.jpg",
           alt: "Plevia City - Công nghệ IoT & AI vận hành",
         },
       ],
@@ -86,10 +89,19 @@ export async function generateMetadata(): Promise<Metadata> {
       address: false,
       telephone: false,
     },
-    metadataBase: new URL('https://pleviacity.com'),
+    metadataBase: new URL('https://pleviacity.vn'),
     other: {
-      'google-site-verification': 'your-verification-code',
+      'google-site-verification': 'your-verification-code', // Thay thế bằng code thực từ Google Search Console
       'googlebot-news': 'nosnippet',
+      'googlebot': 'index, follow',
+      'bingbot': 'index, follow',
+      'msapplication-TileColor': '#00a651',
+      'theme-color': '#00a651',
+      'apple-mobile-web-app-capable': 'yes',
+      'apple-mobile-web-app-status-bar-style': 'default',
+      'apple-mobile-web-app-title': 'Plevia City IoT',
+      'application-name': 'Plevia City IoT',
+      'msapplication-config': '/browserconfig.xml',
     },
   };
 }
@@ -97,6 +109,33 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function IoTPageComponent() {
   return (
     <PageLayout>
+      <StructuredData type="iot" />
+      
+      {/* Breadcrumb Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Trang chủ",
+                "item": "https://pleviacity.vn"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Công nghệ IoT & AI",
+                "item": "https://pleviacity.vn/iot"
+              }
+            ]
+          })
+        }}
+      />
+      
       <div className="sr-only" aria-hidden="true">
         <article>
           <header>
@@ -219,6 +258,43 @@ export default function IoTPageComponent() {
           </footer>
         </article>
       </div>
+
+      {/* FAQ Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Plevia City có sử dụng công nghệ IoT và AI gì?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Plevia City tích hợp hệ thống AI quản lý toàn diện, nhà thông minh IoT, an ninh AI 24/7, giao thông thông minh, và các tiện ích đẳng cấp khác."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Công nghệ IoT tại Plevia City có gì đặc biệt?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Mỗi căn nhà tại Plevia City là một hệ sinh thái thông minh với điều khiển giọng nói, kết nối mọi thiết bị từ xa qua ứng dụng di động."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Hệ thống an ninh AI tại Plevia City như thế nào?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Hệ thống AI Alert Station với khả năng nhận diện đa sinh trắc học, phân tích hành vi và cảnh báo tự động 24/7."
+                }
+              }
+            ]
+          })
+        }}
+      />
 
       <IoTPage />
     </PageLayout>

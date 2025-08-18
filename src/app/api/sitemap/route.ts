@@ -70,8 +70,8 @@ export async function GET(request: NextRequest) {
   <url>
     <loc>${baseUrl}/iot</loc>
     <lastmod>${currentDate}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   
 </urlset>`;

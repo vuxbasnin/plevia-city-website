@@ -114,12 +114,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'max-snippet': -1,
       },
     },
-    verification: {
-      google: 'YOUR_GOOGLE_VERIFICATION_CODE',
-      yandex: 'YOUR_YANDEX_VERIFICATION_CODE',
-      yahoo: 'YOUR_YAHOO_VERIFICATION_CODE',
-    },
-            manifest: '/site.webmanifest',
+    manifest: '/site.webmanifest',
     icons: {
       icon: [
         { url: '/logo_seo_home_page.png', sizes: '32x32', type: 'image/png' },
