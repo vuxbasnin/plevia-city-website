@@ -16,11 +16,12 @@ Disallow: /admin/
 Disallow: /api/
 
 # Allow all other pages
-Allow: /lifestyle/
-Allow: /location/
-Allow: /storyline/
-Allow: /member-benefits/
+Allow: /lifestyle
+Allow: /location
+Allow: /storyline
+Allow: /member-benefits
 Allow: /news/
+Allow: /iot
 
 # Crawl delay
 Crawl-delay: 1
