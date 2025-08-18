@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageLayout from "@/components/layout/PageLayout";
 import IoTPage from "./IoT";
+import StructuredData from "@/components/shared/StructuredData";
 
 // Static SEO data for IoT page
 const IOT_SEO_DATA = {
@@ -97,6 +98,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function IoTPageComponent() {
   return (
     <PageLayout>
+      <StructuredData type="iot" />
       <div className="sr-only" aria-hidden="true">
         <article>
           <header>
