@@ -1,19 +1,19 @@
 "use client";
 
-import ImageHeader from '@/components/sections/ImageHeader';
+import ClientImageBannerLifestyle from '@/components/shared/ClientImageBannerLifestyle';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import LibImageFurnitureHome from '@/components/sections/LibImageFurnitureHome/LibImageFurnitureHome';
 import FormInfo from '@/components/sections/FormInfo/FormInfo';
 import ParaLeftLibImage from "@/components/sections/ParaLeftLibImage";
 import LibImageHome from "@/components/sections/LibImageHome/LibImageHome";
 import ParaImageVerticalLifestyle from "@/components/sections/ParaImageVerticalLifestyle";
-import { lifestyleBannerImage, sectionModernStandard, sectionCommunity, modernLiving, sectionSmartExperience, sectionCommunityConnect } from '@/data/lifestyle';
+import { sectionModernStandard, sectionCommunity, modernLiving, sectionSmartExperience, sectionCommunityConnect } from '@/data/lifestyle';
 
 export default function LifestyleContent() {
     return (
         <>
             <ScrollReveal>
-                <ImageHeader imageUrl={lifestyleBannerImage}/>
+                <ClientImageBannerLifestyle />
             </ScrollReveal>
             <ScrollReveal>
                 <ParaLeftLibImage

@@ -10,13 +10,14 @@ import SectionFourStoryLine from "@/components/sections/SectionOneHome/SectionFo
 import SectionFiveStoryLine from "@/components/sections/SectionOneHome/SectionFiveStoryLine";
 import FormInfo from "@/components/sections/FormInfo/FormInfo";
 import { storylineBanner } from '@/data/storyline';
+import ClientImageBannerStoryline from "@/components/shared/ClientImageBannerStoryline";
 
 export default function StorylineContent() {
   return (
     <>
       <div className="fullWidth">
         <ScrollReveal>
-          <ImageHeader imageUrl={storylineBanner}/>
+          <ClientImageBannerStoryline/>
         </ScrollReveal>
       </div>
 

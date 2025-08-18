@@ -71,7 +71,7 @@ export default async function NewsPage() {
   return (
     <PageLayout>
       <ScrollReveal>
-          <ClientImageBannerNews/>
+        <ClientImageBannerNews/>
       </ScrollReveal>
       <ScrollReveal>
         <ListNews newsItems={newsItems} />
