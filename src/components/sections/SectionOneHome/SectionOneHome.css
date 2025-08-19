@@ -4,13 +4,10 @@
     width: 100%;
     position: relative;
     overflow-x: hidden;
-    /* background-image: url('/background/bg_top.png'),
-        url('/background/bg_left.png'),
-        url('/background/bg_right.png'),
-        url('/background/bg_bottom_right.png');
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
-    background-position: top right, left center, right bottom 30%, bottom right;
-    background-size: 50% auto, 25% auto, 15% auto, 50% auto; */
+    background-image: url('/background/back1.png');
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 100% auto;
 }
 
 .section-one-home-no-bg {
