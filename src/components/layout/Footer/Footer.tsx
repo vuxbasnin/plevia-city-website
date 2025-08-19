@@ -74,7 +74,7 @@ export default function Footer() {
           {/* Column 2: CÁC PAGE CON */}
           <div className="footer-column">
             <h5 className="footer-title-bold">
-              <Link href="/" className="footer-page-link">
+              <Link href="/" className="footer-title-bold">
                 Trang chủ
               </Link>
             </h5>
