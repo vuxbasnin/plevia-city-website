@@ -13,32 +13,32 @@ const sectionOneHomeData = {
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `- Tên dự án: Plevia City`
+                    subdescription: `- <b>Tên dự án: </b> Plevia City`
                 },
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `- Vị trí: 63–65 Lý Nam Đế, p. Hội Phú, t. Gia Lai`
+                    subdescription: `-  <b> Vị trí: </b> 63–65 Lý Nam Đế, p. Hội Phú, t. Gia Lai`
                 },
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `- Chủ đầu tư: Công ty Cổ phần Tập đoàn Đầu tư Bắc Hải`
+                    subdescription: `- <b> Chủ đầu tư: </b> Công ty Cổ phần Tập đoàn Đầu tư Bắc Hải`
                 },
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `- Đơn vị thiết kế: Công ty Kiến Trúc Việt`
+                    subdescription: `- <b> Đơn vị thiết kế: </b> Công ty Kiến Trúc Việt`
                 },
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `- Diện tích: 7,014 ha`
+                    subdescription: `- <b> Diện tích: </b> 7,014 ha`
                 },
                 {
                     level: 1,
                     subtitle: "",
-                    subdescription: `- Pháp lý: Sổ từng nền – Quy hoạch 1/500`
+                    subdescription: `- <b> Pháp lý: </b> Sổ từng nền – Quy hoạch 1/500`
                 }
                 // ,
                 // {

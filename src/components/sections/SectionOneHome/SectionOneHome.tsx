@@ -46,7 +46,7 @@ const SectionOneHome: React.FC<SectionOneHomeProps> = ({
                 {isShowTitle && (
                     <div className="map-extension-header" style={{ marginTop: 24, marginBottom: -24 }}>
                         <Title variant="large" align="center">
-                            Pleviacity
+                            Plevia City
                         </Title>
                     </div>
                 )}

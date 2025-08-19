@@ -33,8 +33,8 @@
 
 /* Size variants */
 .title-large h2 {
-  font-size: 2rem;
-  line-height: 2.5rem;
+  font-size: 3rem;
+  line-height: 3.5rem;
 }
 
 .title-small h2 {
@@ -60,28 +60,28 @@
 /* Responsive Header Styles */
 @media (max-width: 1024px) {
   .title h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-bottom: 16px;
   }
 }
 
 @media (max-width: 768px) {
   .title h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-bottom: 16px;
   }
 }
 
 @media (max-width: 640px) {
   .title h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-bottom: 12px;
   }
 }
 
 @media (max-width: 480px) {
   .title h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-bottom: 8px;
   }
 } 
