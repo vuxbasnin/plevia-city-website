@@ -29,9 +29,9 @@ const video6 = 'https://pleviacity.com.vn/demo/5.mp4';
 const video7 = 'https://pleviacity.com.vn/demo/6.mp4';
 const video8 = 'https://pleviacity.com.vn/demo/7.mp4';
 const video9 = 'https://pleviacity.com.vn/demo/8.mp4';
-const video10 = 'https://pleviacity.com.vn/9.mp4';
-const video11 = 'https://pleviacity.com.vn/10.mp4';
-const video12 = 'https://pleviacity.com.vn/11.mp4';
+const video10 = 'assets/iot/9.mp4';
+const video11 = 'assets/iot/10.mp4';
+const video12 = 'assets/iot/11.mp4';
 import TouchOverlay from './TouchOverlay';
 
 const IoTPage = () => {
@@ -63,19 +63,6 @@ const IoTPage = () => {
       setActiveVideo(null);
     }
   };
-
-  // Debug: Log imported videos
-  console.log('Available videos:', {
-    video1,
-    video2,
-    video3,
-    video4,
-    video6,
-    video7,
-    video8,
-    video9,
-    video10,
-  });
 
   const iotSections = [
     {
