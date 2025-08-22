@@ -2,6 +2,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
+interface AutoplayVideoProps {
+  src: string;
+  poster: string;
+  alt: string;
+  className?: string;
+  onPlay?: (sectionId: number) => void;
+  onPause?: (sectionId: number) => void;
+  sectionId: number;
+}
+
 const AutoplayVideo = ({
   src,
   poster,
@@ -10,9 +20,9 @@ const AutoplayVideo = ({
   onPlay = () => {},
   onPause = () => {},
   sectionId,
-}) => {
-  const videoRef = useRef(null);
-  const containerRef = useRef(null);
+}: AutoplayVideoProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const [hasPlayedOnce, setHasPlayedOnce] = useState(false);
@@ -35,7 +45,7 @@ const AutoplayVideo = ({
             setHasPlayedOnce(true);
             onPlay(sectionId);
           })
-          .catch(error => {
+          .catch((error: any) => {
             console.error(`Video ${sectionId} autoplay failed:`, error);
             // Try playing with a user interaction hint
             console.log('Video autoplay blocked, user interaction required');
@@ -62,7 +72,7 @@ const AutoplayVideo = ({
           setHasPlayedOnce(true);
           onPlay(sectionId);
         })
-        .catch(error => {
+        .catch((error: any) => {
           console.error(`Manual video play failed for ${sectionId}:`, error);
         });
     }

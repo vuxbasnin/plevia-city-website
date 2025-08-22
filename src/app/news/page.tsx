@@ -1,11 +1,9 @@
 import type { Metadata } from 'next';
 import PageLayout from '@/components/layout/PageLayout';
-import ClientImageBannerNews from '@/components/shared/ClientImageBannerNews';
-import ListNews from '@/components/sections/ListNews/ListNews';
-import ScrollReveal from '@/components/shared/ScrollReveal';
+import NewsPage from "@/components/pages/NewsPage";
+import { createPageMetadata } from '@/lib/metadata';
 import { getPublishedNewsArticles } from '@/lib/firestoreService';
 import { defaultNewsHeaderImage, defaultNewsDescription } from '@/data/news';
-import FormInfo from '@/components/sections/FormInfo/FormInfo';
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
@@ -13,72 +11,25 @@ export async function generateMetadata(): Promise<Metadata> {
     const latest = articles[0];
     const title = 'Plevia City - Tin tức';
     const description = latest?.summary || defaultNewsDescription;
-    return {
+    return createPageMetadata(
       title,
       description,
-      alternates: { canonical: '/news' },
-      openGraph: {
-        title,
-        description,
-        url: '/news',
-        type: 'website',
-        images: [
-          {
-            url: latest?.coverImageUrl || defaultNewsHeaderImage,
-            width: 1200,
-            height: 630,
-            alt: latest?.title || 'Plevia City - Tin tức',
-          },
-        ],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title,
-        description,
-        images: [
-          {
-            url: latest?.coverImageUrl || defaultNewsHeaderImage,
-            alt: latest?.title || 'Plevia City - Tin tức',
-          },
-        ],
-      },
-    };
+      '/news',
+      latest?.coverImageUrl || defaultNewsHeaderImage
+    );
   } catch {
-    return {
-      title: 'Plevia City - Tin tức',
-      description: defaultNewsDescription,
-      alternates: { canonical: '/news' },
-    };
+    return createPageMetadata(
+      'Plevia City - Tin tức',
+      defaultNewsDescription,
+      '/news'
+    );
   }
 }
 
-export default async function NewsPage() {
-  let newsItems: any[] = [];
-  try {
-    const articles = await getPublishedNewsArticles();
-    newsItems = articles.map(article => ({
-      id: article.id,
-      imageUrl: article.coverImageUrl || '/assets/home/plevia_city.jpg',
-      imageAlt: article.title,
-      title: article.title,
-      description: article.summary || 'Không có mô tả',
-      slug: (article as any).slug,
-    }));
-  } catch {
-    newsItems = [];
-  }
-
+export default function NewsPageComponent() {
   return (
     <PageLayout>
-      <ScrollReveal>
-        <ClientImageBannerNews/>
-      </ScrollReveal>
-      <ScrollReveal>
-        <ListNews newsItems={newsItems} />
-      </ScrollReveal>
-      <ScrollReveal>
-        <FormInfo />
-      </ScrollReveal>
+      <NewsPage />
     </PageLayout>
   );
 }

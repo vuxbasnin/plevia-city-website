@@ -92,4 +92,94 @@ export const sectionCommunityConnect = {
     ],
 };
 
+export const lifestyleData = {
+  title: "Plevia City - Phong Cách Sống Hiện Đại & Thông Minh",
+  subtitle: "Khám phá phong cách sống đẳng cấp",
+  description: "Khám phá phong cách sống đẳng cấp tại Plevia City Gia Lai. Nơi hội tụ giữa công nghệ thông minh, tiện ích hiện đại và không gian sống xanh, tạo nên một cộng đồng cư dân văn minh và thịnh vượng.",
+  sections: [
+    {
+      type: "para-left-des-right",
+      title: "Chuẩn mực sống thời đại số",
+      description: "Plevia City không đơn thuần là nơi an cư, mà còn là biểu tượng cho phong cách sống hiện đại, thông minh nơi công nghệ trở thành nền tảng kiến tạo nên một không gian sống chuẩn mực thời đại số.",
+      image: "/assets/lifestyle/living_standard/ls_0.png",
+      imageAlt: "Chuẩn mực sống thời đại số"
+    },
+    {
+      type: "para-image-vertical",
+      title: "Cộng đồng dân cư văn minh, gắn kết",
+      description: "Tại Plevia City, mỗi cư dân không chỉ là hàng xóm – mà còn là một phần của một cộng đồng văn minh, gắn kết.",
+      images: [
+        { id: '0', url: '/assets/lifestyle/connecting_community/cc_0.png', caption: '' },
+        { id: '1', url: '/assets/lifestyle/connecting_community/cc_1.jpg', caption: '' },
+        { id: '2', url: '/assets/lifestyle/connecting_community/cc_2.jpg', caption: '' }
+      ]
+    },
+    {
+      type: "para-left-lib-image",
+      title: "Sống hiện đại, hưởng trọn mọi giá trị",
+      description: "Tại Plevia City, tiện ích không chỉ là những công trình phụ trợ – mà chính là nền tảng tạo nên một phong cách sống hiện đại, trọn vẹn và khác biệt.",
+      images: [
+        { id: '0', url: '/assets/lifestyle/living_experience/le_0.png', caption: '' },
+        { id: '1', url: '/assets/lifestyle/living_experience/le_1.png', caption: '' },
+        { id: '2', url: '/assets/lifestyle/living_experience/le_12.png', caption: '' }
+      ]
+    },
+    {
+      type: "para-many-image",
+      title: "Nâng tầm trải nghiệm sống thông minh",
+      description: "Plevia City được tích hợp hệ thống tiện ích công nghệ thông minh ngay trong từng trải nghiệm thường nhật.",
+      images: [
+        { id: '0', url: '/assets/lifestyle/scientific_planning/sp_0.png', caption: '' },
+        { id: '1', url: '/assets/lifestyle/scientific_planning/sp_1.png', caption: '' },
+        { id: '2', url: '/assets/lifestyle/scientific_planning/sp_4.jpg', caption: '' }
+      ]
+    },
+    {
+      type: "table-left-image-right",
+      title: "Kết nối cộng đồng, nâng cao chất lượng sống",
+      description: "Tại khu đô thị, cư dân sẽ được trải nghiệm một hệ sinh thái tiện ích toàn diện.",
+      image: "/assets/lifestyle/modern_living.png",
+      imageAlt: "Kết nối cộng đồng",
+      tableData: [
+        { title: "Phòng gym", description: "Được trang bị thiết bị hiện đại" },
+        { title: "Không gian tập yoga", description: "Yên tĩnh giúp cân bằng tinh thần" },
+        { title: "Khu spa thư giãn", description: "Mang đến những phút giây nghỉ ngơi trọn vẹn" },
+        { title: "Công viên ánh sáng", description: "Được phủ cây xanh rộng rãi" },
+        { title: "Trường mẫu giáo chuẩn quốc tế", description: "Nơi trẻ em được học tập và phát triển" },
+        { title: "Sân pickleball", description: "Môn thể thao thời thượng đang được ưa chuộng" }
+      ]
+    },
+    {
+      type: "tab-project",
+      title: "Tiện ích nội khu",
+      description: "Hệ thống tiện ích đồng bộ, hiện đại",
+      tabs: [
+        { title: "Thể thao", content: "Phòng gym, sân tennis, bể bơi" },
+        { title: "Giải trí", content: "Công viên, khu vui chơi trẻ em" },
+        { title: "Thương mại", content: "Trung tâm thương mại, siêu thị" }
+      ]
+    },
+    {
+      type: "tab-project-bg-blue",
+      title: "Dịch vụ cư dân",
+      description: "Dịch vụ chăm sóc cư dân 24/7",
+      tabs: [
+        { title: "An ninh", content: "Bảo vệ 24/7, camera giám sát" },
+        { title: "Vệ sinh", content: "Dọn dẹp, thu gom rác thải" },
+        { title: "Bảo trì", content: "Sửa chữa, bảo dưỡng hệ thống" }
+      ]
+    },
+    {
+      type: "lib-image-furniture",
+      title: "Nội thất cao cấp",
+      description: "Nội thất được thiết kế riêng cho từng không gian",
+      images: [
+        { id: '0', url: '/assets/lifestyle/living_standard/ls_0.png', caption: 'Phòng khách' },
+        { id: '1', url: '/assets/lifestyle/living_standard/ls_1.jpg', caption: 'Phòng ngủ' },
+        { id: '2', url: '/assets/lifestyle/living_standard/ls_2.jpg', caption: 'Nhà bếp' }
+      ]
+    }
+  ]
+};
+
 

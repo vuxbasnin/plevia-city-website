@@ -1,87 +1,127 @@
 import type { Metadata } from 'next';
 
-export function generatePageMetadata(pageTitle: string, customDescription?: string): Metadata {
-  const baseTitle = "Plevia City";
-  const fullTitle = `${baseTitle} - ${pageTitle} | PleviaCity`;
-  const description = customDescription || `Khám phá ${pageTitle.toLowerCase()} tại ${baseTitle} - Dự án bất động sản cao cấp tại Gia Lai với ứng dụng trí tuệ nhân tạo AI`;
-  
-  // Keywords tối ưu cho SEO với focus vào "pleviacity"
-  const keywords = [
-    'Plevia City',
-    'pleviacity',
-    'pleviacity.vn',
-    'dự án Plevia',
-    'bất động sản Gia Lai',
-    'dự án cao cấp Pleiku',
-    'căn hộ Gia Lai',
-    'biệt thự Pleiku',
-    'shophouse Gia Lai',
-    'đất nền Gia Lai',
-    'đầu tư bất động sản',
-    'real estate Gia Lai',
-    'dự án đô thị',
-    'khu đô thị cao cấp',
-    'tiện ích đẳng cấp',
-    'vị trí đắc địa',
-    'đô thị thông minh',
-    'AI Gia Lai',
-    'smart city Pleiku'
-  ];
-  
+export const defaultIcons = {
+  icon: [
+    { url: '/favicon.ico', type: 'image/x-icon' },
+    { url: '/logo_seo_home_page.png', sizes: '32x32', type: 'image/png' },
+    { url: '/logo_seo_home_page.png', sizes: '16x16', type: 'image/png' },
+    { url: '/logo_seo_home_page.png', sizes: '192x192', type: 'image/png' },
+    { url: '/logo_seo_home_page.png', sizes: '512x512', type: 'image/png' },
+  ],
+  shortcut: '/favicon.ico',
+  apple: [
+    { url: '/logo_seo_home_page.png', sizes: '180x180', type: 'image/png' },
+    { url: '/logo_seo_home_page.png', sizes: '152x152', type: 'image/png' },
+    { url: '/logo_seo_home_page.png', sizes: '120x120', type: 'image/png' },
+  ],
+};
+
+export const defaultKeywords = [
+  'Plevia City', 
+  'pleviacity', 
+  'khu đô thị thông minh Gia Lai', 
+  'dự án bất động sản Pleiku', 
+  'căn hộ Gia Lai', 
+  'biệt thự Pleiku', 
+  'shophouse Gia Lai', 
+  'đô thị thông minh', 
+  'AI Gia Lai', 
+  'bất động sản cao cấp',
+  'pleviacity.vn',
+  'dự án Plevia',
+  'đầu tư bất động sản Gia Lai'
+];
+
+export const defaultRobots = {
+  index: true,
+  follow: true,
+  nocache: false,
+  googleBot: {
+    index: true,
+    follow: true,
+    'max-video-preview': -1,
+    'max-image-preview': 'large' as const,
+    'max-snippet': -1,
+  },
+};
+
+export const defaultAuthors = [{ name: 'Plevia City' }];
+
+export const defaultFormatDetection = {
+  email: false,
+  address: false,
+  telephone: false,
+};
+
+export const defaultMetadataBase = new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://pleviacity.vn');
+
+export const defaultOther = {
+  'googlebot-news': 'nosnippet',
+  'googlebot': 'index, follow',
+  'bingbot': 'index, follow',
+  'msapplication-TileColor': '#00a651',
+  'theme-color': '#00a651',
+  'apple-mobile-web-app-capable': 'yes',
+  'apple-mobile-web-app-status-bar-style': 'default',
+  'application-name': 'Plevia City',
+  'msapplication-config': '/browserconfig.xml',
+};
+
+export function createBaseMetadata(metadata: Partial<Metadata>): Metadata {
   return {
-    title: fullTitle,
-    description: description,
-    keywords: keywords,
-    authors: [{ name: 'Plevia City' }],
-    creator: 'Plevia City',
-    publisher: 'Plevia City',
-    formatDetection: {
-      email: false,
-      address: false,
-      telephone: false,
-    },
-    metadataBase: new URL('https://pleviacity.vn'),
-    alternates: {
-      canonical: '/',
-    },
+    ...metadata,
+    keywords: metadata.keywords || defaultKeywords,
+    authors: metadata.authors || defaultAuthors,
+    creator: metadata.creator || 'Plevia City',
+    publisher: metadata.publisher || 'Plevia City',
+    formatDetection: metadata.formatDetection || defaultFormatDetection,
+    metadataBase: metadata.metadataBase || defaultMetadataBase,
+    robots: metadata.robots || defaultRobots,
+    icons: metadata.icons || defaultIcons,
+    other: metadata.other || defaultOther,
+  };
+}
+
+export function createPageMetadata(
+  title: string,
+  description: string,
+  url: string,
+  imageUrl?: string,
+  additionalMetadata?: Partial<Metadata>
+): Metadata {
+  const baseMetadata = createBaseMetadata({
+    title,
+    description,
+    alternates: { canonical: url },
     openGraph: {
-      title: fullTitle,
-      description: description,
-      url: 'https://pleviacity.vn',
-      siteName: 'Plevia City',
-      locale: 'vi_VN',
+      title,
+      description,
+      url,
       type: 'website',
+      locale: 'vi_VN',
+      siteName: 'Plevia City',
       images: [
         {
-          url: 'https://pleviacity.vn/social_media.png',
+          url: imageUrl || '/logo_seo_home_page.png',
           width: 1200,
           height: 630,
-          alt: 'Plevia City - Dự án bất động sản cao cấp tại Gia Lai',
+          alt: title,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: fullTitle,
-      description: description,
-      images: ['https://pleviacity.vn/social_media.png'],
-      creator: '@pleviacity',
+      title,
+      description,
+      images: [
+        {
+          url: imageUrl || '/logo_seo_home_page.png',
+          alt: title,
+        },
+      ],
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
-    icons: {
-      icon: '/Logo_green_3.png',
-      shortcut: '/Logo_green_3.png',
-      apple: '/Logo_green_3.png',
-    },
-  };
-} 
+    ...additionalMetadata,
+  });
+
+  return baseMetadata;
+}

@@ -2,12 +2,11 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import NextImage from 'next/image';
-import { Mail, Phone, MapPin, Facebook, Youtube, RotateCcw, MapPin as MapPinIcon, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Youtube, RotateCcw, MapPin as MapPinIcon, MessageSquare, Instagram } from 'lucide-react';
 import { useSiteSettings } from '@/context/SiteSettingsContext';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import './Footer.css';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -40,8 +39,9 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
+        {/* Main Footer Content */}
         <div className="footer-grid">
-          {/* Column 1: ĐƠN VỊ PHÁT TRIỂN */}
+          {/* Column 1: Chủ đầu tư */}
           <div className="footer-column">
             <h5 className="footer-title">Chủ đầu tư</h5>
             <div className="bim-logo">
@@ -55,29 +55,14 @@ export default function Footer() {
               />
               <span className="bim-logo-main">Công ty Cổ phần Tập đoàn Đầu tư Bắc Hải</span>
             </div>
-            <ul className="footer-text">
-              <li>
-                <p>Trụ sở chính: Tòa nhà TM & DV Galaxy, Tố Hữu, Vạn Phúc, Hà Ðông, Hà Nội</p>
-              </li>
-            </ul>
-          </div>
-
-
-          {/* Column 3: Tham quan Sales Gallery */}
-          <div className="footer-column">
-            <h5 className="footer-title-bold">Tham quan dự án</h5>
             <div className="footer-text">
-              <p>Văn phòng tư vấn dự án Plevia City: 63 Lý Nam Đế, phường Hội Phú, tỉnh Gia Lai</p>
+              <p>Trụ sở chính: Tòa nhà TM & DV Galaxy, Tố Hữu, Vạn Phúc, Hà Ðông, Hà Nội</p>
             </div>
           </div>
 
-          {/* Column 2: CÁC PAGE CON */}
+          {/* Column 2: Dự án */}
           <div className="footer-column">
-            <h5 className="footer-title-bold">
-              <Link href="/" className="footer-title-bold">
-                Trang chủ
-              </Link>
-            </h5>
+            <h5 className="footer-title-bold">Dự án</h5>
             <ul className="footer-page-links">
               <li>
                 <Link href="/storyline" className="footer-page-link">
@@ -95,6 +80,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/iot" className="footer-page-link">
+                  Công nghệ IoT & AI
+                </Link>
+              </li>
+              <li>
                 <Link href="/news" className="footer-page-link">
                   Tin tức
                 </Link>
@@ -102,46 +92,71 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Column 3: Tham quan */}
+          <div className="footer-column">
+            <h5 className="footer-title-bold">Tham quan dự án</h5>
+            <div className="footer-text">
+              <p>Văn phòng tư vấn dự án Plevia City</p>
+              <p>63 Lý Nam Đế, phường Hội Phú, tỉnh Gia Lai</p>
+            </div>
+            <div className="footer-button-container">
+              <Button className="footer-button">
+                Đặt lịch tham quan
+              </Button>
+            </div>
+          </div>
+
           {/* Column 4: Liên hệ */}
           <div className="footer-column">
             <h5 className="footer-title-bold">Liên hệ</h5>
             <div className="footer-contact-info">
-              <p>Email: hotro@tapdoanbachai.vn</p>
-              <p>
-              </p>
-              <div className="footer-hotline">
-                <span>Hotline: </span>
-                <span className="footer-hotline-number">07.67.67.67.72</span>
+              <div className="footer-contact-item">
+                <Mail className="footer-contact-icon" />
+                <span>hotro@tapdoanbachai.vn</span>
               </div>
-              
-              {/* Social Media Buttons */}
-              <div className="footer-social-buttons">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.id}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cn(
-                      "footer-social-button",
-                      social.color
-                    )}
-                    aria-label={social.platformName}
-                    title={social.platformName}
-                  >
-                    {social.iconName === 'Facebook' && <Facebook className="h-4 w-4" />}
-                    {social.iconName === 'MessageSquare' && <MessageSquare className="h-4 w-4" />}
-                    {social.iconName === 'Youtube' && <Youtube className="h-4 w-4" />}
-                  </a>
-                ))}
+              <div className="footer-contact-item">
+                <Phone className="footer-contact-icon" />
+                <div className="footer-hotline">
+                  <span>Hotline: </span>
+                  <span className="footer-hotline-number">07.67.67.67.72</span>
+                </div>
               </div>
+              <div className="footer-contact-item">
+                <MapPin className="footer-contact-icon" />
+                <span>Gia Lai, Việt Nam</span>
+              </div>
+            </div>
+            
+            {/* Social Media Buttons */}
+            <div className="footer-social-buttons">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.id}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    "footer-social-button",
+                    social.color
+                  )}
+                  aria-label={social.platformName}
+                  title={social.platformName}
+                >
+                  {social.iconName === 'Facebook' && <Facebook className="h-4 w-4" />}
+                  {social.iconName === 'MessageSquare' && <MessageSquare className="h-4 w-4" />}
+                  {social.iconName === 'Youtube' && <Youtube className="h-4 w-4" />}
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
+        {/* Footer Bottom */}
         <div className="footer-bottom">
           <div className="footer-copyright">
-            &copy; {currentYear} BẮC HẢI. Đã đăng ký Bản quyền.
+            &copy; {currentYear} <strong>BẮC HẢI</strong>. Đã đăng ký Bản quyền. | 
+            <Link href="/privacy" className="footer-bottom-link"> Chính sách bảo mật</Link> | 
+            <Link href="/terms" className="footer-bottom-link"> Điều khoản sử dụng</Link>
           </div>
         </div>
       </div>

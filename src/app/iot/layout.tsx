@@ -1,10 +1,11 @@
-import { generatePageMetadata } from "@/lib/metadata";
+import { createPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return generatePageMetadata(
+  return createPageMetadata(
     "Công nghệ vận hành AI",
-    "Tầm nhìn về một khu đô thị toàn diện - nơi AI không chỉ quản lý từng căn nhà mà còn kết nối toàn bộ hệ sinh thái."
+    "Tầm nhìn về một khu đô thị toàn diện - nơi AI không chỉ quản lý từng căn nhà mà còn kết nối toàn bộ hệ sinh thái.",
+    "https://pleviacity.vn/iot",
   );
 }
 

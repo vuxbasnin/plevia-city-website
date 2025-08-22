@@ -61,44 +61,56 @@ export default function Navbar() {
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isHydrated, setIsHydrated] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
+  // Handle hydration
   useEffect(() => {
-    let ticking = false;
+    // Set initial scroll state before hydration
+    const initialScrollY = window.scrollY;
+    const initialIsScrolled = initialScrollY > 20;
+    setIsScrolled(initialIsScrolled);
+    setLastScrollY(initialScrollY);
+    
+    // Mark as hydrated immediately to prevent mismatch
+    setIsHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isHydrated) return;
 
     const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
-          const newScrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
+      const currentScrollY = window.scrollY;
+      const scrollThreshold = 20;
+      const isCurrentlyScrolled = currentScrollY > scrollThreshold;
 
-          // Update scroll direction with debounce
-          if (Math.abs(currentScrollY - lastScrollY) > 5) {
-            setScrollDirection(newScrollDirection);
-          }
+      // Debug log (temporarily disabled)
+      // console.log('Scroll Debug:', {
+      //   currentScrollY,
+      //   scrollThreshold,
+      //   isCurrentlyScrolled,
+      //   isScrolled,
+      //   willUpdate: isCurrentlyScrolled !== isScrolled
+      // });
 
-          // Smooth scroll state update
-          const scrollThreshold = 20;
-          const isCurrentlyScrolled = currentScrollY > scrollThreshold;
+      // Update scroll state immediately
+      setIsScrolled(isCurrentlyScrolled);
 
-          // Only update if state actually changed to prevent unnecessary re-renders
-          if (isCurrentlyScrolled !== isScrolled) {
-            setIsScrolled(isCurrentlyScrolled);
-          }
-
-          setLastScrollY(currentScrollY);
-          ticking = false;
-        });
-        ticking = true;
+      // Update scroll direction
+      if (Math.abs(currentScrollY - lastScrollY) > 5) {
+        const newScrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
+        setScrollDirection(newScrollDirection);
       }
+
+      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial check
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]); // Removed isScrolled from dependencies
+  }, [isHydrated]); // Simplified dependencies
 
 
 
@@ -125,14 +137,23 @@ export default function Navbar() {
   };
 
   const isHomepage = pathname === '/';
+  // Navbar transparent khi ở đầu trang (không scroll) và không có mobile menu mở
   const isTransparentState = !isScrolled && !isMobileMenuOpen;
+
+  // Debug log for navbar state (temporarily disabled)
+  // console.log('Navbar State Debug:', {
+  //   isScrolled,
+  //   isMobileMenuOpen,
+  //   isTransparentState,
+  //   navbarClass: isTransparentState ? 'navbar-transparent' : 'navbar-solid'
+  // });
 
   // Memoized values to prevent unnecessary recalculations
   const backgroundOpacity = React.useMemo(() => {
-    if (!isHomepage || isMobileMenuOpen) return 0.95;
+    if (isMobileMenuOpen) return 0.95;
     if (isScrolled) return 0.95;
     return 0;
-  }, [isHomepage, isMobileMenuOpen, isScrolled]);
+  }, [isMobileMenuOpen, isScrolled]);
 
   const logoEffects = React.useMemo(() => {
     if (isTransparentState) {
@@ -157,6 +178,44 @@ export default function Navbar() {
       textShadow: 'none',
     };
   }, [isTransparentState]);
+
+  // Don't render until hydrated to prevent hydration mismatch
+  if (!isHydrated) {
+    return (
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`navbar ${isTransparentState ? 'navbar-transparent' : 'navbar-solid'}`}
+        role="navigation"
+      >
+        <div className="navbar-container">
+          <div className="navbar-content">
+            <Link href="/" passHref>
+              <img
+                src="/Logo_Standard_Final-7.png"
+                alt="Logo"
+                width={300}
+                height={300}
+                className="navbar-logo-img"
+                style={{ objectFit: 'contain', display: 'block', marginLeft: 0, marginRight: 0, cursor: 'pointer' }}
+              />
+            </Link>
+            <div className="navbar-mobile-toggle">
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="Toggle menu"
+                className="navbar-mobile-button"
+              >
+                <Menu className="navbar-mobile-icon" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </motion.nav>
+    );
+  }
 
   return (
     <motion.nav
