@@ -84,7 +84,7 @@ export default function ClientHomePage() {
         <ScrollReveal>
           <ClientImageHeaderStatic
             imageUrl="/assets/home/mat_bang.png"
-            fullImage={true} />
+            />
         </ScrollReveal>
         <ScrollReveal>
           <TabProject />
