@@ -21,16 +21,17 @@
 }
 
 .title-lifestyle__main-title {
-  color: hsl(var(--primary));
-  text-transform: uppercase;
-  letter-spacing: .5px;
-  text-align: center;
-  width: 100%;
-  margin-top: 32px;
-  margin-bottom: 16px;
-  font-family: Opaline, Times New Roman, serif;
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .title-lifestyle__container--mobile {
