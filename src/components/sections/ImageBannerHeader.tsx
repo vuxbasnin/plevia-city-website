@@ -83,9 +83,21 @@ export default function ImageBannerHeader({
   }, [isLoading, imageLoading, hasAnimated]);
 
   // Sử dụng imageUrl từ Firestore thay vì prop
-  const currentImageUrl = imageError
-    ? `https://placehold.co/1200x800.png?text=Hero+Image+Error`
-    : heroData.imageUrl || fallbackImageUrl;
+  // Nếu không có Cloudinary config hoặc URL không hợp lệ, fallback về local image
+  const isCloudinaryConfigured = process.env.NEXT_PUBLIC_CLOUDINARY_NAME && 
+    process.env.NEXT_PUBLIC_CLOUDINARY_NAME !== 'your_cloud_name_here';
+  
+  const shouldUseCloudinaryImage = isCloudinaryConfigured && 
+    heroData.imageUrl && 
+    heroData.imageUrl.startsWith('https://res.cloudinary.com/') &&
+    !imageError;
+  
+  // const currentImageUrl = imageError
+  //   ? `https://placehold.co/1200x800.png?text=Hero+Image+Error`
+  //   : shouldUseCloudinaryImage 
+  //     ? heroData.imageUrl 
+  //     : fallbackImageUrl;
+  const currentImageUrl = fallbackImageUrl;
 
   // Debug logs
   console.log(`[${bannerType}] Debug:`, {
@@ -94,7 +106,9 @@ export default function ImageBannerHeader({
     currentImageUrl,
     imageError,
     imageLoading,
-    isLoading
+    isLoading,
+    isCloudinaryConfigured,
+    shouldUseCloudinaryImage
   });
 
   if (isLoading) {
@@ -127,7 +141,7 @@ export default function ImageBannerHeader({
         )}
         
         <Image
-          src={`${currentImageUrl}?v=${imageVersion}`} // Cache busting with version
+          src={`${currentImageUrl}?v=${imageVersion}&t=${Date.now()}`} // Cache busting with version + timestamp
           alt="Hero Image"
           fill
           className="object-cover object-center"

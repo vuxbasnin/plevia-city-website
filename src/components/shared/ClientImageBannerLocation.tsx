@@ -6,7 +6,7 @@ export default function ClientImageBannerLocation() {
   return (
     <ImageBannerHeader 
       bannerType="banner_location"
-      fallbackImageUrl="/assets/location/banner_location.png"
+      fallbackImageUrl="/assets/home/banner_home.png"
     />
   );
 }

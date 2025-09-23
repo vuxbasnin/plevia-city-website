@@ -6,7 +6,7 @@ export default function ClientImageBannerLifestyle() {
   return (
     <ImageBannerHeader 
       bannerType="banner_lifestyle"
-      fallbackImageUrl="/assets/lifestyle/banner_lifestyle.png"
+      fallbackImageUrl="/assets/home/banner_home.png"
     />
   );
 }
