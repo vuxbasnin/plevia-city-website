@@ -431,25 +431,33 @@ export async function updateTourBookingStatus(
 
 // News Articles Management
 export async function getNewsArticles(): Promise<NewsArticle[]> {
-  if (!db) {
-    throw new Error("Firestore not initialized");
-  }
-
+  const supabase = createClient();
+  
   try {
-    const articlesRef = collection(db, NEWS_ARTICLES_COLLECTION);
-    const q = query(articlesRef, orderBy("createdAt", "desc"));
-    const querySnapshot = await getDocs(q);
+    const { data, error } = await supabase
+      .from('news')
+      .select('*')
+      .order('created_at', { ascending: false });
     
-    const articles: NewsArticle[] = [];
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      articles.push({
-        id: doc.id,
-        ...data,
-        createdAt: data.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt,
-        updatedAt: data.updatedAt?.toDate ? data.updatedAt.toDate() : data.updatedAt,
-      } as NewsArticle);
-    });
+    if (error) {
+      console.error("Error fetching news articles:", error);
+      throw error;
+    }
+    
+    const articles: NewsArticle[] = (data || []).map(item => ({
+      id: item.id,
+      title: item.title,
+      content: item.content,
+      author: item.author,
+      summary: item.summary,
+      tags: item.tags || [],
+      isPublished: item.is_published,
+      coverImageUrl: item.cover_image_url,
+      coverImageId: item.cover_image_id,
+      slug: item.slug,
+      createdAt: new Date(item.created_at),
+      updatedAt: new Date(item.updated_at),
+    }));
     
     return articles;
   } catch (error) {
@@ -459,28 +467,39 @@ export async function getNewsArticles(): Promise<NewsArticle[]> {
 }
 
 export async function getNewsArticleById(id: string): Promise<NewsArticle | null> {
-  if (!db) {
-    throw new Error("Firestore not initialized");
-  }
-
+  const supabase = createClient();
+  
   try {
-    const articleRef = doc(db, NEWS_ARTICLES_COLLECTION, id);
-    const articleSnap = await getDoc(articleRef);
+    const { data, error } = await supabase
+      .from('news')
+      .select('*')
+      .eq('id', id)
+      .single();
     
-    if (articleSnap.exists()) {
-      const data = articleSnap.data();
-      // Convert Timestamp về Date nếu cần
-      const createdAt = data.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt;
-      const updatedAt = data.updatedAt?.toDate ? data.updatedAt.toDate() : data.updatedAt;
-      return {
-        id: articleSnap.id,
-        ...data,
-        createdAt,
-        updatedAt,
-      } as NewsArticle;
+    if (error) {
+      if (error.code === 'PGRST116') {
+        return null; // No rows found
+      }
+      console.error("Error fetching news article:", error);
+      throw error;
     }
     
-    return null;
+    if (!data) return null;
+    
+    return {
+      id: data.id,
+      title: data.title,
+      content: data.content,
+      author: data.author,
+      summary: data.summary,
+      tags: data.tags || [],
+      isPublished: data.is_published,
+      coverImageUrl: data.cover_image_url,
+      coverImageId: data.cover_image_id,
+      slug: data.slug,
+      createdAt: new Date(data.created_at),
+      updatedAt: new Date(data.updated_at),
+    };
   } catch (error) {
     console.error("Error fetching news article:", error);
     throw error;
@@ -488,32 +507,39 @@ export async function getNewsArticleById(id: string): Promise<NewsArticle | null
 }
 
 export async function getNewsArticleBySlug(slug: string): Promise<NewsArticle | null> {
-  if (!db) {
-    throw new Error("Firestore not initialized");
-  }
-
+  const supabase = createClient();
+  
   try {
-    const articlesRef = collection(db, NEWS_ARTICLES_COLLECTION);
-    const q = query(articlesRef, where("slug", "==", slug));
-    const querySnapshot = await getDocs(q);
+    const { data, error } = await supabase
+      .from('news')
+      .select('*')
+      .eq('slug', slug)
+      .single();
     
-    if (!querySnapshot.empty) {
-      const doc = querySnapshot.docs[0];
-      const data = doc.data();
-      
-      // Convert Timestamp về Date nếu cần
-      const createdAt = data.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt;
-      const updatedAt = data.updatedAt?.toDate ? data.updatedAt.toDate() : data.updatedAt;
-      const article = {
-        id: doc.id,
-        ...data,
-        createdAt,
-        updatedAt,
-      } as NewsArticle;
-      return article;
+    if (error) {
+      if (error.code === 'PGRST116') {
+        return null; // No rows found
+      }
+      console.error("Error fetching news article by slug:", error);
+      throw error;
     }
     
-    return null;
+    if (!data) return null;
+    
+    return {
+      id: data.id,
+      title: data.title,
+      content: data.content,
+      author: data.author,
+      summary: data.summary,
+      tags: data.tags || [],
+      isPublished: data.is_published,
+      coverImageUrl: data.cover_image_url,
+      coverImageId: data.cover_image_id,
+      slug: data.slug,
+      createdAt: new Date(data.created_at),
+      updatedAt: new Date(data.updated_at),
+    };
   } catch (error) {
     console.error("Error fetching news article by slug:", error);
     throw error;
@@ -521,37 +547,51 @@ export async function getNewsArticleBySlug(slug: string): Promise<NewsArticle | 
 }
 
 export async function createNewsArticle(articleData: Omit<NewsArticle, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
-  if (!db) {
-    throw new Error("Firestore not initialized");
-  }
-
+  const supabase = createClient();
+  
   try {
-    // Loại bỏ createdAt, updatedAt nếu có trong articleData
-    const { createdAt, updatedAt, ...rest } = articleData as any;
-    const articlesRef = collection(db, NEWS_ARTICLES_COLLECTION);
-    const newArticle = {
-      ...rest,
-      createdAt: serverTimestamp(),
-      updatedAt: serverTimestamp(),
+    const insertData: any = {
+      title: articleData.title,
+      content: articleData.content,
+      author: articleData.author,
+      summary: articleData.summary,
+      tags: articleData.tags || [],
+      is_published: articleData.isPublished,
+      cover_image_url: articleData.coverImageUrl,
+      slug: articleData.slug,
     };
     
-    const docRef = await addDoc(articlesRef, newArticle);
-                    console.log("createNewsArticle - Article created with ID:", docRef.id);
-                
-                // 3. Dữ liệu load ra từ Firestore để cho vào màn Preview hoặc Detail
-                console.log("📖 FIRESTORE OUTPUT:", {
-                  id: docRef.id,
-                  title: newArticle.title,
-                  content: newArticle.content,
-                  author: newArticle.author,
-                  summary: newArticle.summary,
-                  tags: newArticle.tags,
-                  isPublished: newArticle.isPublished,
-                  coverImageUrl: newArticle.coverImageUrl,
-                  slug: newArticle.slug,
-                });
-                
-                return docRef.id;
+    // Only include cover_image_id if it's a valid UUID or integer
+    if (articleData.coverImageId) {
+      insertData.cover_image_id = articleData.coverImageId;
+    }
+    
+    const { data, error } = await supabase
+      .from('news')
+      .insert(insertData)
+      .select('id')
+      .single();
+    
+    if (error) {
+      console.error("Error creating news article:", error);
+      throw error;
+    }
+    
+    console.log("createNewsArticle - Article created with ID:", data.id);
+    console.log("📖 SUPABASE OUTPUT:", {
+      id: data.id,
+      title: articleData.title,
+      content: articleData.content,
+      author: articleData.author,
+      summary: articleData.summary,
+      tags: articleData.tags,
+      isPublished: articleData.isPublished,
+      coverImageUrl: articleData.coverImageUrl,
+      coverImageId: articleData.coverImageId,
+      slug: articleData.slug,
+    });
+    
+    return data.id;
   } catch (error) {
     console.error("Error creating news article:", error);
     throw error;
@@ -559,17 +599,32 @@ export async function createNewsArticle(articleData: Omit<NewsArticle, 'id' | 'c
 }
 
 export async function updateNewsArticle(id: string, articleData: Partial<NewsArticle>): Promise<void> {
-  if (!db) throw new Error("Firestore not initialized");
+  const supabase = createClient();
+  
   try {
-    const articleRef = doc(db, NEWS_ARTICLES_COLLECTION, id);
-    const updateData = {
-      ...articleData,
-      updatedAt: serverTimestamp(),
-    };
-    await updateDoc(articleRef, updateData);
-
-    // 3. Dữ liệu load ra từ Firestore để cho vào màn Preview hoặc Detail
-    console.log("📖 FIRESTORE OUTPUT:", {
+    const updateData: any = {};
+    
+    if (articleData.title !== undefined) updateData.title = articleData.title;
+    if (articleData.content !== undefined) updateData.content = articleData.content;
+    if (articleData.author !== undefined) updateData.author = articleData.author;
+    if (articleData.summary !== undefined) updateData.summary = articleData.summary;
+    if (articleData.tags !== undefined) updateData.tags = articleData.tags;
+    if (articleData.isPublished !== undefined) updateData.is_published = articleData.isPublished;
+    if (articleData.coverImageUrl !== undefined) updateData.cover_image_url = articleData.coverImageUrl;
+    if (articleData.coverImageId !== undefined) updateData.cover_image_id = articleData.coverImageId;
+    if (articleData.slug !== undefined) updateData.slug = articleData.slug;
+    
+    const { error } = await supabase
+      .from('news')
+      .update(updateData)
+      .eq('id', id);
+    
+    if (error) {
+      console.error("Error updating news article:", error);
+      throw error;
+    }
+    
+    console.log("📖 SUPABASE OUTPUT:", {
       id: id,
       title: articleData.title,
       content: articleData.content,
@@ -578,6 +633,7 @@ export async function updateNewsArticle(id: string, articleData: Partial<NewsArt
       tags: articleData.tags,
       isPublished: articleData.isPublished,
       coverImageUrl: articleData.coverImageUrl,
+      coverImageId: articleData.coverImageId,
       slug: articleData.slug,
     });
   } catch (error) {
@@ -587,13 +643,18 @@ export async function updateNewsArticle(id: string, articleData: Partial<NewsArt
 }
 
 export async function deleteNewsArticle(id: string): Promise<void> {
-  if (!db) {
-    throw new Error("Firestore not initialized");
-  }
-
+  const supabase = createClient();
+  
   try {
-    const articleRef = doc(db, NEWS_ARTICLES_COLLECTION, id);
-    await deleteDoc(articleRef);
+    const { error } = await supabase
+      .from('news')
+      .delete()
+      .eq('id', id);
+    
+    if (error) {
+      console.error("Error deleting news article:", error);
+      throw error;
+    }
   } catch (error) {
     console.error("Error deleting news article:", error);
     throw error;
@@ -601,29 +662,34 @@ export async function deleteNewsArticle(id: string): Promise<void> {
 }
 
 export async function getPublishedNewsArticles(): Promise<NewsArticle[]> {
-  if (!db) {
-    throw new Error("Firestore not initialized");
-  }
-
+  const supabase = createClient();
+  
   try {
-    const articlesRef = collection(db, NEWS_ARTICLES_COLLECTION);
-    const q = query(
-      articlesRef, 
-      where("isPublished", "==", true),
-      orderBy("createdAt", "desc")
-    );
-    const querySnapshot = await getDocs(q);
+    const { data, error } = await supabase
+      .from('news')
+      .select('*')
+      .eq('is_published', true)
+      .order('created_at', { ascending: false });
     
-    const articles: NewsArticle[] = [];
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      articles.push({
-        id: doc.id,
-        ...data,
-        createdAt: data.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt,
-        updatedAt: data.updatedAt?.toDate ? data.updatedAt.toDate() : data.updatedAt,
-      } as NewsArticle);
-    });
+    if (error) {
+      console.error("Error fetching published news articles:", error);
+      throw error;
+    }
+    
+    const articles: NewsArticle[] = (data || []).map(item => ({
+      id: item.id,
+      title: item.title,
+      content: item.content,
+      author: item.author,
+      summary: item.summary,
+      tags: item.tags || [],
+      isPublished: item.is_published,
+      coverImageUrl: item.cover_image_url,
+      coverImageId: item.cover_image_id,
+      slug: item.slug,
+      createdAt: new Date(item.created_at),
+      updatedAt: new Date(item.updated_at),
+    }));
     
     return articles;
   } catch (error) {

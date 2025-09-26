@@ -1,54 +1,75 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
-import { getNewsArticleBySlug } from "@/lib/firestoreService";
+import { getNewsArticles, getNewsArticleBySlug } from "@/lib/firestoreService";
 import { NewsArticle } from "@/types/landingPageAdmin";
 import { formatDateForDisplay } from "@/lib/utils";
-import dynamic from "next/dynamic";
+import EditorJSRenderer from "@/components/shared/EditorJSRenderer";
 import Image from "next/image";
 import ImageHeader from '@/components/sections/ImageHeader';
 import PageLayout from '@/components/layout/PageLayout';
 import ScrollReveal from '@/components/shared/ScrollReveal';
+import { notFound } from 'next/navigation';
 
-const EditorJSRenderer = dynamic(() => import("@/components/shared/EditorJSRenderer"), { ssr: false });
 
-export default function NewsDetailPage() {
-  const { slug } = useParams() as { slug: string };
-  const [article, setArticle] = useState<NewsArticle | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    if (!slug) return;
-    setLoading(true);
-    getNewsArticleBySlug(slug)
-      .then((foundArticle) => {
-        if (!foundArticle) {
-          setError("Không tìm thấy bài viết.");
-        } else {
-          setArticle(foundArticle);
-        }
-      })
-      .catch(() => setError("Lỗi khi tải bài viết."))
-      .finally(() => setLoading(false));
-  }, [slug]);
-
-  if (loading) {
-    return (
-      <PageLayout>
-        <div className="flex justify-center items-center min-h-[400px] text-lg">Đang tải...</div>
-      </PageLayout>
-    );
+// Generate static params for all news articles
+export async function generateStaticParams() {
+  try {
+    const articles = await getNewsArticles();
+    
+    return articles
+      .filter(article => article.isPublished && article.slug) // Only published articles with slugs
+      .map((article) => ({
+        slug: article.slug!,
+      }));
+  } catch (error) {
+    console.error('Error generating static params for news:', error);
+    return [];
   }
-  if (error) {
-    return (
-      <PageLayout>
-        <div className="flex justify-center items-center min-h-[400px] text-lg text-red-600">{error}</div>
-      </PageLayout>
-    );
+}
+
+// Generate metadata for each page
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  try {
+    const article = await getNewsArticleBySlug(params.slug);
+    
+    if (!article) {
+      return {
+        title: 'Không tìm thấy bài viết',
+        description: 'Bài viết không tồn tại hoặc đã bị xóa.',
+      };
+    }
+
+    return {
+      title: `${article.title} | Plevia City`,
+      description: article.summary || `Đọc bài viết ${article.title} trên Plevia City`,
+      openGraph: {
+        title: article.title,
+        description: article.summary || `Đọc bài viết ${article.title} trên Plevia City`,
+        images: article.coverImageUrl ? [article.coverImageUrl] : [],
+        type: 'article',
+        publishedTime: article.createdAt instanceof Date ? article.createdAt.toISOString() : (article.createdAt as any).toDate ? (article.createdAt as any).toDate().toISOString() : new Date().toISOString(),
+        authors: [article.author],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: article.title,
+        description: article.summary || `Đọc bài viết ${article.title} trên Plevia City`,
+        images: article.coverImageUrl ? [article.coverImageUrl] : [],
+      },
+    };
+  } catch (error) {
+    console.error('Error generating metadata for news article:', error);
+    return {
+      title: 'Lỗi tải bài viết',
+      description: 'Có lỗi xảy ra khi tải bài viết.',
+    };
   }
-  if (!article) return null;
+}
+
+export default async function NewsDetailPage({ params }: { params: { slug: string } }) {
+  const article = await getNewsArticleBySlug(params.slug);
+
+  if (!article) {
+    notFound();
+  }
 
   return (
     <PageLayout className="relative bg-white">

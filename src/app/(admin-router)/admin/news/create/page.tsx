@@ -14,7 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { createNewsArticle } from "@/lib/firestoreService";
 import { NewsArticleFormData, newsArticleFormSchema, defaultNewsArticleData } from "@/types/landingPageAdmin";
-import { ArrowLeft, Save, Eye, EyeOff, X, Upload, Image as ImageIcon } from "lucide-react";
+import { ArrowLeft, Save, Eye, EyeOff, X, Upload } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import EditorJS from "@editorjs/editorjs";
@@ -30,7 +30,6 @@ export default function CreateNewsPage() {
   const [newTag, setNewTag] = useState("");
   const [coverImageFile, setCoverImageFile] = useState<File | null>(null);
   const [coverImagePreview, setCoverImagePreview] = useState<string>("");
-  const [isUploadingCover, setIsUploadingCover] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
 
@@ -64,22 +63,9 @@ export default function CreateNewsPage() {
               uploader: {
                 uploadByFile: async (file: File) => {
                   try {
-                    const formData = new FormData();
-                    formData.append('file', file);
-                    formData.append('folder', 'news_images');
-
-                    const response = await fetch('/api/upload-image', {
-                      method: 'POST',
-                      body: formData,
-                    });
-
-                    if (!response.ok) {
-                      const errorData = await response.json();
-                      throw new Error(errorData.error || 'Upload failed');
-                    }
-
-                    const result = await response.json();
-                    return { success: 1, file: { url: result.url } };
+                    // Convert file to base64
+                    const base64 = await convertFileToBase64(file);
+                    return { success: 1, file: { url: base64 } };
                   } catch (error) {
                     console.error('EditorJS upload error:', error);
                     return { success: 0, error: error instanceof Error ? error.message : 'Upload failed' };
@@ -95,7 +81,16 @@ export default function CreateNewsPage() {
         onChange: async () => {
           if (editorRef.current) {
             const outputData = await editorRef.current.save();
-            setValue("content", outputData);
+            const safeEditorData = {
+              time: outputData.time ?? Date.now(),
+              version: outputData.version ?? "2.30.8",
+              blocks: (outputData.blocks || []).map(block => ({
+                id: block.id,
+                type: block.type,
+                data: block.data || {},
+              })) as any,
+            };
+            setValue("content", safeEditorData);
           }
         },
       });
@@ -154,38 +149,13 @@ export default function CreateNewsPage() {
     }
   };
 
-  const uploadCoverImage = async (): Promise<string> => {
-    if (!coverImageFile) {
-      throw new Error("Không có file ảnh để upload");
-    }
-    
-    setIsUploadingCover(true);
-    try {
-      console.log("Bắt đầu upload ảnh bìa...");
-      
-      const formData = new FormData();
-      formData.append('file', coverImageFile);
-      formData.append('folder', 'news_cover_images');
-
-      const response = await fetch('/api/upload-image', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Upload failed');
-      }
-
-      const result = await response.json();
-      console.log("Upload ảnh bìa thành công:", result.url);
-      return result.url;
-    } catch (error) {
-      console.error("Lỗi upload ảnh bìa:", error);
-      throw new Error(`Không thể upload ảnh bìa: ${error instanceof Error ? error.message : 'Lỗi không xác định'}`);
-    } finally {
-      setIsUploadingCover(false);
-    }
+  const convertFileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
   };
 
   const onSubmit = async (data: NewsArticleFormData) => {
@@ -193,14 +163,14 @@ export default function CreateNewsPage() {
       setIsSubmitting(true);
       console.log("Bắt đầu tạo bài viết...");
       
-      // Upload cover image if selected
+      // Convert uploaded file to base64 if exists
       let coverImageUrl = data.coverImageUrl || "";
       if (coverImageFile) {
-        console.log("Có ảnh bìa cần upload...");
-        coverImageUrl = await uploadCoverImage();
+        console.log("Chuyển đổi ảnh thành base64...");
+        coverImageUrl = await convertFileToBase64(coverImageFile);
       }
       
-                   // Get editor content
+      // Get editor content
       if (editorRef.current) {
         const editorData = await editorRef.current.save();
         const safeEditorData = {
@@ -210,9 +180,9 @@ export default function CreateNewsPage() {
             id: block.id,
             type: block.type,
             data: block.data || {},
-          })),
+          })) as any,
         };
-        data.content = safeEditorData;
+        data.content = safeEditorData as any;
       }
 
       console.log("Dữ liệu bài viết:", {
@@ -223,10 +193,10 @@ export default function CreateNewsPage() {
         isPublished: data.isPublished
       });
 
-      // Create the article
+      // Create the article immediately
       const articleId = await createNewsArticle({
         title: data.title,
-        content: data.content,
+        content: data.content as any,
         author: data.author,
         summary: data.summary,
         tags: data.tags,
@@ -490,7 +460,7 @@ export default function CreateNewsPage() {
                   <Button
                     type="submit"
                     className="w-full"
-                    disabled={isSubmitting || isUploadingCover}
+                    disabled={isSubmitting}
                   >
                     {isSubmitting ? (
                       <>

@@ -28,6 +28,16 @@ export default function EditNewsArticlePage() {
   const [coverImageFile, setCoverImageFile] = useState<File | null>(null);
   const [coverImagePreview, setCoverImagePreview] = useState<string>("");
   const [isUploadingCover, setIsUploadingCover] = useState(false);
+  const [coverImageId, setCoverImageId] = useState<string>("");
+  
+  const convertFileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
   const { toast } = useToast();
   const router = useRouter();
 
@@ -60,10 +70,13 @@ export default function EditNewsArticlePage() {
           setValue("title", found.title);
           setValue("author", found.author);
           setValue("summary", found.summary);
+          // Important: set initial content so validation passes before any editor change
+          setValue("content", found.content as any);
           setValue("tags", found.tags);
           setValue("isPublished", found.isPublished);
           setValue("coverImageUrl", found.coverImageUrl || "");
           setValue("slug", found.slug || "");
+          if (found.coverImageId) setCoverImageId(found.coverImageId);
         }
       })
       .catch(() => setArticle(null))
@@ -111,22 +124,9 @@ export default function EditNewsArticlePage() {
                   uploader: {
                     uploadByFile: async (file: File) => {
                       try {
-                        const formData = new FormData();
-                        formData.append('file', file);
-                        formData.append('folder', 'news_images');
-
-                        const response = await fetch('/api/upload-image', {
-                          method: 'POST',
-                          body: formData,
-                        });
-
-                        if (!response.ok) {
-                          const errorData = await response.json();
-                          throw new Error(errorData.error || 'Upload failed');
-                        }
-
-                        const result = await response.json();
-                        return { success: 1, file: { url: result.url } };
+                        // Convert file to base64
+                        const base64 = await convertFileToBase64(file);
+                        return { success: 1, file: { url: base64 } };
                       } catch (error) {
                         console.error('EditorJS upload error:', error);
                         return { success: 0, error: error instanceof Error ? error.message : 'Upload failed' };
@@ -217,7 +217,7 @@ export default function EditNewsArticlePage() {
       
       const formData = new FormData();
       formData.append('file', coverImageFile);
-      formData.append('folder', 'news_cover_images');
+      formData.append('type', 'news_cover');
 
       const response = await fetch('/api/upload-image', {
         method: 'POST',
@@ -231,6 +231,9 @@ export default function EditNewsArticlePage() {
 
       const result = await response.json();
       console.log("Upload ảnh bìa thành công:", result.url);
+      if (result?.id) {
+        setCoverImageId(result.id);
+      }
       return result.url;
     } catch (error) {
       console.error("Lỗi upload ảnh bìa:", error);
@@ -249,9 +252,26 @@ export default function EditNewsArticlePage() {
       
       // Upload cover image if selected
       let coverImageUrl = data.coverImageUrl || article.coverImageUrl || "";
+      let newCoverImageId = coverImageId || article.coverImageId || "";
+      
       if (coverImageFile) {
         console.log("Có ảnh bìa cần upload...");
+        // If uploading a new cover, delete old record if exists
+        const oldId = article.coverImageId;
         coverImageUrl = await uploadCoverImage();
+        newCoverImageId = coverImageId || newCoverImageId;
+        
+        if (oldId) {
+          try {
+            await fetch('/api/admin/delete-image-record', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: oldId })
+            });
+          } catch (e) {
+            console.warn('Không thể xóa ảnh cũ trên Supabase:', e);
+          }
+        }
       }
       
       // Get editor content
@@ -274,6 +294,7 @@ export default function EditNewsArticlePage() {
         author: data.author,
         summary: data.summary,
         coverImageUrl: coverImageUrl,
+        coverImageId: newCoverImageId,
         isPublished: data.isPublished
       });
 
@@ -286,6 +307,7 @@ export default function EditNewsArticlePage() {
         tags: data.tags,
         isPublished: data.isPublished,
         coverImageUrl: coverImageUrl,
+        coverImageId: newCoverImageId || undefined,
         slug: data.slug || "",
       });
 

@@ -1,19 +1,14 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Briefcase, MessageCircle, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import NextImage from 'next/image';
-import { Skeleton } from '@/components/ui/skeleton';
-import ContactFormDialog from '@/components/shared/ContactFormDialog';
 import NavigationLink from '@/components/shared/NavigationLink';
 import { usePathname, useRouter } from 'next/navigation';
 import './Navbar.css';
-import { useSiteSettings } from '@/context/SiteSettingsContext';
 
 // Navigation links based on the image
 const navLinks: Array<{

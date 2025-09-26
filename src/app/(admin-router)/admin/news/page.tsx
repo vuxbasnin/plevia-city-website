@@ -52,6 +52,18 @@ export default function NewsListPage() {
 
     try {
       setDeleting(true);
+      // Delete associated cover image record (Supabase) if present
+      if (articleToDelete.coverImageId) {
+        try {
+          await fetch('/api/admin/delete-image-record', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: articleToDelete.coverImageId })
+          });
+        } catch (e) {
+          console.warn('Không thể xóa ảnh cover trên Supabase:', e);
+        }
+      }
       await deleteNewsArticle(articleToDelete.id);
       setArticles(articles.filter(article => article.id !== articleToDelete.id));
       toast({
