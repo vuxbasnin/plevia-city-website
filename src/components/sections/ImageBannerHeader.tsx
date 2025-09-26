@@ -3,13 +3,12 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
 import Image from 'next/image';
-import { getSectionData } from '@/lib/firestoreService';
+import { getSectionData, getBannerImage } from '@/lib/firestoreService';
 import type { HeroSectionData } from '@/types/landingPageAdmin';
 import { defaultHeroSectionData } from '@/types/landingPageAdmin';
 import { Skeleton } from '@/components/ui/skeleton';
 import './ImageHeader.css';
 
-// Định nghĩa các loại banner có sẵn
 export type BannerType = 'banner_home' | 'banner_storyline' | 'banner_location' | 'banner_lifestyle' | 'banner_news';
 
 interface ImageBannerHeaderProps {
@@ -24,12 +23,13 @@ export default function ImageBannerHeader({
   className = ""
 }: ImageBannerHeaderProps) {
   const [heroData, setHeroData] = useState<HeroSectionData>(defaultHeroSectionData);
+  const [bannerImage, setBannerImage] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
   const [imageLoading, setImageLoading] = useState(true);
   const [hasAnimated, setHasAnimated] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [imageVersion, setImageVersion] = useState(0); // For cache busting
+  const [imageVersion, setImageVersion] = useState(0);
 
   const ref = useRef(null);
   const { scrollY } = useScroll();
@@ -39,21 +39,22 @@ export default function ImageBannerHeader({
       setIsLoading(true);
       setImageError(false);
       try {
-        // Sử dụng bannerType để fetch data tương ứng
         const data = await getSectionData<HeroSectionData>(bannerType);
         setHeroData(data || defaultHeroSectionData);
-        // Increment image version to force reload
+        
+        const imageData = await getBannerImage(bannerType);
+        setBannerImage(imageData);
+        
         setImageVersion(prev => prev + 1);
       } catch (error) {
-        console.error(`Error loading ${bannerType} data:`, error);
         setHeroData(defaultHeroSectionData);
+        setBannerImage(null);
       }
       setIsLoading(false);
     }
     loadData();
   }, [bannerType]);
 
-  // Detect scroll direction and trigger animation
   useEffect(() => {
     const unsubscribe = scrollY.on('change', (latest) => {
       const isScrollingUp = latest < lastScrollY;
@@ -71,7 +72,6 @@ export default function ImageBannerHeader({
     return () => unsubscribe();
   }, [scrollY, lastScrollY, hasAnimated]);
 
-  // Trigger animation on first load
   useEffect(() => {
     if (!isLoading && !imageLoading && !hasAnimated) {
       const timer = setTimeout(() => {
@@ -82,34 +82,7 @@ export default function ImageBannerHeader({
     }
   }, [isLoading, imageLoading, hasAnimated]);
 
-  // Sử dụng imageUrl từ Firestore thay vì prop
-  // Nếu không có Cloudinary config hoặc URL không hợp lệ, fallback về local image
-  const isCloudinaryConfigured = process.env.NEXT_PUBLIC_CLOUDINARY_NAME && 
-    process.env.NEXT_PUBLIC_CLOUDINARY_NAME !== 'your_cloud_name_here';
-  
-  const shouldUseCloudinaryImage = isCloudinaryConfigured && 
-    heroData.imageUrl && 
-    heroData.imageUrl.startsWith('https://res.cloudinary.com/') &&
-    !imageError;
-  
-  // const currentImageUrl = imageError
-  //   ? `https://placehold.co/1200x800.png?text=Hero+Image+Error`
-  //   : shouldUseCloudinaryImage 
-  //     ? heroData.imageUrl 
-  //     : fallbackImageUrl;
-  const currentImageUrl = fallbackImageUrl;
-
-  // Debug logs
-  console.log(`[${bannerType}] Debug:`, {
-    heroDataImageUrl: heroData.imageUrl,
-    fallbackImageUrl,
-    currentImageUrl,
-    imageError,
-    imageLoading,
-    isLoading,
-    isCloudinaryConfigured,
-    shouldUseCloudinaryImage
-  });
+  const currentImageUrl = bannerImage?.url || fallbackImageUrl;
 
   if (isLoading) {
     return (
@@ -141,7 +114,7 @@ export default function ImageBannerHeader({
         )}
         
         <Image
-          src={`${currentImageUrl}?v=${imageVersion}&t=${Date.now()}`} // Cache busting with version + timestamp
+          src={currentImageUrl}
           alt="Hero Image"
           fill
           className="object-cover object-center"

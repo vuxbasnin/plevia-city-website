@@ -8,12 +8,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { getSectionData, updateSectionData } from "@/lib/firestoreService";
+import { getSectionData, updateSectionData, getBannerNewsImage } from "@/lib/firestoreService";
 import { type HeroSectionData, heroFormSchema, defaultHeroSectionData } from "@/types/landingPageAdmin";
 import { Loader2, Save, Image as ImageIcon, XCircle } from "lucide-react";
 import NextImage from "next/image";
 import { uploadFileViaAPI } from "@/lib/uploadHelper";
-import { CLOUDINARY } from "@/lib/cloudinary";
 
 export default function ManageBannerNewsAdmin() {
   const { toast } = useToast();
@@ -31,7 +30,6 @@ export default function ManageBannerNewsAdmin() {
     defaultValues: defaultHeroSectionData,
   });
 
-  // Hàm tải dữ liệu banner từ Firestore và cập nhật state.
   useEffect(() => {
     async function loadBannerData() {
       setIsLoading(true);
@@ -39,15 +37,19 @@ export default function ManageBannerNewsAdmin() {
         const data = await getSectionData<HeroSectionData>("banner_news");
         if (data) {
           form.reset(data);
-          setCurrentPreviewUrl(data.imageUrl);
           setOriginalImageUrl(data.imageUrl);
         } else {
           form.reset(defaultHeroSectionData);
-          setCurrentPreviewUrl(defaultHeroSectionData.imageUrl);
           setOriginalImageUrl(defaultHeroSectionData.imageUrl);
         }
+
+        const bannerImage = await getBannerNewsImage();
+        if (bannerImage) {
+          setCurrentPreviewUrl(bannerImage.url);
+        } else {
+          setCurrentPreviewUrl(data?.imageUrl || defaultHeroSectionData.imageUrl);
+        }
       } catch (error) {
-        console.error("Error loading news banner data:", error);
         toast({
           title: "Lỗi tải dữ liệu",
           description: "Không thể tải dữ liệu banner News. Sử dụng dữ liệu mặc định.",
@@ -62,7 +64,6 @@ export default function ManageBannerNewsAdmin() {
     loadBannerData();
   }, [form, toast]);
 
-  // Hàm xử lý khi chọn file ảnh mới cho banner.
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
@@ -77,7 +78,6 @@ export default function ManageBannerNewsAdmin() {
     }
   };
 
-  // Hàm xóa file ảnh đang chọn (nếu có).
   const clearPendingImage = () => {
     setPendingImageFile(null);
     if (heroImageInputRef.current) {
@@ -86,7 +86,6 @@ export default function ManageBannerNewsAdmin() {
     setCurrentPreviewUrl(form.getValues("imageUrl") || defaultHeroSectionData.imageUrl);
   };
 
-  // Hàm xử lý khi nhập/chỉnh sửa URL ảnh thủ công.
   const handleManualImageUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newUrl = event.target.value;
     form.setValue("imageUrl", newUrl);
@@ -103,17 +102,13 @@ export default function ManageBannerNewsAdmin() {
     }
   };
 
-  // Kiểm tra xem có thay đổi nào không
   const hasChanges = () => {
     const currentImageUrl = form.getValues("imageUrl");
     return pendingImageFile !== null || currentImageUrl !== originalImageUrl;
   };
 
-  // Hàm submit form, lưu dữ liệu banner và upload ảnh nếu có.
   const onSubmit: SubmitHandler<HeroSectionData> = async (formData) => {
-    console.log("Form submitted with data:", formData);
     
-    // Kiểm tra xem có thay đổi nào không
     if (!hasChanges()) {
       toast({
         title: "Không có thay đổi",
@@ -127,14 +122,9 @@ export default function ManageBannerNewsAdmin() {
     let dataToSave = { ...formData };
 
     if (pendingImageFile) {
-      if (!CLOUDINARY.CLOUD_NAME || CLOUDINARY.CLOUD_NAME === "YOUR_CLOUD_NAME_HERE_FROM_DOT_ENV" || !CLOUDINARY.UPLOAD_PRESET || CLOUDINARY.UPLOAD_PRESET === "YOUR_UPLOAD_PRESET_HERE_FROM_DOT_ENV") {
-        toast({ title: "Cấu hình Cloudinary bị thiếu", description: "Vui lòng kiểm tra file .env và src/lib/cloudinary.ts.", variant: "destructive" });
-        setIsSaving(false);
-        return;
-      }
       setIsUploading(true);
       try {
-        const uploadedUrl = await uploadFileViaAPI(pendingImageFile, "landingpage_images/news");
+        const uploadedUrl = await uploadFileViaAPI(pendingImageFile, "banner_news", "admin");
         dataToSave.imageUrl = uploadedUrl;
         setPendingImageFile(null);
         if (heroImageInputRef.current) {
@@ -149,9 +139,8 @@ export default function ManageBannerNewsAdmin() {
       setIsUploading(false);
     }
 
-    console.log("Saving data to Firestore:", dataToSave);
+    const oldUrl = originalImageUrl;
     const success = await updateSectionData("banner_news", dataToSave);
-    console.log("Save result:", success);
     if (success) {
       toast({
         title: "Đã lưu thành công!",
@@ -270,6 +259,3 @@ export default function ManageBannerNewsAdmin() {
     </Card>
   );
 }
-
-
-

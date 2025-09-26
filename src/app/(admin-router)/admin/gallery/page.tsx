@@ -1,10 +1,5 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import {
-  getGalleryImages,
-  deleteGalleryImage,
-  updateGalleryImageCaption,
-} from "@/lib/firestoreService";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
@@ -30,20 +25,21 @@ function GalleryImageUploadScreen({
     try {
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("expiration", "600");
+      formData.append("type", "gallery");
+      formData.append("createdBy", user?.displayName || user?.email || "admin");
 
-      const response = await fetch("/api/upload-image-imgbb", {
+      const response = await fetch("/api/upload-image", {
         method: "POST",
         body: formData,
       });
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || "Upload failed");
+        throw new Error((errorData as any).error || "Upload failed");
       }
 
       const result = await response.json();
-      return result.url as string;
+      return (result as any).url as string;
     } catch (error) {
       console.error("Upload error:", error);
       throw error;
@@ -59,23 +55,6 @@ function GalleryImageUploadScreen({
       const file = files[i];
       try {
         const url = await handleFileUpload(file);
-        const uploadedBy = user?.displayName || user?.email || "unknown";
-
-        // Save to Supabase via admin API route (bypasses RLS)
-        const saveResponse = await fetch("/api/admin/insert-image", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            link_image: url,
-            created_by: uploadedBy,
-            type: "gallery",
-          }),
-        });
-
-        if (!saveResponse.ok) {
-          const errorData = await saveResponse.json();
-          throw new Error(errorData.error || "Failed to save to database");
-        }
 
         successCount++;
       } catch (e) {
@@ -172,13 +151,11 @@ export default function GalleryAdminPage() {
         .from('image')
         .delete()
         .eq('id', id);
-      
       if (error) {
-        console.error('Delete error:', error);
+        console.error('Delete DB error:', error);
         return;
       }
-      
-      fetchImages(); // Refresh lại danh sách ảnh sau khi xóa
+      fetchImages();
     } catch (error) {
       console.error('Delete error:', error);
     }

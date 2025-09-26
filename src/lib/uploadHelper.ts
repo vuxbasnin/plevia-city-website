@@ -1,8 +1,9 @@
-export async function uploadFileViaAPI(file: File, folder: string): Promise<string> {
+export async function uploadFileViaAPI(file: File, type: string, createdBy: string = 'admin'): Promise<string> {
   try {
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('folder', folder);
+    formData.append('type', type);
+    formData.append('createdBy', createdBy);
 
     const response = await fetch('/api/upload-image', {
       method: 'POST',
@@ -10,14 +11,14 @@ export async function uploadFileViaAPI(file: File, folder: string): Promise<stri
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || 'Upload failed');
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error((errorData as any).error || 'Upload failed');
     }
 
     const result = await response.json();
-    return result.url;
+    return (result as any).url as string;
   } catch (error) {
     console.error('Upload error:', error);
     throw error;
   }
-} 
+}

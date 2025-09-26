@@ -17,6 +17,7 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "./firebase"; // db can be null if Firebase fails to initialize
+import { createClient } from '@/lib/supabase-browser';
 import type {
   HeroSectionData,
   SeatingSectionData,
@@ -696,4 +697,50 @@ export async function updateLifestyleImageCaption(id: string, newCaption: string
   if (!db) throw new Error("Firestore not initialized");
   const imgRef = doc(db, "lifestyle_images", id);
   await updateDoc(imgRef, { caption: newCaption });
+}
+
+export async function getBannerImage(type: string) {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from('image')
+    .select('*')
+    .eq('type', type)
+    .single();
+  
+  if (error) {
+    if (error.code === 'PGRST116') {
+      return null;
+    }
+    return null;
+  }
+  
+  const result = data ? {
+    id: data.id,
+    url: data.link_image,
+    caption: data.caption || '',
+    uploadedBy: data.created_by,
+    uploadedAt: new Date(data.created_at).getTime(),
+  } : null;
+  
+  return result;
+}
+
+export async function getHeroImage() {
+  return getBannerImage('hero');
+}
+
+export async function getBannerStorylineImage() {
+  return getBannerImage('banner_storyline');
+}
+
+export async function getBannerLocationImage() {
+  return getBannerImage('banner_location');
+}
+
+export async function getBannerLifestyleImage() {
+  return getBannerImage('banner_lifestyle');
+}
+
+export async function getBannerNewsImage() {
+  return getBannerImage('banner_news');
 }

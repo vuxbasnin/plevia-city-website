@@ -14,7 +14,6 @@ import { type HeroSectionData, heroFormSchema, defaultHeroSectionData } from "@/
 import { Loader2, Save, Image as ImageIcon, XCircle } from "lucide-react";
 import NextImage from "next/image";
 import { uploadFileViaAPI } from "@/lib/uploadHelper";
-import { CLOUDINARY } from "@/lib/cloudinary";
 
 export default function ManageHeroAdmin() {
   const { toast } = useToast();
@@ -131,14 +130,9 @@ export default function ManageHeroAdmin() {
            let dataToSave = { ...formData };
 
     if (pendingImageFile) {
-      if (!CLOUDINARY.CLOUD_NAME || CLOUDINARY.CLOUD_NAME === "YOUR_CLOUD_NAME_HERE_FROM_DOT_ENV" || !CLOUDINARY.UPLOAD_PRESET || CLOUDINARY.UPLOAD_PRESET === "YOUR_UPLOAD_PRESET_HERE_FROM_DOT_ENV") {
-        toast({ title: "Cấu hình Cloudinary bị thiếu", description: "Vui lòng kiểm tra file .env và src/lib/cloudinary.ts.", variant: "destructive" });
-        setIsSaving(false);
-        return;
-      }
       setIsUploading(true);
       try {
-        const uploadedUrl = await uploadFileViaAPI(pendingImageFile, "landingpage_images/hero");
+        const uploadedUrl = await uploadFileViaAPI(pendingImageFile, "hero", "admin");
         dataToSave.imageUrl = uploadedUrl;
         setPendingImageFile(null);
         if (heroImageInputRef.current) {
@@ -154,8 +148,8 @@ export default function ManageHeroAdmin() {
     }
 
     console.log("Saving data to Firestore:", dataToSave);
+    const oldUrl = originalImageUrl;
     const success = await updateHeroSection(dataToSave);
-    console.log("Save result:", success);
                if (success) {
              toast({
                title: "Đã lưu thành công!",
