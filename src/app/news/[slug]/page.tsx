@@ -7,25 +7,20 @@ import ImageHeader from '@/components/sections/ImageHeader';
 import PageLayout from '@/components/layout/PageLayout';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import { notFound } from 'next/navigation';
-
-
-// Generate static params for all news articles
 export async function generateStaticParams() {
   try {
     const articles = await getNewsArticles();
     
     return articles
-      .filter(article => article.isPublished && article.slug) // Only published articles with slugs
+      .filter(article => article.isPublished && article.slug)
       .map((article) => ({
         slug: article.slug!,
       }));
   } catch (error) {
-    console.error('Error generating static params for news:', error);
     return [];
   }
 }
 
-// Generate metadata for each page
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   try {
     const article = await getNewsArticleBySlug(params.slug);
@@ -56,7 +51,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       },
     };
   } catch (error) {
-    console.error('Error generating metadata for news article:', error);
     return {
       title: 'Lỗi tải bài viết',
       description: 'Có lỗi xảy ra khi tải bài viết.',
@@ -78,7 +72,7 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
         className="mx-auto w-[78vw] sm:w-[78vw] max-w-[78vw] sm:px-2 px-1 py-6"
         style={{ fontFamily: "'Quicksand', Arial, sans-serif" }}
       >
-                                                                                                                                                                               <h1 style={{
+        <h1 style={{
                 fontSize: "2rem",
                 fontWeight: "bold",
                 color: "hsl(var(--primary))",
@@ -89,7 +83,7 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
                 fontFamily: "'Opaline', 'Times New Roman', serif"
               }}>{article.title}</h1>
 
-                     <div style={{
+        <div style={{
              textAlign: "center",
              marginBottom: "1.5rem",
              color: "#000000",
@@ -99,9 +93,9 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
            className="sm:px-2 px-1"
            >
              <span>{article.author}</span> &nbsp;|&nbsp; <span>{formatDateForDisplay(article.createdAt)}</span>
-           </div>
+           </div           >
 
-           {article.summary && (
+        {article.summary && (
              <div style={{
                fontSize: "clamp(1rem, 2.5vw, 1.15rem)",
                color: "#000000",

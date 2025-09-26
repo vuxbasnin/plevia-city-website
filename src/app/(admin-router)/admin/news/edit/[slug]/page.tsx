@@ -128,7 +128,6 @@ export default function EditNewsArticlePage() {
                         const base64 = await convertFileToBase64(file);
                         return { success: 1, file: { url: base64 } };
                       } catch (error) {
-                        console.error('EditorJS upload error:', error);
                         return { success: 0, error: error instanceof Error ? error.message : 'Upload failed' };
                       }
                     },
@@ -147,7 +146,7 @@ export default function EditNewsArticlePage() {
             },
           });
         } catch (error) {
-          console.error('Failed to initialize EditorJS:', error);
+          // Failed to initialize EditorJS
         }
       };
 
@@ -213,8 +212,6 @@ export default function EditNewsArticlePage() {
     
     setIsUploadingCover(true);
     try {
-      console.log("Bắt đầu upload ảnh bìa...");
-      
       const formData = new FormData();
       formData.append('file', coverImageFile);
       formData.append('type', 'news_cover');
@@ -230,13 +227,11 @@ export default function EditNewsArticlePage() {
       }
 
       const result = await response.json();
-      console.log("Upload ảnh bìa thành công:", result.url);
       if (result?.id) {
         setCoverImageId(result.id);
       }
       return result.url;
     } catch (error) {
-      console.error("Lỗi upload ảnh bìa:", error);
       throw new Error(`Không thể upload ảnh bìa: ${error instanceof Error ? error.message : 'Lỗi không xác định'}`);
     } finally {
       setIsUploadingCover(false);
@@ -248,14 +243,12 @@ export default function EditNewsArticlePage() {
     
     try {
       setIsSubmitting(true);
-      console.log("Bắt đầu cập nhật bài viết...");
       
       // Upload cover image if selected
       let coverImageUrl = data.coverImageUrl || article.coverImageUrl || "";
       let newCoverImageId = coverImageId || article.coverImageId || "";
       
       if (coverImageFile) {
-        console.log("Có ảnh bìa cần upload...");
         // If uploading a new cover, delete old record if exists
         const oldId = article.coverImageId;
         coverImageUrl = await uploadCoverImage();
@@ -269,7 +262,7 @@ export default function EditNewsArticlePage() {
               body: JSON.stringify({ id: oldId })
             });
           } catch (e) {
-            console.warn('Không thể xóa ảnh cũ trên Supabase:', e);
+            // Failed to delete old image
           }
         }
       }
@@ -289,15 +282,6 @@ export default function EditNewsArticlePage() {
         data.content = safeEditorData;
       }
 
-      console.log("Dữ liệu bài viết cập nhật:", {
-        title: data.title,
-        author: data.author,
-        summary: data.summary,
-        coverImageUrl: coverImageUrl,
-        coverImageId: newCoverImageId,
-        isPublished: data.isPublished
-      });
-
       // Update the article
       await updateNewsArticle(article.id, {
         title: data.title,
@@ -311,8 +295,6 @@ export default function EditNewsArticlePage() {
         slug: data.slug || "",
       });
 
-      console.log("Cập nhật bài viết thành công");
-
       toast({
         title: "Thành công",
         description: "Đã cập nhật tin tức thành công.",
@@ -320,7 +302,6 @@ export default function EditNewsArticlePage() {
 
       router.push("/admin/news");
     } catch (error) {
-      console.error("Lỗi cập nhật bài viết:", error);
       
       let errorMessage = "Không thể cập nhật tin tức. Vui lòng thử lại.";
       

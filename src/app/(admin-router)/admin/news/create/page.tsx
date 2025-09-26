@@ -67,7 +67,6 @@ export default function CreateNewsPage() {
                     const base64 = await convertFileToBase64(file);
                     return { success: 1, file: { url: base64 } };
                   } catch (error) {
-                    console.error('EditorJS upload error:', error);
                     return { success: 0, error: error instanceof Error ? error.message : 'Upload failed' };
                   }
                 },
@@ -161,12 +160,10 @@ export default function CreateNewsPage() {
   const onSubmit = async (data: NewsArticleFormData) => {
     try {
       setIsSubmitting(true);
-      console.log("Bắt đầu tạo bài viết...");
       
       // Convert uploaded file to base64 if exists
       let coverImageUrl = data.coverImageUrl || "";
       if (coverImageFile) {
-        console.log("Chuyển đổi ảnh thành base64...");
         coverImageUrl = await convertFileToBase64(coverImageFile);
       }
       
@@ -185,14 +182,6 @@ export default function CreateNewsPage() {
         data.content = safeEditorData as any;
       }
 
-      console.log("Dữ liệu bài viết:", {
-        title: data.title,
-        author: data.author,
-        summary: data.summary,
-        coverImageUrl: coverImageUrl,
-        isPublished: data.isPublished
-      });
-
       // Create the article immediately
       const articleId = await createNewsArticle({
         title: data.title,
@@ -205,8 +194,6 @@ export default function CreateNewsPage() {
         slug: data.slug || "",
       });
 
-      console.log("Tạo bài viết thành công, ID:", articleId);
-
       toast({
         title: "Thành công",
         description: "Đã tạo tin tức thành công.",
@@ -214,7 +201,6 @@ export default function CreateNewsPage() {
 
       router.push("/admin/news");
     } catch (error) {
-      console.error("Lỗi tạo bài viết:", error);
       
       let errorMessage = "Không thể tạo tin tức. Vui lòng thử lại.";
       

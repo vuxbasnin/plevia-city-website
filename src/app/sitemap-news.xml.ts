@@ -37,8 +37,6 @@ export default async function sitemapNews(): Promise<MetadataRoute.Sitemap> {
 
     return newsPages;
   } catch (error) {
-    console.error('Error generating news sitemap:', error);
-    
     // Fallback to basic sitemap
     return [
       {

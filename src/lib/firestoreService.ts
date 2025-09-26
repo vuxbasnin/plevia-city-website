@@ -440,7 +440,6 @@ export async function getNewsArticles(): Promise<NewsArticle[]> {
       .order('created_at', { ascending: false });
     
     if (error) {
-      console.error("Error fetching news articles:", error);
       throw error;
     }
     
@@ -461,7 +460,6 @@ export async function getNewsArticles(): Promise<NewsArticle[]> {
     
     return articles;
   } catch (error) {
-    console.error("Error fetching news articles:", error);
     throw error;
   }
 }
@@ -480,7 +478,6 @@ export async function getNewsArticleById(id: string): Promise<NewsArticle | null
       if (error.code === 'PGRST116') {
         return null; // No rows found
       }
-      console.error("Error fetching news article:", error);
       throw error;
     }
     
@@ -501,7 +498,6 @@ export async function getNewsArticleById(id: string): Promise<NewsArticle | null
       updatedAt: new Date(data.updated_at),
     };
   } catch (error) {
-    console.error("Error fetching news article:", error);
     throw error;
   }
 }
@@ -520,7 +516,6 @@ export async function getNewsArticleBySlug(slug: string): Promise<NewsArticle | 
       if (error.code === 'PGRST116') {
         return null; // No rows found
       }
-      console.error("Error fetching news article by slug:", error);
       throw error;
     }
     
@@ -541,7 +536,6 @@ export async function getNewsArticleBySlug(slug: string): Promise<NewsArticle | 
       updatedAt: new Date(data.updated_at),
     };
   } catch (error) {
-    console.error("Error fetching news article by slug:", error);
     throw error;
   }
 }
@@ -573,27 +567,11 @@ export async function createNewsArticle(articleData: Omit<NewsArticle, 'id' | 'c
       .single();
     
     if (error) {
-      console.error("Error creating news article:", error);
       throw error;
     }
     
-    console.log("createNewsArticle - Article created with ID:", data.id);
-    console.log("📖 SUPABASE OUTPUT:", {
-      id: data.id,
-      title: articleData.title,
-      content: articleData.content,
-      author: articleData.author,
-      summary: articleData.summary,
-      tags: articleData.tags,
-      isPublished: articleData.isPublished,
-      coverImageUrl: articleData.coverImageUrl,
-      coverImageId: articleData.coverImageId,
-      slug: articleData.slug,
-    });
-    
     return data.id;
   } catch (error) {
-    console.error("Error creating news article:", error);
     throw error;
   }
 }
@@ -620,24 +598,9 @@ export async function updateNewsArticle(id: string, articleData: Partial<NewsArt
       .eq('id', id);
     
     if (error) {
-      console.error("Error updating news article:", error);
       throw error;
     }
-    
-    console.log("📖 SUPABASE OUTPUT:", {
-      id: id,
-      title: articleData.title,
-      content: articleData.content,
-      author: articleData.author,
-      summary: articleData.summary,
-      tags: articleData.tags,
-      isPublished: articleData.isPublished,
-      coverImageUrl: articleData.coverImageUrl,
-      coverImageId: articleData.coverImageId,
-      slug: articleData.slug,
-    });
   } catch (error) {
-    console.error("Error updating news article:", error);
     throw error;
   }
 }
@@ -652,11 +615,9 @@ export async function deleteNewsArticle(id: string): Promise<void> {
       .eq('id', id);
     
     if (error) {
-      console.error("Error deleting news article:", error);
       throw error;
     }
   } catch (error) {
-    console.error("Error deleting news article:", error);
     throw error;
   }
 }
@@ -672,7 +633,6 @@ export async function getPublishedNewsArticles(): Promise<NewsArticle[]> {
       .order('created_at', { ascending: false });
     
     if (error) {
-      console.error("Error fetching published news articles:", error);
       throw error;
     }
     
@@ -693,7 +653,6 @@ export async function getPublishedNewsArticles(): Promise<NewsArticle[]> {
     
     return articles;
   } catch (error) {
-    console.error("Error fetching published news articles:", error);
     throw error;
   }
 }
