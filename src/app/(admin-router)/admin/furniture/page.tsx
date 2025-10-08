@@ -1,10 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import { getFurnitureImages, addFurnitureImage, deleteFurnitureImage, updateFurnitureImageCaption } from "@/lib/firestoreService";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/useAuth";
+import { createClient } from "@/lib/supabase-browser";
+import Image from "next/image";
 
 // Màn hình upload ảnh mới
 function FurnitureImageUploadScreen({ onBack, onUploaded }: { onBack: () => void, onUploaded: () => void }) {
@@ -18,7 +19,8 @@ function FurnitureImageUploadScreen({ onBack, onUploaded }: { onBack: () => void
     try {
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('folder', 'furniture_images');
+      formData.append('type', 'furniture');
+      formData.append('createdBy', user?.displayName || user?.email || 'admin');
 
       const response = await fetch('/api/upload-image', {
         method: 'POST',
@@ -26,12 +28,12 @@ function FurnitureImageUploadScreen({ onBack, onUploaded }: { onBack: () => void
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Upload failed');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error((errorData as any).error || 'Upload failed');
       }
 
       const result = await response.json();
-      return result.url;
+      return (result as any).url as string;
     } catch (error) {
       console.error('Upload error:', error);
       throw error;
@@ -47,8 +49,6 @@ function FurnitureImageUploadScreen({ onBack, onUploaded }: { onBack: () => void
       const file = files[i];
       try {
         const url = await handleFileUpload(file);
-        const uploadedBy = user?.displayName || user?.email || "unknown";
-        await addFurnitureImage({ url, caption, uploadedBy });
         successCount++;
       } catch (e) {
         failCount++;
@@ -99,16 +99,34 @@ export default function FurnitureAdminPage() {
   }, []);
 
   const fetchImages = async () => {
-    const imgs = await getFurnitureImages();
-    setImages(imgs);
+    const supabase = createClient();
+    const { data, error } = await supabase
+      .from('image')
+      .select('*')
+      .eq('type', 'furniture');
+    if (error) {
+      console.error('Supabase fetch error:', error);
+      return;
+    }
+    setImages(data || []);
   };
 
-  // Hàm xử lý xóa ảnh khỏi thư viện
-  // Chỉ xóa document ảnh trên Firestore, KHÔNG xóa file ảnh trên Cloudinary
-  // => Ảnh sẽ không còn xuất hiện trên website/app, nhưng file vẫn còn trên Cloudinary (có thể dọn dẹp sau nếu cần)
   const handleDelete = async (id: string, url: string) => {
-    await deleteFurnitureImage(id); // Xóa document ảnh khỏi Firestore
-    fetchImages(); // Refresh lại danh sách ảnh sau khi xóa
+    try {
+      const supabase = createClient();
+      const { error } = await supabase
+        .from('image')
+        .delete()
+        .eq('id', id)
+        .eq('type', 'furniture');
+      if (error) {
+        console.error('Delete DB error:', error);
+        return;
+      }
+      fetchImages();
+    } catch (error) {
+      console.error('Delete error:', error);
+    }
   };
 
   const handleEditCaption = async (id: string, newCaption: string) => {
@@ -128,15 +146,28 @@ export default function FurnitureAdminPage() {
       <h1 className="text-2xl font-bold">Quản lý Mẫu Nội thất</h1>
       <Button onClick={() => setShowUpload(true)} className="mb-2">+ Upload mẫu nội thất mới</Button>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {images.map(img => (
-          <div key={img.id} className="border rounded p-2 flex flex-col items-center">
-            <img src={img.url} alt={img.caption} className="w-full h-40 object-cover rounded" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop'; }} />
-            <input
-              className="text-sm mt-2 border rounded px-2 py-1 text-center"
-              value={img.caption}
-              onChange={e => handleEditCaption(img.id, e.target.value)}
-            />
-            <Button variant="destructive" size="sm" onClick={() => handleDelete(img.id, img.url)} className="mt-2">Xóa</Button>
+        {images.map((img) => (
+          <div key={img?.id} className="border rounded p-2 flex flex-col items-center">
+            <div className="text-xs text-gray-500 mb-1 truncate w-full">{img?.link_image}</div>
+            <div className="relative w-full h-40">
+              <Image
+                src={img?.link_image}
+                alt={img?.type || 'Furniture image'}
+                className="w-full h-40 object-cover rounded"
+                width={160}
+                height={120}
+                onError={(e) => {
+                  console.error('Image load error:', img?.link_image);
+                  (e.currentTarget as any).src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=450&fit=crop';
+                }}
+              />
+            </div>
+            <div className="text-sm mt-2 text-center">
+              <div className="font-medium">{img?.type}</div>
+              <div className="text-gray-500">by {img?.created_by}</div>
+              <div className="text-xs text-gray-400 mt-1">{new Date(img?.created_at).toLocaleDateString()}</div>
+            </div>
+            <Button variant="destructive" size="sm" onClick={() => handleDelete(img?.id, img?.link_image)} className="mt-2">Xóa</Button>
           </div>
         ))}
       </div>

@@ -27,6 +27,16 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "i.ibb.co", // imgbb.co image hosting
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "ibb.co", // imgbb.co main domain
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "**", // Cho phép tất cả domain HTTPS
         pathname: "/**",
       },

@@ -31,7 +31,6 @@ export default function NewsListPage() {
       const articlesData = await getNewsArticles();
       setArticles(articlesData);
     } catch (error) {
-      console.error("Error loading articles:", error);
       toast({
         title: "Lỗi",
         description: "Không thể tải danh sách tin tức. Vui lòng thử lại.",
@@ -52,6 +51,18 @@ export default function NewsListPage() {
 
     try {
       setDeleting(true);
+      // Delete associated cover image record (Supabase) if present
+      if (articleToDelete.coverImageId) {
+        try {
+          await fetch('/api/admin/delete-image-record', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: articleToDelete.coverImageId })
+          });
+        } catch (e) {
+          // Failed to delete cover image
+        }
+      }
       await deleteNewsArticle(articleToDelete.id);
       setArticles(articles.filter(article => article.id !== articleToDelete.id));
       toast({
@@ -59,7 +70,6 @@ export default function NewsListPage() {
         description: "Đã xóa tin tức thành công.",
       });
     } catch (error) {
-      console.error("Error deleting article:", error);
       toast({
         title: "Lỗi",
         description: "Không thể xóa tin tức. Vui lòng thử lại.",

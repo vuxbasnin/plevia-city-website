@@ -402,6 +402,7 @@ export interface NewsArticle {
   createdAt: Timestamp | Date;
   updatedAt: Timestamp | Date;
   coverImageUrl?: string;
+  coverImageId?: string;
   summary: string;
   tags: string[];
   isPublished: boolean;
