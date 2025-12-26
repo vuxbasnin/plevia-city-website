@@ -37,13 +37,28 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "**", // Cho phép tất cả domain HTTPS
+        hostname: "res.cloudinary.com", // Cloudinary CDN
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com", // Unsplash fallback images
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "placehold.co", // Placeholder images
         pathname: "/**",
       },
     ],
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Cho phép unoptimized nếu cần (tùy chọn)
+    unoptimized: false,
+    // Cấu hình bảo mật cho images
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
   },
   // Turbopack configuration (stable in Next.js 15)
   turbopack: {
